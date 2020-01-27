@@ -77,10 +77,7 @@ ggplot(data = SACTN_depth_mean, mapping = aes(x = depth, y = mean_temp)) +
   geom_smooth(se = FALSE)
 ```
 
-<div class="figure">
-<img src="13-tidiest_files/figure-html/tidiest-group-2-1.png" alt="Relationship between depth and mean temperature." width="672" />
-<p class="caption">(\#fig:tidiest-group-2)Relationship between depth and mean temperature.</p>
-</div>
+![(\#fig:tidiest-group-2)Relationship between depth and mean temperature.](13-tidiest_files/figure-latex/tidiest-group-2-1.pdf) 
 
 ### Grouping by multiple variables
 
@@ -266,10 +263,7 @@ SACTN %>% # Choose starting dataframe
   theme_dark() # Set theme
 ```
 
-<div class="figure">
-<img src="13-tidiest_files/figure-html/tidyiest-ggplot-1.png" alt="Line and ribbon plots for the climatologies of several sites." width="672" />
-<p class="caption">(\#fig:tidyiest-ggplot)Line and ribbon plots for the climatologies of several sites.</p>
-</div>
+![(\#fig:tidyiest-ggplot)Line and ribbon plots for the climatologies of several sites.](13-tidiest_files/figure-latex/tidyiest-ggplot-1.pdf) 
 
 ## Additional useful functions
 
@@ -361,10 +355,7 @@ ggplot(data = SACTN_n, aes(x = 1:nrow(SACTN_n), y = mean_temp)) +
         axis.ticks.x = element_blank())
 ```
 
-<div class="figure">
-<img src="13-tidiest_files/figure-html/tidiest-n-1-1.png" alt="Dot plot showing range of mean temperatures for the time series in the SACTN dataset." width="672" />
-<p class="caption">(\#fig:tidiest-n-1)Dot plot showing range of mean temperatures for the time series in the SACTN dataset.</p>
-</div>
+![(\#fig:tidiest-n-1)Dot plot showing range of mean temperatures for the time series in the SACTN dataset.](13-tidiest_files/figure-latex/tidiest-n-1-1.pdf) 
 
 This looks like a pretty linear distribution of temperatures within the SACTN dataset. But now let's change the size of the dots to show how frequently each of these mean temperatures is occurring.
 
@@ -385,10 +376,7 @@ ggplot(data = SACTN_n, aes(x = 1:nrow(SACTN_n), y = mean_temp)) +
         axis.ticks.x = element_blank())
 ```
 
-<div class="figure">
-<img src="13-tidiest_files/figure-html/tidiest-n-2-1.png" alt="Dot plot showing range of mean temperatures for the time series in the SACTN dataset with the size of each dote showing the number of occurences of each mean." width="672" />
-<p class="caption">(\#fig:tidiest-n-2)Dot plot showing range of mean temperatures for the time series in the SACTN dataset with the size of each dote showing the number of occurences of each mean.</p>
-</div>
+![(\#fig:tidiest-n-2)Dot plot showing range of mean temperatures for the time series in the SACTN dataset with the size of each dote showing the number of occurences of each mean.](13-tidiest_files/figure-latex/tidiest-n-2-1.pdf) 
 
 We see now when we include the count (`n`) of the different mean temperatures that this distribution is not so even. There appear to be humps around 17°C and 22°C. Of course, we've created dot plots here just to illustrate this point. In reality if one were interested in a distribution like this one would use a histogram, or better yet, a density polygon.
 
@@ -405,10 +393,7 @@ SACTN %>%
   labs(x = "Temperature (°C)")
 ```
 
-<div class="figure">
-<img src="13-tidiest_files/figure-html/tidiest-n-3-1.png" alt="Frequency distribution of mean temperature for each time series in the SACTN dataset." width="672" />
-<p class="caption">(\#fig:tidiest-n-3)Frequency distribution of mean temperature for each time series in the SACTN dataset.</p>
-</div>
+![(\#fig:tidiest-n-3)Frequency distribution of mean temperature for each time series in the SACTN dataset.](13-tidiest_files/figure-latex/tidiest-n-3-1.pdf) 
 
 
 ### Select observations (rows) by number with `slice()`
@@ -505,7 +490,7 @@ read_csv("data/SACTN_data.csv") %>% # Load the SACTN Day 1 data
   labs(x = "", y = "Temperature (°C)", colour = "Site") # Change labels
 ```
 
-<img src="13-tidiest_files/figure-html/tidiest-new-age-1.png" width="672" />
+![](13-tidiest_files/figure-latex/tidiest-new-age-1.pdf)<!-- --> 
 
 ## Session info
 

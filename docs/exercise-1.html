@@ -4,24 +4,24 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Exercise | Intro R Workshop: Data Manipulation, Analysis, and Visualisation</title>
+  <title>Chapter 5 Exercise: | Intro R Workshop: Data Manipulation, Analysis, and Visualisation</title>
   <meta name="description" content="The basics for a safe voyage through the tidyverse." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Exercise | Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
+  <meta property="og:title" content="Chapter 5 Exercise: | Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/769_life_finds_a_way.png" />
   <meta property="og:description" content="The basics for a safe voyage through the tidyverse." />
-  <meta name="github-repo" content="ajsmit/Intro_R_Official" />
+  <meta name="github-repo" content="ajsmit/Intro_R_Workshop" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Exercise | Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
+  <meta name="twitter:title" content="Chapter 5 Exercise: | Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
   
   <meta name="twitter:description" content="The basics for a safe voyage through the tidyverse." />
   <meta name="twitter:image" content="figures/769_life_finds_a_way.png" />
 
-<meta name="author" content="Robert W Schlegel, AJ Smit &amp; Amieroh Abrahams" />
+<meta name="author" content="AJ Smit, Amieroh Abrahams &amp; Robert W Schlegel" />
 
 
 <meta name="date" content="2020-01-27" />
@@ -31,17 +31,17 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tidy.html"/>
-<link rel="next" href="tidier.html"/>
-<script src="libs/header-attrs-2.1/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link rel="prev" href="workflow.html"/>
+<link rel="next" href="exercise-2.html"/>
+<script src="docs/header-attrs-2.1/header-attrs.js"></script>
+<script src="docs/jquery-2.2.3/jquery.min.js"></script>
+<link href="docs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="docs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="docs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="docs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="docs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="docs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="docs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -210,131 +210,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.2" data-path="workflow.html"><a href="workflow.html#tidyverse-sneak-peek"><i class="fa fa-check"></i><b>4.3.2</b> Tidyverse sneak peek</a></li>
 <li class="chapter" data-level="4.3.3" data-path="workflow.html"><a href="workflow.html#subsetting"><i class="fa fa-check"></i><b>4.3.3</b> Subsetting</a></li>
 <li class="chapter" data-level="4.3.4" data-path="workflow.html"><a href="workflow.html#basic-stats"><i class="fa fa-check"></i><b>4.3.4</b> Basic stats</a></li>
-<li class="chapter" data-level="4.3.5" data-path="workflow.html"><a href="workflow.html#summary-of-all-variables-in-a-dataframe"><i class="fa fa-check"></i><b>4.3.5</b> Summary of all variables in a dataframe</a></li>
-<li class="chapter" data-level="4.3.6" data-path="workflow.html"><a href="workflow.html#summary-statistics-by-variable"><i class="fa fa-check"></i><b>4.3.6</b> Summary statistics by variable</a></li>
-<li class="chapter" data-level="4.3.7" data-path="workflow.html"><a href="workflow.html#more-complex-calculations"><i class="fa fa-check"></i><b>4.3.7</b> More complex calculations</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="workflow.html"><a href="workflow.html#saving-data"><i class="fa fa-check"></i><b>4.4</b> Saving data</a></li>
-<li class="chapter" data-level="4.5" data-path="workflow.html"><a href="workflow.html#visualisations"><i class="fa fa-check"></i><b>4.5</b> Visualisations</a></li>
-<li class="chapter" data-level="4.6" data-path="workflow.html"><a href="workflow.html#clearing-the-memory"><i class="fa fa-check"></i><b>4.6</b> Clearing the memory</a></li>
-<li class="chapter" data-level="4.7" data-path="workflow.html"><a href="workflow.html#working-directories"><i class="fa fa-check"></i><b>4.7</b> Working directories</a></li>
-<li class="chapter" data-level="4.8" data-path="workflow.html"><a href="workflow.html#help"><i class="fa fa-check"></i><b>4.8</b> Help</a></li>
-<li class="chapter" data-level="4.9" data-path="workflow.html"><a href="workflow.html#session-info-2"><i class="fa fa-check"></i><b>4.9</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>5</b> Graphics with <strong><code>ggplot2</code></strong></a>
+<li class="chapter" data-level="5" data-path="exercise-1.html"><a href="exercise-1.html"><i class="fa fa-check"></i><b>5</b> Exercise:</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="graphics.html"><a href="graphics.html#example-figures"><i class="fa fa-check"></i><b>5.1</b> Example figures</a></li>
-<li class="chapter" data-level="5.2" data-path="graphics.html"><a href="graphics.html#basics-of-ggplot2"><i class="fa fa-check"></i><b>5.2</b> Basics of <strong><code>ggplot2</code></strong></a></li>
-<li class="chapter" data-level="5.3" data-path="graphics.html"><a href="graphics.html#to-aes-or-not-to-aes-that-is-the-question"><i class="fa fa-check"></i><b>5.3</b> To <code>aes()</code> or not to <code>aes()</code>, that is the question</a></li>
-<li class="chapter" data-level="5.4" data-path="graphics.html"><a href="graphics.html#changing-labels"><i class="fa fa-check"></i><b>5.4</b> Changing labels</a></li>
-<li class="chapter" data-level="5.5" data-path="graphics.html"><a href="graphics.html#session-info-3"><i class="fa fa-check"></i><b>5.5</b> Session info</a></li>
+<li class="chapter" data-level="5.0.1" data-path="exercise-1.html"><a href="exercise-1.html#summary-of-all-variables-in-a-dataframe"><i class="fa fa-check"></i><b>5.0.1</b> Summary of all variables in a dataframe</a></li>
+<li class="chapter" data-level="5.0.2" data-path="exercise-1.html"><a href="exercise-1.html#summary-statistics-by-variable"><i class="fa fa-check"></i><b>5.0.2</b> Summary statistics by variable</a></li>
+<li class="chapter" data-level="5.0.3" data-path="exercise-1.html"><a href="exercise-1.html#more-complex-calculations"><i class="fa fa-check"></i><b>5.0.3</b> More complex calculations</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>6</b> Faceting Figures</a>
+<li class="chapter" data-level="6" data-path="exercise-2.html"><a href="exercise-2.html"><i class="fa fa-check"></i><b>6</b> Exercise:</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="faceting.html"><a href="faceting.html#faceting-one-figure"><i class="fa fa-check"></i><b>6.1</b> Faceting one figure</a></li>
-<li class="chapter" data-level="6.2" data-path="faceting.html"><a href="faceting.html#new-figure-types"><i class="fa fa-check"></i><b>6.2</b> New figure types</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="faceting.html"><a href="faceting.html#line-graph"><i class="fa fa-check"></i><b>6.2.1</b> Line graph</a></li>
-<li class="chapter" data-level="6.2.2" data-path="faceting.html"><a href="faceting.html#linear-model"><i class="fa fa-check"></i><b>6.2.2</b> Linear model</a></li>
-<li class="chapter" data-level="6.2.3" data-path="faceting.html"><a href="faceting.html#histogram"><i class="fa fa-check"></i><b>6.2.3</b> Histogram</a></li>
-<li class="chapter" data-level="6.2.4" data-path="faceting.html"><a href="faceting.html#boxplot"><i class="fa fa-check"></i><b>6.2.4</b> Boxplot</a></li>
+<li class="chapter" data-level="6.1" data-path="exercise-2.html"><a href="exercise-2.html#saving-data"><i class="fa fa-check"></i><b>6.1</b> Saving data</a></li>
+<li class="chapter" data-level="6.2" data-path="exercise-2.html"><a href="exercise-2.html#visualisations"><i class="fa fa-check"></i><b>6.2</b> Visualisations</a></li>
+<li class="chapter" data-level="6.3" data-path="exercise-2.html"><a href="exercise-2.html#clearing-the-memory"><i class="fa fa-check"></i><b>6.3</b> Clearing the memory</a></li>
+<li class="chapter" data-level="6.4" data-path="exercise-2.html"><a href="exercise-2.html#working-directories"><i class="fa fa-check"></i><b>6.4</b> Working directories</a></li>
+<li class="chapter" data-level="6.5" data-path="exercise-2.html"><a href="exercise-2.html#help"><i class="fa fa-check"></i><b>6.5</b> Help</a></li>
+<li class="chapter" data-level="6.6" data-path="exercise-2.html"><a href="exercise-2.html#session-info-2"><i class="fa fa-check"></i><b>6.6</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="faceting.html"><a href="faceting.html#gridding-figures"><i class="fa fa-check"></i><b>6.3</b> Gridding figures</a></li>
-<li class="chapter" data-level="6.4" data-path="faceting.html"><a href="faceting.html#session-info-4"><i class="fa fa-check"></i><b>6.4</b> Session info</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="brewing.html"><a href="brewing.html"><i class="fa fa-check"></i><b>7</b> Brewing colours in <strong><code>ggplot2</code></strong></a>
+<li class="chapter" data-level="7" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>7</b> Graphics with <strong><code>ggplot2</code></strong></a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="brewing.html"><a href="brewing.html#r-data"><i class="fa fa-check"></i><b>7.1</b> R Data</a></li>
-<li class="chapter" data-level="7.2" data-path="brewing.html"><a href="brewing.html#rcolorbrewer"><i class="fa fa-check"></i><b>7.2</b> <strong><code>RColorBrewer</code></strong></a></li>
-<li class="chapter" data-level="7.3" data-path="brewing.html"><a href="brewing.html#make-your-own-palettes"><i class="fa fa-check"></i><b>7.3</b> Make your own palettes</a></li>
-<li class="chapter" data-level="7.4" data-path="brewing.html"><a href="brewing.html#use-your-own-palettes"><i class="fa fa-check"></i><b>7.4</b> Use your own palettes</a></li>
-<li class="chapter" data-level="7.5" data-path="brewing.html"><a href="brewing.html#diy-figures"><i class="fa fa-check"></i><b>7.5</b> DIY figures</a></li>
-<li class="chapter" data-level="7.6" data-path="brewing.html"><a href="brewing.html#session-info-5"><i class="fa fa-check"></i><b>7.6</b> Session info</a></li>
+<li class="chapter" data-level="7.1" data-path="graphics.html"><a href="graphics.html#example-figures"><i class="fa fa-check"></i><b>7.1</b> Example figures</a></li>
+<li class="chapter" data-level="7.2" data-path="graphics.html"><a href="graphics.html#basics-of-ggplot2"><i class="fa fa-check"></i><b>7.2</b> Basics of <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="7.3" data-path="graphics.html"><a href="graphics.html#to-aes-or-not-to-aes-that-is-the-question"><i class="fa fa-check"></i><b>7.3</b> To <code>aes()</code> or not to <code>aes()</code>, that is the question</a></li>
+<li class="chapter" data-level="7.4" data-path="graphics.html"><a href="graphics.html#changing-labels"><i class="fa fa-check"></i><b>7.4</b> Changing labels</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>8</b> Mapping with <strong><code>ggplot2</code></strong></a>
+<li class="chapter" data-level="8" data-path="exercise-3.html"><a href="exercise-3.html"><i class="fa fa-check"></i><b>8</b> Exercise:</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="mapping.html"><a href="mapping.html#a-new-concept"><i class="fa fa-check"></i><b>8.1</b> A new concept?</a></li>
-<li class="chapter" data-level="8.2" data-path="mapping.html"><a href="mapping.html#land-mask"><i class="fa fa-check"></i><b>8.2</b> Land mask</a></li>
-<li class="chapter" data-level="8.3" data-path="mapping.html"><a href="mapping.html#borders"><i class="fa fa-check"></i><b>8.3</b> Borders</a></li>
-<li class="chapter" data-level="8.4" data-path="mapping.html"><a href="mapping.html#force-lonlat-extent"><i class="fa fa-check"></i><b>8.4</b> Force lon/lat extent</a></li>
-<li class="chapter" data-level="8.5" data-path="mapping.html"><a href="mapping.html#ocean-temperature"><i class="fa fa-check"></i><b>8.5</b> Ocean temperature</a></li>
-<li class="chapter" data-level="8.6" data-path="mapping.html"><a href="mapping.html#final-touches"><i class="fa fa-check"></i><b>8.6</b> Final touches</a></li>
-<li class="chapter" data-level="8.7" data-path="mapping.html"><a href="mapping.html#session-info-6"><i class="fa fa-check"></i><b>8.7</b> Session info</a></li>
+<li class="chapter" data-level="8.1" data-path="exercise-3.html"><a href="exercise-3.html#session-info-3"><i class="fa fa-check"></i><b>8.1</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="mapping-style.html"><a href="mapping-style.html"><i class="fa fa-check"></i><b>9</b> Mapping with style</a>
+<li class="chapter" data-level="9" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>9</b> Faceting Figures</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="mapping-style.html"><a href="mapping-style.html#default-maps"><i class="fa fa-check"></i><b>9.1</b> Default maps</a></li>
-<li class="chapter" data-level="9.2" data-path="mapping-style.html"><a href="mapping-style.html#specific-labels"><i class="fa fa-check"></i><b>9.2</b> Specific labels</a></li>
-<li class="chapter" data-level="9.3" data-path="mapping-style.html"><a href="mapping-style.html#scale-bars"><i class="fa fa-check"></i><b>9.3</b> Scale bars</a></li>
-<li class="chapter" data-level="9.4" data-path="mapping-style.html"><a href="mapping-style.html#insetting"><i class="fa fa-check"></i><b>9.4</b> Insetting</a></li>
-<li class="chapter" data-level="9.5" data-path="mapping-style.html"><a href="mapping-style.html#rounding-it-out"><i class="fa fa-check"></i><b>9.5</b> Rounding it out</a></li>
-<li class="chapter" data-level="9.6" data-path="mapping-style.html"><a href="mapping-style.html#session-info-7"><i class="fa fa-check"></i><b>9.6</b> Session info</a></li>
+<li class="chapter" data-level="9.1" data-path="faceting.html"><a href="faceting.html#faceting-one-figure"><i class="fa fa-check"></i><b>9.1</b> Faceting one figure</a></li>
+<li class="chapter" data-level="9.2" data-path="faceting.html"><a href="faceting.html#new-figure-types"><i class="fa fa-check"></i><b>9.2</b> New figure types</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="faceting.html"><a href="faceting.html#line-graph"><i class="fa fa-check"></i><b>9.2.1</b> Line graph</a></li>
+<li class="chapter" data-level="9.2.2" data-path="faceting.html"><a href="faceting.html#linear-model"><i class="fa fa-check"></i><b>9.2.2</b> Linear model</a></li>
+<li class="chapter" data-level="9.2.3" data-path="faceting.html"><a href="faceting.html#histogram"><i class="fa fa-check"></i><b>9.2.3</b> Histogram</a></li>
+<li class="chapter" data-level="9.2.4" data-path="faceting.html"><a href="faceting.html#boxplot"><i class="fa fa-check"></i><b>9.2.4</b> Boxplot</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="mapping-google.html"><a href="mapping-google.html"><i class="fa fa-check"></i><b>10</b> Mapping with Google</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="mapping-google.html"><a href="mapping-google.html#ggmap"><i class="fa fa-check"></i><b>10.1</b> <strong><code>ggmap</code></strong></a></li>
-<li class="chapter" data-level="10.2" data-path="mapping-google.html"><a href="mapping-google.html#mapping-cape-point"><i class="fa fa-check"></i><b>10.2</b> Mapping Cape Point</a></li>
-<li class="chapter" data-level="10.3" data-path="mapping-google.html"><a href="mapping-google.html#site-labels"><i class="fa fa-check"></i><b>10.3</b> Site labels</a></li>
-<li class="chapter" data-level="10.4" data-path="mapping-google.html"><a href="mapping-google.html#diy-maps"><i class="fa fa-check"></i><b>10.4</b> DIY maps</a></li>
-<li class="chapter" data-level="10.5" data-path="mapping-google.html"><a href="mapping-google.html#session-info-8"><i class="fa fa-check"></i><b>10.5</b> Session info</a></li>
+<li class="chapter" data-level="9.3" data-path="faceting.html"><a href="faceting.html#gridding-figures"><i class="fa fa-check"></i><b>9.3</b> Gridding figures</a></li>
+<li class="chapter" data-level="9.4" data-path="faceting.html"><a href="faceting.html#session-info-4"><i class="fa fa-check"></i><b>9.4</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>11</b> Tidy data</a>
+<li class="chapter" data-level="10" data-path="brewing.html"><a href="brewing.html"><i class="fa fa-check"></i><b>10</b> Brewing colours in <strong><code>ggplot2</code></strong></a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="tidy.html"><a href="tidy.html#gathering-and-spreading"><i class="fa fa-check"></i><b>11.1</b> Gathering and spreading</a>
-<ul>
-<li class="chapter" data-level="11.1.1" data-path="tidy.html"><a href="tidy.html#gathering"><i class="fa fa-check"></i><b>11.1.1</b> Gathering</a></li>
-<li class="chapter" data-level="11.1.2" data-path="tidy.html"><a href="tidy.html#spreading"><i class="fa fa-check"></i><b>11.1.2</b> Spreading</a></li>
+<li class="chapter" data-level="10.1" data-path="brewing.html"><a href="brewing.html#r-data"><i class="fa fa-check"></i><b>10.1</b> R Data</a></li>
+<li class="chapter" data-level="10.2" data-path="brewing.html"><a href="brewing.html#rcolorbrewer"><i class="fa fa-check"></i><b>10.2</b> <strong><code>RColorBrewer</code></strong></a></li>
+<li class="chapter" data-level="10.3" data-path="brewing.html"><a href="brewing.html#make-your-own-palettes"><i class="fa fa-check"></i><b>10.3</b> Make your own palettes</a></li>
+<li class="chapter" data-level="10.4" data-path="brewing.html"><a href="brewing.html#use-your-own-palettes"><i class="fa fa-check"></i><b>10.4</b> Use your own palettes</a></li>
+<li class="chapter" data-level="10.5" data-path="brewing.html"><a href="brewing.html#diy-figures"><i class="fa fa-check"></i><b>10.5</b> DIY figures</a></li>
+<li class="chapter" data-level="10.6" data-path="brewing.html"><a href="brewing.html#session-info-5"><i class="fa fa-check"></i><b>10.6</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="tidy.html"><a href="tidy.html#separating-and-uniting"><i class="fa fa-check"></i><b>11.2</b> Separating and uniting</a>
+<li class="chapter" data-level="11" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>11</b> Mapping with <strong><code>ggplot2</code></strong></a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="tidy.html"><a href="tidy.html#separate"><i class="fa fa-check"></i><b>11.2.1</b> Separate</a></li>
-<li class="chapter" data-level="11.2.2" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>11.2.2</b> Unite</a></li>
+<li class="chapter" data-level="11.1" data-path="mapping.html"><a href="mapping.html#a-new-concept"><i class="fa fa-check"></i><b>11.1</b> A new concept?</a></li>
+<li class="chapter" data-level="11.2" data-path="mapping.html"><a href="mapping.html#land-mask"><i class="fa fa-check"></i><b>11.2</b> Land mask</a></li>
+<li class="chapter" data-level="11.3" data-path="mapping.html"><a href="mapping.html#borders"><i class="fa fa-check"></i><b>11.3</b> Borders</a></li>
+<li class="chapter" data-level="11.4" data-path="mapping.html"><a href="mapping.html#force-lonlat-extent"><i class="fa fa-check"></i><b>11.4</b> Force lon/lat extent</a></li>
+<li class="chapter" data-level="11.5" data-path="mapping.html"><a href="mapping.html#ocean-temperature"><i class="fa fa-check"></i><b>11.5</b> Ocean temperature</a></li>
+<li class="chapter" data-level="11.6" data-path="mapping.html"><a href="mapping.html#final-touches"><i class="fa fa-check"></i><b>11.6</b> Final touches</a></li>
+<li class="chapter" data-level="11.7" data-path="mapping.html"><a href="mapping.html#session-info-6"><i class="fa fa-check"></i><b>11.7</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="tidy.html"><a href="tidy.html#joining"><i class="fa fa-check"></i><b>11.3</b> Joining</a></li>
-<li class="chapter" data-level="11.4" data-path="tidy.html"><a href="tidy.html#but-why-though"><i class="fa fa-check"></i><b>11.4</b> But why though?</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="exercise-1.html"><a href="exercise-1.html"><i class="fa fa-check"></i><b>12</b> Exercise</a>
+<li class="chapter" data-level="12" data-path="mapping-style.html"><a href="mapping-style.html"><i class="fa fa-check"></i><b>12</b> Mapping with style</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="exercise-1.html"><a href="exercise-1.html#session-info-9"><i class="fa fa-check"></i><b>12.1</b> Session info</a></li>
+<li class="chapter" data-level="12.1" data-path="mapping-style.html"><a href="mapping-style.html#default-maps"><i class="fa fa-check"></i><b>12.1</b> Default maps</a></li>
+<li class="chapter" data-level="12.2" data-path="mapping-style.html"><a href="mapping-style.html#specific-labels"><i class="fa fa-check"></i><b>12.2</b> Specific labels</a></li>
+<li class="chapter" data-level="12.3" data-path="mapping-style.html"><a href="mapping-style.html#scale-bars"><i class="fa fa-check"></i><b>12.3</b> Scale bars</a></li>
+<li class="chapter" data-level="12.4" data-path="mapping-style.html"><a href="mapping-style.html#insetting"><i class="fa fa-check"></i><b>12.4</b> Insetting</a></li>
+<li class="chapter" data-level="12.5" data-path="mapping-style.html"><a href="mapping-style.html#rounding-it-out"><i class="fa fa-check"></i><b>12.5</b> Rounding it out</a></li>
+<li class="chapter" data-level="12.6" data-path="mapping-style.html"><a href="mapping-style.html#session-info-7"><i class="fa fa-check"></i><b>12.6</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tidier.html"><a href="tidier.html"><i class="fa fa-check"></i><b>13</b> Tidier data</a>
+<li class="chapter" data-level="13" data-path="mapping-google.html"><a href="mapping-google.html"><i class="fa fa-check"></i><b>13</b> Mapping with Google</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="tidier.html"><a href="tidier.html#comparison-operators"><i class="fa fa-check"></i><b>13.1</b> Comparison operators</a></li>
-<li class="chapter" data-level="13.2" data-path="tidier.html"><a href="tidier.html#logical-operators"><i class="fa fa-check"></i><b>13.2</b> Logical operators</a></li>
-<li class="chapter" data-level="13.3" data-path="tidier.html"><a href="tidier.html#arrange-observations-rows-with-arrange"><i class="fa fa-check"></i><b>13.3</b> Arrange observations (rows) with <code>arrange()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="tidier.html"><a href="tidier.html#filter-observations-rows-with-filter"><i class="fa fa-check"></i><b>13.4</b> Filter observations (rows) with <code>filter()</code></a></li>
-<li class="chapter" data-level="13.5" data-path="tidier.html"><a href="tidier.html#select-variables-columns-withselect"><i class="fa fa-check"></i><b>13.5</b> Select variables (columns) with<code>select()</code></a></li>
-<li class="chapter" data-level="13.6" data-path="tidier.html"><a href="tidier.html#create-new-variables-columns-with-mutate"><i class="fa fa-check"></i><b>13.6</b> Create new variables (columns) with <code>mutate()</code></a></li>
-<li class="chapter" data-level="13.7" data-path="tidier.html"><a href="tidier.html#summarise-variables-columns-with-summarise"><i class="fa fa-check"></i><b>13.7</b> Summarise variables (columns) with <code>summarise()</code></a></li>
-<li class="chapter" data-level="13.8" data-path="tidier.html"><a href="tidier.html#session-info-10"><i class="fa fa-check"></i><b>13.8</b> Session info</a></li>
+<li class="chapter" data-level="13.1" data-path="mapping-google.html"><a href="mapping-google.html#ggmap"><i class="fa fa-check"></i><b>13.1</b> <strong><code>ggmap</code></strong></a></li>
+<li class="chapter" data-level="13.2" data-path="mapping-google.html"><a href="mapping-google.html#mapping-cape-point"><i class="fa fa-check"></i><b>13.2</b> Mapping Cape Point</a></li>
+<li class="chapter" data-level="13.3" data-path="mapping-google.html"><a href="mapping-google.html#site-labels"><i class="fa fa-check"></i><b>13.3</b> Site labels</a></li>
+<li class="chapter" data-level="13.4" data-path="mapping-google.html"><a href="mapping-google.html#diy-maps"><i class="fa fa-check"></i><b>13.4</b> DIY maps</a></li>
+<li class="chapter" data-level="13.5" data-path="mapping-google.html"><a href="mapping-google.html#session-info-8"><i class="fa fa-check"></i><b>13.5</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="tidiest.html"><a href="tidiest.html"><i class="fa fa-check"></i><b>14</b> Tidiest data</a>
+<li class="chapter" data-level="14" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>14</b> Tidy data</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="tidiest.html"><a href="tidiest.html#group-observations-rows-by-variables-columns-with-group_by"><i class="fa fa-check"></i><b>14.1</b> Group observations (rows) by variables (columns) with <code>group_by()</code></a>
+<li class="chapter" data-level="14.1" data-path="tidy.html"><a href="tidy.html#gathering-and-spreading"><i class="fa fa-check"></i><b>14.1</b> Gathering and spreading</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="tidiest.html"><a href="tidiest.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>14.1.1</b> Grouping by multiple variables</a></li>
-<li class="chapter" data-level="14.1.2" data-path="tidiest.html"><a href="tidiest.html#ungrouping"><i class="fa fa-check"></i><b>14.1.2</b> Ungrouping</a></li>
+<li class="chapter" data-level="14.1.1" data-path="tidy.html"><a href="tidy.html#gathering"><i class="fa fa-check"></i><b>14.1.1</b> Gathering</a></li>
+<li class="chapter" data-level="14.1.2" data-path="tidy.html"><a href="tidy.html#spreading"><i class="fa fa-check"></i><b>14.1.2</b> Spreading</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="tidiest.html"><a href="tidiest.html#chain-functions-with-the-pipe"><i class="fa fa-check"></i><b>14.2</b> Chain functions with the pipe (<code>%&gt;%</code>)</a></li>
-<li class="chapter" data-level="14.3" data-path="tidiest.html"><a href="tidiest.html#group-all-the-functions"><i class="fa fa-check"></i><b>14.3</b> Group all the functions!</a></li>
-<li class="chapter" data-level="14.4" data-path="tidiest.html"><a href="tidiest.html#going-deeper"><i class="fa fa-check"></i><b>14.4</b> Going deeper</a></li>
-<li class="chapter" data-level="14.5" data-path="tidiest.html"><a href="tidiest.html#pipe-into-ggplot2"><i class="fa fa-check"></i><b>14.5</b> Pipe into <strong><code>ggplot2</code></strong></a></li>
-<li class="chapter" data-level="14.6" data-path="tidiest.html"><a href="tidiest.html#additional-useful-functions"><i class="fa fa-check"></i><b>14.6</b> Additional useful functions</a>
+<li class="chapter" data-level="14.2" data-path="tidy.html"><a href="tidy.html#separating-and-uniting"><i class="fa fa-check"></i><b>14.2</b> Separating and uniting</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="tidiest.html"><a href="tidiest.html#rename-variables-columns-with-rename"><i class="fa fa-check"></i><b>14.6.1</b> Rename variables (columns) with <code>rename()</code></a></li>
-<li class="chapter" data-level="14.6.2" data-path="tidiest.html"><a href="tidiest.html#create-a-new-dataframe-for-a-newly-created-variable-column-with-transmute"><i class="fa fa-check"></i><b>14.6.2</b> Create a new dataframe for a newly created variable (column) with <code>transmute()</code></a></li>
-<li class="chapter" data-level="14.6.3" data-path="tidiest.html"><a href="tidiest.html#count-observations-rows-with-n"><i class="fa fa-check"></i><b>14.6.3</b> Count observations (rows) with <code>n()</code></a></li>
-<li class="chapter" data-level="14.6.4" data-path="tidiest.html"><a href="tidiest.html#select-observations-rows-by-number-with-slice"><i class="fa fa-check"></i><b>14.6.4</b> Select observations (rows) by number with <code>slice()</code></a></li>
-<li class="chapter" data-level="14.6.5" data-path="tidiest.html"><a href="tidiest.html#summary-functions"><i class="fa fa-check"></i><b>14.6.5</b> Summary functions</a></li>
+<li class="chapter" data-level="14.2.1" data-path="tidy.html"><a href="tidy.html#separate"><i class="fa fa-check"></i><b>14.2.1</b> Separate</a></li>
+<li class="chapter" data-level="14.2.2" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>14.2.2</b> Unite</a></li>
 </ul></li>
-<li class="chapter" data-level="14.7" data-path="tidiest.html"><a href="tidiest.html#the-new-age-redux"><i class="fa fa-check"></i><b>14.7</b> The new age <em>redux</em></a></li>
-<li class="chapter" data-level="14.8" data-path="tidiest.html"><a href="tidiest.html#session-info-11"><i class="fa fa-check"></i><b>14.8</b> Session info</a></li>
+<li class="chapter" data-level="14.3" data-path="tidy.html"><a href="tidy.html#joining"><i class="fa fa-check"></i><b>14.3</b> Joining</a></li>
+<li class="chapter" data-level="14.4" data-path="tidy.html"><a href="tidy.html#but-why-though"><i class="fa fa-check"></i><b>14.4</b> But why though?</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="recap.html"><a href="recap.html"><i class="fa fa-check"></i><b>15</b> Recap</a>
+<li class="chapter" data-level="15" data-path="exercise-4.html"><a href="exercise-4.html"><i class="fa fa-check"></i><b>15</b> Exercise</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="recap.html"><a href="recap.html#the-future"><i class="fa fa-check"></i><b>15.1</b> The future</a></li>
-<li class="chapter" data-level="15.2" data-path="recap.html"><a href="recap.html#today"><i class="fa fa-check"></i><b>15.2</b> Today</a></li>
-<li class="chapter" data-level="15.3" data-path="recap.html"><a href="recap.html#session-info-12"><i class="fa fa-check"></i><b>15.3</b> Session info</a></li>
+<li class="chapter" data-level="15.1" data-path="exercise-4.html"><a href="exercise-4.html#session-info-9"><i class="fa fa-check"></i><b>15.1</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="tidier.html"><a href="tidier.html"><i class="fa fa-check"></i><b>16</b> Tidier data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="tidier.html"><a href="tidier.html#comparison-operators"><i class="fa fa-check"></i><b>16.1</b> Comparison operators</a></li>
+<li class="chapter" data-level="16.2" data-path="tidier.html"><a href="tidier.html#logical-operators"><i class="fa fa-check"></i><b>16.2</b> Logical operators</a></li>
+<li class="chapter" data-level="16.3" data-path="tidier.html"><a href="tidier.html#arrange-observations-rows-with-arrange"><i class="fa fa-check"></i><b>16.3</b> Arrange observations (rows) with <code>arrange()</code></a></li>
+<li class="chapter" data-level="16.4" data-path="tidier.html"><a href="tidier.html#filter-observations-rows-with-filter"><i class="fa fa-check"></i><b>16.4</b> Filter observations (rows) with <code>filter()</code></a></li>
+<li class="chapter" data-level="16.5" data-path="tidier.html"><a href="tidier.html#select-variables-columns-withselect"><i class="fa fa-check"></i><b>16.5</b> Select variables (columns) with<code>select()</code></a></li>
+<li class="chapter" data-level="16.6" data-path="tidier.html"><a href="tidier.html#create-new-variables-columns-with-mutate"><i class="fa fa-check"></i><b>16.6</b> Create new variables (columns) with <code>mutate()</code></a></li>
+<li class="chapter" data-level="16.7" data-path="tidier.html"><a href="tidier.html#summarise-variables-columns-with-summarise"><i class="fa fa-check"></i><b>16.7</b> Summarise variables (columns) with <code>summarise()</code></a></li>
+<li class="chapter" data-level="16.8" data-path="tidier.html"><a href="tidier.html#session-info-10"><i class="fa fa-check"></i><b>16.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="tidiest.html"><a href="tidiest.html"><i class="fa fa-check"></i><b>17</b> Tidiest data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="tidiest.html"><a href="tidiest.html#group-observations-rows-by-variables-columns-with-group_by"><i class="fa fa-check"></i><b>17.1</b> Group observations (rows) by variables (columns) with <code>group_by()</code></a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="tidiest.html"><a href="tidiest.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>17.1.1</b> Grouping by multiple variables</a></li>
+<li class="chapter" data-level="17.1.2" data-path="tidiest.html"><a href="tidiest.html#ungrouping"><i class="fa fa-check"></i><b>17.1.2</b> Ungrouping</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="tidiest.html"><a href="tidiest.html#chain-functions-with-the-pipe"><i class="fa fa-check"></i><b>17.2</b> Chain functions with the pipe (<code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="17.3" data-path="tidiest.html"><a href="tidiest.html#group-all-the-functions"><i class="fa fa-check"></i><b>17.3</b> Group all the functions!</a></li>
+<li class="chapter" data-level="17.4" data-path="tidiest.html"><a href="tidiest.html#going-deeper"><i class="fa fa-check"></i><b>17.4</b> Going deeper</a></li>
+<li class="chapter" data-level="17.5" data-path="tidiest.html"><a href="tidiest.html#pipe-into-ggplot2"><i class="fa fa-check"></i><b>17.5</b> Pipe into <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="17.6" data-path="tidiest.html"><a href="tidiest.html#additional-useful-functions"><i class="fa fa-check"></i><b>17.6</b> Additional useful functions</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="tidiest.html"><a href="tidiest.html#rename-variables-columns-with-rename"><i class="fa fa-check"></i><b>17.6.1</b> Rename variables (columns) with <code>rename()</code></a></li>
+<li class="chapter" data-level="17.6.2" data-path="tidiest.html"><a href="tidiest.html#create-a-new-dataframe-for-a-newly-created-variable-column-with-transmute"><i class="fa fa-check"></i><b>17.6.2</b> Create a new dataframe for a newly created variable (column) with <code>transmute()</code></a></li>
+<li class="chapter" data-level="17.6.3" data-path="tidiest.html"><a href="tidiest.html#count-observations-rows-with-n"><i class="fa fa-check"></i><b>17.6.3</b> Count observations (rows) with <code>n()</code></a></li>
+<li class="chapter" data-level="17.6.4" data-path="tidiest.html"><a href="tidiest.html#select-observations-rows-by-number-with-slice"><i class="fa fa-check"></i><b>17.6.4</b> Select observations (rows) by number with <code>slice()</code></a></li>
+<li class="chapter" data-level="17.6.5" data-path="tidiest.html"><a href="tidiest.html#summary-functions"><i class="fa fa-check"></i><b>17.6.5</b> Summary functions</a></li>
+</ul></li>
+<li class="chapter" data-level="17.7" data-path="tidiest.html"><a href="tidiest.html#the-new-age-redux"><i class="fa fa-check"></i><b>17.7</b> The new age <em>redux</em></a></li>
+<li class="chapter" data-level="17.8" data-path="tidiest.html"><a href="tidiest.html#session-info-11"><i class="fa fa-check"></i><b>17.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="recap.html"><a href="recap.html"><i class="fa fa-check"></i><b>18</b> Recap</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="recap.html"><a href="recap.html#the-future"><i class="fa fa-check"></i><b>18.1</b> The future</a></li>
+<li class="chapter" data-level="18.2" data-path="recap.html"><a href="recap.html#today"><i class="fa fa-check"></i><b>18.2</b> Today</a></li>
+<li class="chapter" data-level="18.3" data-path="recap.html"><a href="recap.html#session-info-12"><i class="fa fa-check"></i><b>18.3</b> Session info</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -356,22 +365,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exercise-1" class="section level1" number="12">
-<h1><span class="header-section-number">Chapter 12</span> Exercise</h1>
-<p>Create two vectors: x &lt;- c( 1, 6, 21, 19 , NA, 73, NA) and y &lt;- c(NA, NA, 3, NA, 13, 24, NA)</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Count the number of elements are missing in both x and y</p></li>
-<li><p>Transform the code, used above (a), into a function</p></li>
-<li><p>Create three new vectors and test the function created in (b)</p></li>
-</ol>
-<div id="session-info-9" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Session info</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="exercise-1.html#cb12-1"></a><span class="kw">installed.packages</span>()[<span class="kw">names</span>(<span class="kw">sessionInfo</span>()<span class="op">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
-<pre><code>R&gt;   forcats   stringr     dplyr     purrr     readr     tidyr    tibble   ggplot2 
-R&gt;   &quot;0.4.0&quot;   &quot;1.4.0&quot;   &quot;0.8.3&quot;   &quot;0.3.3&quot;   &quot;1.3.1&quot;   &quot;1.0.0&quot;   &quot;2.1.3&quot;   &quot;3.2.1&quot; 
-R&gt; tidyverse 
-R&gt;   &quot;1.3.0&quot;</code></pre>
-
+<div id="exercise-1" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Exercise:</h1>
+<p>Using pipes, subset the laminaria data to include regions where the blade thickness is thicker than 5cm and retain only the columns site, region, blade weight and blade thickness.</p>
+<p>Now exit RStudio. Pretend it is three days later and revisit your analysis. Calculate the number of entries at Kommetjie and find the row with the greatest length. Do this now.</p>
+<p>Imagine doing this daily as our analysis grows in complexity. It will very soon become quite repetitive if each day you had to retype all these lines of code. And now, six weeks into the research and attendant statistical analysis, you discover that there were some mistakes and some of the raw data were incorrect. Now everything would have to be repeated by retyping it at the command prompt. Or worse still (and bad for repetitive strain injury) doing all of it in SPSS and remembering which buttons to click and then re-clicking them. A pain. Let’s avoid that altogether and do it the right way by writing an R script to automate and annotate all of this.</p>
+<blockquote>
+<p><strong>Dealing with missing data</strong><br />
+The <code>.csv</code> file format is usually the most robust for reading data into R. Where you have missing data (blanks), the <code>.csv</code> format separates these by commas. However, there can be problems with blanks if you read in a space-delimited format file. If you are having trouble reading in missing data as blanks, try replacing them in your spreadsheet with <code>NA</code>, the missing data code in R. In Excel, highlight the area of the spreadsheet that includes all the cells you need to fill with <code>NA</code>. Do an Edit/Replace… and leave the ‘Find what:’ textbox blank and in the ‘Replace with:’ textbox enter <code>NA</code>, the missing value code. Once imported into R, the <code>NA</code> values will be recognised as missing data.</p>
+</blockquote>
+<p>So far we have calculated the mean and standard deviation of some data in the <em>Laminaria</em> data set. If you have not, please append those lines of code to the end of your script. You can run individual lines of code by highlighting them and pressing <strong>ctrl-Enter</strong> (<strong>cmd-Enter</strong> on a Mac). Do this.</p>
+<p>Your file will now look similar to this one, but of course you will have added your own notes and comments as you went along:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="exercise-1.html#cb52-1"></a><span class="co"># Day_1.R</span></span>
+<span id="cb52-2"><a href="exercise-1.html#cb52-2"></a><span class="co"># Reads in some data about Laminaria collected along the Cape Peninsula</span></span>
+<span id="cb52-3"><a href="exercise-1.html#cb52-3"></a><span class="co"># do various data manipulations, analyses and graphs</span></span>
+<span id="cb52-4"><a href="exercise-1.html#cb52-4"></a><span class="co"># AJ Smit</span></span>
+<span id="cb52-5"><a href="exercise-1.html#cb52-5"></a><span class="co"># 9 January 2020</span></span>
+<span id="cb52-6"><a href="exercise-1.html#cb52-6"></a></span>
+<span id="cb52-7"><a href="exercise-1.html#cb52-7"></a><span class="co"># Find the current working directory (it will be correct if a project was</span></span>
+<span id="cb52-8"><a href="exercise-1.html#cb52-8"></a><span class="co"># created as instructed earlier)</span></span>
+<span id="cb52-9"><a href="exercise-1.html#cb52-9"></a><span class="kw">getwd</span>()</span>
+<span id="cb52-10"><a href="exercise-1.html#cb52-10"></a></span>
+<span id="cb52-11"><a href="exercise-1.html#cb52-11"></a><span class="co"># If the directory is wrong because you chose not to use an Rworkspace (project),</span></span>
+<span id="cb52-12"><a href="exercise-1.html#cb52-12"></a><span class="co"># set your directory manually to where the script will be saved and where the data</span></span>
+<span id="cb52-13"><a href="exercise-1.html#cb52-13"></a><span class="co"># are located</span></span>
+<span id="cb52-14"><a href="exercise-1.html#cb52-14"></a><span class="co"># setwd(&quot;&lt;insert_path_here&gt;&quot;)</span></span>
+<span id="cb52-15"><a href="exercise-1.html#cb52-15"></a></span>
+<span id="cb52-16"><a href="exercise-1.html#cb52-16"></a><span class="co"># Load libraries</span></span>
+<span id="cb52-17"><a href="exercise-1.html#cb52-17"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb52-18"><a href="exercise-1.html#cb52-18"></a></span>
+<span id="cb52-19"><a href="exercise-1.html#cb52-19"></a><span class="co"># Load the data</span></span>
+<span id="cb52-20"><a href="exercise-1.html#cb52-20"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span>
+<span id="cb52-21"><a href="exercise-1.html#cb52-21"></a></span>
+<span id="cb52-22"><a href="exercise-1.html#cb52-22"></a><span class="co"># Examine the data</span></span>
+<span id="cb52-23"><a href="exercise-1.html#cb52-23"></a><span class="kw">head</span>(laminaria, <span class="dv">5</span>) <span class="co"># First five lines</span></span>
+<span id="cb52-24"><a href="exercise-1.html#cb52-24"></a><span class="kw">tail</span>(laminaria, <span class="dv">2</span>) <span class="co"># Last two lines</span></span>
+<span id="cb52-25"><a href="exercise-1.html#cb52-25"></a><span class="kw">glimpse</span>(laminaria) <span class="co"># A more thorough summary</span></span>
+<span id="cb52-26"><a href="exercise-1.html#cb52-26"></a><span class="kw">names</span>(laminaria) <span class="co"># THe names of the columns</span></span>
+<span id="cb52-27"><a href="exercise-1.html#cb52-27"></a></span>
+<span id="cb52-28"><a href="exercise-1.html#cb52-28"></a><span class="co"># Subsetting data</span></span>
+<span id="cb52-29"><a href="exercise-1.html#cb52-29"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataframe to use</span></span>
+<span id="cb52-30"><a href="exercise-1.html#cb52-30"></a><span class="st">  </span><span class="kw">select</span>(site, total_length) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select specific columns</span></span>
+<span id="cb52-31"><a href="exercise-1.html#cb52-31"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">56</span><span class="op">:</span><span class="dv">78</span>) <span class="co"># Select specific rows</span></span>
+<span id="cb52-32"><a href="exercise-1.html#cb52-32"></a></span>
+<span id="cb52-33"><a href="exercise-1.html#cb52-33"></a><span class="co"># How many data points do we have at Kommetjie?</span></span>
+<span id="cb52-34"><a href="exercise-1.html#cb52-34"></a>laminaria <span class="op">%&gt;%</span></span>
+<span id="cb52-35"><a href="exercise-1.html#cb52-35"></a><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb52-36"><a href="exercise-1.html#cb52-36"></a><span class="st">  </span><span class="kw">nrow</span>()</span>
+<span id="cb52-37"><a href="exercise-1.html#cb52-37"></a></span>
+<span id="cb52-38"><a href="exercise-1.html#cb52-38"></a><span class="co"># The row with the greatest length</span></span>
+<span id="cb52-39"><a href="exercise-1.html#cb52-39"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataset to use</span></span>
+<span id="cb52-40"><a href="exercise-1.html#cb52-40"></a><span class="st">  </span><span class="kw">filter</span>(total_length <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(total_length)) <span class="co"># Select row with max total length</span></span></code></pre></div>
+<p>Making sure all the latest edits in your R script have been saved, close your R session. Pretend this is now 2019 and you need to revisit the analysis. Open the file you created in 2017 in RStudio. All you need to do now is highlight the file’s entire contents and hit <strong>ctrl-Enter</strong>.</p>
+<blockquote>
+<p><strong>Stick with <code>.csv</code> files</strong><br />
+There are packages in R to read in Excel spreadsheets (<em>e.g.</em>, .xlsx), but remember there are likely to be problems reading in formulae, graphs, macros and multiple worksheets. We recommend exporting data deliberately to <code>.csv</code> files (which are also commonly used in other programs). This not only avoids complications, but also allows you to unambiguously identify the data you based your analysis on. This last statement should give you the hint that it is good practice to name your <code>.csv</code> slightly differently each time you export it from Excel, perhaps by appending a reference to the date it was exported.</p>
+</blockquote>
+<blockquote>
+<p><strong>Remember…</strong><br />
+Friends don’t let friends use Excel.</p>
+</blockquote>
+<div id="summary-of-all-variables-in-a-dataframe" class="section level3" number="5.0.1">
+<h3><span class="header-section-number">5.0.1</span> Summary of all variables in a dataframe</h3>
+<p>Import the data into a dataframe called <code>laminaria</code> once more (if it isn’t already in your <strong>Environment</strong>), and check that it is in order. Once we’re happy that the data have imported correctly, and that we know what the variables are called and what sorts of data they contain, we can dig a little deeper. Try typing:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="exercise-1.html#cb53-1"></a><span class="kw">summary</span>(laminaria)</span></code></pre></div>
+<p>The output is quite informative. It tabulates variables by name, and for each provides summary statistics. For continuous variables, the name, minimum, maximum, first, second (median) and third quartiles, and the mean are provided. For factors (categorical variables), a list of the levels of the factor and the count of each level are given. In either case, the last line of the table indicates how many NAs are contained in the variable. The function <code>summary()</code> is useful to remember as it can be applied to many different R objects (<em>e.g.</em>, variables, dataframes, models, arrays, <em>etc.</em>) and will give you a summary of that object. We will use it liberally throughout the workshop.</p>
+</div>
+<div id="summary-statistics-by-variable" class="section level3" number="5.0.2">
+<h3><span class="header-section-number">5.0.2</span> Summary statistics by variable</h3>
+<p>This is all very convenient, but we may want to ask R specifically for just the mean of a particular variable. In this case, we simply need to tell R which summary statistic we are interested in, and to specify the variable to apply it to using <code>summarise()</code>. Try typing:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="exercise-1.html#cb54-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Chose the dataframe</span></span>
+<span id="cb54-2"><a href="exercise-1.html#cb54-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_bld_wdt =</span> <span class="kw">mean</span>(blade_length)) <span class="co"># Calculate mean blade length</span></span></code></pre></div>
+<p>Or, if we wanted to know the mean and standard deviation for the total lengths of all the plants across all sites, do:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="exercise-1.html#cb55-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R that we want to use the &#39;laminaria&#39; dataframe</span></span>
+<span id="cb55-2"><a href="exercise-1.html#cb55-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ln =</span> <span class="kw">mean</span>(total_length), <span class="co"># Create a summary of the mean of the total lengths</span></span>
+<span id="cb55-3"><a href="exercise-1.html#cb55-3"></a>            <span class="dt">sd_stp_ln =</span> <span class="kw">sd</span>(total_length)) <span class="co"># Create a summary of the sd of the total lengths</span></span></code></pre></div>
+<p>Of course, the mean and standard deviation are not the only summary statistic that R can calculate. Try <code>max()</code>, <code>min()</code>, <code>median()</code>, <code>range()</code>, <code>sd()</code> and <code>var()</code>. Do they return the values you expected? Now try:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="exercise-1.html#cb56-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb56-2"><a href="exercise-1.html#cb56-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ms =</span> <span class="kw">mean</span>(stipe_mass))</span></code></pre></div>
+<p>The answer probably isn’t what you would expect. Why not? Sometimes, you need to tell R how you want it to deal with missing data. In this case, you have NAs in the named variable, and R takes the cautious approach of giving you the answer of <code>NA</code>, meaning that there are missing values here. This may not seem useful, but as the programmer, you can tell R to respond differently, and it will. Simply append an argument to your function call, and you will get a different response. Type:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="exercise-1.html#cb57-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb57-2"><a href="exercise-1.html#cb57-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ms =</span> <span class="kw">mean</span>(stipe_mass, <span class="dt">na.rm =</span> T))</span></code></pre></div>
+<p>The <code>na.rm</code> argument tells R to remove (or more correctly ‘strip’) NAs from the data string before calculating the mean. It now returns the correct answer. Although needing to deal explicitly with missing values in this way can be a bit painful, it does make you more aware of missing data, what the analyses in R are doing, and makes you decide explicitly how you will treat missing data.</p>
+</div>
+<div id="more-complex-calculations" class="section level3" number="5.0.3">
+<h3><span class="header-section-number">5.0.3</span> More complex calculations</h3>
+<p>Let’s say you want to calculate something that is not standard in R, say the standard error of the mean for a variable, rather than just the corresponding standard deviation. How can this be done?</p>
+<p>The trick is to remember that R is a calculator, so we can use it to do maths, even complex maths (which we won’t do). The formula for standard error is:</p>
+<p><span class="math display">\[se = \sqrt{\frac{var}{n}}\]</span></p>
+<p>We know that the variance is given by <code>var()</code>, so all we need to do is figure out how to get <code>n</code> and calculate a square root. The simplest way to determine the number of elements in a variable is a call to the function <code>nrow()</code>, as we saw previously. We may therefore calculate standard error with one chunk of code, step by step, using the pipe. Furthermore, by using <code>group_by()</code> we may calculate the standard error for all sites in one go.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="exercise-1.html#cb58-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select &#39;laminaria&#39;</span></span>
+<span id="cb58-2"><a href="exercise-1.html#cb58-2"></a><span class="st">  </span><span class="kw">group_by</span>(site) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Group the dataframe by site</span></span>
+<span id="cb58-3"><a href="exercise-1.html#cb58-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">var_bl =</span> <span class="kw">var</span>(blade_length), <span class="co"># Calculate variance</span></span>
+<span id="cb58-4"><a href="exercise-1.html#cb58-4"></a>            <span class="dt">n_bl =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Count number of values</span></span>
+<span id="cb58-5"><a href="exercise-1.html#cb58-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">se_bl =</span> <span class="kw">sqrt</span>(var_bl <span class="op">/</span><span class="st"> </span>n_bl)) <span class="co"># Calculate se</span></span></code></pre></div>
+<p>When calculating the mean, we specified that R should strip the NAs, using the argument <code>na.rm = TRUE</code>. In the example above, we didn’t have NAs in the variable of interest. What happens if we <em>do</em>?</p>
+<p>Unfortunately, the call to the function <code>nrow()</code> has no arguments telling R how to treat NAs; instead, they are simply treated as elements of the variable and are therefore counted. The easiest way to resolve this problem is to strip out NAs in advance of any calculations. Try typing:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="exercise-1.html#cb59-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb59-2"><a href="exercise-1.html#cb59-2"></a><span class="st">  </span><span class="kw">select</span>(stipe_mass) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb59-3"><a href="exercise-1.html#cb59-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</span></code></pre></div>
+<p>then:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="exercise-1.html#cb60-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb60-2"><a href="exercise-1.html#cb60-2"></a><span class="st">  </span><span class="kw">select</span>(stipe_mass) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb60-3"><a href="exercise-1.html#cb60-3"></a><span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb60-4"><a href="exercise-1.html#cb60-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</span></code></pre></div>
+<p>You will notice that the function <code>na.omit()</code> removes NAs from the variable that is specified as its argument.</p>
+<blockquote>
+<p><strong>DIY: Using <code>na.omit()</code></strong>
+Using this new information, <em>calculate</em> the mean stipe mass and the corresponding standard error.</p>
+</blockquote>
 </div>
 </div>
             </section>
@@ -379,19 +481,19 @@ R&gt;   &quot;1.3.0&quot;</code></pre>
           </div>
         </div>
       </div>
-<a href="tidy.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tidier.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="workflow.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercise-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="docs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="docs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="docs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="docs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="docs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="docs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="docs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="docs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="docs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -422,7 +524,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Intro_R_Workshop.pdf"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true,
@@ -437,6 +539,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

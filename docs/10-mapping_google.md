@@ -57,10 +57,7 @@ cp_1 <- ggmap(cape_point) +
 cp_1
 ```
 
-<div class="figure">
-<img src="10-mapping_google_files/figure-html/ggmap-1-1.png" alt="Google map of Cape Point with some site locations highlighted with red points." width="672" />
-<p class="caption">(\#fig:ggmap-1)Google map of Cape Point with some site locations highlighted with red points.</p>
-</div>
+![(\#fig:ggmap-1)Google map of Cape Point with some site locations highlighted with red points.](10-mapping_google_files/figure-latex/ggmap-1-1.pdf) 
 
 Pretty cool huh?! You may do this for anywhere in the world just as easy as this. The only thing you need to keep in mind is that the lon/lat coordinates for Google appear to be slightly different than the global standard. This is why the x and y `aes()` values in the code above have a little bit added or subtracted from them. That one small issue aside, this is a  nice quick workflow for adding your site locations to a Google map background. Play around with the different map types you can download and try it for any place you can think of.
 
@@ -78,10 +75,7 @@ cp_2 <- cp_1 +
 cp_2
 ```
 
-<div class="figure">
-<img src="10-mapping_google_files/figure-html/ggmap-2-1.png" alt="Google map of Cape Point with site point labeled" width="672" />
-<p class="caption">(\#fig:ggmap-2)Google map of Cape Point with site point labeled</p>
-</div>
+![(\#fig:ggmap-2)Google map of Cape Point with site point labeled](10-mapping_google_files/figure-latex/ggmap-2-1.pdf) 
 
 ## DIY maps
 

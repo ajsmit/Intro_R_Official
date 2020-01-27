@@ -16,10 +16,14 @@
 
 Before we start using RStudio (which is a code editor and environment that runs R) let's first set it up properly. Find the 'Tools' ('Preferences') menu item, navigate to 'Global Options' ('Code Editing') and select the tick boxes as shown in Figure \@ref(fig:RStudio-prefs).
 
-<div class="figure" style="text-align: center">
-<img src="figures/RStudio_preferences.png" alt="The RStudio Preferences menu." width="100%" />
-<p class="caption">(\#fig:RStudio-prefs)The RStudio Preferences menu.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/RStudio_preferences} 
+
+}
+
+\caption{The RStudio Preferences menu.}(\#fig:RStudio-prefs)
+\end{figure}
 
 ### Customising appearance
 
@@ -307,10 +311,7 @@ ggplot() +
   geom_point(aes(x = x, y = y), shape = 21, col = "salmon", fill = "white")
 ```
 
-<div class="figure">
-<img src="02-RStudio_files/figure-html/ggplot2-1-1.png" alt="The same plot as above, but assembled with __ggplot2__." width="672" />
-<p class="caption">(\#fig:ggplot2-1)The same plot as above, but assembled with __ggplot2__.</p>
-</div>
+![(\#fig:ggplot2-1)The same plot as above, but assembled with __ggplot2__.](02-RStudio_files/figure-latex/ggplot2-1-1.pdf) 
 
 ## Session info
 

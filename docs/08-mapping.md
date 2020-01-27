@@ -14,10 +14,14 @@ Yesterday we learned how to create **`ggplot2`** figures, change their aesthetic
 
 Most of the work that we perform as environmental/biological scientists involves going out to a location and sampling information there. Sometimes only once, and sometimes over a period of time. All of these different sampling methods lend themselves to different types of figures. One of those, collection of data at different points, is best shown with maps. As we will see over the course of Day 3, creating maps in **`ggplot2`** is very straight forward and is extensively supported. For that reason we are going to have plenty of time to also learn how to do some more advanced things. Our goal in this chapter is to produce the figure below.
 
-<div class="figure" style="text-align: center">
-<img src="figures/map_complete.png" alt="The goal for today." width="100%" />
-<p class="caption">(\#fig:map-goal)The goal for today.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/map_complete} 
+
+}
+
+\caption{The goal for today.}(\#fig:map-goal)
+\end{figure}
 
 Before we begin let's go ahead and load the packages we will need, as well as the several dataframes required to make the final product.
 
@@ -56,10 +60,7 @@ ggplot(data = ChickWeight, aes(x = Time, y = weight)) +
   geom_point()
 ```
 
-<div class="figure">
-<img src="08-mapping_files/figure-html/map-point-1-1.png" alt="Dot plot of chicken weight data." width="672" />
-<p class="caption">(\#fig:map-point-1)Dot plot of chicken weight data.</p>
-</div>
+![(\#fig:map-point-1)Dot plot of chicken weight data.](08-mapping_files/figure-latex/map-point-1-1.pdf) 
 
 South African coast dots:
 
@@ -69,10 +70,7 @@ ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
   geom_point()
 ```
 
-<div class="figure">
-<img src="08-mapping_files/figure-html/map-point-2-1.png" alt="Dot plot off South African coast." width="672" />
-<p class="caption">(\#fig:map-point-2)Dot plot off South African coast.</p>
-</div>
+![(\#fig:map-point-2)Dot plot off South African coast.](08-mapping_files/figure-latex/map-point-2-1.pdf) 
 
 Does that look familiar? Notice how the x and y axis tick labels look the same as any map you would see in an atlas. This is because they are. But this isn't a great way to create a map. Rather it is better to represent the land mass with a polygon. With **`ggplot2`** this is a simple task.
 
@@ -86,10 +84,7 @@ ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
   geom_polygon(colour = "black", fill = "grey70", aes(group = group)) # The land mask
 ```
 
-<div class="figure">
-<img src="08-mapping_files/figure-html/map-polygon-1.png" alt="The map of South Africa. Now with province borders!" width="672" />
-<p class="caption">(\#fig:map-polygon)The map of South Africa. Now with province borders!</p>
-</div>
+![(\#fig:map-polygon)The map of South Africa. Now with province borders!](08-mapping_files/figure-latex/map-polygon-1.pdf) 
 
 ## Borders
 
@@ -102,10 +97,7 @@ ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
   geom_path(data = sa_provinces, aes(group = group)) # The province borders
 ```
 
-<div class="figure">
-<img src="08-mapping_files/figure-html/map-province-1.png" alt="The map of South Africa. Now with province borders!" width="672" />
-<p class="caption">(\#fig:map-province)The map of South Africa. Now with province borders!</p>
-</div>
+![(\#fig:map-province)The map of South Africa. Now with province borders!](08-mapping_files/figure-latex/map-province-1.pdf) 
 
 ## Force lon/lat extent
 
@@ -119,10 +111,7 @@ ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
   coord_equal(xlim = c(15, 34), ylim = c(-36, -26), expand = 0) # Force lon/lat extent
 ```
 
-<div class="figure">
-<img src="08-mapping_files/figure-html/map-expand-1.png" alt="The map, but with the extra bits snipped off." width="672" />
-<p class="caption">(\#fig:map-expand)The map, but with the extra bits snipped off.</p>
-</div>
+![(\#fig:map-expand)The map, but with the extra bits snipped off.](08-mapping_files/figure-latex/map-expand-1.pdf) 
 
 ## Ocean temperature
 
@@ -137,10 +126,7 @@ ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
   coord_equal(xlim = c(15, 34), ylim = c(-36, -26), expand = 0)
 ```
 
-<div class="figure">
-<img src="08-mapping_files/figure-html/map-MUR-1.png" alt="Ocean temperature (°C) visualised as an ice cream spill." width="672" />
-<p class="caption">(\#fig:map-MUR)Ocean temperature (°C) visualised as an ice cream spill.</p>
-</div>
+![(\#fig:map-MUR)Ocean temperature (°C) visualised as an ice cream spill.](08-mapping_files/figure-latex/map-MUR-1.pdf) 
 
 That looks... odd. Why do the colours look like someone melted a big bucket of ice cream in the ocean? This is because the colours you see in this figure are the default colours for discrete values in **`ggplot2`**. If we want to change them we may do so easily by adding yet one more line of code.
 
@@ -154,10 +140,7 @@ ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
   coord_equal(xlim = c(15, 34), ylim = c(-36, -26), expand = 0)
 ```
 
-<div class="figure">
-<img src="08-mapping_files/figure-html/map-colour-1.png" alt="Ocean temperatures (°C) around South Africa." width="672" />
-<p class="caption">(\#fig:map-colour)Ocean temperatures (°C) around South Africa.</p>
-</div>
+![(\#fig:map-colour)Ocean temperatures (°C) around South Africa.](08-mapping_files/figure-latex/map-colour-1.pdf) 
 
 There's a colour palette that would make Jacques Cousteau swoon. When we set the colour palette for a figure in **`ggplot2`** we must use that colour palette for all other instances of those types of values, too. What this means is that any other discrete values that will be filled in, like the ocean colour above, must use the same colour palette (there are some technical exceptions to this rule that we will not cover in this course). We normally want **`ggplot2`** to use consistent colour palettes anyway, but it is important to note that this constraint exists. Let's see what we mean. Next we will add the coastal pixels to our figure with one more line of code. We won't change anything else. Note how **`ggplot2`** changes the colour of the coastal pixels to match the ocean colour automatically.
 
@@ -173,10 +156,7 @@ ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
   coord_equal(xlim = c(15, 34), ylim = c(-36, -26), expand = 0)
 ```
 
-<div class="figure">
-<img src="08-mapping_files/figure-html/map-raster-1.png" alt="Map of SOuth Africa showing *in situ* temeperatures (°C) as pixels along the coast." width="672" />
-<p class="caption">(\#fig:map-raster)Map of SOuth Africa showing *in situ* temeperatures (°C) as pixels along the coast.</p>
-</div>
+![(\#fig:map-raster)Map of SOuth Africa showing *in situ* temeperatures (°C) as pixels along the coast.](08-mapping_files/figure-latex/map-raster-1.pdf) 
 
 ## Final touches
 
@@ -204,10 +184,7 @@ final_map <- ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
 final_map
 ```
 
-<div class="figure">
-<img src="08-mapping_files/figure-html/map-final-1.png" alt="The cleaned up map of South Africa. Resplendent with coastal and ocean temperatures (°C)." width="672" />
-<p class="caption">(\#fig:map-final)The cleaned up map of South Africa. Resplendent with coastal and ocean temperatures (°C).</p>
-</div>
+![(\#fig:map-final)The cleaned up map of South Africa. Resplendent with coastal and ocean temperatures (°C).](08-mapping_files/figure-latex/map-final-1.pdf) 
 
 That is a very clean looking map so let's go ahead and save it on our computers
 

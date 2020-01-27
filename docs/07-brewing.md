@@ -55,7 +55,7 @@ ggplot(data = urine, aes(x = osmo, y = ph)) +
   geom_point(aes(colour = cond))
 ```
 
-<img src="07-brewing_files/figure-html/brew-1-1.png" width="672" />
+![](07-brewing_files/figure-latex/brew-1-1.pdf)<!-- --> 
 
 And now we have a scatterplot that is showing the relationship between the osmolarity and pH of urine, with the conductivity of those urine samples shown in shades of blue. What is important to note here is that the colour scale is continuous. How can we now this by looking at the figure? Let's look at the same figure but use a discrete variable for colouring.
 
@@ -65,7 +65,7 @@ ggplot(data = urine, aes(x = osmo, y = ph)) +
   geom_point(aes(colour = as.factor(r)))
 ```
 
-<img src="07-brewing_files/figure-html/brew-2-1.png" width="672" />
+![](07-brewing_files/figure-latex/brew-2-1.pdf)<!-- --> 
 
 What is the first thing you notice about the difference in the colours? Why did we use `as.factor()` for the colour aesthetic for our points? What happens if we don't use this? Try it now.
 
@@ -81,7 +81,7 @@ ggplot(data = urine, aes(x = osmo, y = ph)) +
   scale_colour_distiller() # Change the continuous variable colour palette
 ```
 
-<img src="07-brewing_files/figure-html/brew-3-1.png" width="672" />
+![](07-brewing_files/figure-latex/brew-3-1.pdf)<!-- --> 
 
 Does this look different? If so, how? The second page of the colour cheat sheet we included in the course material shows some different colour brewer palettes. Let's look at how to use those here.
 
@@ -92,7 +92,7 @@ ggplot(data = urine, aes(x = osmo, y = ph)) +
   scale_colour_distiller(palette = "Spectral")
 ```
 
-<img src="07-brewing_files/figure-html/brew-4-1.png" width="672" />
+![](07-brewing_files/figure-latex/brew-4-1.pdf)<!-- --> 
 
 Does that help us to see a pattern in the data? What do we see? Does it look like there are any significant relationships here? How would we test that?
 
@@ -105,7 +105,7 @@ ggplot(data = urine, aes(x = osmo, y = ph)) +
   scale_colour_brewer() # This is the different function
 ```
 
-<img src="07-brewing_files/figure-html/brew-5-1.png" width="672" />
+![](07-brewing_files/figure-latex/brew-5-1.pdf)<!-- --> 
 
 The default colour scale here is not helpful at all. So let's pick a better one. If we look at our cheat sheet we will see a list of different continuous and discrete colour scales. All we need to do is copy and paste one of these names into our colour brewer function with inverted commas.
 
@@ -116,7 +116,7 @@ ggplot(data = urine, aes(x = osmo, y = ph)) +
   scale_colour_brewer(palette = "Set1") # Here I used "Set1", but use what you like
 ```
 
-<img src="07-brewing_files/figure-html/brew-6-1.png" width="672" />
+![](07-brewing_files/figure-latex/brew-6-1.pdf)<!-- --> 
 
 ## Make your own palettes
 
@@ -140,7 +140,7 @@ ggplot(data = urine, aes(x = osmo, y = ph)) +
                                     "#59A9BE", "#9699C4", "#CA86AD"))
 ```
 
-<img src="07-brewing_files/figure-html/brew-7-1.png" width="672" />
+![](07-brewing_files/figure-latex/brew-7-1.pdf)<!-- --> 
 
 If we want to use our custom colour palettes with a discrete colour scale we use a different function as seen in the code below. While we are at it, let's also see how to correct the title of the legend and its text labels. Sometimes the default output is not what we want for our final figure. Especially if we are going to be publishing it. Also note in the following code chunk that rather than using hexadecimal character strings to represent colours in our custom palette, we are simply writing in the human name for the colours we want. This will work for the continuous colour palettes above, too.
 
@@ -153,7 +153,7 @@ ggplot(data = urine, aes(x = osmo, y = ph)) +
   labs(colour = "crystals") # How to change the legend title
 ```
 
-<img src="07-brewing_files/figure-html/brew-8-1.png" width="672" />
+![](07-brewing_files/figure-latex/brew-8-1.pdf)<!-- --> 
 
 So now we have seen how to control the colours palettes in our figures. I know it is a but much. Four new functions just to change some colours! That's a bummer. Don't forget that one of the main benefits of R is that all of your code is written down, annotated and saved. You don't need to remember which button to click to change the colours, you just need to remember where you saved the code that you will need. And that's pretty great in my opinion.
 

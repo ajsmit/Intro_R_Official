@@ -199,8 +199,8 @@ rnorm(n = 10, mean = 0, sd = 13)
 ```
 
 ```
-R>  [1]   2.8730441  -2.1529848  15.9088482 -23.7479927  -1.6921892  22.4009129
-R>  [7]  -8.9739821  17.3611925 -25.5869494  -0.9454519
+R>  [1] -14.864905   8.677557 -10.540345   5.831034  -5.643159  14.075562
+R>  [7] -16.662296   6.973559 -13.423149 -26.202160
 ```
 
 Consult these resources for more about R code style :
@@ -215,10 +215,14 @@ We can also insert maths expressions, like this $f(k) = {n \choose k} p^{k} (1-p
 
 This document was written in **`bookdown`** and transformed into the 'GitBook' you see here by **`knitr`**, **pandoc** and \LaTeX\ (Figure \@ref(fig:rmarkdown)). All the source code and associated data are available at AJ Smit's [GitHub page](https://github.com/ajsmit/Intro_R_Workshop). You can download the source code and compile this document on your own computer. If you can compile the document yourself you are officially a geek -- welcome to the club! Note that you will need to complete the exercises in the chapter, An R workflow, before this will be possible.
 
-<div class="figure" style="text-align: center">
-<img src="figures/RMarkdownFlow.png" alt="The Rmarkdown workflow." width="100%" />
-<p class="caption">(\#fig:rmarkdown)The Rmarkdown workflow.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/RMarkdownFlow} 
+
+}
+
+\caption{The Rmarkdown workflow.}(\#fig:rmarkdown)
+\end{figure}
 
 You will notice that this repository uses [GitHub](https://github.com), and you are advised to set up your own repository for R scripts and all your data. We will touch on GitHub and the principles of reproducible research later, and GitHub forms a core ingredient of such a workflow.
 

@@ -36,10 +36,7 @@ ggplot() +
   coord_equal() # Equal sizing for lon/lat 
 ```
 
-<div class="figure">
-<img src="09-mapping_style_files/figure-html/maps-world-1.png" alt="The built in global shape file." width="672" />
-<p class="caption">(\#fig:maps-world)The built in global shape file.</p>
-</div>
+![(\#fig:maps-world)The built in global shape file.](09-mapping_style_files/figure-latex/maps-world-1.pdf) 
 
 Jikes! It's as simple as that to load a map of the whole planet. Usually we are not going to want to make a map of the entire planet, so let's see how to focus on just the area around South Africa. 
 
@@ -51,10 +48,7 @@ sa_1 <- ggplot() +
 sa_1
 ```
 
-<div class="figure">
-<img src="09-mapping_style_files/figure-html/maps-SA-1-1.png" alt="A better way to get the map of South Africa." width="672" />
-<p class="caption">(\#fig:maps-SA-1)A better way to get the map of South Africa.</p>
-</div>
+![(\#fig:maps-SA-1)A better way to get the map of South Africa.](09-mapping_style_files/figure-latex/maps-SA-1-1.pdf) 
 
 That is a very tidy looking map of South(ern) Africa without needing to load any files.
 
@@ -78,10 +72,7 @@ sa_2 <- sa_1 +
 sa_2
 ```
 
-<div class="figure">
-<img src="09-mapping_style_files/figure-html/maps-labels-1.png" alt="Map of southern Africa with specific labels." width="672" />
-<p class="caption">(\#fig:maps-labels)Map of southern Africa with specific labels.</p>
-</div>
+![(\#fig:maps-labels)Map of southern Africa with specific labels.](09-mapping_style_files/figure-latex/maps-labels-1.pdf) 
 
 ## Scale bars
 
@@ -98,10 +89,7 @@ sa_3 <- sa_2 +
 sa_3
 ```
 
-<div class="figure">
-<img src="09-mapping_style_files/figure-html/maps-scale-1.png" alt="Map of southern Africa with labels and a scale bar." width="672" />
-<p class="caption">(\#fig:maps-scale)Map of southern Africa with labels and a scale bar.</p>
-</div>
+![(\#fig:maps-scale)Map of southern Africa with labels and a scale bar.](09-mapping_style_files/figure-latex/maps-scale-1.pdf) 
 
 ## Insetting
 
@@ -112,7 +100,9 @@ In order to inset a smaller map inside of a larger map we must first create the 
 africa_map
 ```
 
-<img src="09-mapping_style_files/figure-html/maps-mini-1.png" width="672" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{09-mapping_style_files/figure-latex/maps-mini-1} \end{center}
 
 And now to inset this map of Africa into our map of southern Africa we will need to learn how to create a 'grob'. This is very simple and does not require any extra work on our part. Remember that **`ggplot2`** objects are different from normal objects (i.e. dataframes), and that they have their own way of storing and accessing data. In order to convert any sort of thing into a format that ggplot understands we convert it into a grob, as shown below. Once converted, we may then plop it onto our figure/map wherever we please. Both of these steps are accomplished with the single function `annotation_custom()`. This is also a good way to add logos or any other sort of image to a map/figure. You can really go completely bananas. It's even possible to add GIFs. Such happy. Much excite. Very wonderment.
 
@@ -125,10 +115,7 @@ sa_4 <- sa_3 +
 sa_4
 ```
 
-<div class="figure">
-<img src="09-mapping_style_files/figure-html/maps-inset-1.png" alt="Map of southern Africa, with labels, scale bar, and an inset map of Africa." width="672" />
-<p class="caption">(\#fig:maps-inset)Map of southern Africa, with labels, scale bar, and an inset map of Africa.</p>
-</div>
+![(\#fig:maps-inset)Map of southern Africa, with labels, scale bar, and an inset map of Africa.](09-mapping_style_files/figure-latex/maps-inset-1.pdf) 
 
 ## Rounding it out
 
@@ -147,10 +134,7 @@ sa_final <- sa_4 +
 sa_final
 ```
 
-<div class="figure">
-<img src="09-mapping_style_files/figure-html/maps-final-1.png" alt="The final map with all of the bells and whistles." width="672" />
-<p class="caption">(\#fig:maps-final)The final map with all of the bells and whistles.</p>
-</div>
+![(\#fig:maps-final)The final map with all of the bells and whistles.](09-mapping_style_files/figure-latex/maps-final-1.pdf) 
 
 And lastly we save the fruits of our labours.
 
