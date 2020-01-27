@@ -1,4 +1,4 @@
-# GitHub
+# GitHub {#github}
 
 ## What is GitHub?
 
