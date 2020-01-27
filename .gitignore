@@ -2,5 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-students/**
-daily_progress/**
+students/
+daily_progress/
