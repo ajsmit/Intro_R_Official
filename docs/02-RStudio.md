@@ -36,13 +36,7 @@ A very nifty way of managing workflow in RStudio is through the built-in functio
 
 
 
-<<<<<<< HEAD
-The most common functions used in R are contained within the **`base`** package; this makes R useful 'out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the [CRAN website](https://cran.r-project.org/web/packages/). There are currently (``2018-03-02``) ``12233`` packages available for R!
-||||||| merged common ancestors
-The most common functions used in R are contained within the **`base`** package; this makes R useful 'out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the [CRAN website](https://cran.r-project.org/web/packages/). There are currently (``2018-01-22``) ``12126`` packages available for R!
-=======
-The most common functions used in R are contained within the **`base`** package; this makes R useful 'out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the [CRAN website](https://cran.r-project.org/web/packages/). There are currently (``2019-01-28``) ``13626`` packages available for R!
->>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
+The most common functions used in R are contained within the **`base`** package; this makes R useful 'out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the [CRAN website](https://cran.r-project.org/web/packages/). There are currently (``2020-01-27``) ``15365`` packages available for R!
 
 If the thought of searching for and finding R packages is daunting, a good place to start is the [R Task View](http://cran.r-project.org/web/views/) page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.
 
@@ -300,8 +294,10 @@ ggplot() +
   geom_point(aes(x = x, y = y), shape = 21, col = "salmon", fill = "white")
 ```
 
-<<<<<<< HEAD
-![(\#fig:ggplot2-1)The same plot as above, but assembled with __ggplot2__.](02-RStudio_files/figure-latex/ggplot2-1-1.pdf) 
+<div class="figure">
+<img src="02-RStudio_files/figure-html/ggplot2-1-1.png" alt="The same plot as above, but assembled with __ggplot2__." width="672" />
+<p class="caption">(\#fig:ggplot2-1)The same plot as above, but assembled with __ggplot2__.</p>
+</div>
 
 ## Session info
 
@@ -310,17 +306,9 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 ```
 
 ```
-R>   forcats   stringr     purrr     readr    tibble   ggplot2 tidyverse 
-R>   "0.3.0"   "1.3.0"   "0.2.4"   "1.1.1"   "1.4.2"   "2.2.1"   "1.2.1" 
-R>     tidyr     dplyr     rvest      xml2 
-R>   "0.8.0"   "0.7.4"   "0.3.2"   "1.2.0"
+R>   forcats   stringr     purrr     readr    tibble   ggplot2 tidyverse     tidyr 
+R>   "0.4.0"   "1.4.0"   "0.3.3"   "1.3.1"   "2.1.3"   "3.2.1"   "1.3.0"   "1.0.0" 
+R>     dplyr     rvest      xml2 
+R>   "0.8.3"   "0.3.5"   "1.2.2"
 ```
 
-||||||| merged common ancestors
-![(\#fig:ggplot2-1)The same plot as above, but assembled with __ggplot2__.](02-RStudio_files/figure-latex/ggplot2-1-1.pdf) 
-=======
-<div class="figure">
-<img src="02-RStudio_files/figure-html/ggplot2-1-1.png" alt="The same plot as above, but assembled with __ggplot2__." width="672" />
-<p class="caption">(\#fig:ggplot2-1)The same plot as above, but assembled with __ggplot2__.</p>
-</div>
->>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743

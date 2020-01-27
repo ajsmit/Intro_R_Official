@@ -90,9 +90,9 @@ With our fancy labels added, let's insert a scale bar next. There is no default 
 
 ```r
 sa_3 <- sa_2 +
-  scalebar(x.min = 22, x.max = 26, y.min = -36, y.max = -35, # Set location of bar
-           dist = 200, height = 1, st.dist = 0.8, st.size = 4, # Set particulars
-           dd2km = TRUE, model = "WGS84") + # Set appearance
+  # scalebar(x.min = 22, x.max = 26, y.min = -36, y.max = -35, # Set location of bar
+  #          dist = 200, height = 1, st.dist = 0.8, st.size = 4, # Set particulars
+  #          transform = TRUE, model = "WGS84") + # Set appearance
   north(x.min = 22.5, x.max = 25.5, y.min = -33, y.max = -31, # Set location of symbol
         scale = 1.2, symbol = 16)
 sa_3
@@ -167,10 +167,8 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 ```
 
 ```
-R>         maps         ggsn       scales      forcats      stringr 
-R>      "3.2.0"      "0.4.0" "0.5.0.9000"      "0.3.0"      "1.3.0" 
-R>        dplyr        purrr        readr        tidyr       tibble 
-R>      "0.7.4"      "0.2.4"      "1.1.1"      "0.8.0"      "1.4.2" 
-R>      ggplot2    tidyverse 
-R>      "2.2.1"      "1.2.1"
+R>      ggsn    scales   forcats   stringr     dplyr     purrr     readr     tidyr 
+R>   "0.5.0"   "1.1.0"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0" 
+R>    tibble   ggplot2 tidyverse 
+R>   "2.1.3"   "3.2.1"   "1.3.0"
 ```

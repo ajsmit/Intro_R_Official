@@ -52,35 +52,6 @@ SACTN_depth_mean
 R> # A tibble: 13 x 3
 R>    depth mean_temp count
 R>    <dbl>     <dbl> <int>
-<<<<<<< HEAD
-R>  1    0.      19.5 26299
-R>  2    2.      13.0   237
-R>  3    3.      17.6   141
-R>  4    4.      16.6   529
-R>  5    5.      15.0   408
-R>  6    7.      17.2   227
-R>  7    8.      17.8   201
-R>  8    9.      13.8   311
-R>  9   10.      19.5   362
-R> 10   12.      24.3   137
-R> 11   14.      22.3   223
-R> 12   18.      24.4   191
-R> 13   28.      14.8   306
-||||||| merged common ancestors
-R>  1  0         19.5 26299
-R>  2  2.00      13.0   237
-R>  3  3.00      17.6   141
-R>  4  4.00      16.6   529
-R>  5  5.00      15.0   408
-R>  6  7.00      17.2   227
-R>  7  8.00      17.8   201
-R>  8  9.00      13.8   311
-R>  9 10.0       19.5   362
-R> 10 12.0       24.3   137
-R> 11 14.0       22.3   223
-R> 12 18.0       24.4   191
-R> 13 28.0       14.8   306
-=======
 R>  1     0      19.5 26299
 R>  2     2      13.0   237
 R>  3     3      17.6   141
@@ -94,7 +65,6 @@ R> 10    12      24.3   137
 R> 11    14      22.3   223
 R> 12    18      24.4   191
 R> 13    28      14.8   306
->>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
 ```
 
 Let's visualise our newly created summary dataframe and see what we get.
@@ -204,7 +174,7 @@ SACTN %>%
 
 ```
 R> # A tibble: 3 x 4
-R> # Groups:   site [?]
+R> # Groups:   site [2]
 R>   site        src   mean_temp sd_temp
 R>   <fct>       <chr>     <dbl>   <dbl>
 R> 1 Paternoster DEA        12.8   0.879
@@ -226,7 +196,7 @@ SACTN %>%
 ```
 
 ```
-R> Error in filter_impl(.data, quo): Evaluation error: operations are possible only for numeric, logical or complex types.
+R> Error in site == "Paternoster" | "Oudekraal": operations are possible only for numeric, logical or complex types
 ```
 
 Oh no, we broke it! This is a common error while learning to write code so do try to keep this rule in mind as it can cause a lot of headaches. An easy way to spot this problem is if ones line of code has more logical operators than comparison operators you're probably going to have a bad time. This is doubly unfortunate as we would need to write less code if this were not so. Happily, there is a shortcut for just this problem, `%in%`. Whenever we want to use operators to filter by more than two things, it is most convenient to create an object that contains the names or numbers that we want to filter by. We then replace our comparison and logical operators with that one simple symbol (`%in%`). 
@@ -246,7 +216,7 @@ SACTN %>%
 
 ```
 R> # A tibble: 5 x 4
-R> # Groups:   site [?]
+R> # Groups:   site [4]
 R>   site        src   mean_temp sd_temp
 R>   <fct>       <chr>     <dbl>   <dbl>
 R> 1 Paternoster DEA        12.8   0.879
@@ -340,8 +310,8 @@ SACTN %>%
 ```
 
 ```
-R>  [1] 284.6203 285.1441 285.1056 285.0118 285.3572 285.6881 284.4020
-R>  [8] 284.4421 284.5266 284.1321
+R>  [1] 284.6203 285.1441 285.1056 285.0118 285.3572 285.6881 284.4020 284.4421
+R>  [9] 284.5266 284.1321
 ```
 
 This makes a bit more sense when paired with `group_by()` as it will pull over the grouping variables into the new dataframe. Note that when it does this for us automatically it will provide a message in the console.
@@ -535,8 +505,7 @@ read_csv("data/SACTN_data.csv") %>% # Load the SACTN Day 1 data
   labs(x = "", y = "Temperature (°C)", colour = "Site") # Change labels
 ```
 
-<<<<<<< HEAD
-![](12-tidiest_files/figure-latex/tidiest-new-age-1.pdf)<!-- --> 
+<img src="12-tidiest_files/figure-html/tidiest-new-age-1.png" width="672" />
 
 ## Session info
 
@@ -545,13 +514,8 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 ```
 
 ```
-R>  bindrcpp lubridate   forcats   stringr     dplyr     purrr     readr 
-R>     "0.2"   "1.7.3"   "0.3.0"   "1.3.0"   "0.7.4"   "0.2.4"   "1.1.1" 
-R>     tidyr    tibble   ggplot2 tidyverse 
-R>   "0.8.0"   "1.4.2"   "2.2.1"   "1.2.1"
+R> lubridate   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
+R>   "1.7.4"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0"   "2.1.3" 
+R>   ggplot2 tidyverse 
+R>   "3.2.1"   "1.3.0"
 ```
-||||||| merged common ancestors
-![](12-tidiest_files/figure-latex/tidiest-new-age-1.pdf)<!-- --> 
-=======
-<img src="12-tidiest_files/figure-html/tidiest-new-age-1.png" width="672" />
->>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743

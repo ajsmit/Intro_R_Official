@@ -76,9 +76,9 @@ With our fancy labels added, let's insert a scale bar next. There is no default 
 
 ```{r maps-scale, fig.cap="Map of southern Africa with labels and a scale bar."}
 sa_3 <- sa_2 +
-  scalebar(x.min = 22, x.max = 26, y.min = -36, y.max = -35, # Set location of bar
-           dist = 200, height = 1, st.dist = 0.8, st.size = 4, # Set particulars
-           dd2km = TRUE, model = "WGS84") + # Set appearance
+  # scalebar(x.min = 22, x.max = 26, y.min = -36, y.max = -35, # Set location of bar
+  #          dist = 200, height = 1, st.dist = 0.8, st.size = 4, # Set particulars
+  #          transform = TRUE, model = "WGS84") + # Set appearance
   north(x.min = 22.5, x.max = 25.5, y.min = -33, y.max = -31, # Set location of symbol
         scale = 1.2, symbol = 16)
 sa_3

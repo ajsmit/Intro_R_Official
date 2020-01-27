@@ -24,26 +24,10 @@ library(tidyverse)
 
 As we may see in the following figure (Figure \@ref(fig:tidy)), the tidying of ones data should be the second step in any workflow, after the loading of the data.
 
-<<<<<<< HEAD
-<div class="figure" style="text-align: center">
-<img src="figures/data-science-wrangle.png" alt="Data tidying in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)" width="80%" />
-<p class="caption">(\#fig:tidy)Data tidying in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)</p>
-</div>
-||||||| merged common ancestors
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth]{figures/data-science-wrangle} 
-
-}
-
-\caption{Data tidying in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)}(\#fig:tidy)
-\end{figure}
-=======
 <div class="figure" style="text-align: center">
 <img src="figures/data-science-wrangle.png" alt="Data tidying in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)" width="100%" />
 <p class="caption">(\#fig:tidy)Data tidying in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)</p>
 </div>
->>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
 
 But what exactly are **tidy data**? It is not just a a buzz word, there is a real definition. In three parts, to be exact. Taken from Hadley Wickham's [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html):
 
@@ -53,26 +37,10 @@ But what exactly are **tidy data**? It is not just a a buzz word, there is a rea
 
 This is represented graphically in figure \@ref(fig:tidy-structure). One will generally satisfy these three rules effortlessly simply by never putting more than one dataset in a file, and never putting more (or less) than one variable in the same column. We will go over this several more times today so do not fret if those guidelines are not immediately clear.
 
-<<<<<<< HEAD
-<div class="figure" style="text-align: center">
-<img src="figures/tidy-1.png" alt="Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)" width="80%" />
-<p class="caption">(\#fig:tidy-structure)Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)</p>
-</div>
-||||||| merged common ancestors
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth]{figures/tidy-1} 
-
-}
-
-\caption{Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)}(\#fig:tidy-structure)
-\end{figure}
-=======
 <div class="figure" style="text-align: center">
 <img src="figures/tidy-1.png" alt="Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)" width="100%" />
 <p class="caption">(\#fig:tidy-structure)Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)</p>
 </div>
->>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
 
 In order to illustrate the meaning of this three part definition we are going to learn how to manipulate a non-tidy dataset into a tidy one. To do so we will need to learn a few new, very useful functions. Let's load our demo dataset to get started. This snippet from the SACTN dataset contains only data for 2008-2009 for three time series, with some notable (untidy) changes. The purpose of the following exercises is not only to show how to tidy data, but to also illustrate that these steps may be done more quickly in R than excel, allowing for ones raw data to remain exactly how they were collected, with all of the manipulations performed on them documented in an R script. This is a centrally important part of reproducible research.
 
@@ -141,7 +109,7 @@ We've now covered how to make our dataframes longer or wider depending on their 
 
 ### Separate
 
-If we look at `SACTN4a` we see that we no longer have a `site` and `src` column. Rather these have been replaced by an `index` column. This is an efficient way to store these data, but it is not tidy because the site and source of each observation are separate variables. To re-create our `site` and `src` columns we must `separate()` the `index` column. First we give R the name of the column we want to separate, in this case `index`. Next we must say what the names of the new columns will be. Remember that because we are creating new column names we feed these into R within inverted commas. Lastly we should tell R how to separate the `index` column. If we look at the data we may see that the values we want to split up are separated with '/ ', so that is what we give to R. Often times the `separate()` function is able to guess correctly, but it is better to be explicit.
+If we look at `SACTN4a` we see that we no longer have a `site` and `src` column. Rather these have been replaced by an `index` column. This is an efficient way to store these data, but it is not tidy because the site and source of each observation have now been combined into one column (variable). Remember, tidy data calls for each of the things known about the data to be its own variable. To re-create our `site` and `src` columns we must `separate()` the `index` column. First we give R the name of the column we want to separate, in this case `index`. Next we must say what the names of the new columns will be. Remember that because we are creating new column names we feed these into R within inverted commas. Lastly we should tell R how to separate the `index` column. If we look at the data we may see that the values we want to split up are separated with '/ ', so that is what we give to R. Often times the `separate()` function is able to guess correctly, but it is better to be explicit.
 
 
 ```r
@@ -192,8 +160,8 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 ```
 
 ```
-R>   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
-R>   "0.3.0"   "1.3.0"   "0.7.4"   "0.2.4"   "1.1.1"   "0.8.0"   "1.4.2" 
-R>   ggplot2 tidyverse 
-R>   "2.2.1"   "1.2.1"
+R>   forcats   stringr     dplyr     purrr     readr     tidyr    tibble   ggplot2 
+R>   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0"   "2.1.3"   "3.2.1" 
+R> tidyverse 
+R>   "1.3.0"
 ```
