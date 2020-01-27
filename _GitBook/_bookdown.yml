@@ -2,7 +2,7 @@ book_filename: "Intro_R_Workshop"
 chapter_name: "Chapter "
 repo: https://github.com/ajsmit/Intro_R_Official
 output_dir: ../docs
-rmd_files: ["index.Rmd", "01-prelim.Rmd", "02-RStudio.Rmd", "03-workflow.Rmd", "04-graphics.Rmd", "05-faceting.Rmd", "06-brewing.Rmd", "07-mapping.Rmd", "08-mapping_style.Rmd", "09-mapping_google.Rmd", "10-tidy.Rmd", "11-tidier.Rmd", "12-tidiest.Rmd", "13-recap.Rmd"]
+rmd_files: ["index.Rmd", "01-prelim.Rmd", "02-RStudio.Rmd", "03-github.Rmd", "04-workflow.Rmd", "05-graphics.Rmd", "06-faceting.Rmd", "07-brewing.Rmd", "08-mapping.Rmd", "09-mapping_style.Rmd", "10-mapping_google.Rmd", "11-tidy.Rmd", "12-tidier.Rmd", "13-tidiest.Rmd", "14-recap.Rmd"]
 clean: [packages.bib, bookdown.bbl]
 new_session: yes
 delete_merged_file: true
