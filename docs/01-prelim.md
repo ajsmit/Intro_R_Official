@@ -12,7 +12,7 @@
 
 ## Venue, date and time
  
-This workshop will take place in the week of **18 February -- 23 February 2018**, from **9:00--16:00** each day. We will meet in the BCB computer lab on the 5th floor.
+This workshop will take place in the week of **28 January -- 31 January 2020**, from **9:00--16:00** each day. We will meet in the BCB computer lab on the 5th floor.
 
 ## Course outline
 
@@ -169,9 +169,9 @@ Although R can run in its own console or in a terminal window (Mac and Linux; th
 
 5.  Install RStudio as per the instructions.
 
-See you on Monday, 19 February 2018. 
+See you on Monday, 28 January 2020. 
 
---- Cheers, AJ and Robert
+--- Cheers, AJ and Amieroh
 
 ## Resources
 
@@ -199,8 +199,8 @@ rnorm(n = 10, mean = 0, sd = 13)
 ```
 
 ```
-R>  [1]  -2.274437  -5.751211  -4.886807  25.233015  30.023081 -30.909003
-R>  [7]  -1.240302  11.231595  27.969303   2.413120
+R>  [1] -10.4887248  -6.7200933  13.3304215   7.0593974  -5.5891712 -21.9719366
+R>  [7]   4.6402153   5.5857326 -10.0150464   0.8773811
 ```
 
 Consult these resources for more about R code style :
