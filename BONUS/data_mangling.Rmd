@@ -1,0 +1,82 @@
+---
+title: "Data Mangling"
+author: "Robert W Schlegel"
+date: '`r Sys.Date()`'
+output:
+  html_document: default
+language: Australian
+linkcolor: cyan
+citecolor: green
+urlcolor: cyan
+---
+
+```{r mangle-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "R>", 
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+# Introduction
+
+This script shows the steps I took to prepare the mangled dataframes used in the tidy data chapters in the workshop GitBook.
+
+```{r mangle-load}
+# Load libraries
+library(tidyverse)
+library(lubridate)
+
+# Load data
+load("../data/SACTNmonthly_v4.0.RData")
+```
+
+# Mangle
+
+And now begins the mangling.
+
+```{r mangle-main, eval=FALSE}
+# Sites to extract
+sites <- c("Port Nolloth", "Umtentweni", "Amanzimtoti")
+
+# Create tidy base
+SACTN_tidy <- SACTNmonthly_v4.0 %>%
+  mutate(year = year(date)) %>%
+  filter(site %in% sites,
+         year %in% c(1998, 1999)) %>%
+  select(-year)
+
+# First mangle
+  # Normal tidy data
+SACTN1 <- SACTN_tidy
+
+# Second mangle
+SACTN2 <- SACTN_tidy %>%
+  spread(key = src, value = temp)
+
+# Third mangle
+SACTN3 <- SACTN_tidy %>%
+  gather(depth, type, key = "var", value = "val")
+
+## Fourth two part mangle
+# A
+SACTN4a <- SACTN_tidy %>%
+  mutate(date = as.character(date)) %>%
+  unite(index, site, src, sep = "/ ") %>%
+  select(-depth, -type)
+
+# B
+SACTN4b <- SACTN_tidy %>%
+  mutate(date = as.character(date),
+         site = as.character(site)) %>%
+  separate(col = date, into = c("year", "month", "day"), sep = "-") %>%
+  select(-temp)
+```
+
+# Save
+
+Here we save all five of the newly mangled dataframes as one .RData object for ease of loading in the tutorial.
+
+```{r, eval=FALSE}
+save(list = c("SACTN1", "SACTN2", "SACTN3", "SACTN4a", "SACTN4b"), file = "data/SACTN_mangled.RData")
+```

@@ -1,0 +1,114 @@
+---
+title: "Animating Angry Ants"
+author: "Robert W Schlegel"
+date: '`r Sys.Date()`'
+output:
+  html_document: default
+language: Australian
+linkcolor: cyan
+citecolor: green
+urlcolor: cyan
+---
+
+```{r animate-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "R>", 
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+# Introduction
+In this supplemenal tutorial we are going to look at how to create animations in R. To do this will require the installation of software outside of R. This software is `ImageMagick` and may be downloaded here: <https://www.imagemagick.org/script/download.php>. Once this software has been installed on your computer it will be necessary to install the `animation` library.
+
+```{r, warning=FALSE, message=FALSE}
+# The libraries required for this tut
+library(tidyverse)
+library(grid)
+library(gridExtra)
+# install.packages("animation")
+library(animation)
+```
+
+# Functions for creating ant walks
+
+```{r}
+# Calculate speed based on u and v vectors
+ant.speed <- function(df){
+  df$x2 <- c(NA,df$x[2:nrow(df)] - df$x[1:(nrow(df)-1)])
+  df$y2 <- c(NA,df$y[2:nrow(df)] - df$y[1:(nrow(df)-1)])
+  speed_abs <- round(sqrt(df$x2^2 + df$y2^2),2)
+  speed_abs[is.na(speed_abs)] <- 0
+  return(speed_abs)
+}
+
+# Create a dataframe with desired number of ants and steps
+ant.walk <- function(i,n){
+  # Create the random walks
+  walk_x <- c(0,round(cumsum(rnorm(n = n-1, mean = 0, sd = 1)),2))
+  for(i in 2:i){
+  x <- c(0,round(cumsum(rnorm(n = n-1, mean = 0, sd = 1)),2))
+  walk_x <- c(walk_x, x)
+  }
+  walk_y <- c(0,round(cumsum(rnorm(n = n-1, mean = 0, sd = 1)),2))
+  for(i in 2:i){
+  y <- c(0,round(cumsum(rnorm(n = n-1, mean = 0, sd = 1)),2))
+  walk_y <- c(walk_y, y)
+  }
+  # Create the walking dataframe
+  walker <- data.frame(x = walk_x, y = walk_y, 
+                       ant = as.factor(rep(1:i, each = n)), 
+                       step =  rep(seq(1,n), i))
+  walker$speed <- ant.speed(walker)
+  walker$speed[walker$step == 1] <- 0
+  return(walker)
+}
+```
+
+# Generate the ants
+
+```{r}
+ants <- ant.walk(5, 100)
+```
+
+# The function to animate the walk plot
+
+```{r, message=FALSE, warning=FALSE}
+walk.plot <- function(i){
+  # Map figure
+  walk_map <- ggplot(data = ants[ants$step %in% 1:i,], aes(x = x, y = y)) +
+    geom_path(aes( group = ant), colour = "gray60") +
+    geom_point(data = ants[ants$step == i,], aes(colour = ant))
+  # Speed histogram
+  walk_hist <- ggplot(data = ants[ants$step %in% 1:i,], aes(x = speed)) +
+    geom_histogram() +
+    labs(x = "speed")
+  # Speed line graph
+  walk_line <- ggplot(data = ants[ants$step %in% 1:i,], aes(x = step, y = speed)) +
+    geom_line(aes(colour = ant))
+  # Wack it together
+  grid.arrange(walk_map, walk_hist, walk_line, layout_matrix = cbind(c(1,1), c(1,1), c(2,3)))
+}
+
+
+## Create animation of ts plots
+animate.walk.plot <- function() {
+  lapply(seq(1,100), function(i) {
+    walk.plot(i)
+  })
+}
+```
+
+# Render the GIF
+
+```{r, eval=FALSE}
+# By default 'saveGIF()' outputs to the same folder 
+# the script where the code is being run from is located
+# I have included commented out lines of code here that 
+# may be changed to set thedestination for saving the output
+# setwd("~/Intro_R_Workshop/BONUS/")
+system.time(saveGIF(animate.walk.plot(), interval = 0.2, 
+                    ani.width = 800, movie.name = "ant_walk.gif")) ## ~60 seconds
+# setwd("~/Intro_R_Workshop/")
+```
+

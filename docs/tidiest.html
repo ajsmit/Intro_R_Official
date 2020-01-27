@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Intro R Workshop: Data Manipulation, Analysis, and Visualisation</title>
+  <meta name="description" content="The basics for a safe voyage through the tidyverse.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="figures/769_life_finds_a_way.png" />
+  <meta property="og:description" content="The basics for a safe voyage through the tidyverse." />
+  <meta name="github-repo" content="robwschlegel/Intro_R_Workshop" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
+  
+  <meta name="twitter:description" content="The basics for a safe voyage through the tidyverse." />
+  <meta name="twitter:image" content="figures/769_life_finds_a_way.png" />
+
+<meta name="author" content="Robert W Schlegel &amp; AJ Smit">
+
+
+<<<<<<< HEAD
+<meta name="date" content="2018-03-02">
+||||||| merged common ancestors
+<meta name="date" content="2018-01-22">
+=======
+<meta name="date" content="2018-01-29">
+>>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="tidier.html">
+<link rel="next" href="recap.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Intro R Workshop</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="prelim.html"><a href="prelim.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
+<li class="chapter" data-level="1.1" data-path="prelim.html"><a href="prelim.html#course-outline"><i class="fa fa-check"></i><b>1.1</b> Course outline</a><ul>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-1-in-the-beginning"><i class="fa fa-check"></i>Day 1 – In the Beginning</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-2-show-and-tell"><i class="fa fa-check"></i>Day 2 – Show and tell</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-3-going-deeper"><i class="fa fa-check"></i>Day 3 – Going deeper</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-4-the-enlightened-researcher"><i class="fa fa-check"></i>Day 4 – The Enlightened Researcher</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-5-the-world-is-yours"><i class="fa fa-check"></i>Day 5 – The world is yours</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="prelim.html"><a href="prelim.html#about-this-workshop"><i class="fa fa-check"></i><b>1.2</b> About this Workshop</a></li>
+<li class="chapter" data-level="1.3" data-path="prelim.html"><a href="prelim.html#why-use-r"><i class="fa fa-check"></i><b>1.3</b> Why use R?</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="prelim.html"><a href="prelim.html#some-negatives-of-using-r"><i class="fa fa-check"></i><b>1.3.1</b> Some negatives of using R</a></li>
+<li class="chapter" data-level="1.3.2" data-path="prelim.html"><a href="prelim.html#the-challenge-learning-to-program-in-r"><i class="fa fa-check"></i><b>1.3.2</b> The challenge: learning to program in R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="prelim.html"><a href="prelim.html#using-your-own-computer"><i class="fa fa-check"></i><b>1.4</b> Using your own computer?</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="prelim.html"><a href="prelim.html#installing-r"><i class="fa fa-check"></i><b>1.4.1</b> Installing R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="prelim.html"><a href="prelim.html#installing-rstudio"><i class="fa fa-check"></i><b>1.4.2</b> Installing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="prelim.html"><a href="prelim.html#resources"><i class="fa fa-check"></i><b>1.5</b> Resources</a></li>
+<li class="chapter" data-level="1.6" data-path="prelim.html"><a href="prelim.html#style-and-code-conventions"><i class="fa fa-check"></i><b>1.6</b> Style and code conventions</a></li>
+<li class="chapter" data-level="1.7" data-path="prelim.html"><a href="prelim.html#about-this-document"><i class="fa fa-check"></i><b>1.7</b> About this document</a></li>
+<li class="chapter" data-level="1.8" data-path="prelim.html"><a href="prelim.html#exercise-it-which-shall-not-be-named"><i class="fa fa-check"></i><b>1.8</b> Exercise: It which shall not be named</a></li>
+<li class="chapter" data-level="1.9" data-path="prelim.html"><a href="prelim.html#session-info"><i class="fa fa-check"></i><b>1.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>2</b> RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="rstudio.html"><a href="rstudio.html#setting-up-the-workspace"><i class="fa fa-check"></i><b>2.1</b> Setting up the workspace</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="rstudio.html"><a href="rstudio.html#general-settings"><i class="fa fa-check"></i><b>2.1.1</b> General settings</a></li>
+<li class="chapter" data-level="2.1.2" data-path="rstudio.html"><a href="rstudio.html#customising-appearance"><i class="fa fa-check"></i><b>2.1.2</b> Customising appearance</a></li>
+<li class="chapter" data-level="2.1.3" data-path="rstudio.html"><a href="rstudio.html#configuring-panes"><i class="fa fa-check"></i><b>2.1.3</b> Configuring panes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rstudio.html"><a href="rstudio.html#the-rproject"><i class="fa fa-check"></i><b>2.2</b> The Rproject</a></li>
+<li class="chapter" data-level="2.3" data-path="rstudio.html"><a href="rstudio.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing packages</a></li>
+<li class="chapter" data-level="2.4" data-path="rstudio.html"><a href="rstudio.html#the-panes-of-rstudio"><i class="fa fa-check"></i><b>2.4</b> The panes of RStudio</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="rstudio.html"><a href="rstudio.html#source-editor"><i class="fa fa-check"></i><b>2.4.1</b> Source Editor</a></li>
+<li class="chapter" data-level="2.4.2" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>2.4.2</b> Console</a></li>
+<li class="chapter" data-level="2.4.3" data-path="rstudio.html"><a href="rstudio.html#environment-and-history-panes"><i class="fa fa-check"></i><b>2.4.3</b> Environment and History panes</a></li>
+<li class="chapter" data-level="2.4.4" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help-and-viewer-panes"><i class="fa fa-check"></i><b>2.4.4</b> Files, Plots, Packages, Help, and Viewer panes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="rstudio.html"><a href="rstudio.html#session-info-1"><i class="fa fa-check"></i><b>2.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>3</b> An R workflow</a><ul>
+<li class="chapter" data-level="3.1" data-path="workflow.html"><a href="workflow.html#r-scripts"><i class="fa fa-check"></i><b>3.1</b> R Scripts</a></li>
+<li class="chapter" data-level="3.2" data-path="workflow.html"><a href="workflow.html#reading-data-into-r"><i class="fa fa-check"></i><b>3.2</b> Reading data into R</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="workflow.html"><a href="workflow.html#preparing-data-for-r"><i class="fa fa-check"></i><b>3.2.1</b> Preparing data for R</a></li>
+<li class="chapter" data-level="3.2.2" data-path="workflow.html"><a href="workflow.html#converting-data"><i class="fa fa-check"></i><b>3.2.2</b> Converting data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="workflow.html"><a href="workflow.html#importing-data"><i class="fa fa-check"></i><b>3.2.3</b> Importing data</a></li>
+<li class="chapter" data-level="3.2.4" data-path="workflow.html"><a href="workflow.html#loading-a-file"><i class="fa fa-check"></i><b>3.2.4</b> Loading a file</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="workflow.html"><a href="workflow.html#working-with-data"><i class="fa fa-check"></i><b>3.3</b> Working with data</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="workflow.html"><a href="workflow.html#examine-your-data"><i class="fa fa-check"></i><b>3.3.1</b> Examine your data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="workflow.html"><a href="workflow.html#tidyverse-sneak-peek"><i class="fa fa-check"></i><b>3.3.2</b> Tidyverse sneak peek</a></li>
+<li class="chapter" data-level="3.3.3" data-path="workflow.html"><a href="workflow.html#subsetting"><i class="fa fa-check"></i><b>3.3.3</b> Subsetting</a></li>
+<li class="chapter" data-level="3.3.4" data-path="workflow.html"><a href="workflow.html#basic-stats"><i class="fa fa-check"></i><b>3.3.4</b> Basic stats</a></li>
+<li class="chapter" data-level="3.3.5" data-path="workflow.html"><a href="workflow.html#summary-of-all-variables-in-a-dataframe"><i class="fa fa-check"></i><b>3.3.5</b> Summary of all variables in a dataframe</a></li>
+<li class="chapter" data-level="3.3.6" data-path="workflow.html"><a href="workflow.html#summary-statistics-by-variable"><i class="fa fa-check"></i><b>3.3.6</b> Summary statistics by variable</a></li>
+<li class="chapter" data-level="3.3.7" data-path="workflow.html"><a href="workflow.html#more-complex-calculations"><i class="fa fa-check"></i><b>3.3.7</b> More complex calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="workflow.html"><a href="workflow.html#saving-data"><i class="fa fa-check"></i><b>3.4</b> Saving data</a></li>
+<li class="chapter" data-level="3.5" data-path="workflow.html"><a href="workflow.html#visualisations"><i class="fa fa-check"></i><b>3.5</b> Visualisations</a></li>
+<li class="chapter" data-level="3.6" data-path="workflow.html"><a href="workflow.html#clearing-the-memory"><i class="fa fa-check"></i><b>3.6</b> Clearing the memory</a></li>
+<li class="chapter" data-level="3.7" data-path="workflow.html"><a href="workflow.html#working-directories"><i class="fa fa-check"></i><b>3.7</b> Working directories</a></li>
+<li class="chapter" data-level="3.8" data-path="workflow.html"><a href="workflow.html#help"><i class="fa fa-check"></i><b>3.8</b> Help</a></li>
+<li class="chapter" data-level="3.9" data-path="workflow.html"><a href="workflow.html#session-info-2"><i class="fa fa-check"></i><b>3.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>4</b> Graphics with <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="4.1" data-path="graphics.html"><a href="graphics.html#example-figures"><i class="fa fa-check"></i><b>4.1</b> Example figures</a></li>
+<li class="chapter" data-level="4.2" data-path="graphics.html"><a href="graphics.html#basics-of-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Basics of <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="4.3" data-path="graphics.html"><a href="graphics.html#to-aes-or-not-to-aes-that-is-the-question"><i class="fa fa-check"></i><b>4.3</b> To <code>aes()</code> or not to <code>aes()</code>, that is the question</a></li>
+<li class="chapter" data-level="4.4" data-path="graphics.html"><a href="graphics.html#changing-labels"><i class="fa fa-check"></i><b>4.4</b> Changing labels</a></li>
+<li class="chapter" data-level="4.5" data-path="graphics.html"><a href="graphics.html#session-info-3"><i class="fa fa-check"></i><b>4.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>5</b> Faceting Figures</a><ul>
+<li class="chapter" data-level="5.1" data-path="faceting.html"><a href="faceting.html#faceting-one-figure"><i class="fa fa-check"></i><b>5.1</b> Faceting one figure</a></li>
+<li class="chapter" data-level="5.2" data-path="faceting.html"><a href="faceting.html#new-figure-types"><i class="fa fa-check"></i><b>5.2</b> New figure types</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="faceting.html"><a href="faceting.html#line-graph"><i class="fa fa-check"></i><b>5.2.1</b> Line graph</a></li>
+<li class="chapter" data-level="5.2.2" data-path="faceting.html"><a href="faceting.html#linear-model"><i class="fa fa-check"></i><b>5.2.2</b> Linear model</a></li>
+<li class="chapter" data-level="5.2.3" data-path="faceting.html"><a href="faceting.html#histogram"><i class="fa fa-check"></i><b>5.2.3</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.4" data-path="faceting.html"><a href="faceting.html#boxplot"><i class="fa fa-check"></i><b>5.2.4</b> Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="faceting.html"><a href="faceting.html#gridding-figures"><i class="fa fa-check"></i><b>5.3</b> Gridding figures</a></li>
+<li class="chapter" data-level="5.4" data-path="faceting.html"><a href="faceting.html#session-info-4"><i class="fa fa-check"></i><b>5.4</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="brewing.html"><a href="brewing.html"><i class="fa fa-check"></i><b>6</b> Brewing colours in <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="6.1" data-path="brewing.html"><a href="brewing.html#r-data"><i class="fa fa-check"></i><b>6.1</b> R Data</a></li>
+<li class="chapter" data-level="6.2" data-path="brewing.html"><a href="brewing.html#rcolorbrewer"><i class="fa fa-check"></i><b>6.2</b> <strong><code>RColorBrewer</code></strong></a></li>
+<li class="chapter" data-level="6.3" data-path="brewing.html"><a href="brewing.html#make-your-own-palettes"><i class="fa fa-check"></i><b>6.3</b> Make your own palettes</a></li>
+<li class="chapter" data-level="6.4" data-path="brewing.html"><a href="brewing.html#use-your-own-palettes"><i class="fa fa-check"></i><b>6.4</b> Use your own palettes</a></li>
+<li class="chapter" data-level="6.5" data-path="brewing.html"><a href="brewing.html#diy-figures"><i class="fa fa-check"></i><b>6.5</b> DIY figures</a></li>
+<li class="chapter" data-level="6.6" data-path="brewing.html"><a href="brewing.html#session-info-5"><i class="fa fa-check"></i><b>6.6</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>7</b> Mapping with <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="7.1" data-path="mapping.html"><a href="mapping.html#a-new-concept"><i class="fa fa-check"></i><b>7.1</b> A new concept?</a></li>
+<li class="chapter" data-level="7.2" data-path="mapping.html"><a href="mapping.html#land-mask"><i class="fa fa-check"></i><b>7.2</b> Land mask</a></li>
+<li class="chapter" data-level="7.3" data-path="mapping.html"><a href="mapping.html#borders"><i class="fa fa-check"></i><b>7.3</b> Borders</a></li>
+<li class="chapter" data-level="7.4" data-path="mapping.html"><a href="mapping.html#force-lonlat-extent"><i class="fa fa-check"></i><b>7.4</b> Force lon/lat extent</a></li>
+<li class="chapter" data-level="7.5" data-path="mapping.html"><a href="mapping.html#ocean-temperature"><i class="fa fa-check"></i><b>7.5</b> Ocean temperature</a></li>
+<li class="chapter" data-level="7.6" data-path="mapping.html"><a href="mapping.html#final-touches"><i class="fa fa-check"></i><b>7.6</b> Final touches</a></li>
+<li class="chapter" data-level="7.7" data-path="mapping.html"><a href="mapping.html#session-info-6"><i class="fa fa-check"></i><b>7.7</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="mapping-style.html"><a href="mapping-style.html"><i class="fa fa-check"></i><b>8</b> Mapping with style</a><ul>
+<li class="chapter" data-level="8.1" data-path="mapping-style.html"><a href="mapping-style.html#default-maps"><i class="fa fa-check"></i><b>8.1</b> Default maps</a></li>
+<li class="chapter" data-level="8.2" data-path="mapping-style.html"><a href="mapping-style.html#specific-labels"><i class="fa fa-check"></i><b>8.2</b> Specific labels</a></li>
+<li class="chapter" data-level="8.3" data-path="mapping-style.html"><a href="mapping-style.html#scale-bars"><i class="fa fa-check"></i><b>8.3</b> Scale bars</a></li>
+<li class="chapter" data-level="8.4" data-path="mapping-style.html"><a href="mapping-style.html#insetting"><i class="fa fa-check"></i><b>8.4</b> Insetting</a></li>
+<li class="chapter" data-level="8.5" data-path="mapping-style.html"><a href="mapping-style.html#rounding-it-out"><i class="fa fa-check"></i><b>8.5</b> Rounding it out</a></li>
+<li class="chapter" data-level="8.6" data-path="mapping-style.html"><a href="mapping-style.html#session-info-7"><i class="fa fa-check"></i><b>8.6</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mapping-google.html"><a href="mapping-google.html"><i class="fa fa-check"></i><b>9</b> Mapping with Google</a><ul>
+<li class="chapter" data-level="9.1" data-path="mapping-google.html"><a href="mapping-google.html#ggmap"><i class="fa fa-check"></i><b>9.1</b> <strong><code>ggmap</code></strong></a></li>
+<li class="chapter" data-level="9.2" data-path="mapping-google.html"><a href="mapping-google.html#mapping-cape-point"><i class="fa fa-check"></i><b>9.2</b> Mapping Cape Point</a></li>
+<li class="chapter" data-level="9.3" data-path="mapping-google.html"><a href="mapping-google.html#site-labels"><i class="fa fa-check"></i><b>9.3</b> Site labels</a></li>
+<li class="chapter" data-level="9.4" data-path="mapping-google.html"><a href="mapping-google.html#diy-maps"><i class="fa fa-check"></i><b>9.4</b> DIY maps</a></li>
+<li class="chapter" data-level="9.5" data-path="mapping-google.html"><a href="mapping-google.html#session-info-8"><i class="fa fa-check"></i><b>9.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>10</b> Tidy data</a><ul>
+<li class="chapter" data-level="10.1" data-path="tidy.html"><a href="tidy.html#gathering-and-spreading"><i class="fa fa-check"></i><b>10.1</b> Gathering and spreading</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="tidy.html"><a href="tidy.html#gathering"><i class="fa fa-check"></i><b>10.1.1</b> Gathering</a></li>
+<li class="chapter" data-level="10.1.2" data-path="tidy.html"><a href="tidy.html#spreading"><i class="fa fa-check"></i><b>10.1.2</b> Spreading</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="tidy.html"><a href="tidy.html#separating-and-uniting"><i class="fa fa-check"></i><b>10.2</b> Separating and uniting</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="tidy.html"><a href="tidy.html#separate"><i class="fa fa-check"></i><b>10.2.1</b> Separate</a></li>
+<li class="chapter" data-level="10.2.2" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>10.2.2</b> Unite</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="tidy.html"><a href="tidy.html#joining"><i class="fa fa-check"></i><b>10.3</b> Joining</a></li>
+<li class="chapter" data-level="10.4" data-path="tidy.html"><a href="tidy.html#but-why-though"><i class="fa fa-check"></i><b>10.4</b> But why though?</a></li>
+<li class="chapter" data-level="10.5" data-path="tidy.html"><a href="tidy.html#session-info-9"><i class="fa fa-check"></i><b>10.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="tidier.html"><a href="tidier.html"><i class="fa fa-check"></i><b>11</b> Tidier data</a><ul>
+<li class="chapter" data-level="11.1" data-path="tidier.html"><a href="tidier.html#comparison-operators"><i class="fa fa-check"></i><b>11.1</b> Comparison operators</a></li>
+<li class="chapter" data-level="11.2" data-path="tidier.html"><a href="tidier.html#logical-operators"><i class="fa fa-check"></i><b>11.2</b> Logical operators</a></li>
+<li class="chapter" data-level="11.3" data-path="tidier.html"><a href="tidier.html#arrange-observations-rows-with-arrange"><i class="fa fa-check"></i><b>11.3</b> Arrange observations (rows) with <code>arrange()</code></a></li>
+<li class="chapter" data-level="11.4" data-path="tidier.html"><a href="tidier.html#filter-observations-rows-with-filter"><i class="fa fa-check"></i><b>11.4</b> Filter observations (rows) with <code>filter()</code></a></li>
+<li class="chapter" data-level="11.5" data-path="tidier.html"><a href="tidier.html#select-variables-columns-withselect"><i class="fa fa-check"></i><b>11.5</b> Select variables (columns) with<code>select()</code></a></li>
+<li class="chapter" data-level="11.6" data-path="tidier.html"><a href="tidier.html#create-new-variables-columns-with-mutate"><i class="fa fa-check"></i><b>11.6</b> Create new variables (columns) with <code>mutate()</code></a></li>
+<li class="chapter" data-level="11.7" data-path="tidier.html"><a href="tidier.html#summarise-variables-columns-with-summarise"><i class="fa fa-check"></i><b>11.7</b> Summarise variables (columns) with <code>summarise()</code></a></li>
+<li class="chapter" data-level="11.8" data-path="tidier.html"><a href="tidier.html#session-info-10"><i class="fa fa-check"></i><b>11.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tidiest.html"><a href="tidiest.html"><i class="fa fa-check"></i><b>12</b> Tidiest data</a><ul>
+<li class="chapter" data-level="12.1" data-path="tidiest.html"><a href="tidiest.html#group-observations-rows-by-variables-columns-with-group_by"><i class="fa fa-check"></i><b>12.1</b> Group observations (rows) by variables (columns) with <code>group_by()</code></a><ul>
+<li class="chapter" data-level="12.1.1" data-path="tidiest.html"><a href="tidiest.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>12.1.1</b> Grouping by multiple variables</a></li>
+<li class="chapter" data-level="12.1.2" data-path="tidiest.html"><a href="tidiest.html#ungrouping"><i class="fa fa-check"></i><b>12.1.2</b> Ungrouping</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="tidiest.html"><a href="tidiest.html#chain-functions-with-the-pipe"><i class="fa fa-check"></i><b>12.2</b> Chain functions with the pipe (<code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="12.3" data-path="tidiest.html"><a href="tidiest.html#group-all-the-functions"><i class="fa fa-check"></i><b>12.3</b> Group all the functions!</a></li>
+<li class="chapter" data-level="12.4" data-path="tidiest.html"><a href="tidiest.html#going-deeper"><i class="fa fa-check"></i><b>12.4</b> Going deeper</a></li>
+<li class="chapter" data-level="12.5" data-path="tidiest.html"><a href="tidiest.html#pipe-into-ggplot2"><i class="fa fa-check"></i><b>12.5</b> Pipe into <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="12.6" data-path="tidiest.html"><a href="tidiest.html#additional-useful-functions"><i class="fa fa-check"></i><b>12.6</b> Additional useful functions</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="tidiest.html"><a href="tidiest.html#rename-variables-columns-with-rename"><i class="fa fa-check"></i><b>12.6.1</b> Rename variables (columns) with <code>rename()</code></a></li>
+<li class="chapter" data-level="12.6.2" data-path="tidiest.html"><a href="tidiest.html#create-a-new-dataframe-for-a-newly-created-variable-column-with-transmute"><i class="fa fa-check"></i><b>12.6.2</b> Create a new dataframe for a newly created variable (column) with <code>transmute()</code></a></li>
+<li class="chapter" data-level="12.6.3" data-path="tidiest.html"><a href="tidiest.html#count-observations-rows-with-n"><i class="fa fa-check"></i><b>12.6.3</b> Count observations (rows) with <code>n()</code></a></li>
+<li class="chapter" data-level="12.6.4" data-path="tidiest.html"><a href="tidiest.html#select-observations-rows-by-number-with-slice"><i class="fa fa-check"></i><b>12.6.4</b> Select observations (rows) by number with <code>slice()</code></a></li>
+<li class="chapter" data-level="12.6.5" data-path="tidiest.html"><a href="tidiest.html#summary-functions"><i class="fa fa-check"></i><b>12.6.5</b> Summary functions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="tidiest.html"><a href="tidiest.html#the-new-age-redux"><i class="fa fa-check"></i><b>12.7</b> The new age <em>redux</em></a></li>
+<li class="chapter" data-level="12.8" data-path="tidiest.html"><a href="tidiest.html#session-info-11"><i class="fa fa-check"></i><b>12.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="recap.html"><a href="recap.html"><i class="fa fa-check"></i><b>13</b> Recap</a><ul>
+<li class="chapter" data-level="13.1" data-path="recap.html"><a href="recap.html#the-future"><i class="fa fa-check"></i><b>13.1</b> The future</a></li>
+<li class="chapter" data-level="13.2" data-path="recap.html"><a href="recap.html#today"><i class="fa fa-check"></i><b>13.2</b> Today</a></li>
+<li class="chapter" data-level="13.3" data-path="recap.html"><a href="recap.html#session-info-12"><i class="fa fa-check"></i><b>13.3</b> Session info</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intro R Workshop: Data Manipulation, Analysis, and Visualisation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidiest" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Tidiest data</h1>
+<blockquote>
+<p>“Conducting data analysis is like drinking a fine wine. It is important to swirl and sniff the wine, to unpack the complex bouquet and to appreciate the experience. Gulping the wine doesn’t work.”</p>
+<p>— Daniel B. Wright</p>
+</blockquote>
+<blockquote>
+<p>“If you torture the data long enough, it will confess to anything.”</p>
+<p>— Ronald Coase</p>
+</blockquote>
+<p>In the previous session we covered the five main transformation functions one would use in a typical tidy workflow. But to really unlock their power we need to learn how to use them with <code>group_by()</code>. This is how we may calculate statistics based on the different grouping variables within our data, such as sites or species or soil types, for example. Let’s begin by loading the <strong><code>tidyverse</code></strong> package and the SACTN data if we haven’t already.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load libraries</span>
+<span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(lubridate)
+
+<span class="co"># load the data from a .RData file</span>
+<span class="kw">load</span>(<span class="st">&quot;data/SACTNmonthly_v4.0.RData&quot;</span>)
+
+<span class="co"># Copy the data as a dataframe with a shorter name</span>
+SACTN &lt;-<span class="st"> </span>SACTNmonthly_v4.<span class="dv">0</span>
+
+<span class="co"># Remove the original</span>
+<span class="kw">rm</span>(SACTNmonthly_v4.<span class="dv">0</span>)</code></pre></div>
+<div id="group-observations-rows-by-variables-columns-with-group_by" class="section level2">
+<h2><span class="header-section-number">12.1</span> Group observations (rows) by variables (columns) with <code>group_by()</code></h2>
+<p>With the SACTN dataset loaded we will now look at the effect that <code>group_by</code> has on other <code>tidyverse</code> functions. First we shall create a new object called <code>SACTN_depth</code>. If we look at this object in the RStudio GUI it will not appear to be any different from <code>SACTN</code>. We may think of <code>group_by()</code> as working behind the scenes in order to better support the five main functions. We see that <code>group_by()</code> is working as intended when we create summaries from the <code>SACTN_depth</code> dataframe. Remember that one does not need to put the last bracket own it’s own line. I like to do so in order to reduce the chances that I will forget to type it after the final argument within the last function in the code chunk.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Group by depth</span>
+SACTN_depth &lt;-<span class="st"> </span>SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(depth)
+
+<span class="co"># Calculate mean temperature by depth</span>
+SACTN_depth_mean &lt;-<span class="st"> </span>SACTN_depth <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+  <span class="dt">count =</span> <span class="kw">n</span>()
+)
+
+<span class="co"># Visualise the results</span>
+SACTN_depth_mean</code></pre></div>
+<pre><code>R&gt; # A tibble: 13 x 3
+R&gt;    depth mean_temp count
+R&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;
+R&gt;  1    0.      19.5 26299
+R&gt;  2    2.      13.0   237
+R&gt;  3    3.      17.6   141
+R&gt;  4    4.      16.6   529
+R&gt;  5    5.      15.0   408
+R&gt;  6    7.      17.2   227
+R&gt;  7    8.      17.8   201
+R&gt;  8    9.      13.8   311
+R&gt;  9   10.      19.5   362
+R&gt; 10   12.      24.3   137
+R&gt; 11   14.      22.3   223
+R&gt; 12   18.      24.4   191
+R&gt; 13   28.      14.8   306</code></pre>
+<p>Let’s visualise our newly created summary dataframe and see what we get.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Why does the relationship between depth and temperature look so odd?</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> SACTN_depth_mean, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> depth, <span class="dt">y =</span> mean_temp)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> count), <span class="dt">alpha =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="figure"><span id="fig:tidiest-group-2"></span>
+<img src="12-tidiest_files/figure-html/tidiest-group-2-1.png" alt="Relationship between depth and mean temperature." width="672" />
+<p class="caption">
+Figure 12.1: Relationship between depth and mean temperature.
+</p>
+</div>
+<div id="grouping-by-multiple-variables" class="section level3">
+<h3><span class="header-section-number">12.1.1</span> Grouping by multiple variables</h3>
+<p>As one may have guessed by now, grouping is not confined to a single column. One may use any number of columns to perform elaborate grouping measures. Let’s look at some ways of doing this with the SACTN data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create groupings based on temperatures and depth</span>
+SACTN_temp_group &lt;-<span class="st"> </span>SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(<span class="kw">round</span>(temp), depth)
+
+<span class="co"># Create groupings based on source and date</span>
+SACTN_src_group &lt;-<span class="st"> </span>SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(src, date)
+
+<span class="co"># Create groupings based on date and depth</span>
+SACTN_date_group &lt;-<span class="st"> </span>SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(date, depth)</code></pre></div>
+<p>Now that we’ve created some grouped dataframes, let’s think of some ways to summarise these data.</p>
+</div>
+<div id="ungrouping" class="section level3">
+<h3><span class="header-section-number">12.1.2</span> Ungrouping</h3>
+<p>Once we level up our <strong><code>tidyverse</code></strong> skills we will routinely be grouping variables while calculating statistics. This then poses the problem of losing track of which dataframes are grouped and which aren’t. Happily, to remove any grouping we just use <code>ungroup()</code>. No arguments required, just the empty function by itself. Too easy.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN_ungroup &lt;-<span class="st"> </span>SACTN_date_group <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ungroup</span>()</code></pre></div>
+</div>
+</div>
+<div id="chain-functions-with-the-pipe" class="section level2">
+<h2><span class="header-section-number">12.2</span> Chain functions with the pipe (<code>%&gt;%</code>)</h2>
+<p>This now brings us to the last major concept we need to become confident with for this workshop. Everything we have learned thus far builds on everything else in a modular way, with most concepts and steps therein being interchangeable. The pipe takes all of the things we have learned and takes them to the next level. And the best part about it is that it requires us to learn nothing new. We’ve been doing it all along, perhaps without even realising it. Let’s see what I mean. The following chunk does in one command what the first chunk in the previous section took two steps. This is not only faster, but saves us from having to create intermediate dataframes that only slow down our computer and clog up our environment.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN_depth_mean_<span class="dv">2</span> &lt;-<span class="st"> </span>SACTN <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Choose a base dataframe</span>
+<span class="st">  </span><span class="kw">group_by</span>(depth) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Group by thedepth column</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="co"># Calculate means</span>
+  <span class="dt">count =</span> <span class="kw">n</span>() <span class="co"># Count observations</span>
+) <span class="co"># Safety measure</span></code></pre></div>
+<p>Take a moment and compare the <code>SACTN_depth_mean_2</code> object that we’ve just created against the <code>SACTN_depth_mean</code> object we created at the beginning of this session. Same same.</p>
+<p>Not only does this keep our workflow tidier, it also makes it easier to read for ourselves, our colleagues, and most importantly, our future selves. When we look at the previous code chunk we can think of it as a paragraph in a research report, with each line a sentence. If I were to interpret this chunk of code in plain English I think it would sound something like this:</p>
+<blockquote>
+<p>In order to create the <code>SACTN_depth_mean_2</code> dataframe I first started by taking the original SACTN data.<br />
+I then grouped the data into different depth categories.<br />
+After this I calculated the mean temperature for each depth category, as well as counting the number of observations within each depth group.</p>
+</blockquote>
+<p>Just like paragraphs in a human language may vary in length, so too may code chunks. There really is no limit. This is not to say that it is encouraged to attempt to reproduce a code chunk of comparable length to anything Marcel Proust would have written. It is helpful to break things up into pieces of a certain size. What that size is though is open to the discretion of the person writing the code. It is up to you to find out for yourself what works best for you.</p>
+</div>
+<div id="group-all-the-functions" class="section level2">
+<h2><span class="header-section-number">12.3</span> Group all the functions!</h2>
+<p>We’ve played around quite a bit with grouping and summarising, but that’s not all we can do. We can use <code>group_by()</code> very nicely with <code>filter()</code> and <code>mutate()</code> as well. Not so much with <code>arrange()</code> and <code>select()</code> as these are designed to work on the entire dataframe at once, without any subsetting.</p>
+<p>We can do some rather imaginative things when we combine all of these tools together. In fact, we should be able to accomplish almost any task we can think of. For example, what if we wanted to create a new object that was a subset of only the sites in the <code>SACTN</code> that had at least 30 years (360 months) of data?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN_30_years &lt;-<span class="st"> </span>SACTN <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(site, src) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="kw">n</span>() <span class="op">&gt;</span><span class="st"> </span><span class="dv">360</span>)</code></pre></div>
+<p>Or what if we wanted to calculate anomaly data for each site?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN_anom &lt;-<span class="st"> </span>SACTN <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(site, src) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">anom =</span> temp <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(site<span class="op">:</span>date, anom, depth, type) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ungroup</span>()</code></pre></div>
+<p>Now, let’s select only two sites and calculate their mean and standard deviations. Note how whichever columns we give to <code>group_by()</code> will be carried over into the new dataframe created by <code>summarise()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Paternoster&quot;</span> <span class="op">|</span><span class="st"> </span>site <span class="op">==</span><span class="st"> &quot;Oudekraal&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(site, src) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), 
+            <span class="dt">sd_temp =</span> <span class="kw">sd</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<pre><code>R&gt; # A tibble: 3 x 4
+R&gt; # Groups:   site [?]
+R&gt;   site        src   mean_temp sd_temp
+R&gt;   &lt;fct&gt;       &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+R&gt; 1 Paternoster DEA        12.8   0.879
+R&gt; 2 Paternoster SAWS       13.6   1.40 
+R&gt; 3 Oudekraal   DAFF       12.3   1.36</code></pre>
+</div>
+<div id="going-deeper" class="section level2">
+<h2><span class="header-section-number">12.4</span> Going deeper</h2>
+<p>We learned in the previous session that one should avoid using comparison operators to compare logical arguments as this tends to not produce the results one would expect. Below we see what happens when we try to repeat the code chunk above, but using a logical operator within a comparison operator.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Paternoster&quot;</span> <span class="op">|</span><span class="st"> &quot;Oudekraal&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># This line has been changed/shortened</span>
+<span class="st">  </span><span class="kw">group_by</span>(site, src) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), 
+            <span class="dt">sd_temp =</span> <span class="kw">sd</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<pre><code>R&gt; Error in filter_impl(.data, quo): Evaluation error: operations are possible only for numeric, logical or complex types.</code></pre>
+<p>Oh no, we broke it! This is a common error while learning to write code so do try to keep this rule in mind as it can cause a lot of headaches. An easy way to spot this problem is if ones line of code has more logical operators than comparison operators you’re probably going to have a bad time. This is doubly unfortunate as we would need to write less code if this were not so. Happily, there is a shortcut for just this problem, <code>%in%</code>. Whenever we want to use operators to filter by more than two things, it is most convenient to create an object that contains the names or numbers that we want to filter by. We then replace our comparison and logical operators with that one simple symbol (<code>%in%</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First create a character vector containing the desired sites</span>
+selected_sites &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Paternoster&quot;</span>, <span class="st">&quot;Oudekraal&quot;</span>, <span class="st">&quot;Muizenberg&quot;</span>, <span class="st">&quot;Humewood&quot;</span>)
+
+<span class="co"># Then calculate the statistics</span>
+SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(site <span class="op">%in%</span><span class="st"> </span>selected_sites) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(site, src) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), 
+            <span class="dt">sd_temp =</span> <span class="kw">sd</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<pre><code>R&gt; # A tibble: 5 x 4
+R&gt; # Groups:   site [?]
+R&gt;   site        src   mean_temp sd_temp
+R&gt;   &lt;fct&gt;       &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+R&gt; 1 Paternoster DEA        12.8   0.879
+R&gt; 2 Paternoster SAWS       13.6   1.40 
+R&gt; 3 Oudekraal   DAFF       12.3   1.36 
+R&gt; 4 Muizenberg  SAWS       15.9   2.76 
+R&gt; 5 Humewood    SAWS       18.0   2.03</code></pre>
+<p>The <code>%in%</code> operator can be a very useful shortcut, but sometime we cannot avoid the comparison and logical operator dance. For example, if one wanted to find temperatures at Port Nolloth that were over 10°C but under 15°C you could use either of the following two filters. Remember that whenever we see a <code>,</code> in the filter function it is the same as the <code>&amp;</code> logical operator. Of the two different techniques shown below, I would be more inclined to use the first one. The fewer symbols we use to write our code the better. Both for readability and error reduction.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Port Nolloth&quot;</span>, temp <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>, temp <span class="op">&lt;</span><span class="st"> </span><span class="dv">15</span>)
+
+SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Port Nolloth&quot;</span>, <span class="op">!</span>(temp <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span> <span class="op">|</span><span class="st"> </span>temp  <span class="op">&gt;=</span><span class="st"> </span><span class="dv">15</span>))</code></pre></div>
+<p>As one may imagine, performing intricate logical arguments like this may get out of hand rather quickly. It is advisable to save intermediate steps in a complex workflow to avoid too much heartache. Where exactly these ‘fire breaks’ should be made is up to the person writing the code.</p>
+</div>
+<div id="pipe-into-ggplot2" class="section level2">
+<h2><span class="header-section-number">12.5</span> Pipe into <strong><code>ggplot2</code></strong></h2>
+<p>It is also possible to combine piped code chunks and <strong><code>ggplot2</code></strong> chunks into one ‘combi-chunk’. I prefer not to do this as I like saving the new dataframe I have created as an object in my environment before visualising it so that if anything has gone wrong (as things tend to do) I can more easily find the problem.</p>
+<p>Regardless of what one may or may not prefer to do, the one thing that must be mentioned about piping into <strong><code>ggplot2</code></strong> is that when we start with the <code>ggplot()</code> function we switch over from the pipe (<code>%&gt;%</code>) to the plus sign (<code>+</code>). There are currently efforts to address this inconvenience, but are not yet ready for public consumption.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Choose starting dataframe</span>
+<span class="st">  </span><span class="kw">filter</span>(site <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Bordjies&quot;</span>, <span class="st">&quot;Tsitsikamma&quot;</span>, <span class="st">&quot;Humewood&quot;</span>, <span class="st">&quot;Durban&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select sites</span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>depth, <span class="op">-</span>type) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Remove depth and type columns</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">month =</span> <span class="kw">month</span>(date), <span class="co"># Create month column</span>
+         <span class="dt">index =</span> <span class="kw">paste</span>(site, src, <span class="dt">sep =</span> <span class="st">&quot;/ &quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Create individual site column</span>
+<span class="st">  </span><span class="kw">group_by</span>(index, month) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Group by individual sites and months</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="co"># Calculate mean temperature</span>
+            <span class="dt">sd_temp =</span> <span class="kw">sd</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Calculate standard deviation</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> month, <span class="dt">y =</span> mean_temp)) <span class="op">+</span><span class="st"> </span><span class="co"># Begin with ggplot, switch from &#39;%&gt;%&#39; to &#39;+&#39;</span>
+<span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> mean_temp <span class="op">-</span><span class="st"> </span>sd_temp, <span class="dt">ymax =</span> mean_temp <span class="op">+</span><span class="st"> </span>sd_temp), 
+              <span class="dt">fill =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span><span class="co"># Create a ribbon</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span><span class="co"># Create lines within ribbon</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>index) <span class="op">+</span><span class="st"> </span><span class="co"># Facet by individual sites</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">12</span>, <span class="dv">4</span>)) <span class="op">+</span><span class="st"> </span><span class="co"># Control x axis ticks</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Month&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Temperature (°C)&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co"># Change labels</span>
+<span class="st">  </span><span class="kw">theme_dark</span>() <span class="co"># Set theme</span></code></pre></div>
+<div class="figure"><span id="fig:tidyiest-ggplot"></span>
+<img src="12-tidiest_files/figure-html/tidyiest-ggplot-1.png" alt="Line and ribbon plots for the climatologies of several sites." width="672" />
+<p class="caption">
+Figure 12.2: Line and ribbon plots for the climatologies of several sites.
+</p>
+</div>
+</div>
+<div id="additional-useful-functions" class="section level2">
+<h2><span class="header-section-number">12.6</span> Additional useful functions</h2>
+<p>There is an avalanche of useful functions to be found within the <strong><code>tidyverse</code></strong>. In truth, we have only looked at functions from three packages: <strong><code>ggplot2</code></strong>, <strong><code>dplyr</code></strong>, and <strong><code>tidyr</code></strong>. There are far, far too many functions even within these three packages to cover within a week. But that does not mean that the functions in other packages, such as <strong><code>purrr</code></strong> are not also massively useful for our work. More on that tomorrow. For now we will see how the inclusion of a handful of choice extra functions may help to make our workflow even tidier.</p>
+<div id="rename-variables-columns-with-rename" class="section level3">
+<h3><span class="header-section-number">12.6.1</span> Rename variables (columns) with <code>rename()</code></h3>
+<p>We have seen that we select columns in a dataframe with <code>select()</code>, but if we want to rename columns we have to use, you guessed it, <code>rename()</code>. This functions works by first telling R the new name you would like, and then the existing name of the column to be changed. This is perhaps a bit back to front, but such is life on occasion.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">rename</span>(<span class="dt">source =</span> src)</code></pre></div>
+<pre><code>R&gt;            site source       date     temp depth type
+R&gt; 1  Port Nolloth    DEA 1991-02-01 11.47029     5  UTR
+R&gt; 2  Port Nolloth    DEA 1991-03-01 11.99409     5  UTR
+R&gt; 3  Port Nolloth    DEA 1991-04-01 11.95556     5  UTR
+R&gt; 4  Port Nolloth    DEA 1991-05-01 11.86183     5  UTR
+R&gt; 5  Port Nolloth    DEA 1991-06-01 12.20722     5  UTR
+R&gt; 6  Port Nolloth    DEA 1991-07-01 12.53810     5  UTR
+R&gt; 7  Port Nolloth    DEA 1991-08-01 11.25202     5  UTR
+R&gt; 8  Port Nolloth    DEA 1991-09-01 11.29208     5  UTR
+R&gt; 9  Port Nolloth    DEA 1991-10-01 11.37661     5  UTR
+R&gt; 10 Port Nolloth    DEA 1991-11-01 10.98208     5  UTR</code></pre>
+</div>
+<div id="create-a-new-dataframe-for-a-newly-created-variable-column-with-transmute" class="section level3">
+<h3><span class="header-section-number">12.6.2</span> Create a new dataframe for a newly created variable (column) with <code>transmute()</code></h3>
+<p>If for whatever reason one wanted to create a new variable (column), as one would do with <code>mutate()</code>, but one does not want to keep the dataframe from which the new column was created, the function to use is <code>transmute()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">transmute</span>(<span class="dt">kelvin =</span> temp <span class="op">+</span><span class="st"> </span><span class="fl">273.15</span>)</code></pre></div>
+<pre><code>R&gt;  [1] 284.6203 285.1441 285.1056 285.0118 285.3572 285.6881 284.4020
+R&gt;  [8] 284.4421 284.5266 284.1321</code></pre>
+<p>This makes a bit more sense when paired with <code>group_by()</code> as it will pull over the grouping variables into the new dataframe. Note that when it does this for us automatically it will provide a message in the console.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(site, src) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">transmute</span>(<span class="dt">kelvin =</span> temp <span class="op">+</span><span class="st"> </span><span class="fl">273.15</span>)</code></pre></div>
+<pre><code>R&gt; # A tibble: 10 x 3
+R&gt; # Groups:   site, src [1]
+R&gt;    site         src   kelvin
+<<<<<<< HEAD
+R&gt;    &lt;fct&gt;        &lt;chr&gt;  &lt;dbl&gt;
+R&gt;  1 Port Nolloth DEA     285.
+R&gt;  2 Port Nolloth DEA     285.
+R&gt;  3 Port Nolloth DEA     285.
+R&gt;  4 Port Nolloth DEA     285.
+R&gt;  5 Port Nolloth DEA     285.
+R&gt;  6 Port Nolloth DEA     286.
+R&gt;  7 Port Nolloth DEA     284.
+R&gt;  8 Port Nolloth DEA     284.
+R&gt;  9 Port Nolloth DEA     285.
+R&gt; 10 Port Nolloth DEA     284.</code></pre>
+||||||| merged common ancestors
+R&gt;    &lt;fctr&gt;       &lt;chr&gt;  &lt;dbl&gt;
+R&gt;  1 Port Nolloth DEA      285
+R&gt;  2 Port Nolloth DEA      285
+R&gt;  3 Port Nolloth DEA      285
+R&gt;  4 Port Nolloth DEA      285
+R&gt;  5 Port Nolloth DEA      285
+R&gt;  6 Port Nolloth DEA      286
+R&gt;  7 Port Nolloth DEA      284
+R&gt;  8 Port Nolloth DEA      284
+R&gt;  9 Port Nolloth DEA      285
+R&gt; 10 Port Nolloth DEA      284</code></pre>
+=======
+R&gt;    &lt;fct&gt;        &lt;chr&gt;  &lt;dbl&gt;
+R&gt;  1 Port Nolloth DEA      285
+R&gt;  2 Port Nolloth DEA      285
+R&gt;  3 Port Nolloth DEA      285
+R&gt;  4 Port Nolloth DEA      285
+R&gt;  5 Port Nolloth DEA      285
+R&gt;  6 Port Nolloth DEA      286
+R&gt;  7 Port Nolloth DEA      284
+R&gt;  8 Port Nolloth DEA      284
+R&gt;  9 Port Nolloth DEA      285
+R&gt; 10 Port Nolloth DEA      284</code></pre>
+>>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
+</div>
+<div id="count-observations-rows-with-n" class="section level3">
+<h3><span class="header-section-number">12.6.3</span> Count observations (rows) with <code>n()</code></h3>
+<p>We have already seen this function sneak it’s way into a few of the code chunks in the previous session. We use <code>n()</code> to count any grouped variable automatically. It is not able to be given any arguments, so we must organise our dataframe in order to satisfy it’s needs. It is the diva function of the <strong><code>tidyverse</code></strong>; however, it is terribly useful as we usually want to know how many observations our summary stats are based. First we will run some stats and create a figure without documenting <code>n</code>. Then we will include <code>n</code> and see how that changes our conclusions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> SACTN_n &lt;-<span class="st"> </span>SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(site, src) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">round</span>(<span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> T))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">arrange</span>(mean_temp) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(mean_temp) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">unique</span>()
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> SACTN_n, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(SACTN_n), <span class="dt">y =</span> mean_temp)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Temperature (°C)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>(), 
+        <span class="dt">axis.ticks.x =</span> <span class="kw">element_blank</span>())</code></pre></div>
+<div class="figure"><span id="fig:tidiest-n-1"></span>
+<img src="12-tidiest_files/figure-html/tidiest-n-1-1.png" alt="Dot plot showing range of mean temperatures for the time series in the SACTN dataset." width="672" />
+<p class="caption">
+Figure 12.3: Dot plot showing range of mean temperatures for the time series in the SACTN dataset.
+</p>
+</div>
+<p>This looks like a pretty linear distribution of temperatures within the SACTN dataset. But now let’s change the size of the dots to show how frequently each of these mean temperatures is occurring.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> SACTN_n &lt;-<span class="st"> </span>SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(site, src) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">round</span>(<span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> T))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(mean_temp) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(mean_temp) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> SACTN_n, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(SACTN_n), <span class="dt">y =</span> mean_temp)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> count)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Temperature (°C)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>(), 
+        <span class="dt">axis.ticks.x =</span> <span class="kw">element_blank</span>())</code></pre></div>
+<div class="figure"><span id="fig:tidiest-n-2"></span>
+<img src="12-tidiest_files/figure-html/tidiest-n-2-1.png" alt="Dot plot showing range of mean temperatures for the time series in the SACTN dataset with the size of each dote showing the number of occurences of each mean." width="672" />
+<p class="caption">
+Figure 12.4: Dot plot showing range of mean temperatures for the time series in the SACTN dataset with the size of each dote showing the number of occurences of each mean.
+</p>
+</div>
+<p>We see now when we include the count (<code>n</code>) of the different mean temperatures that this distribution is not so even. There appear to be humps around 17°C and 22°C. Of course, we’ve created dot plots here just to illustrate this point. In reality if one were interested in a distribution like this one would use a histogram, or better yet, a density polygon.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(site, src) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">round</span>(<span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> T))
+            ) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean_temp)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;seagreen&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.6</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature (°C)&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:tidiest-n-3"></span>
+<img src="12-tidiest_files/figure-html/tidiest-n-3-1.png" alt="Frequency distribution of mean temperature for each time series in the SACTN dataset." width="672" />
+<p class="caption">
+Figure 12.5: Frequency distribution of mean temperature for each time series in the SACTN dataset.
+</p>
+</div>
+</div>
+<div id="select-observations-rows-by-number-with-slice" class="section level3">
+<h3><span class="header-section-number">12.6.4</span> Select observations (rows) by number with <code>slice()</code></h3>
+<p>If one wants to select only specific rows of a dataframe, rather than using some variable like we do for <code>filter()</code>, we use <code>slice()</code>. The function expects us to provide it with a series of integers as seen in the following code chunk. Try playing around with these values and see what happens</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Slice a seqeunce of rows</span>
+SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">slice</span>(<span class="dv">10010</span><span class="op">:</span><span class="dv">10020</span>)
+
+<span class="co"># Slice specific rows</span>
+SACTN <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">slice</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">19</span>,<span class="dv">24</span>,<span class="dv">3</span>,<span class="dv">400</span>))
+
+<span class="co"># Slice all rows except these</span>
+SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">slice</span>(<span class="op">-</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">4</span>)))
+
+<span class="co"># Slice all rows except a sequence</span>
+SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">slice</span>(<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>))</code></pre></div>
+<p>It is discouraged to use slice to remove or select specific rows of data as this does not discriminate against any possible future changes in ones data. Meaning that if at some point in the future new data are added to a dataset, re-running this code will likely no longer be selecting the correct rows. This is why <code>filter()</code> is a main function, and <code>slice()</code> is not. This auxiliary function can however still be quite useful when combined with arrange.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The top 5 variable sites as measured by SD</span>
+SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(site, src) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">sd_temp =</span> <span class="kw">sd</span>(temp, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(sd_temp)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</code></pre></div>
+<pre><code>R&gt; # A tibble: 5 x 3
+R&gt;   site       src   sd_temp
+R&gt;   &lt;fct&gt;      &lt;chr&gt;   &lt;dbl&gt;
+R&gt; 1 Muizenberg SAWS     2.76
+R&gt; 2 Stilbaai   SAWS     2.72
+R&gt; 3 Mossel Bay SAWS     2.65
+R&gt; 4 De Hoop    DAFF     2.51
+R&gt; 5 Mossel Bay DEA      2.51</code></pre>
+</div>
+<div id="summary-functions" class="section level3">
+<h3><span class="header-section-number">12.6.5</span> Summary functions</h3>
+<p>There is a near endless sea of possibilities when one starts to become comfortable with writing R code. We have seen several summary functions used thus far. Mostly in straightforward ways. But that is one of the fun things about R, the only limits to what we may create are within our mind, not the program. Here is just one example of a creative way to answer a straightforward question: ‘What is the proportion of recordings above 15°C per source?’. Note how we may refer to columns we have created within the same chunk. There is no need to save the intermediate dataframes if we choose not to.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SACTN <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(src) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count =</span> <span class="kw">n</span>(), 
+            <span class="dt">count_15 =</span> <span class="kw">sum</span>(temp <span class="op">&gt;</span><span class="st"> </span><span class="dv">15</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop_15 =</span> count_<span class="dv">15</span><span class="op">/</span>count) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">arrange</span>(prop_<span class="dv">15</span>)</code></pre></div>
+<pre><code>R&gt; # A tibble: 7 x 4
+R&gt;   src   count count_15 prop_15
+R&gt;   &lt;chr&gt; &lt;int&gt;    &lt;int&gt;   &lt;dbl&gt;
+R&gt; 1 DAFF    641      246   0.384
+R&gt; 2 SAWS   8636     4882   0.565
+R&gt; 3 UWC      12        7   0.583
+R&gt; 4 DEA    2087     1388   0.665
+R&gt; 5 SAEON   596      573   0.961
+R&gt; 6 EKZNW   369      369   1.00 
+R&gt; 7 KZNSB 15313    15313   1.00</code></pre>
+</div>
+</div>
+<div id="the-new-age-redux" class="section level2">
+<h2><span class="header-section-number">12.7</span> The new age <em>redux</em></h2>
+<p>Remember the spreadsheet example from the first day of the R workshop? Here it is repeated in a more efficient way. Now with bonus ribbons! In this chunk we see how to load, transform, and visualise the data all in one go. One would not normally do this, but it sure is snappy!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read_csv</span>(<span class="st">&quot;data/SACTN_data.csv&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Load the SACTN Day 1 data</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">month =</span> <span class="kw">month</span>(date)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Then create a month abbreviation column</span>
+<span class="st">  </span><span class="kw">group_by</span>(site, month) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Then group by sites and months</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="co"># Lastly calculate the mean</span>
+            <span class="dt">sd_temp =</span> <span class="kw">sd</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># and the SD</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> month, <span class="dt">y =</span> mean_temp)) <span class="op">+</span><span class="st"> </span><span class="co"># Begin ggplot</span>
+<span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> mean_temp <span class="op">-</span><span class="st"> </span>sd_temp, <span class="dt">ymax =</span> mean_temp <span class="op">+</span><span class="st"> </span>sd_temp), 
+              <span class="dt">fill =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span><span class="co"># Create a ribbon</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> site)) <span class="op">+</span><span class="st"> </span><span class="co"># Create dots</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> site, <span class="dt">group =</span> site)) <span class="op">+</span><span class="st"> </span><span class="co"># Create lines</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Temperature (°C)&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;Site&quot;</span>) <span class="co"># Change labels</span></code></pre></div>
+<p><img src="12-tidiest_files/figure-html/tidiest-new-age-1.png" width="672" /></p>
+</div>
+<div id="session-info-11" class="section level2">
+<h2><span class="header-section-number">12.8</span> Session info</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">installed.packages</span>()[<span class="kw">names</span>(<span class="kw">sessionInfo</span>()<span class="op">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</code></pre></div>
+<pre><code>R&gt;  bindrcpp lubridate   forcats   stringr     dplyr     purrr     readr 
+R&gt;     &quot;0.2&quot;   &quot;1.7.3&quot;   &quot;0.3.0&quot;   &quot;1.3.0&quot;   &quot;0.7.4&quot;   &quot;0.2.4&quot;   &quot;1.1.1&quot; 
+R&gt;     tidyr    tibble   ggplot2 tidyverse 
+R&gt;   &quot;0.8.0&quot;   &quot;1.4.2&quot;   &quot;2.2.1&quot;   &quot;1.2.1&quot;</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tidier.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="recap.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true,
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": true,
+"download": "Intro_R_Workshop.pdf"
+}
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

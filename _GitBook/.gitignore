@@ -1,0 +1,10 @@
+_bookdown_files
+.DS_Store
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+TODO
+students/**
+daily_progress/**
+exefcises/**

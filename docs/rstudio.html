@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Intro R Workshop: Data Manipulation, Analysis, and Visualisation</title>
+  <meta name="description" content="The basics for a safe voyage through the tidyverse.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="figures/769_life_finds_a_way.png" />
+  <meta property="og:description" content="The basics for a safe voyage through the tidyverse." />
+  <meta name="github-repo" content="robwschlegel/Intro_R_Workshop" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
+  
+  <meta name="twitter:description" content="The basics for a safe voyage through the tidyverse." />
+  <meta name="twitter:image" content="figures/769_life_finds_a_way.png" />
+
+<meta name="author" content="Robert W Schlegel &amp; AJ Smit">
+
+
+<<<<<<< HEAD
+<meta name="date" content="2018-03-02">
+||||||| merged common ancestors
+<meta name="date" content="2018-01-22">
+=======
+<meta name="date" content="2018-01-29">
+>>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="prelim.html">
+<link rel="next" href="workflow.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Intro R Workshop</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="prelim.html"><a href="prelim.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
+<li class="chapter" data-level="1.1" data-path="prelim.html"><a href="prelim.html#course-outline"><i class="fa fa-check"></i><b>1.1</b> Course outline</a><ul>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-1-in-the-beginning"><i class="fa fa-check"></i>Day 1 – In the Beginning</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-2-show-and-tell"><i class="fa fa-check"></i>Day 2 – Show and tell</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-3-going-deeper"><i class="fa fa-check"></i>Day 3 – Going deeper</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-4-the-enlightened-researcher"><i class="fa fa-check"></i>Day 4 – The Enlightened Researcher</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-5-the-world-is-yours"><i class="fa fa-check"></i>Day 5 – The world is yours</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="prelim.html"><a href="prelim.html#about-this-workshop"><i class="fa fa-check"></i><b>1.2</b> About this Workshop</a></li>
+<li class="chapter" data-level="1.3" data-path="prelim.html"><a href="prelim.html#why-use-r"><i class="fa fa-check"></i><b>1.3</b> Why use R?</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="prelim.html"><a href="prelim.html#some-negatives-of-using-r"><i class="fa fa-check"></i><b>1.3.1</b> Some negatives of using R</a></li>
+<li class="chapter" data-level="1.3.2" data-path="prelim.html"><a href="prelim.html#the-challenge-learning-to-program-in-r"><i class="fa fa-check"></i><b>1.3.2</b> The challenge: learning to program in R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="prelim.html"><a href="prelim.html#using-your-own-computer"><i class="fa fa-check"></i><b>1.4</b> Using your own computer?</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="prelim.html"><a href="prelim.html#installing-r"><i class="fa fa-check"></i><b>1.4.1</b> Installing R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="prelim.html"><a href="prelim.html#installing-rstudio"><i class="fa fa-check"></i><b>1.4.2</b> Installing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="prelim.html"><a href="prelim.html#resources"><i class="fa fa-check"></i><b>1.5</b> Resources</a></li>
+<li class="chapter" data-level="1.6" data-path="prelim.html"><a href="prelim.html#style-and-code-conventions"><i class="fa fa-check"></i><b>1.6</b> Style and code conventions</a></li>
+<li class="chapter" data-level="1.7" data-path="prelim.html"><a href="prelim.html#about-this-document"><i class="fa fa-check"></i><b>1.7</b> About this document</a></li>
+<li class="chapter" data-level="1.8" data-path="prelim.html"><a href="prelim.html#exercise-it-which-shall-not-be-named"><i class="fa fa-check"></i><b>1.8</b> Exercise: It which shall not be named</a></li>
+<li class="chapter" data-level="1.9" data-path="prelim.html"><a href="prelim.html#session-info"><i class="fa fa-check"></i><b>1.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>2</b> RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="rstudio.html"><a href="rstudio.html#setting-up-the-workspace"><i class="fa fa-check"></i><b>2.1</b> Setting up the workspace</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="rstudio.html"><a href="rstudio.html#general-settings"><i class="fa fa-check"></i><b>2.1.1</b> General settings</a></li>
+<li class="chapter" data-level="2.1.2" data-path="rstudio.html"><a href="rstudio.html#customising-appearance"><i class="fa fa-check"></i><b>2.1.2</b> Customising appearance</a></li>
+<li class="chapter" data-level="2.1.3" data-path="rstudio.html"><a href="rstudio.html#configuring-panes"><i class="fa fa-check"></i><b>2.1.3</b> Configuring panes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rstudio.html"><a href="rstudio.html#the-rproject"><i class="fa fa-check"></i><b>2.2</b> The Rproject</a></li>
+<li class="chapter" data-level="2.3" data-path="rstudio.html"><a href="rstudio.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing packages</a></li>
+<li class="chapter" data-level="2.4" data-path="rstudio.html"><a href="rstudio.html#the-panes-of-rstudio"><i class="fa fa-check"></i><b>2.4</b> The panes of RStudio</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="rstudio.html"><a href="rstudio.html#source-editor"><i class="fa fa-check"></i><b>2.4.1</b> Source Editor</a></li>
+<li class="chapter" data-level="2.4.2" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>2.4.2</b> Console</a></li>
+<li class="chapter" data-level="2.4.3" data-path="rstudio.html"><a href="rstudio.html#environment-and-history-panes"><i class="fa fa-check"></i><b>2.4.3</b> Environment and History panes</a></li>
+<li class="chapter" data-level="2.4.4" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help-and-viewer-panes"><i class="fa fa-check"></i><b>2.4.4</b> Files, Plots, Packages, Help, and Viewer panes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="rstudio.html"><a href="rstudio.html#session-info-1"><i class="fa fa-check"></i><b>2.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>3</b> An R workflow</a><ul>
+<li class="chapter" data-level="3.1" data-path="workflow.html"><a href="workflow.html#r-scripts"><i class="fa fa-check"></i><b>3.1</b> R Scripts</a></li>
+<li class="chapter" data-level="3.2" data-path="workflow.html"><a href="workflow.html#reading-data-into-r"><i class="fa fa-check"></i><b>3.2</b> Reading data into R</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="workflow.html"><a href="workflow.html#preparing-data-for-r"><i class="fa fa-check"></i><b>3.2.1</b> Preparing data for R</a></li>
+<li class="chapter" data-level="3.2.2" data-path="workflow.html"><a href="workflow.html#converting-data"><i class="fa fa-check"></i><b>3.2.2</b> Converting data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="workflow.html"><a href="workflow.html#importing-data"><i class="fa fa-check"></i><b>3.2.3</b> Importing data</a></li>
+<li class="chapter" data-level="3.2.4" data-path="workflow.html"><a href="workflow.html#loading-a-file"><i class="fa fa-check"></i><b>3.2.4</b> Loading a file</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="workflow.html"><a href="workflow.html#working-with-data"><i class="fa fa-check"></i><b>3.3</b> Working with data</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="workflow.html"><a href="workflow.html#examine-your-data"><i class="fa fa-check"></i><b>3.3.1</b> Examine your data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="workflow.html"><a href="workflow.html#tidyverse-sneak-peek"><i class="fa fa-check"></i><b>3.3.2</b> Tidyverse sneak peek</a></li>
+<li class="chapter" data-level="3.3.3" data-path="workflow.html"><a href="workflow.html#subsetting"><i class="fa fa-check"></i><b>3.3.3</b> Subsetting</a></li>
+<li class="chapter" data-level="3.3.4" data-path="workflow.html"><a href="workflow.html#basic-stats"><i class="fa fa-check"></i><b>3.3.4</b> Basic stats</a></li>
+<li class="chapter" data-level="3.3.5" data-path="workflow.html"><a href="workflow.html#summary-of-all-variables-in-a-dataframe"><i class="fa fa-check"></i><b>3.3.5</b> Summary of all variables in a dataframe</a></li>
+<li class="chapter" data-level="3.3.6" data-path="workflow.html"><a href="workflow.html#summary-statistics-by-variable"><i class="fa fa-check"></i><b>3.3.6</b> Summary statistics by variable</a></li>
+<li class="chapter" data-level="3.3.7" data-path="workflow.html"><a href="workflow.html#more-complex-calculations"><i class="fa fa-check"></i><b>3.3.7</b> More complex calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="workflow.html"><a href="workflow.html#saving-data"><i class="fa fa-check"></i><b>3.4</b> Saving data</a></li>
+<li class="chapter" data-level="3.5" data-path="workflow.html"><a href="workflow.html#visualisations"><i class="fa fa-check"></i><b>3.5</b> Visualisations</a></li>
+<li class="chapter" data-level="3.6" data-path="workflow.html"><a href="workflow.html#clearing-the-memory"><i class="fa fa-check"></i><b>3.6</b> Clearing the memory</a></li>
+<li class="chapter" data-level="3.7" data-path="workflow.html"><a href="workflow.html#working-directories"><i class="fa fa-check"></i><b>3.7</b> Working directories</a></li>
+<li class="chapter" data-level="3.8" data-path="workflow.html"><a href="workflow.html#help"><i class="fa fa-check"></i><b>3.8</b> Help</a></li>
+<li class="chapter" data-level="3.9" data-path="workflow.html"><a href="workflow.html#session-info-2"><i class="fa fa-check"></i><b>3.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>4</b> Graphics with <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="4.1" data-path="graphics.html"><a href="graphics.html#example-figures"><i class="fa fa-check"></i><b>4.1</b> Example figures</a></li>
+<li class="chapter" data-level="4.2" data-path="graphics.html"><a href="graphics.html#basics-of-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Basics of <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="4.3" data-path="graphics.html"><a href="graphics.html#to-aes-or-not-to-aes-that-is-the-question"><i class="fa fa-check"></i><b>4.3</b> To <code>aes()</code> or not to <code>aes()</code>, that is the question</a></li>
+<li class="chapter" data-level="4.4" data-path="graphics.html"><a href="graphics.html#changing-labels"><i class="fa fa-check"></i><b>4.4</b> Changing labels</a></li>
+<li class="chapter" data-level="4.5" data-path="graphics.html"><a href="graphics.html#session-info-3"><i class="fa fa-check"></i><b>4.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>5</b> Faceting Figures</a><ul>
+<li class="chapter" data-level="5.1" data-path="faceting.html"><a href="faceting.html#faceting-one-figure"><i class="fa fa-check"></i><b>5.1</b> Faceting one figure</a></li>
+<li class="chapter" data-level="5.2" data-path="faceting.html"><a href="faceting.html#new-figure-types"><i class="fa fa-check"></i><b>5.2</b> New figure types</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="faceting.html"><a href="faceting.html#line-graph"><i class="fa fa-check"></i><b>5.2.1</b> Line graph</a></li>
+<li class="chapter" data-level="5.2.2" data-path="faceting.html"><a href="faceting.html#linear-model"><i class="fa fa-check"></i><b>5.2.2</b> Linear model</a></li>
+<li class="chapter" data-level="5.2.3" data-path="faceting.html"><a href="faceting.html#histogram"><i class="fa fa-check"></i><b>5.2.3</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.4" data-path="faceting.html"><a href="faceting.html#boxplot"><i class="fa fa-check"></i><b>5.2.4</b> Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="faceting.html"><a href="faceting.html#gridding-figures"><i class="fa fa-check"></i><b>5.3</b> Gridding figures</a></li>
+<li class="chapter" data-level="5.4" data-path="faceting.html"><a href="faceting.html#session-info-4"><i class="fa fa-check"></i><b>5.4</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="brewing.html"><a href="brewing.html"><i class="fa fa-check"></i><b>6</b> Brewing colours in <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="6.1" data-path="brewing.html"><a href="brewing.html#r-data"><i class="fa fa-check"></i><b>6.1</b> R Data</a></li>
+<li class="chapter" data-level="6.2" data-path="brewing.html"><a href="brewing.html#rcolorbrewer"><i class="fa fa-check"></i><b>6.2</b> <strong><code>RColorBrewer</code></strong></a></li>
+<li class="chapter" data-level="6.3" data-path="brewing.html"><a href="brewing.html#make-your-own-palettes"><i class="fa fa-check"></i><b>6.3</b> Make your own palettes</a></li>
+<li class="chapter" data-level="6.4" data-path="brewing.html"><a href="brewing.html#use-your-own-palettes"><i class="fa fa-check"></i><b>6.4</b> Use your own palettes</a></li>
+<li class="chapter" data-level="6.5" data-path="brewing.html"><a href="brewing.html#diy-figures"><i class="fa fa-check"></i><b>6.5</b> DIY figures</a></li>
+<li class="chapter" data-level="6.6" data-path="brewing.html"><a href="brewing.html#session-info-5"><i class="fa fa-check"></i><b>6.6</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>7</b> Mapping with <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="7.1" data-path="mapping.html"><a href="mapping.html#a-new-concept"><i class="fa fa-check"></i><b>7.1</b> A new concept?</a></li>
+<li class="chapter" data-level="7.2" data-path="mapping.html"><a href="mapping.html#land-mask"><i class="fa fa-check"></i><b>7.2</b> Land mask</a></li>
+<li class="chapter" data-level="7.3" data-path="mapping.html"><a href="mapping.html#borders"><i class="fa fa-check"></i><b>7.3</b> Borders</a></li>
+<li class="chapter" data-level="7.4" data-path="mapping.html"><a href="mapping.html#force-lonlat-extent"><i class="fa fa-check"></i><b>7.4</b> Force lon/lat extent</a></li>
+<li class="chapter" data-level="7.5" data-path="mapping.html"><a href="mapping.html#ocean-temperature"><i class="fa fa-check"></i><b>7.5</b> Ocean temperature</a></li>
+<li class="chapter" data-level="7.6" data-path="mapping.html"><a href="mapping.html#final-touches"><i class="fa fa-check"></i><b>7.6</b> Final touches</a></li>
+<li class="chapter" data-level="7.7" data-path="mapping.html"><a href="mapping.html#session-info-6"><i class="fa fa-check"></i><b>7.7</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="mapping-style.html"><a href="mapping-style.html"><i class="fa fa-check"></i><b>8</b> Mapping with style</a><ul>
+<li class="chapter" data-level="8.1" data-path="mapping-style.html"><a href="mapping-style.html#default-maps"><i class="fa fa-check"></i><b>8.1</b> Default maps</a></li>
+<li class="chapter" data-level="8.2" data-path="mapping-style.html"><a href="mapping-style.html#specific-labels"><i class="fa fa-check"></i><b>8.2</b> Specific labels</a></li>
+<li class="chapter" data-level="8.3" data-path="mapping-style.html"><a href="mapping-style.html#scale-bars"><i class="fa fa-check"></i><b>8.3</b> Scale bars</a></li>
+<li class="chapter" data-level="8.4" data-path="mapping-style.html"><a href="mapping-style.html#insetting"><i class="fa fa-check"></i><b>8.4</b> Insetting</a></li>
+<li class="chapter" data-level="8.5" data-path="mapping-style.html"><a href="mapping-style.html#rounding-it-out"><i class="fa fa-check"></i><b>8.5</b> Rounding it out</a></li>
+<li class="chapter" data-level="8.6" data-path="mapping-style.html"><a href="mapping-style.html#session-info-7"><i class="fa fa-check"></i><b>8.6</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mapping-google.html"><a href="mapping-google.html"><i class="fa fa-check"></i><b>9</b> Mapping with Google</a><ul>
+<li class="chapter" data-level="9.1" data-path="mapping-google.html"><a href="mapping-google.html#ggmap"><i class="fa fa-check"></i><b>9.1</b> <strong><code>ggmap</code></strong></a></li>
+<li class="chapter" data-level="9.2" data-path="mapping-google.html"><a href="mapping-google.html#mapping-cape-point"><i class="fa fa-check"></i><b>9.2</b> Mapping Cape Point</a></li>
+<li class="chapter" data-level="9.3" data-path="mapping-google.html"><a href="mapping-google.html#site-labels"><i class="fa fa-check"></i><b>9.3</b> Site labels</a></li>
+<li class="chapter" data-level="9.4" data-path="mapping-google.html"><a href="mapping-google.html#diy-maps"><i class="fa fa-check"></i><b>9.4</b> DIY maps</a></li>
+<li class="chapter" data-level="9.5" data-path="mapping-google.html"><a href="mapping-google.html#session-info-8"><i class="fa fa-check"></i><b>9.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>10</b> Tidy data</a><ul>
+<li class="chapter" data-level="10.1" data-path="tidy.html"><a href="tidy.html#gathering-and-spreading"><i class="fa fa-check"></i><b>10.1</b> Gathering and spreading</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="tidy.html"><a href="tidy.html#gathering"><i class="fa fa-check"></i><b>10.1.1</b> Gathering</a></li>
+<li class="chapter" data-level="10.1.2" data-path="tidy.html"><a href="tidy.html#spreading"><i class="fa fa-check"></i><b>10.1.2</b> Spreading</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="tidy.html"><a href="tidy.html#separating-and-uniting"><i class="fa fa-check"></i><b>10.2</b> Separating and uniting</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="tidy.html"><a href="tidy.html#separate"><i class="fa fa-check"></i><b>10.2.1</b> Separate</a></li>
+<li class="chapter" data-level="10.2.2" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>10.2.2</b> Unite</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="tidy.html"><a href="tidy.html#joining"><i class="fa fa-check"></i><b>10.3</b> Joining</a></li>
+<li class="chapter" data-level="10.4" data-path="tidy.html"><a href="tidy.html#but-why-though"><i class="fa fa-check"></i><b>10.4</b> But why though?</a></li>
+<li class="chapter" data-level="10.5" data-path="tidy.html"><a href="tidy.html#session-info-9"><i class="fa fa-check"></i><b>10.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="tidier.html"><a href="tidier.html"><i class="fa fa-check"></i><b>11</b> Tidier data</a><ul>
+<li class="chapter" data-level="11.1" data-path="tidier.html"><a href="tidier.html#comparison-operators"><i class="fa fa-check"></i><b>11.1</b> Comparison operators</a></li>
+<li class="chapter" data-level="11.2" data-path="tidier.html"><a href="tidier.html#logical-operators"><i class="fa fa-check"></i><b>11.2</b> Logical operators</a></li>
+<li class="chapter" data-level="11.3" data-path="tidier.html"><a href="tidier.html#arrange-observations-rows-with-arrange"><i class="fa fa-check"></i><b>11.3</b> Arrange observations (rows) with <code>arrange()</code></a></li>
+<li class="chapter" data-level="11.4" data-path="tidier.html"><a href="tidier.html#filter-observations-rows-with-filter"><i class="fa fa-check"></i><b>11.4</b> Filter observations (rows) with <code>filter()</code></a></li>
+<li class="chapter" data-level="11.5" data-path="tidier.html"><a href="tidier.html#select-variables-columns-withselect"><i class="fa fa-check"></i><b>11.5</b> Select variables (columns) with<code>select()</code></a></li>
+<li class="chapter" data-level="11.6" data-path="tidier.html"><a href="tidier.html#create-new-variables-columns-with-mutate"><i class="fa fa-check"></i><b>11.6</b> Create new variables (columns) with <code>mutate()</code></a></li>
+<li class="chapter" data-level="11.7" data-path="tidier.html"><a href="tidier.html#summarise-variables-columns-with-summarise"><i class="fa fa-check"></i><b>11.7</b> Summarise variables (columns) with <code>summarise()</code></a></li>
+<li class="chapter" data-level="11.8" data-path="tidier.html"><a href="tidier.html#session-info-10"><i class="fa fa-check"></i><b>11.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tidiest.html"><a href="tidiest.html"><i class="fa fa-check"></i><b>12</b> Tidiest data</a><ul>
+<li class="chapter" data-level="12.1" data-path="tidiest.html"><a href="tidiest.html#group-observations-rows-by-variables-columns-with-group_by"><i class="fa fa-check"></i><b>12.1</b> Group observations (rows) by variables (columns) with <code>group_by()</code></a><ul>
+<li class="chapter" data-level="12.1.1" data-path="tidiest.html"><a href="tidiest.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>12.1.1</b> Grouping by multiple variables</a></li>
+<li class="chapter" data-level="12.1.2" data-path="tidiest.html"><a href="tidiest.html#ungrouping"><i class="fa fa-check"></i><b>12.1.2</b> Ungrouping</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="tidiest.html"><a href="tidiest.html#chain-functions-with-the-pipe"><i class="fa fa-check"></i><b>12.2</b> Chain functions with the pipe (<code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="12.3" data-path="tidiest.html"><a href="tidiest.html#group-all-the-functions"><i class="fa fa-check"></i><b>12.3</b> Group all the functions!</a></li>
+<li class="chapter" data-level="12.4" data-path="tidiest.html"><a href="tidiest.html#going-deeper"><i class="fa fa-check"></i><b>12.4</b> Going deeper</a></li>
+<li class="chapter" data-level="12.5" data-path="tidiest.html"><a href="tidiest.html#pipe-into-ggplot2"><i class="fa fa-check"></i><b>12.5</b> Pipe into <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="12.6" data-path="tidiest.html"><a href="tidiest.html#additional-useful-functions"><i class="fa fa-check"></i><b>12.6</b> Additional useful functions</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="tidiest.html"><a href="tidiest.html#rename-variables-columns-with-rename"><i class="fa fa-check"></i><b>12.6.1</b> Rename variables (columns) with <code>rename()</code></a></li>
+<li class="chapter" data-level="12.6.2" data-path="tidiest.html"><a href="tidiest.html#create-a-new-dataframe-for-a-newly-created-variable-column-with-transmute"><i class="fa fa-check"></i><b>12.6.2</b> Create a new dataframe for a newly created variable (column) with <code>transmute()</code></a></li>
+<li class="chapter" data-level="12.6.3" data-path="tidiest.html"><a href="tidiest.html#count-observations-rows-with-n"><i class="fa fa-check"></i><b>12.6.3</b> Count observations (rows) with <code>n()</code></a></li>
+<li class="chapter" data-level="12.6.4" data-path="tidiest.html"><a href="tidiest.html#select-observations-rows-by-number-with-slice"><i class="fa fa-check"></i><b>12.6.4</b> Select observations (rows) by number with <code>slice()</code></a></li>
+<li class="chapter" data-level="12.6.5" data-path="tidiest.html"><a href="tidiest.html#summary-functions"><i class="fa fa-check"></i><b>12.6.5</b> Summary functions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="tidiest.html"><a href="tidiest.html#the-new-age-redux"><i class="fa fa-check"></i><b>12.7</b> The new age <em>redux</em></a></li>
+<li class="chapter" data-level="12.8" data-path="tidiest.html"><a href="tidiest.html#session-info-11"><i class="fa fa-check"></i><b>12.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="recap.html"><a href="recap.html"><i class="fa fa-check"></i><b>13</b> Recap</a><ul>
+<li class="chapter" data-level="13.1" data-path="recap.html"><a href="recap.html#the-future"><i class="fa fa-check"></i><b>13.1</b> The future</a></li>
+<li class="chapter" data-level="13.2" data-path="recap.html"><a href="recap.html#today"><i class="fa fa-check"></i><b>13.2</b> Today</a></li>
+<li class="chapter" data-level="13.3" data-path="recap.html"><a href="recap.html#session-info-12"><i class="fa fa-check"></i><b>13.3</b> Session info</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intro R Workshop: Data Manipulation, Analysis, and Visualisation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="rstudio" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> RStudio</h1>
+<blockquote>
+<p>“Strange events permit themselves the luxury of occurring.”</p>
+<p>— Charlie Chan</p>
+</blockquote>
+<blockquote>
+<p>“Without data you’re just another person with an opinion.”</p>
+<p>— W. Edwards Deming</p>
+</blockquote>
+<div id="setting-up-the-workspace" class="section level2">
+<h2><span class="header-section-number">2.1</span> Setting up the workspace</h2>
+<div id="general-settings" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> General settings</h3>
+<p>Before we start using RStudio (which is a code editor and environment that runs R) let’s first set it up properly. Find the ‘Tools’ (‘Preferences’) menu item, navigate to ‘Global Options’ (‘Code Editing’) and select the tick boxes as shown in Figure <a href="rstudio.html#fig:RStudio-prefs">2.1</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:RStudio-prefs"></span>
+<img src="figures/RStudio_preferences.png" alt="The RStudio Preferences menu." width="100%" />
+<p class="caption">
+Figure 2.1: The RStudio Preferences menu.
+</p>
+</div>
+</div>
+<div id="customising-appearance" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Customising appearance</h3>
+<p>RStudio is highly customisable. Under the <strong>Appearance</strong> tab under ‘Tools’/‘Global Options’ you can see all of the different themes that come with RStudio. We recommend choosing a theme with a black background (e.g. Chaos) as this will be easier on your eyes and your computer. It is also good to choose a theme with a sufficient amount of contrast between the different colours used to denote different types of objects/values in your code.</p>
+</div>
+<div id="configuring-panes" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Configuring panes</h3>
+<p>You cannot rearrange panes (see below) in RStudio by dragging them, but you can alter their position via the <strong>Pane Layout</strong> tab in the ‘Tools’/‘Global Options’ (‘RStudio’/‘Preferences’ – for Mac). You may arrange the panes as you would prefer however we recommend that during the duration of this workshop you leave them in the default layout.</p>
+</div>
+</div>
+<div id="the-rproject" class="section level2">
+<h2><span class="header-section-number">2.2</span> The Rproject</h2>
+<p>A very nifty way of managing workflow in RStudio is through the built-in functionality of the Rproject. We do not need to install any packages or change any settings to use these. Creating a new project is a very simple task, as well. For this course we will be using the <code>Intro_R_Workshop.Rproj</code> file you downloaded with the course material so that we are all running identical projects. This will prevent a lot of issues by ensuring we are doing things by the same standard. Better yet, an Rproject integrates seamlessly into version control software (e.g. GitHub) and allows for instant world class collaboration on any research project. To initialise the ‘Intro_R_Workshop’ project on your machine please find where you saved <code>Intro_R_Workshop.Rproj</code> file and click on it. We will cover the concepts and benefits of an Rproject more as we move through the course.</p>
+</div>
+<div id="installing-packages" class="section level2">
+<h2><span class="header-section-number">2.3</span> Installing packages</h2>
+<<<<<<< HEAD
+<p>The most common functions used in R are contained within the <strong><code>base</code></strong> package; this makes R useful ‘out of the box.’ However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the <a href="https://cran.r-project.org/web/packages/">CRAN website</a>. There are currently (<code>2018-03-02</code>) <code>12233</code> packages available for R!</p>
+||||||| merged common ancestors
+<p>The most common functions used in R are contained within the <strong><code>base</code></strong> package; this makes R useful ‘out of the box.’ However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the <a href="https://cran.r-project.org/web/packages/">CRAN website</a>. There are currently (<code>2018-01-22</code>) <code>12126</code> packages available for R!</p>
+=======
+<p>The most common functions used in R are contained within the <strong><code>base</code></strong> package; this makes R useful ‘out of the box.’ However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the <a href="https://cran.r-project.org/web/packages/">CRAN website</a>. There are currently (<code>2018-01-29</code>) <code>12081</code> packages available for R!</p>
+>>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
+<p>If the thought of searching for and finding R packages is daunting, a good place to start is the <a href="http://cran.r-project.org/web/views/">R Task View</a> page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.</p>
+<p>After clicking ‘Tools’/‘Install Packages’, type in the package name <strong><code>tidyverse</code></strong> in the ‘Packages’ text box (note that it is case sensitive) and select the Install button. The <strong>Console</strong> will run the code needed to install the package, and then provide some commentary on the installation of the package and any of its dependencies (<em>i.e.</em>, other R packages needed to run the required package).</p>
+<p>The installation process makes sure that the functions within the packages contained within the <strong><code>tidyverse</code></strong> are now available on your computer, but to avoid potential conflicts in the names of functions, it will not load these automatically. To make R ‘know’ about these functions in a particular session, you need either to load the package via ticking the checkbox for that package in the <strong>Packages</strong> tab, or execute:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>To prepare ourselves for the week ahead, let us also install the following packages. Here I demonstate the command line approach to achieve the same thing that can be done via the menu:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages(&quot;rmarkdown&quot;)</span>
+<span class="co"># install.packages(&quot;tidyverse&quot;)</span>
+<span class="co"># install.packages(&quot;bindrcpp&quot;)</span>
+<span class="co"># install.packages(&quot;ggpubr&quot;)</span>
+<span class="co"># install.packages(&quot;magrittr&quot;)</span>
+<span class="co"># install.packages(&quot;boot&quot;)</span>
+<span class="co"># install.packages(&quot;ggsn&quot;)</span>
+<span class="co"># install.packages(&quot;scales&quot;)</span>
+<span class="co"># install.packages(&quot;maps&quot;)</span>
+<span class="co"># install.packages(&quot;ggmap&quot;)</span>
+<span class="co"># install.packages(&quot;lubridate&quot;)</span>
+<span class="co"># install.packages(&quot;bindrcpp&quot;)</span></code></pre></div>
+<p>Since we will develop the habit of doing all of our analyses from R scripts, it is best practice to simply list all of the libraries to be loaded right at the start of your script. Comments may be used to remind your future-self (to quote Hadley Wickham) what those packages are for.</p>
+<blockquote>
+<p><strong>Copying code from RStudio</strong><br />
+Here you saw RStudio execute the R code needed to install (using <code>install.packages()</code>) and load (using <code>library()</code>) the package, so if you want to include these in one of your programs, just copy the text it executes. Note that you need only install the current version of a package once, but it needs to be loaded at the beginning of each R session.</p>
+</blockquote>
+<blockquote>
+<p><strong>Question</strong> Why is it best practice to include packages you use in your R program explicitly?</p>
+</blockquote>
+</div>
+<div id="the-panes-of-rstudio" class="section level2">
+<h2><span class="header-section-number">2.4</span> The panes of RStudio</h2>
+<p>RStudio has four main panes each in a quadrant of your screen: <strong>Source Editor</strong>, <strong>Console</strong>, <strong>Workspace Browser</strong> (and <strong>History</strong>), and <strong>Plots</strong> (and <strong>Files</strong>, <strong>Packages</strong>, <strong>Help</strong>). These can also be adjusted under the ‘Preferences’ menu. Note that there might be subtle differences between RStudio installations on different operating systems. We will discuss each of the panes in turn.</p>
+<div id="source-editor" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Source Editor</h3>
+<p>Generally we will want to write programs longer than a few lines. The <strong>Source Editor</strong> can help you open, edit and execute these programs. Let us open a simple program:</p>
+<ol style="list-style-type: decimal">
+<li><p>Use Windows Explorer (Finder on Mac) and navigate to the file <code>BONUS/the_new_age.R</code>.</p></li>
+<li><p>Now make RStudio the default application to open <code>.R</code> files (right click on the file Name and set RStudio to open it as the default if it isn’t already)</p></li>
+<li><p>Now double click on the file – this will open it in RStudio in the <strong>Source Editor</strong> in the top left pane.</p></li>
+</ol>
+<p>Note <code>.R</code> files are simply standard text files and can be created in any text editor and saved with a <code>.R</code> (or <code>.r</code>) extension, but the Source editor in RStudio has the advantage of providing syntax highlighting, code completion, and smart indentation. You can see the different colours for numbers and there is also highlighting to help you count brackets (click your cursor next to a bracket and push the right arrow and you will see its partner bracket highlighted). We can execute R code directly from the Source Editor. Try the following (for Windows machines; for Macs replace <strong>Ctrl</strong> with <strong>Cmd</strong>):</p>
+<ul>
+<li>Execute a single line (Run icon or <strong>Ctrl+Enter</strong>). Note that the cursor can be anywhere on the line and one does not need to highlight anything — do this for the code on line 2</li>
+<li>Execute multiple lines (Highlight lines with the cursor, then Run icon or <strong>Ctrl+Enter</strong>) — do this for line 3 to 6</li>
+<li>Execute the whole script (Source icon or <strong>Ctrl+Shift+Enter</strong>)</li>
+</ul>
+<p>Now, try changing the x and/or y axis labels on line 18 and re-run the script.</p>
+<p>Now let us save the program in the <strong>Source Editor</strong> by clicking on the file symbol (note that the file symbol is greyed out when the file has not been changed since it was last saved).</p>
+<p>At this point, it might be worth thinking a bit about what the program is doing. R requires one to think about what you are doing, not simply clicking buttons like in some other software systems which shall remain nameless for now… Scripts execute sequentially from top to bottom. Try and work out what each line of the program is doing and discuss it with your neighbour. Note, if you get stuck, try using R’s help system; accessing the help system is especially easy within RStudio — see if you can figure out how to use that too.</p>
+<blockquote>
+<p><strong>Comments</strong><br />
+The hash (<code>#</code>) tells R not to run any of the text on that line to the right of the symbol. This is the standard way of commenting R code; it is VERY good practice to comment in detail so that you can understand later what you have done.</p>
+</blockquote>
+</div>
+<div id="console" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Console</h3>
+<p>This is where you can type code that executes immediately. This is also known as the command line. Throughout the notes, we will represent code for you to execute in R as a different font.</p>
+<blockquote>
+<p><strong>Type it in!</strong> Although it may appear that one could copy code from this PDF into the <strong>Console</strong>, you really shouldn’t. The first reason is that you might unwittingly copy invisible PDF formatting errors into R, which will make the code fail. But more importantly, typing code into the <strong>Console</strong> yourself gives you the practice you need, and allows you to make (and correct) your own errors. This is an invaluable way of learning and taking shortcuts now will only hurt you in the long run.</p>
+</blockquote>
+<p>Entering code in the command line is intuitive and easy. For example, we can use R as a calculator by typing into the Console (and pressing <strong>Enter</strong> after each line):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">6</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span></code></pre></div>
+<pre><code>R&gt; [1] 18</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span></code></pre></div>
+<pre><code>R&gt; [1] 9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">^</span><span class="st"> </span><span class="dv">3</span></code></pre></div>
+<pre><code>R&gt; [1] 8</code></pre>
+<p>Note that spaces are optional around simple calculations.</p>
+<p>We can also use the assignment operator <code>&lt;-</code> to assign any calculation to a variable so we can access it later (the <code>=</code> sign would work, too, but it’s bad practice to use it… and we’ll talk about this as we go):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">2</span>
+b &lt;-<span class="st"> </span><span class="dv">7</span>
+a <span class="op">+</span><span class="st"> </span>b</code></pre></div>
+<pre><code>R&gt; [1] 9</code></pre>
+<p>To type the assignment operator (<code>&lt;-</code>) push the following two keys together: <strong>alt -</strong>. There are many keyboard shortcuts in R and we will introduce them as we go along.</p>
+<p>Spaces are also optional around assignment operators. It is good practice to use single spaces in your R scripts, and the <strong>alt -</strong> shortcut will do this for you automagically. Spaces are not only there to make the code more readable to the human eye, but also to the machine. Try this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d&lt;-<span class="dv">2</span>
+d <span class="op">&lt;</span><span class="st"> </span><span class="op">-</span><span class="dv">2</span></code></pre></div>
+<pre><code>R&gt; [1] FALSE</code></pre>
+<p>Note that the first line of code assigns <code>d</code> a value of <code>2</code>, whereas the second statement asks R whether this variable has a value less than 2. When asked, it responds with FALSE. If we hadn’t used spaces, how would R have known what we meant?</p>
+<p>Another important question here is, is R case sensitive? Is <code>A</code> the same as <code>a</code>? Figure out a way to check for yourself.</p>
+<p>We can create a vector in R by using the combine <code>c()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">apples &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.3</span>, <span class="fl">3.8</span>, <span class="fl">4.5</span>)</code></pre></div>
+<p>A vector is a one-dimensional array (<em>i.e.</em>, a list of numbers), and this is the simplest form of data used in R (you can think of a single value in R as just a very short vector). We’ll talk about more complex (and therefore more powerful) types of data structures as we go along.</p>
+<p>If you want to display the value of apples type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">apples</code></pre></div>
+<pre><code>R&gt; [1] 5.3 3.8 4.5</code></pre>
+<p>Finally, there are default functions in R for nearly all basic statistical analyses, including <code>mean()</code> and <code>sd()</code> (standard deviation):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(apples)</code></pre></div>
+<pre><code>R&gt; [1] 4.533333</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(apples)</code></pre></div>
+<pre><code>R&gt; [1] 0.7505553</code></pre>
+<blockquote>
+<p><strong>Variable names</strong><br />
+It is best not to use <code>c</code> as the name of a value or array. Why? What other words might not be good to use?</p>
+</blockquote>
+<p>Or try this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">sd</span>(apples), <span class="dv">2</span>)</code></pre></div>
+<pre><code>R&gt; [1] 0.75</code></pre>
+<blockquote>
+<p><strong>Question</strong><br />
+What did we do above? What can you conclude from those functions?</p>
+</blockquote>
+<p>RStudio supports the automatic completion of code using the <strong>Tab</strong> key. For example, type the three letters <code>app</code> and then the <strong>Tab</strong> key. What happens?</p>
+<p>The code completion feature also provides brief inline help for functions whenever possible. For example, type <code>mean()</code> and press the <strong>Tab</strong> key.</p>
+<p>The RStudio <strong>Console</strong> automagically maintains a ‘history’ so that you can retrieve previous commands, a bit like your Internet browser or Google (<em>see the code in: BONUS/mapping_yourself.Rmd</em>). On a blank line in the <strong>Console</strong>, press the up arrow, and see what happens.</p>
+<p>If you wish to review a list of your recent commands and then select a command from this list you can use <strong>Ctrl+Up</strong> to review the list (<strong>Cmd+Up</strong> on the Mac). If you prefer a ‘bird’s eye’ overview of the R command history, you may also use the RStudio History pane (see below).</p>
+<p>The <strong>Console</strong> title bar has a few useful features:</p>
+<ol style="list-style-type: decimal">
+<li><p>It displays the current R working directory (more on this later)</p></li>
+<li><p>It provides the ability to interrupt R during a long computation (a stop sign will appear whilst code is running)</p></li>
+<li><p>It allows you to minimise and maximise the <strong>Console</strong> in relation to the <strong>Source pane</strong> using the buttons at the top-right or by double-clicking the title bar)</p></li>
+</ol>
+</div>
+<div id="environment-and-history-panes" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Environment and History panes</h3>
+<p>The <strong>Environment</strong> pane is very useful as it shows you what objects (<em>i.e.</em>, dataframes, arrays, values and functions) you have in your environment (workspace). You can see the values for objects with a single value and for those that are longer R will tell you their class. When you have data in your environment that have two dimensions (rows and columns) you may click on them and they will appear in the <strong>Source Editor</strong> pane like a spreadsheet.</p>
+<p>You can then go back to your program in the <strong>Source Editor</strong> by clicking its tab or closing the tab for the object you opened. Also in the <strong>Environment</strong> is the History tab, where you can see all of the code executed for the session. If you double-click a line or highlight a block of lines and then double-click those, you can send it to the <strong>Console</strong> (<em>i.e.</em>, run them).</p>
+<p>Typing the following into the <strong>Console</strong> will list everything you’ve loaded into the Environment:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre></div>
+<pre><code>R&gt; [1] &quot;a&quot;        &quot;apples&quot;   &quot;b&quot;        &quot;d&quot;        &quot;pkgs_lst&quot; &quot;url&quot;</code></pre>
+<p>What do we have loaded into our environment? Did all of these objects come from one script, or more than one? How can we tell where an object was generated?</p>
+</div>
+<div id="files-plots-packages-help-and-viewer-panes" class="section level3">
+<h3><span class="header-section-number">2.4.4</span> Files, Plots, Packages, Help, and Viewer panes</h3>
+<p>The last pane has a number of different tabs. The Files tab has a navigable file manager, just like the file system on your operating system. The <strong>Plot</strong> tab is where graphics you create will appear. The <strong>Packages</strong> tab shows you the packages that are installed and those that can be installed (more on this just now). The <strong>Help</strong> tab allows you to search the R documentation for help and is where the help appears when you ask for it from the <strong>Console</strong>.</p>
+<p>Methods of getting help from the <strong>Console</strong> include…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?mean</code></pre></div>
+<p>…or:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(mean)</code></pre></div>
+<p>We will go into this in more detail in the next session.</p>
+<p>To reproduced Figure <a href="rstudio.html#fig:ggplot2-1">2.2</a> in the <strong>Plot</strong> tab, simply copy and paste the following code into the <strong>Console</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dt">by =</span> <span class="fl">0.01</span>)
+y &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">sin</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>(x <span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">4</span>))
+<span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), <span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">col =</span> <span class="st">&quot;salmon&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:ggplot2-1"></span>
+<img src="02-RStudio_files/figure-html/ggplot2-1-1.png" alt="The same plot as above, but assembled with __ggplot2__." width="672" />
+<p class="caption">
+Figure 2.2: The same plot as above, but assembled with <strong>ggplot2</strong>.
+</p>
+</div>
+</div>
+</div>
+<div id="session-info-1" class="section level2">
+<h2><span class="header-section-number">2.5</span> Session info</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">installed.packages</span>()[<span class="kw">names</span>(<span class="kw">sessionInfo</span>()<span class="op">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</code></pre></div>
+<pre><code>R&gt;   forcats   stringr     purrr     readr    tibble   ggplot2 tidyverse 
+R&gt;   &quot;0.3.0&quot;   &quot;1.3.0&quot;   &quot;0.2.4&quot;   &quot;1.1.1&quot;   &quot;1.4.2&quot;   &quot;2.2.1&quot;   &quot;1.2.1&quot; 
+R&gt;     tidyr     dplyr     rvest      xml2 
+R&gt;   &quot;0.8.0&quot;   &quot;0.7.4&quot;   &quot;0.3.2&quot;   &quot;1.2.0&quot;</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="prelim.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true,
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": true,
+"download": "Intro_R_Workshop.pdf"
+}
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

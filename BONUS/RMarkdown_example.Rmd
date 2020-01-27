@@ -1,0 +1,110 @@
+---
+title: "R Markdown Example"
+author: "Robert W Schlegel"
+date: '`r Sys.Date()`'
+output:
+  html_document: default
+bibliography: markdown/bibliography.bib
+---
+
+```{r markdown-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "R>", 
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+# R Markdown
+
+The workshop pdf we have been using for the last three days is actually produced from R Markdown and you may view the R Markdown document (the .Rmd file) to see all of the code that created this pdf in its native state. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. R Markdown is based on the language Markdown, which is another computer language, somewhere in between \LaTeX\ and Microsoft Word. R Markdown differs from Markdown in that it is also able to understand the R code we give it. Furthermore, RStudio has built into it the capabilities necessary to use R Markdown 'out of the box'. For more details on using R Markdown see <http://rmarkdown.rstudio.com>. In order to use this tutorial effectively, please examine the R Markdown file ('Intro_R_2017.Rmd') in conjunction with the output document ('Intro_R_2017.pdf'). If you double click on the 'Intro_R_2017.Rmd' file it will open in the RStudio editor.
+
+## Quick examples
+
+Below is just a quick overview of the many common things one will need to know to put an RMarkdown document together.
+
+### Text
+
+This is text in _italics_.
+
+And this text is in **bold**.
+
+This text is in `code font`.
+
+You can embed an R code chunk like this and show it and the data it produces:
+
+```{r get-the-map, results = TRUE, echo = TRUE, message = FALSE, warning = FALSE}
+library(ggmap)
+load("../data/cape_point_sites.Rdata")
+# cape_point <- get_map(location = c(lon = 18.36519, lat = -34.2352581),
+#                         zoom = 11, maptype = 'roadmap')
+load("../data/cape_point.Rdata")
+str(cape_point)
+```
+
+You can also embed R output directly into sentences as in this example:
+
+Some site details are in this list:
+
+  *   site name --- `r cape_point_sites[1,1]`
+  *   longitude --- `r cape_point_sites[1,2]`
+  *   latitude --- `r cape_point_sites[1,3]`
+
+### Tables
+
+There are many ways to produce tables in R Markdown. A short search will provide many alternatives. The **`xtable`** package is another excellent choice as this provides even more options for how your table output will appear. Here we provide one example:
+
+```{r, results = 'asis'}
+knitr::kable(
+  head(mtcars[, 1:8], 10), booktabs = TRUE,
+  caption = 'A table of the first 10 rows of the mtcars data.'
+)
+```
+
+Try looking up the help file for `?kable()` to learn more about what may be done with this function.
+
+### Images
+
+Images stored on your computer, such as \ref{fig:accurate}, can be embedded in your document and even cross referenced.
+
+```{r accurate, echo = FALSE, fig.align = "centre", fig.cap="Only data will tell."}
+knitr::include_graphics("markdown/accurate.jpg")
+```
+
+Notice that in order to display images in this way we need to make sure R knows we are using the **`knitr`** package function `include_graphics()`, which allow one to display images of all sorts of file types without any fuss.
+
+You can also embed any plots produced by R, for example:
+
+```{r the-map, echo = TRUE, message = FALSE, warning = FALSE, fig.height = 3.2, fig.cap = "My first R plot.", echo = FALSE}
+ggmap(cape_point) +
+  geom_point(data = cape_point_sites,
+             aes(x = lon+0.002, y = lat-0.007),
+             colour = "red", size =  1.75) +
+  geom_text(data = cape_point_sites[3,],
+            aes(lon+0.002, lat-0.007, label = site),
+            hjust = -0.1, vjust = 0.5, size = 1.75) +
+  geom_text(data = cape_point_sites[-3,],
+            aes(lon+0.002, lat-0.007, label = site),
+            hjust = 1.1, vjust = 0.5, size = 1.75) +
+  labs(x = "", y = "")
+```
+
+Notice above how the first line specifying the start of the R code includes some specifications with regards to the size of the figure, its caption, etc. Note too that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. The options `results = TRUE`, `message = TRUE` and `warning = TRUE` have similar functions. Info on the other code chunk options can be found at the [R Markdown website](http://rmarkdown.rstudio.com/authoring_rcodechunks.html) or in the Cheatsheets and other documentation accessible via the RStudio 'Help' in the menu bar.
+
+> HTML hyperlinks  
+See how the code above also demonstrates how to embed links to external websites.
+
+### References
+
+We can also have some references... This document was made using the R software [@R2017] and various add-on packages [@vegan2017]. The *vegan* package was produced by @vegan2017 some time ago.
+
+## Creating a document
+
+Even though we may immediately begin authoring documents with RStudio, we are limited to .html and .doc file types. If we want to author .pdf files, such as the one we are reading now, we must install 'LaTeX' on our computers. This installation process is beyond the scope of this course but there are many resources available online to aid one in the process and the software is, of course, free.
+
+Whether or not you have 'LaTeX' installed, when you click the **Knit** button (with the option to create multiple document kinds) a document will be generated that includes both content as well as the output of any embedded R code chunks (portions of R code surrounded by code that denotes the R commands) within the document. R code chunks can be used to render R output into documents or to simply display code for illustration, as outlined above.
+
+This is a terribly basic demonstration, but since beautiful documentation already exists I suggest you go and find the necessary examples on the R Markdown website indicated above for a more in-depth account of how to use it.
+
+
+# References

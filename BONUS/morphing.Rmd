@@ -1,0 +1,51 @@
+---
+title: "Morphing"
+author: "Robert W Schlegel"
+date: '`r Sys.Date()`'
+output:
+  html_document: default
+language: Australian
+linkcolor: cyan
+citecolor: green
+urlcolor: cyan
+---
+
+```{r dates-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "R>", 
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+# Introduction
+Have you ever wanted to animate the transition from one figure to another? No? Me neither. But hey, it's easy to do, so why not.
+
+```{r morph-load}
+# Load libraries
+library(magick)
+
+# Load images
+newlogo <- image_scale(image_read("https://www.r-project.org/logo/Rlogo.png"), "x150")
+oldlogo <- image_scale(image_read("https://developer.r-project.org/Logo/Rlogo-3.png"), "x150")
+```
+
+# Morph creation
+
+```{r morph-create}
+morph_frames <- image_morph(c(oldlogo, newlogo), frames = 100)
+```
+
+# Morph animation
+
+```{r morph-anim}
+morph_animate <- image_animate(frames, fps = 20)
+```
+
+
+# Morph save
+
+```{r}
+image_write(morph_animate, "../BONUS/morph.gif")
+```
+

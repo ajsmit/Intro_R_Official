@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Intro R Workshop: Data Manipulation, Analysis, and Visualisation</title>
+  <meta name="description" content="The basics for a safe voyage through the tidyverse.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="figures/769_life_finds_a_way.png" />
+  <meta property="og:description" content="The basics for a safe voyage through the tidyverse." />
+  <meta name="github-repo" content="robwschlegel/Intro_R_Workshop" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
+  
+  <meta name="twitter:description" content="The basics for a safe voyage through the tidyverse." />
+  <meta name="twitter:image" content="figures/769_life_finds_a_way.png" />
+
+<meta name="author" content="Robert W Schlegel &amp; AJ Smit">
+
+
+<<<<<<< HEAD
+<meta name="date" content="2018-03-02">
+||||||| merged common ancestors
+<meta name="date" content="2018-01-22">
+=======
+<meta name="date" content="2018-01-29">
+>>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="rstudio.html">
+<link rel="next" href="graphics.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Intro R Workshop</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="prelim.html"><a href="prelim.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
+<li class="chapter" data-level="1.1" data-path="prelim.html"><a href="prelim.html#course-outline"><i class="fa fa-check"></i><b>1.1</b> Course outline</a><ul>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-1-in-the-beginning"><i class="fa fa-check"></i>Day 1 – In the Beginning</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-2-show-and-tell"><i class="fa fa-check"></i>Day 2 – Show and tell</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-3-going-deeper"><i class="fa fa-check"></i>Day 3 – Going deeper</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-4-the-enlightened-researcher"><i class="fa fa-check"></i>Day 4 – The Enlightened Researcher</a></li>
+<li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-5-the-world-is-yours"><i class="fa fa-check"></i>Day 5 – The world is yours</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="prelim.html"><a href="prelim.html#about-this-workshop"><i class="fa fa-check"></i><b>1.2</b> About this Workshop</a></li>
+<li class="chapter" data-level="1.3" data-path="prelim.html"><a href="prelim.html#why-use-r"><i class="fa fa-check"></i><b>1.3</b> Why use R?</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="prelim.html"><a href="prelim.html#some-negatives-of-using-r"><i class="fa fa-check"></i><b>1.3.1</b> Some negatives of using R</a></li>
+<li class="chapter" data-level="1.3.2" data-path="prelim.html"><a href="prelim.html#the-challenge-learning-to-program-in-r"><i class="fa fa-check"></i><b>1.3.2</b> The challenge: learning to program in R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="prelim.html"><a href="prelim.html#using-your-own-computer"><i class="fa fa-check"></i><b>1.4</b> Using your own computer?</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="prelim.html"><a href="prelim.html#installing-r"><i class="fa fa-check"></i><b>1.4.1</b> Installing R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="prelim.html"><a href="prelim.html#installing-rstudio"><i class="fa fa-check"></i><b>1.4.2</b> Installing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="prelim.html"><a href="prelim.html#resources"><i class="fa fa-check"></i><b>1.5</b> Resources</a></li>
+<li class="chapter" data-level="1.6" data-path="prelim.html"><a href="prelim.html#style-and-code-conventions"><i class="fa fa-check"></i><b>1.6</b> Style and code conventions</a></li>
+<li class="chapter" data-level="1.7" data-path="prelim.html"><a href="prelim.html#about-this-document"><i class="fa fa-check"></i><b>1.7</b> About this document</a></li>
+<li class="chapter" data-level="1.8" data-path="prelim.html"><a href="prelim.html#exercise-it-which-shall-not-be-named"><i class="fa fa-check"></i><b>1.8</b> Exercise: It which shall not be named</a></li>
+<li class="chapter" data-level="1.9" data-path="prelim.html"><a href="prelim.html#session-info"><i class="fa fa-check"></i><b>1.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>2</b> RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="rstudio.html"><a href="rstudio.html#setting-up-the-workspace"><i class="fa fa-check"></i><b>2.1</b> Setting up the workspace</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="rstudio.html"><a href="rstudio.html#general-settings"><i class="fa fa-check"></i><b>2.1.1</b> General settings</a></li>
+<li class="chapter" data-level="2.1.2" data-path="rstudio.html"><a href="rstudio.html#customising-appearance"><i class="fa fa-check"></i><b>2.1.2</b> Customising appearance</a></li>
+<li class="chapter" data-level="2.1.3" data-path="rstudio.html"><a href="rstudio.html#configuring-panes"><i class="fa fa-check"></i><b>2.1.3</b> Configuring panes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rstudio.html"><a href="rstudio.html#the-rproject"><i class="fa fa-check"></i><b>2.2</b> The Rproject</a></li>
+<li class="chapter" data-level="2.3" data-path="rstudio.html"><a href="rstudio.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing packages</a></li>
+<li class="chapter" data-level="2.4" data-path="rstudio.html"><a href="rstudio.html#the-panes-of-rstudio"><i class="fa fa-check"></i><b>2.4</b> The panes of RStudio</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="rstudio.html"><a href="rstudio.html#source-editor"><i class="fa fa-check"></i><b>2.4.1</b> Source Editor</a></li>
+<li class="chapter" data-level="2.4.2" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>2.4.2</b> Console</a></li>
+<li class="chapter" data-level="2.4.3" data-path="rstudio.html"><a href="rstudio.html#environment-and-history-panes"><i class="fa fa-check"></i><b>2.4.3</b> Environment and History panes</a></li>
+<li class="chapter" data-level="2.4.4" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help-and-viewer-panes"><i class="fa fa-check"></i><b>2.4.4</b> Files, Plots, Packages, Help, and Viewer panes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="rstudio.html"><a href="rstudio.html#session-info-1"><i class="fa fa-check"></i><b>2.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>3</b> An R workflow</a><ul>
+<li class="chapter" data-level="3.1" data-path="workflow.html"><a href="workflow.html#r-scripts"><i class="fa fa-check"></i><b>3.1</b> R Scripts</a></li>
+<li class="chapter" data-level="3.2" data-path="workflow.html"><a href="workflow.html#reading-data-into-r"><i class="fa fa-check"></i><b>3.2</b> Reading data into R</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="workflow.html"><a href="workflow.html#preparing-data-for-r"><i class="fa fa-check"></i><b>3.2.1</b> Preparing data for R</a></li>
+<li class="chapter" data-level="3.2.2" data-path="workflow.html"><a href="workflow.html#converting-data"><i class="fa fa-check"></i><b>3.2.2</b> Converting data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="workflow.html"><a href="workflow.html#importing-data"><i class="fa fa-check"></i><b>3.2.3</b> Importing data</a></li>
+<li class="chapter" data-level="3.2.4" data-path="workflow.html"><a href="workflow.html#loading-a-file"><i class="fa fa-check"></i><b>3.2.4</b> Loading a file</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="workflow.html"><a href="workflow.html#working-with-data"><i class="fa fa-check"></i><b>3.3</b> Working with data</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="workflow.html"><a href="workflow.html#examine-your-data"><i class="fa fa-check"></i><b>3.3.1</b> Examine your data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="workflow.html"><a href="workflow.html#tidyverse-sneak-peek"><i class="fa fa-check"></i><b>3.3.2</b> Tidyverse sneak peek</a></li>
+<li class="chapter" data-level="3.3.3" data-path="workflow.html"><a href="workflow.html#subsetting"><i class="fa fa-check"></i><b>3.3.3</b> Subsetting</a></li>
+<li class="chapter" data-level="3.3.4" data-path="workflow.html"><a href="workflow.html#basic-stats"><i class="fa fa-check"></i><b>3.3.4</b> Basic stats</a></li>
+<li class="chapter" data-level="3.3.5" data-path="workflow.html"><a href="workflow.html#summary-of-all-variables-in-a-dataframe"><i class="fa fa-check"></i><b>3.3.5</b> Summary of all variables in a dataframe</a></li>
+<li class="chapter" data-level="3.3.6" data-path="workflow.html"><a href="workflow.html#summary-statistics-by-variable"><i class="fa fa-check"></i><b>3.3.6</b> Summary statistics by variable</a></li>
+<li class="chapter" data-level="3.3.7" data-path="workflow.html"><a href="workflow.html#more-complex-calculations"><i class="fa fa-check"></i><b>3.3.7</b> More complex calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="workflow.html"><a href="workflow.html#saving-data"><i class="fa fa-check"></i><b>3.4</b> Saving data</a></li>
+<li class="chapter" data-level="3.5" data-path="workflow.html"><a href="workflow.html#visualisations"><i class="fa fa-check"></i><b>3.5</b> Visualisations</a></li>
+<li class="chapter" data-level="3.6" data-path="workflow.html"><a href="workflow.html#clearing-the-memory"><i class="fa fa-check"></i><b>3.6</b> Clearing the memory</a></li>
+<li class="chapter" data-level="3.7" data-path="workflow.html"><a href="workflow.html#working-directories"><i class="fa fa-check"></i><b>3.7</b> Working directories</a></li>
+<li class="chapter" data-level="3.8" data-path="workflow.html"><a href="workflow.html#help"><i class="fa fa-check"></i><b>3.8</b> Help</a></li>
+<li class="chapter" data-level="3.9" data-path="workflow.html"><a href="workflow.html#session-info-2"><i class="fa fa-check"></i><b>3.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>4</b> Graphics with <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="4.1" data-path="graphics.html"><a href="graphics.html#example-figures"><i class="fa fa-check"></i><b>4.1</b> Example figures</a></li>
+<li class="chapter" data-level="4.2" data-path="graphics.html"><a href="graphics.html#basics-of-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Basics of <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="4.3" data-path="graphics.html"><a href="graphics.html#to-aes-or-not-to-aes-that-is-the-question"><i class="fa fa-check"></i><b>4.3</b> To <code>aes()</code> or not to <code>aes()</code>, that is the question</a></li>
+<li class="chapter" data-level="4.4" data-path="graphics.html"><a href="graphics.html#changing-labels"><i class="fa fa-check"></i><b>4.4</b> Changing labels</a></li>
+<li class="chapter" data-level="4.5" data-path="graphics.html"><a href="graphics.html#session-info-3"><i class="fa fa-check"></i><b>4.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>5</b> Faceting Figures</a><ul>
+<li class="chapter" data-level="5.1" data-path="faceting.html"><a href="faceting.html#faceting-one-figure"><i class="fa fa-check"></i><b>5.1</b> Faceting one figure</a></li>
+<li class="chapter" data-level="5.2" data-path="faceting.html"><a href="faceting.html#new-figure-types"><i class="fa fa-check"></i><b>5.2</b> New figure types</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="faceting.html"><a href="faceting.html#line-graph"><i class="fa fa-check"></i><b>5.2.1</b> Line graph</a></li>
+<li class="chapter" data-level="5.2.2" data-path="faceting.html"><a href="faceting.html#linear-model"><i class="fa fa-check"></i><b>5.2.2</b> Linear model</a></li>
+<li class="chapter" data-level="5.2.3" data-path="faceting.html"><a href="faceting.html#histogram"><i class="fa fa-check"></i><b>5.2.3</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.4" data-path="faceting.html"><a href="faceting.html#boxplot"><i class="fa fa-check"></i><b>5.2.4</b> Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="faceting.html"><a href="faceting.html#gridding-figures"><i class="fa fa-check"></i><b>5.3</b> Gridding figures</a></li>
+<li class="chapter" data-level="5.4" data-path="faceting.html"><a href="faceting.html#session-info-4"><i class="fa fa-check"></i><b>5.4</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="brewing.html"><a href="brewing.html"><i class="fa fa-check"></i><b>6</b> Brewing colours in <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="6.1" data-path="brewing.html"><a href="brewing.html#r-data"><i class="fa fa-check"></i><b>6.1</b> R Data</a></li>
+<li class="chapter" data-level="6.2" data-path="brewing.html"><a href="brewing.html#rcolorbrewer"><i class="fa fa-check"></i><b>6.2</b> <strong><code>RColorBrewer</code></strong></a></li>
+<li class="chapter" data-level="6.3" data-path="brewing.html"><a href="brewing.html#make-your-own-palettes"><i class="fa fa-check"></i><b>6.3</b> Make your own palettes</a></li>
+<li class="chapter" data-level="6.4" data-path="brewing.html"><a href="brewing.html#use-your-own-palettes"><i class="fa fa-check"></i><b>6.4</b> Use your own palettes</a></li>
+<li class="chapter" data-level="6.5" data-path="brewing.html"><a href="brewing.html#diy-figures"><i class="fa fa-check"></i><b>6.5</b> DIY figures</a></li>
+<li class="chapter" data-level="6.6" data-path="brewing.html"><a href="brewing.html#session-info-5"><i class="fa fa-check"></i><b>6.6</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>7</b> Mapping with <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="7.1" data-path="mapping.html"><a href="mapping.html#a-new-concept"><i class="fa fa-check"></i><b>7.1</b> A new concept?</a></li>
+<li class="chapter" data-level="7.2" data-path="mapping.html"><a href="mapping.html#land-mask"><i class="fa fa-check"></i><b>7.2</b> Land mask</a></li>
+<li class="chapter" data-level="7.3" data-path="mapping.html"><a href="mapping.html#borders"><i class="fa fa-check"></i><b>7.3</b> Borders</a></li>
+<li class="chapter" data-level="7.4" data-path="mapping.html"><a href="mapping.html#force-lonlat-extent"><i class="fa fa-check"></i><b>7.4</b> Force lon/lat extent</a></li>
+<li class="chapter" data-level="7.5" data-path="mapping.html"><a href="mapping.html#ocean-temperature"><i class="fa fa-check"></i><b>7.5</b> Ocean temperature</a></li>
+<li class="chapter" data-level="7.6" data-path="mapping.html"><a href="mapping.html#final-touches"><i class="fa fa-check"></i><b>7.6</b> Final touches</a></li>
+<li class="chapter" data-level="7.7" data-path="mapping.html"><a href="mapping.html#session-info-6"><i class="fa fa-check"></i><b>7.7</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="mapping-style.html"><a href="mapping-style.html"><i class="fa fa-check"></i><b>8</b> Mapping with style</a><ul>
+<li class="chapter" data-level="8.1" data-path="mapping-style.html"><a href="mapping-style.html#default-maps"><i class="fa fa-check"></i><b>8.1</b> Default maps</a></li>
+<li class="chapter" data-level="8.2" data-path="mapping-style.html"><a href="mapping-style.html#specific-labels"><i class="fa fa-check"></i><b>8.2</b> Specific labels</a></li>
+<li class="chapter" data-level="8.3" data-path="mapping-style.html"><a href="mapping-style.html#scale-bars"><i class="fa fa-check"></i><b>8.3</b> Scale bars</a></li>
+<li class="chapter" data-level="8.4" data-path="mapping-style.html"><a href="mapping-style.html#insetting"><i class="fa fa-check"></i><b>8.4</b> Insetting</a></li>
+<li class="chapter" data-level="8.5" data-path="mapping-style.html"><a href="mapping-style.html#rounding-it-out"><i class="fa fa-check"></i><b>8.5</b> Rounding it out</a></li>
+<li class="chapter" data-level="8.6" data-path="mapping-style.html"><a href="mapping-style.html#session-info-7"><i class="fa fa-check"></i><b>8.6</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mapping-google.html"><a href="mapping-google.html"><i class="fa fa-check"></i><b>9</b> Mapping with Google</a><ul>
+<li class="chapter" data-level="9.1" data-path="mapping-google.html"><a href="mapping-google.html#ggmap"><i class="fa fa-check"></i><b>9.1</b> <strong><code>ggmap</code></strong></a></li>
+<li class="chapter" data-level="9.2" data-path="mapping-google.html"><a href="mapping-google.html#mapping-cape-point"><i class="fa fa-check"></i><b>9.2</b> Mapping Cape Point</a></li>
+<li class="chapter" data-level="9.3" data-path="mapping-google.html"><a href="mapping-google.html#site-labels"><i class="fa fa-check"></i><b>9.3</b> Site labels</a></li>
+<li class="chapter" data-level="9.4" data-path="mapping-google.html"><a href="mapping-google.html#diy-maps"><i class="fa fa-check"></i><b>9.4</b> DIY maps</a></li>
+<li class="chapter" data-level="9.5" data-path="mapping-google.html"><a href="mapping-google.html#session-info-8"><i class="fa fa-check"></i><b>9.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>10</b> Tidy data</a><ul>
+<li class="chapter" data-level="10.1" data-path="tidy.html"><a href="tidy.html#gathering-and-spreading"><i class="fa fa-check"></i><b>10.1</b> Gathering and spreading</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="tidy.html"><a href="tidy.html#gathering"><i class="fa fa-check"></i><b>10.1.1</b> Gathering</a></li>
+<li class="chapter" data-level="10.1.2" data-path="tidy.html"><a href="tidy.html#spreading"><i class="fa fa-check"></i><b>10.1.2</b> Spreading</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="tidy.html"><a href="tidy.html#separating-and-uniting"><i class="fa fa-check"></i><b>10.2</b> Separating and uniting</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="tidy.html"><a href="tidy.html#separate"><i class="fa fa-check"></i><b>10.2.1</b> Separate</a></li>
+<li class="chapter" data-level="10.2.2" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>10.2.2</b> Unite</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="tidy.html"><a href="tidy.html#joining"><i class="fa fa-check"></i><b>10.3</b> Joining</a></li>
+<li class="chapter" data-level="10.4" data-path="tidy.html"><a href="tidy.html#but-why-though"><i class="fa fa-check"></i><b>10.4</b> But why though?</a></li>
+<li class="chapter" data-level="10.5" data-path="tidy.html"><a href="tidy.html#session-info-9"><i class="fa fa-check"></i><b>10.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="tidier.html"><a href="tidier.html"><i class="fa fa-check"></i><b>11</b> Tidier data</a><ul>
+<li class="chapter" data-level="11.1" data-path="tidier.html"><a href="tidier.html#comparison-operators"><i class="fa fa-check"></i><b>11.1</b> Comparison operators</a></li>
+<li class="chapter" data-level="11.2" data-path="tidier.html"><a href="tidier.html#logical-operators"><i class="fa fa-check"></i><b>11.2</b> Logical operators</a></li>
+<li class="chapter" data-level="11.3" data-path="tidier.html"><a href="tidier.html#arrange-observations-rows-with-arrange"><i class="fa fa-check"></i><b>11.3</b> Arrange observations (rows) with <code>arrange()</code></a></li>
+<li class="chapter" data-level="11.4" data-path="tidier.html"><a href="tidier.html#filter-observations-rows-with-filter"><i class="fa fa-check"></i><b>11.4</b> Filter observations (rows) with <code>filter()</code></a></li>
+<li class="chapter" data-level="11.5" data-path="tidier.html"><a href="tidier.html#select-variables-columns-withselect"><i class="fa fa-check"></i><b>11.5</b> Select variables (columns) with<code>select()</code></a></li>
+<li class="chapter" data-level="11.6" data-path="tidier.html"><a href="tidier.html#create-new-variables-columns-with-mutate"><i class="fa fa-check"></i><b>11.6</b> Create new variables (columns) with <code>mutate()</code></a></li>
+<li class="chapter" data-level="11.7" data-path="tidier.html"><a href="tidier.html#summarise-variables-columns-with-summarise"><i class="fa fa-check"></i><b>11.7</b> Summarise variables (columns) with <code>summarise()</code></a></li>
+<li class="chapter" data-level="11.8" data-path="tidier.html"><a href="tidier.html#session-info-10"><i class="fa fa-check"></i><b>11.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tidiest.html"><a href="tidiest.html"><i class="fa fa-check"></i><b>12</b> Tidiest data</a><ul>
+<li class="chapter" data-level="12.1" data-path="tidiest.html"><a href="tidiest.html#group-observations-rows-by-variables-columns-with-group_by"><i class="fa fa-check"></i><b>12.1</b> Group observations (rows) by variables (columns) with <code>group_by()</code></a><ul>
+<li class="chapter" data-level="12.1.1" data-path="tidiest.html"><a href="tidiest.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>12.1.1</b> Grouping by multiple variables</a></li>
+<li class="chapter" data-level="12.1.2" data-path="tidiest.html"><a href="tidiest.html#ungrouping"><i class="fa fa-check"></i><b>12.1.2</b> Ungrouping</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="tidiest.html"><a href="tidiest.html#chain-functions-with-the-pipe"><i class="fa fa-check"></i><b>12.2</b> Chain functions with the pipe (<code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="12.3" data-path="tidiest.html"><a href="tidiest.html#group-all-the-functions"><i class="fa fa-check"></i><b>12.3</b> Group all the functions!</a></li>
+<li class="chapter" data-level="12.4" data-path="tidiest.html"><a href="tidiest.html#going-deeper"><i class="fa fa-check"></i><b>12.4</b> Going deeper</a></li>
+<li class="chapter" data-level="12.5" data-path="tidiest.html"><a href="tidiest.html#pipe-into-ggplot2"><i class="fa fa-check"></i><b>12.5</b> Pipe into <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="12.6" data-path="tidiest.html"><a href="tidiest.html#additional-useful-functions"><i class="fa fa-check"></i><b>12.6</b> Additional useful functions</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="tidiest.html"><a href="tidiest.html#rename-variables-columns-with-rename"><i class="fa fa-check"></i><b>12.6.1</b> Rename variables (columns) with <code>rename()</code></a></li>
+<li class="chapter" data-level="12.6.2" data-path="tidiest.html"><a href="tidiest.html#create-a-new-dataframe-for-a-newly-created-variable-column-with-transmute"><i class="fa fa-check"></i><b>12.6.2</b> Create a new dataframe for a newly created variable (column) with <code>transmute()</code></a></li>
+<li class="chapter" data-level="12.6.3" data-path="tidiest.html"><a href="tidiest.html#count-observations-rows-with-n"><i class="fa fa-check"></i><b>12.6.3</b> Count observations (rows) with <code>n()</code></a></li>
+<li class="chapter" data-level="12.6.4" data-path="tidiest.html"><a href="tidiest.html#select-observations-rows-by-number-with-slice"><i class="fa fa-check"></i><b>12.6.4</b> Select observations (rows) by number with <code>slice()</code></a></li>
+<li class="chapter" data-level="12.6.5" data-path="tidiest.html"><a href="tidiest.html#summary-functions"><i class="fa fa-check"></i><b>12.6.5</b> Summary functions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="tidiest.html"><a href="tidiest.html#the-new-age-redux"><i class="fa fa-check"></i><b>12.7</b> The new age <em>redux</em></a></li>
+<li class="chapter" data-level="12.8" data-path="tidiest.html"><a href="tidiest.html#session-info-11"><i class="fa fa-check"></i><b>12.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="recap.html"><a href="recap.html"><i class="fa fa-check"></i><b>13</b> Recap</a><ul>
+<li class="chapter" data-level="13.1" data-path="recap.html"><a href="recap.html#the-future"><i class="fa fa-check"></i><b>13.1</b> The future</a></li>
+<li class="chapter" data-level="13.2" data-path="recap.html"><a href="recap.html#today"><i class="fa fa-check"></i><b>13.2</b> Today</a></li>
+<li class="chapter" data-level="13.3" data-path="recap.html"><a href="recap.html#session-info-12"><i class="fa fa-check"></i><b>13.3</b> Session info</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intro R Workshop: Data Manipulation, Analysis, and Visualisation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="workflow" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> An R workflow</h1>
+<blockquote>
+<p>“A dream doesn’t become reality through magic; it takes sweat, determination and hard work.”</p>
+<p>— Colin Powell</p>
+</blockquote>
+<blockquote>
+<p>“Choose a job you love, and you will never have to work a day in your life.”</p>
+<p>— Confucius</p>
+</blockquote>
+<div id="r-scripts" class="section level2">
+<h2><span class="header-section-number">3.1</span> R Scripts</h2>
+<p>The first step for any project in R is to create a new script. We do this by clicking on the ‘New Document’ button (in the top left and selecting ‘R Script’). This creates an unnamed file in the <strong>Source Editor</strong> pane. Best to save it first of all so we do not lose what we do. ‘File’/‘Save As’/ and the Working Directory should come up. Type in <code>Day_1</code> as the file name and click ‘save.’ R will automatically add a <code>.R</code> extension.</p>
+<p>It is recommended to start a script with some basic information for you to refer back to later. Start with a comment line (the line begins with a <code>#</code>) that tells you the name of the script, something about the script, who created it, and the date it was created. In the source editor enter to following lines and save the file again:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Day_1.R</span>
+<span class="co"># Reads in some data about Laminaria collected along the Cape Peninsula</span>
+<span class="co"># Do various data manipulations, analyses and graphs</span>
+<span class="co"># &lt;your_name&gt;</span>
+<span class="co"># &lt;curent_date&gt;</span></code></pre></div>
+<p>Remember that anything appearing after the <code>#</code> is not executed by R as script and is a comment.</p>
+<p>It is recommend that for each workshop session you start a new script (in the <strong>Source Editor</strong>), type in the code as we go along, and only execute the required lines. That way you will have a record of what you have done.</p>
+<p>Below we will learn how to import the file <code>laminaria.csv</code> into R, assign it to a dataframe named <code>laminaria</code>, and spend a while looking it over. These data reflect results of a sampling campaign on one of the species of kelps (<em>Laminaria pallida</em>) in the Western Cape designed to find the morphometric properties of populations at different sites. We visited 13 different locations along the Cape Peninsula (<code>site</code>), and at each site, collected <em>ca.</em> 13 specimens of the largest kelps we could find. We then brought the kelps back to the shore and measured/calculated nine morphometric properties of the plants (<em>e.g.</em> the mass of the fronds (<code>blade_weight</code>), the frond length (<code>blade_length</code>), <em>etc.</em>).</p>
+</div>
+<div id="reading-data-into-r" class="section level2">
+<h2><span class="header-section-number">3.2</span> Reading data into R</h2>
+<p>We will now see how easy it is to read data into R. R will read in many types of data, including spreadsheets, text files, binary files and files from other statistical packages and software.</p>
+<blockquote>
+<p><strong>Full stops</strong><br />
+Unfortunately in South Africa we are taught from a young age to use commas (<code>,</code>) instead of full stops (<code>.</code>) for decimal places. This simply will not do when we are working with a computer. You must always use a full stop for a decimal place and never insert commas anywhere into any numbers.</p>
+</blockquote>
+<blockquote>
+<p><strong>Commas</strong><br />
+R generally thinks that commas mean the user is telling the computer to separate values. So if you think you are typing a big number like 2,300 you may actually end up with two numbers. Never use commas with numbers.</p>
+</blockquote>
+<div id="preparing-data-for-r" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Preparing data for R</h3>
+<p>Importing data can actually take longer than the statistical analysis itself! In order to avoid as much frustration as possible it is important to remember that for R to be able to analyse your data they need to be in a consistent format, with each variable in a column and each sample in a row. The format within each variable (column) needs to be consistent and is commonly one of the following types: a continuous numeric variable (<em>e.g.</em>, fish length (m): <code>0.133</code>, <code>0.145</code>); a factor or categorical variable (<em>e.g.</em>, Month: <code>Jan</code>, <code>Feb</code> or <code>1</code>, <code>2</code>, <code>…</code>, <code>12</code>); a nominal variable (<em>e.g.</em>, algal colour: <code>red</code>, <code>green</code>, <code>brown</code>); or a logical variable (<em>i.e.</em>, <code>TRUE</code> or <code>FALSE</code>). You can also use other more specific formats such as dates and times, and more general text formats.</p>
+<p>We will learn more about working with data in R — specifically, we will teach you about the <em>tidyverse</em> principles and the distinction between <em>long</em> and <em>wide</em> format data in more detail on Day 4. For most of our work in R we require our data to be in the long format, but Excel users (poor things!) are more familiar with data stored in the wide format. For now let’s bring some data into R and not worry too much about the data being tidy.</p>
+</div>
+<div id="converting-data" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Converting data</h3>
+<p>Before we can read in the <em>Laminaria</em> dataset provided for the following exercises, we need to convert the Excel file supplied into a <code>.csv</code> file. Open ‘laminaria.xlsx’ in Excel, then select ‘Save As’ from the File menu. In the ‘Format’ drop-down menu, select the option called ‘Comma Separated Values’, then hit ‘Save’. You’ll get a warning that formatting will be removed and that only one sheet will be exported; simply ‘Continue’. Your working directory should now contain a file called <code>laminaria.csv</code>.</p>
+</div>
+<div id="importing-data" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Importing data</h3>
+<p>The easiest way to import data into R is by changing your working directory to be the same as the file path where the file(s) are you want to load. A file path is effectively an address. In most operating systems, if you open the folder where your files are you may click on the navigation bar and it will show you the complete file path. Many people develop the nasty habit of squirling away their files within folders within folders within folders within folders… within folders within folders. Please don’t do that.</p>
+<p>The concept of file paths is either one that you are familiar with, or you’ve never heard of before. There tends to be little middle ground. Happily, RStudio allows us to circumvent this issue. We do this by using the <code>Intro_R_Workshop.Rproj</code> that you may find in the files downloaded for this workshop. If you have not already switched to the <code>Intro_R_Workshop.Rproj</code> as outlined in Chapter 2, click on the project button in the top right corner your RStudio window. Then navigate to where you saved <code>Intro_R_Workshop.Rproj</code> and select it. Notice that your RStudio has changed a bit and all of the objects you may have previously created in your environment have been removed and any tabs in the source editor pane have been closed. That is fine for now, but it may mean you need to re-open the <code>Day_1.R</code> script you just created.</p>
+<p>Once we have the working directory set, either by doing it manually with <code>setwd()</code> or by loading a project, R will now know where to look for the files we want to read. The function <code>read_csv()</code> is the most convenient way to read in raw data. There are several other ways to read in data, but for the purposes of this workshop we’ll stick to this one, for now. To find out what it does, we will go to its help entry in the usual way (<em>i.e.</em> <code>?read_csv</code>).</p>
+<p>All R Help items are in the same format. A short <em>Description</em> (of what it does), <em>Usage</em>, <em>Arguments</em> (the different inputs it requires), <em>Details</em> (of what it does), <em>Value</em> (what it returns) and <em>Examples</em>. Arguments (the parameters that are passed to the function) are the lifeblood of any function, as this is how you provide information to R. You do not need to specify all arguments, as most have appropriate default values for your requirements, and others might not be needed for your particular case.</p>
+<blockquote>
+<p><strong>Data formats</strong><br />
+R has pedantic requirements for naming variables. It is safest to not use spaces, special characters (<em>e.g.</em>, commas, semicolons, any of the shift characters above the numbers), or function names (<em>e.g.</em>, mean). One can use ‘camelCase’, such as <code>myFirstVariable</code>, or simply separate the ‘parts’ of the variable name using an underscore such as in <code>my_first_variable</code>. Always make sure to use meaningful names; eventually you will learn to find a balance between meaningfulness and something short that’s easy enough to retype repeatedly (although R’s ability to use tab completion helps with not having to type long names to often).</p>
+</blockquote>
+<blockquote>
+<p><strong>Import</strong><br />
+<code>read_csv()</code> is simply a ‘wrapper’ (<em>i.e.</em>, a command that modifies) a more basic command called <code>read_delim()</code>, which itself allows you to read in many types of files besides <code>.csv</code>. To find out more, type <code>?read_delim()</code>.</p>
+</blockquote>
+</div>
+<div id="loading-a-file" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Loading a file</h3>
+<p>To load the <code>laminaria.csv</code> file we created, and assign it to an object name in R, we will use the <code>read_csv()</code> function from the <strong><code>tidyverse</code></strong> package, so let’s make sure it is activated.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>Depending on the version of Excel you are using, or perhaps the settings within it, the ‘laminaria.csv’ file you created may be corrupted in different ways. Generally Excel likes to replace the <code>,</code> between columns in our .csv files with <code>;</code>. This may seem like a triviality but sadly it is not. Lucky for use, the <strong><code>tidyverse</code></strong> knows about this problem and they have made a plan. Please open your ‘laminaria.csv’ file and look at which character is being used to separate columns. If it is <code>,</code> then we will load the data with <code>read_csv()</code>. If the columns are separated with <code>;</code> we will use <code>read_csv2()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Run this if &#39;laminaria.csv` has columns separated by &#39;,&#39;</span>
+laminaria &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)
+<span class="co"># Run this if &#39;laminaria.csv` has columns separated by &#39;;&#39;</span>
+laminaria &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</code></pre></div>
+<p>If one clicks on the newly created <code>laminaria</code> object in the <strong>Environment</strong> pane it will open a new panel that shows the information as a spreadsheet. To go back to your script click the appropriate tab in the <strong>Source Editor</strong> pane. With these data loaded we may now perform analyses on them.</p>
+<p>At any point when working in R, you can see exactly what objects are in memory in several ways. First, you can look at the <strong>Environment</strong> tab in RStudio, then <strong>Workspace Browser</strong>. Alternatively you can type either of the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()
+<span class="co"># or</span>
+<span class="kw">objects</span>()</code></pre></div>
+<p>You can delete an object from memory by specifying the <code>rm()</code> function with the name of the object:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(laminaria)</code></pre></div>
+<p>This will of course delete our variable, so we will import it in again using whichever of the following two lines of code matched our Excel situation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)
+<span class="co"># OR</span>
+laminaria &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</code></pre></div>
+<blockquote>
+<p><strong>Managing variables</strong><br />
+It is good practice to remove variables from memory that you are not using, especially if they are large.</p>
+</blockquote>
+</div>
+</div>
+<div id="working-with-data" class="section level2">
+<h2><span class="header-section-number">3.3</span> Working with data</h2>
+<div id="examine-your-data" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Examine your data</h3>
+<p>Once the data are in R, you need to check there are no glaring errors. It is useful to call up the first few lines of the dataframe using the function <code>head()</code>. Try it yourself by typing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(laminaria)</code></pre></div>
+<p>This lists the first six lines of each of the variables in the dataframe as a table. You can similarly retrieve the last six lines of a dataframe by an identical call to the function <code>tail()</code>. Of course, this works better when you have fewer than 10 or so variables (columns); for larger data sets, things can get a little messy. If you want more or fewer rows in your head or tail, tell R how many rows it is you want by adding this information to your function call. Try typing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(laminaria, <span class="dt">n =</span> <span class="dv">3</span>)
+<span class="kw">tail</span>(laminaria, <span class="dt">n =</span> <span class="dv">2</span>)</code></pre></div>
+<p>You can also check the structure of your data by using the <code>glimpse()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(laminaria)</code></pre></div>
+<p>This very handy function lists the variables in your dataframe by name, tells you what sorts of data are contained in each variable (<em>e.g.</em>, continuous number, discrete factor) and provides an indication of the actual contents of each.</p>
+<p>If we wanted only the names of the variables (columns) in the dataframe, we could use:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(laminaria)</code></pre></div>
+</div>
+<div id="tidyverse-sneak-peek" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Tidyverse sneak peek</h3>
+<p>Before we begin to manipulate our data further we need to briefly introduce ourselves to the <strong><code>tidyverse</code></strong>. And no introduction can be complete within learning about the <em>pipe</em> command, <code>%&gt;%</code>. We may type this by pushing the following keys together: <strong>ctrl-shift-m</strong>. The pipe (<code>%&gt;%</code>) allows us to perform calculations sequentially, which helps us to avoid making errors.</p>
+<p>The pipe works best in tandem with the following five common functions:</p>
+<ul>
+<li>Arrange observations (rows) with <code>arrange()</code><br />
+</li>
+<li>Filter observations (rows) with <code>filter()</code><br />
+</li>
+<li>Select variables (columns) with<code>select()</code><br />
+</li>
+<li>Create new variables (columns) with <code>mutate()</code><br />
+</li>
+<li>Summarise variables (columns) with <code>summarise()</code></li>
+</ul>
+<p>We will cover these functions in more detail on Day 4. For now we will ease ourselves into the code with some simple examples.</p>
+</div>
+<div id="subsetting" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Subsetting</h3>
+<p>Now let’s have a look at specific parts of the data. You will likely need to do this in almost every script you write. If we want to refer to a variable, we specify the dataframe then the column name within the <code>select()</code> function. In your script type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataframe we are using</span>
+<span class="st">  </span><span class="kw">select</span>(site, total_length) <span class="co"># Select only specific columns</span></code></pre></div>
+<p>If we want to only select values from specific columns we insert one more line of code.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(site, total_length) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select specific columns first</span>
+<span class="st">  </span><span class="kw">slice</span>(<span class="dv">56</span><span class="op">:</span><span class="dv">78</span>)
+<span class="co"># what does the &#39;56:78&#39; do? Change some numbers and run the code again. What happens?</span></code></pre></div>
+<p>If we wanted to select only the rows of data belonging to the Kommetjie site, we could type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>)</code></pre></div>
+<p>The function <code>filter()</code> has two arguments: the first is a dataframe (we specify <code>laminaria</code> in the previous line and the pipe supplies this for us) and the second is an expression that relates to which rows of a particular variable we want to include. Here we include all rows for Kommetjie and we find that in the variable site. It returns a subset that is actually a dataframe itself; it is in the same form as the original dataframe. We could assign that subset of the full dataframe to a new dataframe if we wanted to.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lam_kom &lt;-<span class="st"> </span>laminaria <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>)</code></pre></div>
+<blockquote>
+<p><strong>DIY: Subsetting</strong><br />
+In the script you have started, create a new named dataframe containing only kelps from two of the sites. Check that the new dataframe has the correct values in it. What purpose can the naming of a newly-created dataframe serve?</p>
+</blockquote>
+</div>
+<div id="basic-stats" class="section level3">
+<h3><span class="header-section-number">3.3.4</span> Basic stats</h3>
+<p>Straight out of the box it is possible in R to perform a broad range of statistical calculations on a dataframe. If we wanted to know how many samples we have at Kommetjie, we simply type the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataset to use</span>
+<span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Filter out only records from Kommetjie</span>
+<span class="st">  </span><span class="kw">nrow</span>() <span class="co"># Count the number of remaining rows</span></code></pre></div>
+<p>Or, if we want to select only the row with the greatest total length:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataset to use</span>
+<span class="st">  </span><span class="kw">filter</span>(total_length <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(total_length)) <span class="co"># Select row with max total length</span></code></pre></div>
+<p>Now exit RStudio. Pretend it is three days later and revisit your analysis. Calculate the number of entries at Kommetjie and find the row with the greatest length. Do this now.</p>
+<p>Imagine doing this daily as our analysis grows in complexity. It will very soon become quite repetitive if each day you had to retype all these lines of code. And now, six weeks into the research and attendant statistical analysis, you discover that there were some mistakes and some of the raw data were incorrect. Now everything would have to be repeated by retyping it at the command prompt. Or worse still (and bad for repetitive strain injury) doing all of it in SPSS and remembering which buttons to click and then re-clicking them. A pain. Let’s avoid that altogether and do it the right way by writing an R script to automate and annotate all of this.</p>
+<blockquote>
+<p><strong>Dealing with missing data</strong><br />
+The <code>.csv</code> file format is usually the most robust for reading data into R. Where you have missing data (blanks), the <code>.csv</code> format separates these by commas. However, there can be problems with blanks if you read in a space-delimited format file. If you are having trouble reading in missing data as blanks, try replacing them in your spreadsheet with <code>NA</code>, the missing data code in R. In Excel, highlight the area of the spreadsheet that includes all the cells you need to fill with <code>NA</code>. Do an Edit/Replace… and leave the ‘Find what:’ textbox blank and in the ‘Replace with:’ textbox enter <code>NA</code>, the missing value code. Once imported into R, the <code>NA</code> values will be recognised as missing data.</p>
+</blockquote>
+<p>So far we have calculated the mean and standard deviation of some data in the <em>Laminaria</em> data set. If you have not, please append those lines of code to the end of your script. You can run individual lines of code by highlighting them and pressing <strong>ctrl-Enter</strong> (<strong>cmd-Enter</strong> on a Mac). Do this.</p>
+<p>Your file will now look similar to this one, but of course you will have added your own notes and comments as you went along:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Day_1.R</span>
+<span class="co"># Reads in some data about Laminaria collected along the Cape Peninsula</span>
+<span class="co"># do various data manipulations, analyses and graphs</span>
+<span class="co"># AJ Smit</span>
+<span class="co"># 9 April 2017</span>
+
+<span class="co"># Find the current working directory (it will be correct if a project was</span>
+<span class="co"># created as instructed earlier)</span>
+<span class="kw">getwd</span>()
+
+<span class="co"># If the directory is wrong because you chose not to use an Rworkspace (project),</span>
+<span class="co"># set your directory manually to where the script will be saved and where the data</span>
+<span class="co"># are located</span>
+<span class="co"># setwd(&quot;&lt;insert_path_here&gt;&quot;)</span>
+
+<span class="co"># Load libraries</span>
+<span class="kw">library</span>(tidyverse)
+
+<span class="co"># Load the data</span>
+laminaria &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)
+
+<span class="co"># Examine the data</span>
+<span class="kw">head</span>(laminaria, <span class="dv">5</span>) <span class="co"># First five lines</span>
+<span class="kw">tail</span>(laminaria, <span class="dv">2</span>) <span class="co"># Last two lines</span>
+<span class="kw">glimpse</span>(laminaria) <span class="co"># A more thorough summary</span>
+<span class="kw">names</span>(laminaria) <span class="co"># THe names of the columns</span>
+
+<span class="co"># Subsetting data</span>
+laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataframe to use</span>
+<span class="st">  </span><span class="kw">select</span>(site, total_length) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select specific columns</span>
+<span class="st">  </span><span class="kw">slice</span>(<span class="dv">56</span><span class="op">:</span><span class="dv">78</span>) <span class="co"># Select specific rows</span>
+
+<span class="co"># How many data points do we have at Kommetjie?</span>
+laminaria <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">nrow</span>()
+
+<span class="co"># The row with the greatest length</span>
+laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataset to use</span>
+<span class="st">  </span><span class="kw">filter</span>(total_length <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(total_length)) <span class="co"># Select row with max total length</span></code></pre></div>
+<p>Making sure all the latest edits in your R script have been saved, close your R session. Pretend this is now 2019 and you need to revisit the analysis. Open the file you created in 2017 in RStudio. All you need to do now is highlight the file’s entire contents and hit <strong>ctrl-Enter</strong>.</p>
+<blockquote>
+<p><strong>Stick with <code>.csv</code> files</strong><br />
+There are packages in R to read in Excel spreadsheets (<em>e.g.</em>, .xlsx), but remember there are likely to be problems reading in formulae, graphs, macros and multiple worksheets. We recommend exporting data deliberately to <code>.csv</code> files (which are also commonly used in other programs). This not only avoids complications, but also allows you to unambiguously identify the data you based your analysis on. This last statement should give you the hint that it is good practice to name your <code>.csv</code> slightly differently each time you export it from Excel, perhaps by appending a reference to the date it was exported.</p>
+</blockquote>
+<blockquote>
+<p><strong>Remember…</strong><br />
+Friends don’t let friends use Excel.</p>
+</blockquote>
+</div>
+<div id="summary-of-all-variables-in-a-dataframe" class="section level3">
+<h3><span class="header-section-number">3.3.5</span> Summary of all variables in a dataframe</h3>
+<p>Import the data into a dataframe called <code>laminaria</code> once more (if it isn’t already in your <strong>Environment</strong>), and check that it is in order. Once we’re happy that the data have imported correctly, and that we know what the variables are called and what sorts of data they contain, we can dig a little deeper. Try typing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(laminaria)</code></pre></div>
+<p>The output is quite informative. It tabulates variables by name, and for each provides summary statistics. For continuous variables, the name, minimum, maximum, first, second (median) and third quartiles, and the mean are provided. For factors (categorical variables), a list of the levels of the factor and the count of each level are given. In either case, the last line of the table indicates how many NAs are contained in the variable. The function <code>summary()</code> is useful to remember as it can be applied to many different R objects (<em>e.g.</em>, variables, dataframes, models, arrays, <em>etc.</em>) and will give you a summary of that object. We will use it liberally throughout the workshop.</p>
+</div>
+<div id="summary-statistics-by-variable" class="section level3">
+<h3><span class="header-section-number">3.3.6</span> Summary statistics by variable</h3>
+<p>This is all very convenient, but we may want to ask R specifically for just the mean of a particular variable. In this case, we simply need to tell R which summary statistic we are interested in, and to specify the variable to apply it to using <code>summarise()</code>. Try typing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Chose the dataframe</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_bld_wdt =</span> <span class="kw">mean</span>(blade_length)) <span class="co"># Calculate mean blade length</span></code></pre></div>
+<p>Or, if we wanted to know the mean and standard deviation for the total lengths of all the plants across all sites, do:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R that we want to use the &#39;laminaria&#39; dataframe</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ln =</span> <span class="kw">mean</span>(total_length), <span class="co"># Create a summary of the mean of the total lengths</span>
+            <span class="dt">sd_stp_ln =</span> <span class="kw">sd</span>(total_length)) <span class="co"># Create a summary of the sd of the total lengths</span></code></pre></div>
+<p>Of course, the mean and standard deviation are not the only summary statistic that R can calculate. Try <code>max()</code>, <code>min()</code>, <code>median()</code>, <code>range()</code>, <code>sd()</code> and <code>var()</code>. Do they return the values you expected? Now try:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ms =</span> <span class="kw">mean</span>(stipe_mass))</code></pre></div>
+<p>The answer probably isn’t what you would expect. Why not? Sometimes, you need to tell R how you want it to deal with missing data. In this case, you have NAs in the named variable, and R takes the cautious approach of giving you the answer of <code>NA</code>, meaning that there are missing values here. This may not seem useful, but as the programmer, you can tell R to respond differently, and it will. Simply append an argument to your function call, and you will get a different response. Type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ms =</span> <span class="kw">mean</span>(stipe_mass, <span class="dt">na.rm =</span> T))</code></pre></div>
+<p>The <code>na.rm</code> argument tells R to remove (or more correctly ‘strip’) NAs from the data string before calculating the mean. It now returns the correct answer. Although needing to deal explicitly with missing values in this way can be a bit painful, it does make you more aware of missing data, what the analyses in R are doing, and makes you decide explicitly how you will treat missing data.</p>
+</div>
+<div id="more-complex-calculations" class="section level3">
+<h3><span class="header-section-number">3.3.7</span> More complex calculations</h3>
+<p>Let’s say you want to calculate something that is not standard in R, say the standard error of the mean for a variable, rather than just the corresponding standard deviation. How can this be done?</p>
+<p>The trick is to remember that R is a calculator, so we can use it to do maths, even complex maths (which we won’t do). The formula for standard error is:</p>
+<p><span class="math display">\[se = \sqrt{\frac{var}{n}}\]</span></p>
+<p>We know that the variance is given by <code>var()</code>, so all we need to do is figure out how to get <code>n</code> and calculate a square root. The simplest way to determine the number of elements in a variable is a call to the function <code>nrow()</code>, as we saw previously. We may therefore calculate standard error with one chunk of code, step by step, using the pipe. Furthermore, by using <code>group_by()</code> we may calculate the standard error for all sites in one go.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select &#39;laminaria&#39;</span>
+<span class="st">  </span><span class="kw">group_by</span>(site) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Group the dataframe by site</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">var_bl =</span> <span class="kw">var</span>(blade_length), <span class="co"># Calculate variance</span>
+            <span class="dt">n_bl =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Count number of values</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">se_bl =</span> <span class="kw">sqrt</span>(var_bl <span class="op">/</span><span class="st"> </span>n_bl)) <span class="co"># Calculate se</span></code></pre></div>
+<p>When calculating the mean, we specified that R should strip the NAs, using the argument <code>na.rm = TRUE</code>. In the example above, we didn’t have NAs in the variable of interest. What happens if we <em>do</em>?</p>
+<p>Unfortunately, the call to the function <code>nrow()</code> has no arguments telling R how to treat NAs; instead, they are simply treated as elements of the variable and are therefore counted. The easiest way to resolve this problem is to strip out NAs in advance of any calculations. Try typing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(stipe_mass) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</code></pre></div>
+<p>then:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">laminaria <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(stipe_mass) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</code></pre></div>
+<p>You will notice that the function <code>na.omit()</code> removes NAs from the variable that is specified as its argument.</p>
+<blockquote>
+<p><strong>DIY: Using <code>na.omit()</code></strong> Using this new information, <em>calculate</em> the mean stipe mass and the corresponding standard error.</p>
+</blockquote>
+</div>
+</div>
+<div id="saving-data" class="section level2">
+<h2><span class="header-section-number">3.4</span> Saving data</h2>
+<p>A major advantage of R over many other statistics packages is that you can generate exactly the same answers time and time again by simply re-running saved code. However, there are times when you will want to output data to a file that can be read by a spreadsheet program such as Excel (but try not to… please). The simplest general format is .csv (comma-separated values). This format is easily read by Excel, and also by many other software programs. To output a .csv type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_csv</span>(site_by_region, <span class="dt">path =</span> <span class="st">&quot;data/kelp_summary.csv&quot;</span>)</code></pre></div>
+<p>The first argument is simply the name of an object in R, in this case our table (a data object of class <em>table</em>) of counts by region and site (other sorts of data are available, so play around to see what can be done). The second argument is the name of the file you want to write to. This file will always be written to your working directory, unless otherwise specified by including a different path in the file name. Remember that file names need to be within quotation marks. The resultant file can sadly be opened in Excel.</p>
+</div>
+<div id="visualisations" class="section level2">
+<h2><span class="header-section-number">3.5</span> Visualisations</h2>
+<p>R has powerful and flexible graphics capabilities. In this Workshop we will not use the traditional graphics (<em>i.e.</em> <em>base graphics</em> in the graphics package automatically loaded in R). We will instead use a package called <strong><code>ggplot2</code></strong> that has the ability for extensive customisation (see the examples at the beginning of tomorrow’s section), so it will cover most of the graphs that you will want to produce. We will spend the next two days working on our <strong><code>ggplot2</code></strong> skills. Here is a quick example of a <strong><code>ggplot2</code></strong> graphic made from two of the kelp variables to show the relationship between them:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> laminaria, <span class="kw">aes</span>(<span class="dt">x =</span> stipe_mass, <span class="dt">y =</span> stipe_length)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">colour =</span> <span class="st">&quot;salmon&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Stipe mass (kg)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Stipe length (cm)&quot;</span>)</code></pre></div>
+<p><img src="03-workflow_files/figure-html/workflow-1-1.png" width="672" /></p>
+</div>
+<div id="clearing-the-memory" class="section level2">
+<h2><span class="header-section-number">3.6</span> Clearing the memory</h2>
+<p>You will be left with many objects after working through these examples. Note that in RStudio when you quit it can save the Environment if you choose, and so it can retain the objects in memory when you start RStudio again. The choice to save the objects resulting from an R Session until next time can be selected in the Global Options menu (‘Tools’ &gt; ‘Global Options’ &gt; ‘General’ &gt; ‘Save workspace to .RData on exit’). Personally, we never save objects as it is preferable to start on a clean slate when one opens RStudio. Either way, to avoid long load times and clogged memory, it is good practice to clear the objects in memory every now and then unless you can think of a compelling reason not to. This may be done by clicking on the broom icon at the top of the <strong>Environment</strong> pane.</p>
+<p>Of course, you could remove an individual object by placing only its name within the brackets of <code>rm()</code>. Do not use this line of code carelessly in the middle of your script; doing so will mean that you have to go back and regenerate the objects you accidentally removed – this is more of a nuisance than a train smash, especially for long, complicated scripts, as you will have (I hope!) saved the R script from which the objects in memory can be regenerated at any time.</p>
+</div>
+<div id="working-directories" class="section level2">
+<h2><span class="header-section-number">3.7</span> Working directories</h2>
+<p>At the beginning of this session we glossed over this topic by setting the working directory via RStudio’s project functionality. This concept is however critically important to understand so we must now cover it in more detail. The current working directory, where R will read and write files, is displayed by RStudio within the title region of the Console. There are a number of ways to change the current working directory:</p>
+<ol style="list-style-type: decimal">
+<li><p>Select ‘Session’/‘Set Working Directory’ and then choose from the four options for how to set your working directory depending on your preference</p></li>
+<li><p>From within the <strong>Files</strong> pane, navigate to the directory you want to set as the working directory and then select ‘More’/‘Set As Working Directory’ menu item (navigation within the Files pane alone will not change the working directory)</p></li>
+<li><p>Use <code>setwd()</code>, providing the name of your desired working directory as a character string</p></li>
+</ol>
+<p>In the <strong>Files</strong> tab, use the directory structure to navigate to the Intro R Workshop directory… this will differ from person to person. Then under ‘More’, select the small upside down (drill-down) triangle and select ‘Set As Working Directory’. This means that whenever you read or write a file it will always be working in that directory. This gives us the code for setting the directory (below is the code that I would enter in the <strong>Console</strong> on my computer):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/Intro_R_Workshop&quot;</span>)</code></pre></div>
+<p>It will be different for you, but copy it into your script and make a note for future reference.</p>
+<blockquote>
+<p><strong>Working directories</strong><br />
+For Windows users, if you copy from a file path the slashes will be the wrong way around and must be changed!</p>
+</blockquote>
+<p>You can check that R got this right by typing into the <strong>Console</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre></div>
+<blockquote>
+<p><strong>Organising R projects</strong><br />
+For every R project, set up a separate directory that includes the scripts, data files and outputs.</p>
+</blockquote>
+</div>
+<div id="help" class="section level2">
+<h2><span class="header-section-number">3.8</span> Help</h2>
+<p>The help files in R are not readily clear. It requires a bit of work to understand them well. There is method however to what appears to be madness. The figure below shows the beginning of a help file for a function in R. Please type <code>?read.table()</code> in your console now to bring up this help file in your RStudio GUI.</p>
+<div class="figure" style="text-align: center"><span id="fig:help-output"></span>
+<img src="figures/help_output.png" alt="A portion of the help page produced by the above command." width="100%" />
+<p class="caption">
+Figure 3.1: A portion of the help page produced by the above command.
+</p>
+</div>
+<p>The first thing we see at the top of the help file in small font is the name of the function, and the package it comes from in curly braces. After this, in very large text, is a very short description of what the function is used for. After this is the ‘Description’ section, which gives a sentence or two more fully explaining the use(s) of the function. The ‘Usage’ then shows all of the arguments that may be given to the function, and what their default settings are. When we write a function in our script we do <em>not</em> need to include all of the possible arguments. The help file shows us all of them so that we know what our options are. In some cases a help file will show the usage of several different functions together. This is done, as is the case here, if these functions forma a sort of ‘family’ and share many common purposes. The ‘Arguments’ section gives a long explanation for what each individual argument may do. The Arguments section here is particularly verbose. Up next is the ‘Details’ section that gives a more in depth description of what the function does. The ‘Value’ section tells us what sort of output we may expect from the function. Some of the more well documented functions, such as this one, will have additional sections that are not a requirement for function documentation. In this case the ‘Memory usage’ and ‘Note’ sections are not things one should always expect to see in help files. Also not always present is a ‘References’ section. Should there be actual published documentation for the function, or the function has been used in a publication for some other purpose, these references tend to be listed here. There are many functions in the <strong><code>vegan</code></strong> package that have been used in dozens of publications. If there is additional reading relevant to the function in question, the authors may also have included a ‘See also’ section, but this is not standard. Lastly, any well documented function should end with an ‘Examples’ section. The code is this section is designed to be able to be copy-pasted directly from the help file into the users R script or console and run <em>as is</em>. It is perhaps a bad habit, but when I am looking up a help file for a function, I tend to look first at the Examples section. And only if I can’t solve my problem with the examples do I actually read the documentation.</p>
+</div>
+<div id="session-info-2" class="section level2">
+<h2><span class="header-section-number">3.9</span> Session info</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">installed.packages</span>()[<span class="kw">names</span>(<span class="kw">sessionInfo</span>()<span class="op">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</code></pre></div>
+<pre><code>R&gt;   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
+R&gt;   &quot;0.3.0&quot;   &quot;1.3.0&quot;   &quot;0.7.4&quot;   &quot;0.2.4&quot;   &quot;1.1.1&quot;   &quot;0.8.0&quot;   &quot;1.4.2&quot; 
+R&gt;   ggplot2 tidyverse 
+R&gt;   &quot;2.2.1&quot;   &quot;1.2.1&quot;</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true,
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": true,
+"download": "Intro_R_Workshop.pdf"
+}
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

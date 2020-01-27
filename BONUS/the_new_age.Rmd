@@ -1,0 +1,69 @@
+---
+title: "The New Age"
+author: "AJ Smit & Robert W Schlegel"
+date: '`r Sys.Date()`'
+output:
+  html_document: default
+language: Australian
+linkcolor: cyan
+citecolor: green
+urlcolor: cyan
+---
+
+```{r new-age-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "R>", 
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+# Introduction
+
+Now that you've had some time to look at the data and work through the exercise in Excel, let's see how to do it in R. First we will want to load some packages.
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(lubridate)
+```
+
+With those packages loaded, R now knows the functions we will need to use to calculate the monthly climatologies for our three time series. We will also be able to make some pretty figures.
+
+Using excel may allow one to make small changes quickly, but rapidly becomes laborious when any sophistication is required. The few lines of code below make all of the calculations we need in order to produce the results we are after.
+
+```{r tna-load, eval=FALSE}
+# Load data
+SACTN_data <- read_csv("data/SACTN_day_1.csv")
+```
+```{r tna-load-ghost, echo=FALSE}
+# Load data
+SACTN_data <- read_csv("../data/SACTN_day_1.csv")
+```
+
+```{r tna-dplyr}
+# Create monthly climatologies
+SACTN_monthly <- SACTN_data %>% 
+  mutate(month = month(date, label = T)) %>% 
+  group_by(site, month) %>% 
+  summarise(temp = mean(temp, na.rm = T))
+```
+
+And that is all there is to it. Load the data and use four short lines of code. But let's quickly make those bonus line plots while we're at it:
+
+```{r tna-fig-1}
+ggplot(data = SACTN_monthly, aes(x = month, y = temp)) +
+  geom_point(aes(colour = site)) +
+  geom_line(aes(colour = site, group = site)) +
+  labs(x = "", y = "Temperature (°C)")
+```
+
+And if we want three different panels we just add one line of code:
+
+```{r tna-fig-2}
+ggplot(data = SACTN_monthly, aes(x = month, y = temp)) +
+  geom_point(aes(colour = site)) +
+  geom_line(aes(colour = site, group = site)) +
+  labs(x = "", y = "Temperature (°C)") +
+  facet_wrap(~site, ncol = 1) # Create panels
+```
+

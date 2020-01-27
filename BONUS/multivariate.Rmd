@@ -1,0 +1,203 @@
+---
+title: "Multivariate stats"
+author: "Robert W Schlegel"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+linkcolor: cyan
+language: Australian
+citecolor: green
+urlcolor: cyan
+---
+
+```{r mangle-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "R>", 
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+> To err is human, but to really foul things up you need a computer.   
+>
+> ---_Paul R. Ehrlich_
+
+# Introduction
+
+In this brief tutorial we are going to walk through the steps necessary to perform a most basic ordination. We will be using MDS for this as it produces, in my opinion, the most straight forward results. There is of course an entire school of thought on this and I, a mere climate scientists, am in no way an authoritative voice on the matter.
+
+```{r multi-load}
+# Load libraries
+library(tidyverse)
+library(ggpubr)
+library(vegan)
+
+# Load built-in data
+data("dune")
+data("dune.env")
+```
+
+# MDS
+
+MDS, or multi-dimensional scaling, is high level clustering technique. MDS allows us to determine which of the abiotic variables in our dataset are having the most pronounced effects on the clustering of the dunes. Running an MDS on a data frame in R is simple as the `vegan` package will do all of the heavy lifting for us. First we will jump straight in and run an MDS, then we will take a step back and try changing the standardisation of the values and the distance matrix that we would normally need to first calculate. Please consult the help file (`?metaMDS`) for details on the function.
+
+```{r multi-MDS, results='hide'}
+dune_MDS_1 <- metaMDS(dune)
+```
+
+Or we may be more specific in the way in which we prepare our data for the MDS. Look through the help files to see what other options exist.
+
+```{r multi-more, results='hide'}
+# Standardise data
+dune_stand <- decostand(dune, method = "total")
+
+# Create Bray-Curtis dissimilarity matrix
+dune_dist <- vegdist(dune_stand, method = "bray")
+
+# Create distance matrix
+dune_MDS_2 <- metaMDS(dune_dist)
+```
+
+# Stress
+
+No, not that stress. We are talking about the stress of the MDS model now. This is an important value to check. If the stress is high (>0.3) the MDS model is doing a poor job of modeling the dissimilarities in the data. If it is low (<0.1) the model is doing a very good job of displaying the relationships within the data. To check the stress of our results we use the following line of code.
+
+```{r}
+# Default MDS settings
+dune_MDS_1$stress
+
+# Determined settings
+dune_MDS_2$stress
+```
+
+What is the stress of this model? Is that an acceptable level?
+
+# Basic biplot
+
+With the MDS calculated, and the stress tested, it's time to visualise the first round of results.
+
+```{r multi-plot-1, fig.cap="The basic biplot of our dune results."}
+# Convert for ggplot
+dune_MDS_points <- data.frame(site = 1:nrow(dune)) %>%
+  mutate(x = as.numeric(dune_MDS_2$points[ ,1]),
+         y = as.numeric(dune_MDS_2$points[ ,2]))
+
+# Visualise with ggplot
+ggplot(data = dune_MDS_points, aes(x = x, y = y)) +
+  geom_point(size = 8, shape = 21, fill = "black", colour = "red") +
+  geom_text(aes(label = site), colour = "white") +
+  labs(x = "NMDS1", y = "NMDS2")
+```
+
+# Fitting environmental variables
+
+As with all of the other ordination analyses we have performed in R thus far, fitting environmental variables may also be done with one easy step. We do this by providing the `envfit()` function with a formula, the same as we do for linear models. The dependent variable (to the left of the `~`) will be the results of the MDS on the species assemblage data, and the independent variables (to the right of the `~`) are the columns from our environmental variables data frame.
+
+```{r multi-env}
+dune_envfit <- envfit(dune_MDS_2 ~ Moisture + Use, data = dune.env)
+dune_envfit
+```
+
+In the printout above we see the results for the R^2 (here r2) and _p_-values for the fit of each abiotic variable to the species assemblage data. Which relationships are significant? Which variable(s) appears to best explain the variance in the species assemblages? Which of the axes of the MDS have the strongest relationship with which variable?
+
+To plot the results of our fitted abiotic variables on top of our species MDS we need to quickly prep it to play nice with **`ggplot2`** and then we need only append a couple of lines onto the chunk we wrote to display our MDS results.
+
+```{r multi-plot-2, fig.cap="The basic biplot of our dune results with environmental fits plotted as vectors."}
+# Extract the envfit vector values
+dune_envfit_df <- data.frame(dune_envfit$factors$centroids) %>%
+  mutate(factors = row.names(.)) %>%
+  rename(x = NMDS1, y = NMDS2)
+
+# Visualise environmental fits
+ggplot(data = dune_MDS_points, aes(x = x, y = y)) +
+  geom_point(size = 8, shape = 21, fill = "black", colour = "red") +
+  geom_text(aes(label = site), colour = "white") +
+  geom_segment(data = dune_envfit_df, arrow = arrow(length = unit(0.25, "cm")),
+               aes(x = 0, y = 0, xend = x, yend = y)) +
+  geom_text(data = dune_envfit_df, colour = "red", 
+            aes(x = x, y = y, label = factors)) +
+  labs(x = "NMDS1", y = "NMDS2")
+```
+
+# Adding clusters
+
+In order to add clustering we must first create groupings for our data. In this instance we will be calculating our groups using hierarchical cluster analysis.
+
+```{r}
+# Create dendrogram
+  # Note that this must be run on a distance matrix
+dune_clust <- hclust(dune_dist, "ward.D")
+
+# Extract clusters
+  # In this case we have decided on four clusters
+dune_grp <- cutree(dune_clust, 4)
+
+# Extract groups for plotting
+dune_MDS_points <- dune_MDS_points %>% 
+  mutate(grp_id = as.factor(dune_grp))
+```
+
+With the clusters calculated we may now plot ellipses on our biplot. We will first do this with the built-in functionality of **`ggplot2`**, which unfortunately isn't great.
+
+```{r multi-plot-3, fig.cap="The biplot showing clusters surrounded by ellipses."}
+ggplot(data = dune_MDS_points, aes(x = x, y = y)) +
+  geom_point(size = 8, shape = 21, fill = "black", colour = "red") +
+  geom_text(aes(label = site), colour = "white") +
+  geom_segment(data = dune_envfit_df, arrow = arrow(length = unit(0.25, "cm")),
+               aes(x = 0, y = 0, xend = x, yend = y)) +
+  geom_text(data = dune_envfit_df, colour = "red", 
+            aes(x = x, y = y, label = factors)) +
+  # The ellipses
+  stat_ellipse(aes(colour = grp_id), type = "t") + 
+  #
+  labs(x = "NMDS1", y = "NMDS2", colour = "Cluster")
+```
+
+If we have very large datasets the ellipses will come more in line with what we want. With small datasets not so much. This is because the ellipses are actually calculating the area under which a certain confidence interval is maintained that the points in that group may be found. If we would rather use polygons to fit directly onto the area of our clusters we do so by replacing the ellipses with the following line of code.
+
+```{r multi-plot-4, fig.cap="The biplot with clusters surrounded by custom made polygons."}
+ggplot(data = dune_MDS_points, aes(x = x, y = y)) +
+  geom_point(size = 8, shape = 21, fill = "black", colour = "red") +
+  geom_text(aes(label = site), colour = "white") +
+  geom_segment(data = dune_envfit_df, arrow = arrow(length = unit(0.25, "cm")),
+               aes(x = 0, y = 0, xend = x, yend = y)) +
+  geom_text(data = dune_envfit_df, colour = "red", 
+            aes(x = x, y = y, label = factors)) +
+  # The custom made polygons
+  stat_chull(geom = "polygon", aes(fill = grp_id), alpha = 0.4) +
+  #
+  labs(x = "NMDS1", y = "NMDS2")
+```
+
+I'm not super excited about that result either. A third option is to simply change the colour of the points to reflect their grouping.
+
+```{r multi-plot-5, fig.cap="The biplot with clusters indicated by the colour of the points."}
+ggplot(data = dune_MDS_points, aes(x = x, y = y)) +
+  # Changing point aesthetics
+  geom_point(size = 8, aes(colour = grp_id)) +
+  #
+  geom_text(aes(label = site), colour = "white") +
+  geom_segment(data = dune_envfit_df, 
+               aes(x = 0, y = 0, xend = x, yend = y)) +
+  geom_text(data = dune_envfit_df, colour = "red",
+            aes(label = factors)) +
+  labs(x = "NMDS1", y = "NMDS2", colour = "Cluster")
+```
+
+I think this is actually the cleanest way to visualise the data.
+
+# Diversity
+
+If we are interested in calculating a Shannon-Wiener index on the species diversity found within the dunes we need only one function.
+
+```{r}
+diversity(dune)
+```
+
+# ANOSIM
+One final thing. It is also necessary to know if any differences exist between the clusters we have determined for our data. To do this we use the `anosim()` function from the `vegan` package.
+
+```{r}
+anosim(dune_dist, dune_grp)
+```

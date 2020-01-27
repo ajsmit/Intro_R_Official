@@ -1,0 +1,13 @@
+# These R packaes will be needed in order to run the course
+install.packages("rmarkdown")
+install.packages("tidyverse")
+install.packages("bindrcpp")
+install.packages("ggpubr")
+install.packages("magrittr")
+install.packages("boot")
+install.packages("ggsn")
+install.packages("scales")
+install.packages("maps")
+install.packages("ggmap")
+install.packages("lubridate")
+install.packages("bindrcpp")

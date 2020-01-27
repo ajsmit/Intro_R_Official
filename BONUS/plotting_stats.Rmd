@@ -1,0 +1,94 @@
+---
+title: "Plotting statistics"
+author: "Robert W Schlegel"
+date: '`r Sys.Date()`'
+output:
+  html_document: default
+language: Australian
+linkcolor: cyan
+citecolor: green
+urlcolor: cyan
+---
+
+```{r dates-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "R>", 
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+# Setup
+First install the new package `ggpubr`, which contains the functions we may use to seamless plot output statistics for our figures. We will also load some temperature data to use in our demonstration.
+
+```{r, warning=FALSE, message=FALSE}
+# Libraries
+library(tidyverse)
+library(ggpubr)
+
+# Data
+SACTN <- read.csv("~/Intro_R_Workshop/data/SACTN_data.csv")
+```
+
+# New functions
+We will be learning to use two new functions today. The first will be `compare_means()`, which is a function that compares means of two (t-test) or more (ANOVA) groups of values all in one convenient place. The second function is `stat_compare_means()`, which does much the same thing but is designed to be integrated directly into `ggplot2` code.
+
+First we will look at the use of `compare_means()`:
+
+```{r}
+compare_means(temp~site, data = SACTN, method = "anova")
+```
+
+How snazy is that?! And this works just as well for two mean (t-test) comparisons. It also has built into it the necessary tests for non-parametric comparisons as well as paired tests but we won't show that explicitrly here.
+
+```{r}
+compare_means(temp~site, data = filter(SACTN, site != "Port Nolloth"), method = "t.test")
+```
+
+This is great, but it is not new functionality, just drasticaly improved functionality. The second function introduced in this package is what is really going to make our lives easier. Here's why:
+
+```{r box-1, warning=FALSE, message=FALSE}
+ggplot(data = SACTN, aes(x = site, y = temp)) +
+  geom_boxplot(aes(colour = site), show.legend = F) +
+  stat_compare_means(method = "anova")
+```
+
+I find this to be a very impressive bit of code. The author of this function has devised a way to convince the rather unique `ggplot2` backend to do our dirty work for us and is able to use the x and y axes to calculate statistical analyses. And if that isn't enough, it then goes and puts it on our figure for us! The future is now. Because this is all still happening within the confines of `ggplot2` code, everything can be changed as we desire. The following is just an example, not necessarily the best way to visualise this information.
+
+```{r box-2, warning=FALSE, message=FALSE}
+ggplot(data = SACTN, aes(x = site, y = temp)) +
+  geom_boxplot(aes(fill  = site), colour = "grey40", show.legend = F) +
+  stat_compare_means(method = "anova", aes(label = paste0("p ", ..p.format..)), label.x = 2) +
+  theme_bw()
+```
+
+# Further applications
+As mentioned above, these functions may be used with paired tests, non-parametric tests, and multiple mean tests. These outputs have mates in the `ggplot2` sphere and so may be visualised with relative ease. Below we see an example of how to do this with a multiple mean (ANOVA) test.
+
+```{r box-3, warning=FALSE, message=FALSE}
+# First create a list of comparisons to feed into our figure
+SACTN_levels <- levels(SACTN$site)
+my_comparisons <- list( c(SACTN_levels[1], SACTN_levels[2]), 
+                        c(SACTN_levels[2], SACTN_levels[3]),
+                        c(SACTN_levels[1], SACTN_levels[3]))
+
+# And then we wack it all together
+ggplot(data = SACTN, aes(x = site, y = temp)) +
+  geom_boxplot(aes(fill  = site), colour = "grey40", show.legend = F) +
+  stat_compare_means(method = "anova", 
+                     label.x = 1.9, label.y = 33) +
+  # Add pairwise comparisons p-value
+  stat_compare_means(comparisons = my_comparisons,
+                     label.y = c(26, 28, 30)) +
+  # Perform t-tests between each group and the overall mean
+  stat_compare_means(label = "p.signif", method = "t.test",
+                     ref.group = ".all.") + 
+  # Add horizontal line at base mean
+  geom_hline(yintercept = mean(SACTN$temp, na.rm = T), linetype = 2) + 
+  labs(y = "Temp. (°C)", x = NULL) +
+  theme_bw()
+```
+
+The above figure shows a boxplot for the distribution of temperatures for each site. The horizontal dashed line shows what the overall mean for all temperatures is. The little asterisks above each box show the siginificance value of the difference of this group (site) from the mean temperature (dashed line). Four asterisks means _p_<0.001. The pairwise comparisons of each site are shown with black brackets, the text on top of which show the _p_-values of those comparisons. The text at the very top of the figure shows the overall _p_-value for the ANOVA that compared all means against one another. Generally though one would not want to show all of this information in one figure. THis just serves as an example of how straightforward it is to do so.
+
+For a more detailed explanation for how to perform more advanced comaprisons of multiple groups (especially paired comparisons), and how to plot all of those results in a very cunning way, one may follow this link: <https://www.r-bloggers.com/add-p-values-and-significance-levels-to-ggplots/>. 

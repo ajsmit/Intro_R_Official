@@ -1,0 +1,156 @@
+---
+title: "Basic Stats"
+author: "Robert W Schlegel"
+date: '`r Sys.Date()`'
+output:
+  html_document: default
+language: Australian
+linkcolor: cyan
+citecolor: green
+urlcolor: cyan
+---
+
+```{r basic-stats-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "R>", 
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+# Basic statistics
+In this quick tutorial we are going to look at how to perform some basic statistical tests. Before we do so, let's remind ourselves how to test the two most common assumptions we must make for any comparison of means test. These are kurtosis and homoscedasticity. Or rather in common parlance, normality of distribution and equality of variance.
+
+We will use the `laminaria` and `SACTN` data for our examples below in order to practice running the numbers.
+
+```{r basic-stats-load}
+# Load libraries
+library(tidyverse)
+library(ggpmisc)
+library(pgirmess)
+
+# Load data
+laminaria <- read_csv("../data/laminaria.csv")
+SACTN <- read_csv("../data/SACTN_data.csv")
+```
+
+With the libraries and data loaded, we will also create a couple of smaller dataframes from the Laminaria data to make it easier to perform our t-tests.
+
+```{r basic-stats-prep}
+# Be careful here as we are overwriting our raw data
+lam_1 <- laminaria %>% 
+  select(region, site, total_length)
+
+# Create dataframe with a couple of morphometric properties
+lam_2 <- laminaria %>% 
+  select(region, site, digits, blade_length)
+```
+
+## Testing assumptions
+
+To test the normality of the distribution of a set of data we may use the `shapiro.test()` function. This produces a 'w' score as well as a *p*-value, but for now we are only interested in the later. Anything above *p* = 0.05 may considered to be normally distributed.
+
+To test for similarity of variance we will run the `var()` function. As long as no group of data has ~4 times greater variance than any other group we are comparing it against it will pass this test.
+
+With the help of the `%>%` we may test all of our assumptions in one pass.
+
+```{r basic-stats-ass}
+# First test the Laminaria data by region
+  # This passes our tests
+lam_norm_region <- laminaria %>%
+  group_by(region) %>% 
+  summarise(norm_length = shapiro.test(total_length)[2],
+            var_length = var(total_length)) %>% 
+  ungroup()
+
+# Then test by site
+  # This no longer passes our tests
+lam_norm_site <- laminaria %>%
+  group_by(site) %>% 
+  summarise(norm_length = shapiro.test(total_length)[2],
+            var_length = var(total_length)) %>% 
+  ungroup()
+
+# Lastly we test the SACTN data
+  # Which also fails
+SACTN_norm <- SACTN %>% 
+  group_by(index) %>% 
+  summarise(norm_temp = shapiro.test(temp)[2],
+            var_temp = var(temp, na.rm = T))
+```
+
+## Comparison of two means
+
+To run a t-test we use `t.test()`. The argument this function wants is in the form of a formula. This requires to bits of information separated by a `~`. On the left we provide the name of the column containing the variable we want to compare between two groups. On the right we put the column containing the grouping variable. The second argument we provide is `data = x`, where we tell R what the name of the dataframe is that contains the columns we have fed to the formula.
+
+```{r basic-stats-t-test}
+t.test(total_length ~ region, data = laminaria)
+```
+
+Happily the Laminaria data, when separated by region, pass our assumption tests. Had they not, we would need to use a Wilcox test instead of a t-test. Note that the arguments are written the exact same for both functions.
+
+```{r basic-stats-wilcox}
+wilcox.test(total_length ~ region, data = laminaria)
+```
+
+
+## Comparison of multiple means
+The function we use to compare multiple means that pass our assumption tests (parametric data) are `aov()` for an ANOVA and for non-parametric data we use `kruskal.test()` for a Kruskal-Wallis test. To see the difference between the individual factor levels within our multiple means comparisons tests we use `TukeyHSD()` for parametric data and `kruskalmc()` for non-parametric data. Note that `aov()` does not by defalut output the information we are after so we wrap it inside of `summary()`. Note that the Laminaria and SACTN data violate our assumptions. We should therefore not perform paramteric tests on them. We do so below to highlight how these tests work should one have parametric data to use.
+
+```{r}
+# Look at the significance results for Laminaria total lengths
+summary(aov(total_length ~ site, data = laminaria))
+
+# Look at the Tukey test results
+TukeyHSD(aov(total_length ~ site, data = laminaria))
+
+# Multi-level ANOVA
+  # Interaction between factorial levels
+summary(aov(total_length ~ region * site, data = laminaria))
+
+TukeyHSD(aov(total_length ~ region * site, data = laminaria))
+
+# Single level non-parametric test
+kruskal.test(total_length ~ as.factor(site), data = laminaria)
+
+# Post-test
+kruskalmc(total_length ~ as.factor(site), data = laminaria)
+
+```
+
+## Correlation
+
+To check for the correlation between multiple values we may use `cor()`. This may be done in the pipe very quickly, but we have also provided below how to perfomr this test using the base R syntax.
+
+```{r base-stats-cor}
+# Using the pipe
+  # This allows us to compare multple columns of our choosing easily
+laminaria %>% 
+  select(-(region:Ind)) %>% 
+  cor(., use = "complete.obs")
+
+# Or base R syntax
+  # Here we must specify individual columns
+cor(laminaria$digits, laminaria$blade_length)
+```
+
+## Regression analysis
+
+The last analysis we will look at in this tut is regression analysis. This is performed by running a linear model, `lm()`, on two columns of data. We do so with the formula notation that we saw earlier but now the righ side of the `~` contains the dependant variable, and the left side the independent.
+
+```{r basic-stats-r2}
+# The summary
+summary(lm(stipe_diameter ~ stipe_mass, data = laminaria))
+
+# Plot the R2 value
+ggplot(data = laminaria, aes(x = stipe_mass, y = stipe_diameter)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  stat_poly_eq(formula = y ~ x, 
+                aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+                parse = TRUE)
+```
+
+
+
+

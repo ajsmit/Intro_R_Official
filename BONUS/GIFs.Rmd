@@ -1,0 +1,63 @@
+---
+title: "GIFs"
+author: "Robert W Schlegel"
+date: '`r Sys.Date()`'
+output:
+  html_document: default
+language: Australian
+linkcolor: cyan
+citecolor: green
+urlcolor: cyan
+---
+
+```{r dates-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "R>", 
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+# Introduction
+
+Yes my friends, it is true. We may add GIFs to our figures and maps. Rejoice. Better yet, the process is relatively straight forward. We will begin, as usual, by loading our libraries and files.
+
+```{r gif-load}
+# Load libraries
+library(tidyverse)
+library(magick)
+
+# The base image
+background <- image_read("../data/air_panel.png") %>% # Load file
+  image_scale("900") # Change resolution
+
+# The gif to overlay
+anim_overlay <- image_read("../data/carlton_dance.gif")  %>% # Load file 
+  image_scale("300") # Change resolution
+```
+
+# GIF creation
+
+Once we have loaded our base image and the GIF we want to put on top of it we need to create a function to make these two different file types 'kiss'. With the appropriately named **`magick`** package this is startlingly easy to do.
+
+```{r gif-func}
+frames <- lapply(anim_overlay, function(frame) {
+  image_composite(background, frame, offset = "+300")
+})
+```
+
+# GIF animation
+
+With our function for creating the GIF sorted, it is now time to animate it!
+
+```{r gif-anim}
+animation <- image_animate(image_join(frames), fps = 10) # FPS = 10 is native speed
+```
+
+# GIF save
+
+Jip. Simple as that.
+
+```{r gif-save, eval=FALSE}
+image_write(animation, "../BONUS/carlton.gif")
+```
