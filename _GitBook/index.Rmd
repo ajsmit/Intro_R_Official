@@ -1,6 +1,6 @@
 --- 
 title: 'Intro R Workshop: Data Manipulation, Analysis, and Visualisation'
-author: "Robert W Schlegel & AJ Smit"
+author: "Robert W Schlegel , AJ Smit & Amieroh Abrahams"
 date: "`r Sys.Date()`"
 output: pdf_document
 bibliography: book.bib

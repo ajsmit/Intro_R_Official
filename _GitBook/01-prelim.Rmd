@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ## Venue, date and time
  
-This workshop will take place in the week of **18 February -- 23 February 2018**, from **9:00--16:00** each day. We will meet in the BCB computer lab on the 5th floor.
+This workshop will take place in the week of **28 January -- 31 January 2020**, from **9:00--16:00** each day. We will meet in the BCB computer lab on the 5th floor.
 
 ## Course outline
 
@@ -175,9 +175,9 @@ Although R can run in its own console or in a terminal window (Mac and Linux; th
 
 5.  Install RStudio as per the instructions.
 
-See you on Monday, 19 February 2018. 
+See you on Monday, 28 January 2020. 
 
---- Cheers, AJ and Robert
+--- Cheers, AJ and Amieroh
 
 ## Resources
 

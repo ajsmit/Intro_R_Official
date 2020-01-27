@@ -155,6 +155,19 @@ Note that the first line of code assigns `d` a value of `2`, whereas the second 
 
 Another important question here is, is R case sensitive? Is `A` the same as `a`? Figure out a way to check for yourself.
 
+## Exercise:
+
+What are the values after each statement in the following?
+
+mass <- 48 
+mass <- mass * 2.0 # mass? 
+age <- age - 17 # age? m
+ass_index <- mass/age # mass_index?
+
+Use R to calculate some simple mathematical expressions entered.
+
+Assign the value of 40 to x Assign the value of 23 to y. Make z the value of x-y Display z in the console
+
 We can create a vector in R by using the combine `c()` function:
 
 ```{r}

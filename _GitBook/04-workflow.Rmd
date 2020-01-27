@@ -216,6 +216,10 @@ laminaria %>% # Tell R which dataset to use
   filter(total_length == max(total_length)) # Select row with max total length
 ```
 
+# Exercise:
+
+Using pipes, subset the laminaria data to include regions where the blade thickness is thicker than 5cm and retain only the columns site, region, blade weight and blade thickness.
+
 Now exit RStudio. Pretend it is three days later and revisit your analysis. Calculate the number of entries at Kommetjie and find the row with the greatest length. Do this now.
 
 Imagine doing this daily as our analysis grows in complexity. It will very soon become quite repetitive if each day you had to retype all these lines of code. And now, six weeks into the research and attendant statistical analysis, you discover that there were some mistakes and some of the raw data were incorrect. Now everything would have to be repeated by retyping it at the command prompt. Or worse still (and bad for repetitive strain injury) doing all of it in SPSS and remembering which buttons to click and then re-clicking them. A pain. Let's avoid that altogether and do it the right way by writing an R script to automate and annotate all of this.
@@ -232,7 +236,7 @@ Your file will now look similar to this one, but of course you will have added y
 # Reads in some data about Laminaria collected along the Cape Peninsula
 # do various data manipulations, analyses and graphs
 # AJ Smit
-# 9 April 2017
+# 9 January 2020
 
 # Find the current working directory (it will be correct if a project was
 # created as instructed earlier)
@@ -362,6 +366,14 @@ You will notice that the function `na.omit()` removes NAs from the variable that
 
 > **DIY: Using `na.omit()`**
 Using this new information, *calculate* the mean stipe mass and the corresponding standard error.
+
+# Exercise:
+
+Create a new data frame from the laminaria dataset that meets the following criteria: contains only the site column and a new column called total_length_half containing values that are half of the total_length. In this total_length_half column, there are no NAs and all values are less than 100. Hint: think about how the commands should be ordered to produce this data frame!
+
+Use group_by() and summarize() to find the mean, min, and max blade_length for each site. Also add the number of observations (hint: see ?n).
+
+What was the heaviest stipe measured in each site? Return the columns site, region, and stipe_length.
 
 ## Saving data
 

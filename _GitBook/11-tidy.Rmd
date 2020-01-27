@@ -139,6 +139,15 @@ SACTN4_tidy <- left_join(SACTN4a_tidy, SACTN4b_tidy, by = c("site", "src", "date
 
 At this point one may be wondering what the point of all of this is. Sure it's all well and good to see how to tidy one's data in R, but couldn't this be done more quickly and easily in Excel? Perhaps, yes, with a small dataset. But remember, (for many) the main reason we are learning R is to ensure that we are performing reproducible research. This means that every step in our workflow must be documented. And we accomplish this by writing R scripts.
 
+# Exercise
+
+Create two vectors: x <- c( 1, 6, 21, 19 , NA, 73, NA) and y <- c(NA, NA, 3, NA, 13, 24, NA)
+
+a) Count the number of elements are missing in both x and y
+
+b) Transform the code, used above (a), into a function
+
+c) Create three new vectors and test the function created in (b)
 
 ## Session info
 ```{r, echo=TRUE, include=TRUE}
