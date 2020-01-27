@@ -1,51 +1,49 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Intro R Workshop: Data Manipulation, Analysis, and Visualisation</title>
-  <meta name="description" content="The basics for a safe voyage through the tidyverse.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Brewing colours in ggplot2 | Intro R Workshop: Data Manipulation, Analysis, and Visualisation</title>
+  <meta name="description" content="The basics for a safe voyage through the tidyverse." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
+  <meta property="og:title" content="Chapter 7 Brewing colours in ggplot2 | Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/769_life_finds_a_way.png" />
   <meta property="og:description" content="The basics for a safe voyage through the tidyverse." />
-  <meta name="github-repo" content="robwschlegel/Intro_R_Workshop" />
+  <meta name="github-repo" content="ajsmit/Intro_R_Official" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
+  <meta name="twitter:title" content="Chapter 7 Brewing colours in ggplot2 | Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
   
   <meta name="twitter:description" content="The basics for a safe voyage through the tidyverse." />
   <meta name="twitter:image" content="figures/769_life_finds_a_way.png" />
 
-<meta name="author" content="Robert W Schlegel &amp; AJ Smit">
+<meta name="author" content="Robert W Schlegel, AJ Smit &amp; Amieroh Abrahams" />
 
 
-<<<<<<< HEAD
-<meta name="date" content="2018-03-02">
-||||||| merged common ancestors
-<meta name="date" content="2018-01-22">
-=======
-<meta name="date" content="2018-01-29">
->>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
+<meta name="date" content="2020-01-27" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="faceting.html">
-<link rel="next" href="mapping.html">
+<link rel="prev" href="faceting.html"/>
+<link rel="next" href="mapping.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -56,41 +54,67 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -110,165 +134,204 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="prelim.html"><a href="prelim.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
-<li class="chapter" data-level="1.1" data-path="prelim.html"><a href="prelim.html#course-outline"><i class="fa fa-check"></i><b>1.1</b> Course outline</a><ul>
+<li class="chapter" data-level="1" data-path="prelim.html"><a href="prelim.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="prelim.html"><a href="prelim.html#venue-date-and-time"><i class="fa fa-check"></i><b>1.1</b> Venue, date and time</a></li>
+<li class="chapter" data-level="1.2" data-path="prelim.html"><a href="prelim.html#course-outline"><i class="fa fa-check"></i><b>1.2</b> Course outline</a>
+<ul>
 <li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-1-in-the-beginning"><i class="fa fa-check"></i>Day 1 – In the Beginning</a></li>
 <li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-2-show-and-tell"><i class="fa fa-check"></i>Day 2 – Show and tell</a></li>
 <li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-3-going-deeper"><i class="fa fa-check"></i>Day 3 – Going deeper</a></li>
 <li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-4-the-enlightened-researcher"><i class="fa fa-check"></i>Day 4 – The Enlightened Researcher</a></li>
 <li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-5-the-world-is-yours"><i class="fa fa-check"></i>Day 5 – The world is yours</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="prelim.html"><a href="prelim.html#about-this-workshop"><i class="fa fa-check"></i><b>1.2</b> About this Workshop</a></li>
-<li class="chapter" data-level="1.3" data-path="prelim.html"><a href="prelim.html#why-use-r"><i class="fa fa-check"></i><b>1.3</b> Why use R?</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="prelim.html"><a href="prelim.html#some-negatives-of-using-r"><i class="fa fa-check"></i><b>1.3.1</b> Some negatives of using R</a></li>
-<li class="chapter" data-level="1.3.2" data-path="prelim.html"><a href="prelim.html#the-challenge-learning-to-program-in-r"><i class="fa fa-check"></i><b>1.3.2</b> The challenge: learning to program in R</a></li>
+<li class="chapter" data-level="1.3" data-path="prelim.html"><a href="prelim.html#about-this-workshop"><i class="fa fa-check"></i><b>1.3</b> About this Workshop</a></li>
+<li class="chapter" data-level="1.4" data-path="prelim.html"><a href="prelim.html#why-use-r"><i class="fa fa-check"></i><b>1.4</b> Why use R?</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="prelim.html"><a href="prelim.html#some-negatives-of-using-r"><i class="fa fa-check"></i><b>1.4.1</b> Some negatives of using R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="prelim.html"><a href="prelim.html#the-challenge-learning-to-program-in-r"><i class="fa fa-check"></i><b>1.4.2</b> The challenge: learning to program in R</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="prelim.html"><a href="prelim.html#using-your-own-computer"><i class="fa fa-check"></i><b>1.4</b> Using your own computer?</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="prelim.html"><a href="prelim.html#installing-r"><i class="fa fa-check"></i><b>1.4.1</b> Installing R</a></li>
-<li class="chapter" data-level="1.4.2" data-path="prelim.html"><a href="prelim.html#installing-rstudio"><i class="fa fa-check"></i><b>1.4.2</b> Installing RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path="prelim.html"><a href="prelim.html#using-your-own-computer"><i class="fa fa-check"></i><b>1.5</b> Using your own computer?</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="prelim.html"><a href="prelim.html#installing-r"><i class="fa fa-check"></i><b>1.5.1</b> Installing R</a></li>
+<li class="chapter" data-level="1.5.2" data-path="prelim.html"><a href="prelim.html#installing-rstudio"><i class="fa fa-check"></i><b>1.5.2</b> Installing RStudio</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="prelim.html"><a href="prelim.html#resources"><i class="fa fa-check"></i><b>1.5</b> Resources</a></li>
-<li class="chapter" data-level="1.6" data-path="prelim.html"><a href="prelim.html#style-and-code-conventions"><i class="fa fa-check"></i><b>1.6</b> Style and code conventions</a></li>
-<li class="chapter" data-level="1.7" data-path="prelim.html"><a href="prelim.html#about-this-document"><i class="fa fa-check"></i><b>1.7</b> About this document</a></li>
-<li class="chapter" data-level="1.8" data-path="prelim.html"><a href="prelim.html#exercise-it-which-shall-not-be-named"><i class="fa fa-check"></i><b>1.8</b> Exercise: It which shall not be named</a></li>
-<li class="chapter" data-level="1.9" data-path="prelim.html"><a href="prelim.html#session-info"><i class="fa fa-check"></i><b>1.9</b> Session info</a></li>
+<li class="chapter" data-level="1.6" data-path="prelim.html"><a href="prelim.html#resources"><i class="fa fa-check"></i><b>1.6</b> Resources</a></li>
+<li class="chapter" data-level="1.7" data-path="prelim.html"><a href="prelim.html#style-and-code-conventions"><i class="fa fa-check"></i><b>1.7</b> Style and code conventions</a></li>
+<li class="chapter" data-level="1.8" data-path="prelim.html"><a href="prelim.html#about-this-document"><i class="fa fa-check"></i><b>1.8</b> About this document</a></li>
+<li class="chapter" data-level="1.9" data-path="prelim.html"><a href="prelim.html#exercise-it-which-shall-not-be-named"><i class="fa fa-check"></i><b>1.9</b> Exercise: It which shall not be named</a></li>
+<li class="chapter" data-level="1.10" data-path="prelim.html"><a href="prelim.html#session-info"><i class="fa fa-check"></i><b>1.10</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>2</b> RStudio</a><ul>
-<li class="chapter" data-level="2.1" data-path="rstudio.html"><a href="rstudio.html#setting-up-the-workspace"><i class="fa fa-check"></i><b>2.1</b> Setting up the workspace</a><ul>
+<li class="chapter" data-level="2" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rstudio.html"><a href="rstudio.html#setting-up-the-workspace"><i class="fa fa-check"></i><b>2.1</b> Setting up the workspace</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="rstudio.html"><a href="rstudio.html#general-settings"><i class="fa fa-check"></i><b>2.1.1</b> General settings</a></li>
 <li class="chapter" data-level="2.1.2" data-path="rstudio.html"><a href="rstudio.html#customising-appearance"><i class="fa fa-check"></i><b>2.1.2</b> Customising appearance</a></li>
 <li class="chapter" data-level="2.1.3" data-path="rstudio.html"><a href="rstudio.html#configuring-panes"><i class="fa fa-check"></i><b>2.1.3</b> Configuring panes</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="rstudio.html"><a href="rstudio.html#the-rproject"><i class="fa fa-check"></i><b>2.2</b> The Rproject</a></li>
 <li class="chapter" data-level="2.3" data-path="rstudio.html"><a href="rstudio.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing packages</a></li>
-<li class="chapter" data-level="2.4" data-path="rstudio.html"><a href="rstudio.html#the-panes-of-rstudio"><i class="fa fa-check"></i><b>2.4</b> The panes of RStudio</a><ul>
+<li class="chapter" data-level="2.4" data-path="rstudio.html"><a href="rstudio.html#the-panes-of-rstudio"><i class="fa fa-check"></i><b>2.4</b> The panes of RStudio</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="rstudio.html"><a href="rstudio.html#source-editor"><i class="fa fa-check"></i><b>2.4.1</b> Source Editor</a></li>
 <li class="chapter" data-level="2.4.2" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>2.4.2</b> Console</a></li>
-<li class="chapter" data-level="2.4.3" data-path="rstudio.html"><a href="rstudio.html#environment-and-history-panes"><i class="fa fa-check"></i><b>2.4.3</b> Environment and History panes</a></li>
-<li class="chapter" data-level="2.4.4" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help-and-viewer-panes"><i class="fa fa-check"></i><b>2.4.4</b> Files, Plots, Packages, Help, and Viewer panes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="rstudio.html"><a href="rstudio.html#session-info-1"><i class="fa fa-check"></i><b>2.5</b> Session info</a></li>
+<li class="chapter" data-level="2.5" data-path="rstudio.html"><a href="rstudio.html#exercise"><i class="fa fa-check"></i><b>2.5</b> Exercise:</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="rstudio.html"><a href="rstudio.html#environment-and-history-panes"><i class="fa fa-check"></i><b>2.5.1</b> Environment and History panes</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help-and-viewer-panes"><i class="fa fa-check"></i><b>2.5.2</b> Files, Plots, Packages, Help, and Viewer panes</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>3</b> An R workflow</a><ul>
-<li class="chapter" data-level="3.1" data-path="workflow.html"><a href="workflow.html#r-scripts"><i class="fa fa-check"></i><b>3.1</b> R Scripts</a></li>
-<li class="chapter" data-level="3.2" data-path="workflow.html"><a href="workflow.html#reading-data-into-r"><i class="fa fa-check"></i><b>3.2</b> Reading data into R</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="workflow.html"><a href="workflow.html#preparing-data-for-r"><i class="fa fa-check"></i><b>3.2.1</b> Preparing data for R</a></li>
-<li class="chapter" data-level="3.2.2" data-path="workflow.html"><a href="workflow.html#converting-data"><i class="fa fa-check"></i><b>3.2.2</b> Converting data</a></li>
-<li class="chapter" data-level="3.2.3" data-path="workflow.html"><a href="workflow.html#importing-data"><i class="fa fa-check"></i><b>3.2.3</b> Importing data</a></li>
-<li class="chapter" data-level="3.2.4" data-path="workflow.html"><a href="workflow.html#loading-a-file"><i class="fa fa-check"></i><b>3.2.4</b> Loading a file</a></li>
+<li class="chapter" data-level="2.6" data-path="rstudio.html"><a href="rstudio.html#session-info-1"><i class="fa fa-check"></i><b>2.6</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="workflow.html"><a href="workflow.html#working-with-data"><i class="fa fa-check"></i><b>3.3</b> Working with data</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="workflow.html"><a href="workflow.html#examine-your-data"><i class="fa fa-check"></i><b>3.3.1</b> Examine your data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="workflow.html"><a href="workflow.html#tidyverse-sneak-peek"><i class="fa fa-check"></i><b>3.3.2</b> Tidyverse sneak peek</a></li>
-<li class="chapter" data-level="3.3.3" data-path="workflow.html"><a href="workflow.html#subsetting"><i class="fa fa-check"></i><b>3.3.3</b> Subsetting</a></li>
-<li class="chapter" data-level="3.3.4" data-path="workflow.html"><a href="workflow.html#basic-stats"><i class="fa fa-check"></i><b>3.3.4</b> Basic stats</a></li>
-<li class="chapter" data-level="3.3.5" data-path="workflow.html"><a href="workflow.html#summary-of-all-variables-in-a-dataframe"><i class="fa fa-check"></i><b>3.3.5</b> Summary of all variables in a dataframe</a></li>
-<li class="chapter" data-level="3.3.6" data-path="workflow.html"><a href="workflow.html#summary-statistics-by-variable"><i class="fa fa-check"></i><b>3.3.6</b> Summary statistics by variable</a></li>
-<li class="chapter" data-level="3.3.7" data-path="workflow.html"><a href="workflow.html#more-complex-calculations"><i class="fa fa-check"></i><b>3.3.7</b> More complex calculations</a></li>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#what-is-github"><i class="fa fa-check"></i><b>3.1</b> What is GitHub?</a></li>
+<li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#installing-github-on-windows"><i class="fa fa-check"></i><b>3.2</b> Installing GitHub on Windows</a></li>
+<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#create-and-account-and-a-repository"><i class="fa fa-check"></i><b>3.3</b> Create and account and a Repository</a></li>
+<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#git-configuring-activation-and-connecting-to-a-remote-repository"><i class="fa fa-check"></i><b>3.4</b> Git configuring (activation) and connecting to a remote repository</a></li>
+<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#clone-the-new-github-repository-to-your-computer-via-rstudio."><i class="fa fa-check"></i><b>3.5</b> Clone the new GitHub repository to your computer via RStudio.</a></li>
+<li class="chapter" data-level="3.6" data-path="github.html"><a href="github.html#commits"><i class="fa fa-check"></i><b>3.6</b> Commits</a></li>
+<li class="chapter" data-level="3.7" data-path="github.html"><a href="github.html#open-a-pull-request"><i class="fa fa-check"></i><b>3.7</b> Open a Pull Request</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="workflow.html"><a href="workflow.html#saving-data"><i class="fa fa-check"></i><b>3.4</b> Saving data</a></li>
-<li class="chapter" data-level="3.5" data-path="workflow.html"><a href="workflow.html#visualisations"><i class="fa fa-check"></i><b>3.5</b> Visualisations</a></li>
-<li class="chapter" data-level="3.6" data-path="workflow.html"><a href="workflow.html#clearing-the-memory"><i class="fa fa-check"></i><b>3.6</b> Clearing the memory</a></li>
-<li class="chapter" data-level="3.7" data-path="workflow.html"><a href="workflow.html#working-directories"><i class="fa fa-check"></i><b>3.7</b> Working directories</a></li>
-<li class="chapter" data-level="3.8" data-path="workflow.html"><a href="workflow.html#help"><i class="fa fa-check"></i><b>3.8</b> Help</a></li>
-<li class="chapter" data-level="3.9" data-path="workflow.html"><a href="workflow.html#session-info-2"><i class="fa fa-check"></i><b>3.9</b> Session info</a></li>
+<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> An R workflow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="workflow.html"><a href="workflow.html#r-scripts"><i class="fa fa-check"></i><b>4.1</b> R Scripts</a></li>
+<li class="chapter" data-level="4.2" data-path="workflow.html"><a href="workflow.html#reading-data-into-r"><i class="fa fa-check"></i><b>4.2</b> Reading data into R</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="workflow.html"><a href="workflow.html#preparing-data-for-r"><i class="fa fa-check"></i><b>4.2.1</b> Preparing data for R</a></li>
+<li class="chapter" data-level="4.2.2" data-path="workflow.html"><a href="workflow.html#converting-data"><i class="fa fa-check"></i><b>4.2.2</b> Converting data</a></li>
+<li class="chapter" data-level="4.2.3" data-path="workflow.html"><a href="workflow.html#importing-data"><i class="fa fa-check"></i><b>4.2.3</b> Importing data</a></li>
+<li class="chapter" data-level="4.2.4" data-path="workflow.html"><a href="workflow.html#loading-a-file"><i class="fa fa-check"></i><b>4.2.4</b> Loading a file</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>4</b> Graphics with <strong><code>ggplot2</code></strong></a><ul>
-<li class="chapter" data-level="4.1" data-path="graphics.html"><a href="graphics.html#example-figures"><i class="fa fa-check"></i><b>4.1</b> Example figures</a></li>
-<li class="chapter" data-level="4.2" data-path="graphics.html"><a href="graphics.html#basics-of-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Basics of <strong><code>ggplot2</code></strong></a></li>
-<li class="chapter" data-level="4.3" data-path="graphics.html"><a href="graphics.html#to-aes-or-not-to-aes-that-is-the-question"><i class="fa fa-check"></i><b>4.3</b> To <code>aes()</code> or not to <code>aes()</code>, that is the question</a></li>
-<li class="chapter" data-level="4.4" data-path="graphics.html"><a href="graphics.html#changing-labels"><i class="fa fa-check"></i><b>4.4</b> Changing labels</a></li>
-<li class="chapter" data-level="4.5" data-path="graphics.html"><a href="graphics.html#session-info-3"><i class="fa fa-check"></i><b>4.5</b> Session info</a></li>
+<li class="chapter" data-level="4.3" data-path="workflow.html"><a href="workflow.html#working-with-data"><i class="fa fa-check"></i><b>4.3</b> Working with data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="workflow.html"><a href="workflow.html#examine-your-data"><i class="fa fa-check"></i><b>4.3.1</b> Examine your data</a></li>
+<li class="chapter" data-level="4.3.2" data-path="workflow.html"><a href="workflow.html#tidyverse-sneak-peek"><i class="fa fa-check"></i><b>4.3.2</b> Tidyverse sneak peek</a></li>
+<li class="chapter" data-level="4.3.3" data-path="workflow.html"><a href="workflow.html#subsetting"><i class="fa fa-check"></i><b>4.3.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.3.4" data-path="workflow.html"><a href="workflow.html#basic-stats"><i class="fa fa-check"></i><b>4.3.4</b> Basic stats</a></li>
+<li class="chapter" data-level="4.3.5" data-path="workflow.html"><a href="workflow.html#summary-of-all-variables-in-a-dataframe"><i class="fa fa-check"></i><b>4.3.5</b> Summary of all variables in a dataframe</a></li>
+<li class="chapter" data-level="4.3.6" data-path="workflow.html"><a href="workflow.html#summary-statistics-by-variable"><i class="fa fa-check"></i><b>4.3.6</b> Summary statistics by variable</a></li>
+<li class="chapter" data-level="4.3.7" data-path="workflow.html"><a href="workflow.html#more-complex-calculations"><i class="fa fa-check"></i><b>4.3.7</b> More complex calculations</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>5</b> Faceting Figures</a><ul>
-<li class="chapter" data-level="5.1" data-path="faceting.html"><a href="faceting.html#faceting-one-figure"><i class="fa fa-check"></i><b>5.1</b> Faceting one figure</a></li>
-<li class="chapter" data-level="5.2" data-path="faceting.html"><a href="faceting.html#new-figure-types"><i class="fa fa-check"></i><b>5.2</b> New figure types</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="faceting.html"><a href="faceting.html#line-graph"><i class="fa fa-check"></i><b>5.2.1</b> Line graph</a></li>
-<li class="chapter" data-level="5.2.2" data-path="faceting.html"><a href="faceting.html#linear-model"><i class="fa fa-check"></i><b>5.2.2</b> Linear model</a></li>
-<li class="chapter" data-level="5.2.3" data-path="faceting.html"><a href="faceting.html#histogram"><i class="fa fa-check"></i><b>5.2.3</b> Histogram</a></li>
-<li class="chapter" data-level="5.2.4" data-path="faceting.html"><a href="faceting.html#boxplot"><i class="fa fa-check"></i><b>5.2.4</b> Boxplot</a></li>
+<li class="chapter" data-level="4.4" data-path="workflow.html"><a href="workflow.html#saving-data"><i class="fa fa-check"></i><b>4.4</b> Saving data</a></li>
+<li class="chapter" data-level="4.5" data-path="workflow.html"><a href="workflow.html#visualisations"><i class="fa fa-check"></i><b>4.5</b> Visualisations</a></li>
+<li class="chapter" data-level="4.6" data-path="workflow.html"><a href="workflow.html#clearing-the-memory"><i class="fa fa-check"></i><b>4.6</b> Clearing the memory</a></li>
+<li class="chapter" data-level="4.7" data-path="workflow.html"><a href="workflow.html#working-directories"><i class="fa fa-check"></i><b>4.7</b> Working directories</a></li>
+<li class="chapter" data-level="4.8" data-path="workflow.html"><a href="workflow.html#help"><i class="fa fa-check"></i><b>4.8</b> Help</a></li>
+<li class="chapter" data-level="4.9" data-path="workflow.html"><a href="workflow.html#session-info-2"><i class="fa fa-check"></i><b>4.9</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="faceting.html"><a href="faceting.html#gridding-figures"><i class="fa fa-check"></i><b>5.3</b> Gridding figures</a></li>
-<li class="chapter" data-level="5.4" data-path="faceting.html"><a href="faceting.html#session-info-4"><i class="fa fa-check"></i><b>5.4</b> Session info</a></li>
+<li class="chapter" data-level="5" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>5</b> Graphics with <strong><code>ggplot2</code></strong></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graphics.html"><a href="graphics.html#example-figures"><i class="fa fa-check"></i><b>5.1</b> Example figures</a></li>
+<li class="chapter" data-level="5.2" data-path="graphics.html"><a href="graphics.html#basics-of-ggplot2"><i class="fa fa-check"></i><b>5.2</b> Basics of <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="5.3" data-path="graphics.html"><a href="graphics.html#to-aes-or-not-to-aes-that-is-the-question"><i class="fa fa-check"></i><b>5.3</b> To <code>aes()</code> or not to <code>aes()</code>, that is the question</a></li>
+<li class="chapter" data-level="5.4" data-path="graphics.html"><a href="graphics.html#changing-labels"><i class="fa fa-check"></i><b>5.4</b> Changing labels</a></li>
+<li class="chapter" data-level="5.5" data-path="graphics.html"><a href="graphics.html#session-info-3"><i class="fa fa-check"></i><b>5.5</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="brewing.html"><a href="brewing.html"><i class="fa fa-check"></i><b>6</b> Brewing colours in <strong><code>ggplot2</code></strong></a><ul>
-<li class="chapter" data-level="6.1" data-path="brewing.html"><a href="brewing.html#r-data"><i class="fa fa-check"></i><b>6.1</b> R Data</a></li>
-<li class="chapter" data-level="6.2" data-path="brewing.html"><a href="brewing.html#rcolorbrewer"><i class="fa fa-check"></i><b>6.2</b> <strong><code>RColorBrewer</code></strong></a></li>
-<li class="chapter" data-level="6.3" data-path="brewing.html"><a href="brewing.html#make-your-own-palettes"><i class="fa fa-check"></i><b>6.3</b> Make your own palettes</a></li>
-<li class="chapter" data-level="6.4" data-path="brewing.html"><a href="brewing.html#use-your-own-palettes"><i class="fa fa-check"></i><b>6.4</b> Use your own palettes</a></li>
-<li class="chapter" data-level="6.5" data-path="brewing.html"><a href="brewing.html#diy-figures"><i class="fa fa-check"></i><b>6.5</b> DIY figures</a></li>
-<li class="chapter" data-level="6.6" data-path="brewing.html"><a href="brewing.html#session-info-5"><i class="fa fa-check"></i><b>6.6</b> Session info</a></li>
+<li class="chapter" data-level="6" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>6</b> Faceting Figures</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="faceting.html"><a href="faceting.html#faceting-one-figure"><i class="fa fa-check"></i><b>6.1</b> Faceting one figure</a></li>
+<li class="chapter" data-level="6.2" data-path="faceting.html"><a href="faceting.html#new-figure-types"><i class="fa fa-check"></i><b>6.2</b> New figure types</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="faceting.html"><a href="faceting.html#line-graph"><i class="fa fa-check"></i><b>6.2.1</b> Line graph</a></li>
+<li class="chapter" data-level="6.2.2" data-path="faceting.html"><a href="faceting.html#linear-model"><i class="fa fa-check"></i><b>6.2.2</b> Linear model</a></li>
+<li class="chapter" data-level="6.2.3" data-path="faceting.html"><a href="faceting.html#histogram"><i class="fa fa-check"></i><b>6.2.3</b> Histogram</a></li>
+<li class="chapter" data-level="6.2.4" data-path="faceting.html"><a href="faceting.html#boxplot"><i class="fa fa-check"></i><b>6.2.4</b> Boxplot</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>7</b> Mapping with <strong><code>ggplot2</code></strong></a><ul>
-<li class="chapter" data-level="7.1" data-path="mapping.html"><a href="mapping.html#a-new-concept"><i class="fa fa-check"></i><b>7.1</b> A new concept?</a></li>
-<li class="chapter" data-level="7.2" data-path="mapping.html"><a href="mapping.html#land-mask"><i class="fa fa-check"></i><b>7.2</b> Land mask</a></li>
-<li class="chapter" data-level="7.3" data-path="mapping.html"><a href="mapping.html#borders"><i class="fa fa-check"></i><b>7.3</b> Borders</a></li>
-<li class="chapter" data-level="7.4" data-path="mapping.html"><a href="mapping.html#force-lonlat-extent"><i class="fa fa-check"></i><b>7.4</b> Force lon/lat extent</a></li>
-<li class="chapter" data-level="7.5" data-path="mapping.html"><a href="mapping.html#ocean-temperature"><i class="fa fa-check"></i><b>7.5</b> Ocean temperature</a></li>
-<li class="chapter" data-level="7.6" data-path="mapping.html"><a href="mapping.html#final-touches"><i class="fa fa-check"></i><b>7.6</b> Final touches</a></li>
-<li class="chapter" data-level="7.7" data-path="mapping.html"><a href="mapping.html#session-info-6"><i class="fa fa-check"></i><b>7.7</b> Session info</a></li>
+<li class="chapter" data-level="6.3" data-path="faceting.html"><a href="faceting.html#gridding-figures"><i class="fa fa-check"></i><b>6.3</b> Gridding figures</a></li>
+<li class="chapter" data-level="6.4" data-path="faceting.html"><a href="faceting.html#session-info-4"><i class="fa fa-check"></i><b>6.4</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="mapping-style.html"><a href="mapping-style.html"><i class="fa fa-check"></i><b>8</b> Mapping with style</a><ul>
-<li class="chapter" data-level="8.1" data-path="mapping-style.html"><a href="mapping-style.html#default-maps"><i class="fa fa-check"></i><b>8.1</b> Default maps</a></li>
-<li class="chapter" data-level="8.2" data-path="mapping-style.html"><a href="mapping-style.html#specific-labels"><i class="fa fa-check"></i><b>8.2</b> Specific labels</a></li>
-<li class="chapter" data-level="8.3" data-path="mapping-style.html"><a href="mapping-style.html#scale-bars"><i class="fa fa-check"></i><b>8.3</b> Scale bars</a></li>
-<li class="chapter" data-level="8.4" data-path="mapping-style.html"><a href="mapping-style.html#insetting"><i class="fa fa-check"></i><b>8.4</b> Insetting</a></li>
-<li class="chapter" data-level="8.5" data-path="mapping-style.html"><a href="mapping-style.html#rounding-it-out"><i class="fa fa-check"></i><b>8.5</b> Rounding it out</a></li>
-<li class="chapter" data-level="8.6" data-path="mapping-style.html"><a href="mapping-style.html#session-info-7"><i class="fa fa-check"></i><b>8.6</b> Session info</a></li>
+<li class="chapter" data-level="7" data-path="brewing.html"><a href="brewing.html"><i class="fa fa-check"></i><b>7</b> Brewing colours in <strong><code>ggplot2</code></strong></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="brewing.html"><a href="brewing.html#r-data"><i class="fa fa-check"></i><b>7.1</b> R Data</a></li>
+<li class="chapter" data-level="7.2" data-path="brewing.html"><a href="brewing.html#rcolorbrewer"><i class="fa fa-check"></i><b>7.2</b> <strong><code>RColorBrewer</code></strong></a></li>
+<li class="chapter" data-level="7.3" data-path="brewing.html"><a href="brewing.html#make-your-own-palettes"><i class="fa fa-check"></i><b>7.3</b> Make your own palettes</a></li>
+<li class="chapter" data-level="7.4" data-path="brewing.html"><a href="brewing.html#use-your-own-palettes"><i class="fa fa-check"></i><b>7.4</b> Use your own palettes</a></li>
+<li class="chapter" data-level="7.5" data-path="brewing.html"><a href="brewing.html#diy-figures"><i class="fa fa-check"></i><b>7.5</b> DIY figures</a></li>
+<li class="chapter" data-level="7.6" data-path="brewing.html"><a href="brewing.html#session-info-5"><i class="fa fa-check"></i><b>7.6</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="mapping-google.html"><a href="mapping-google.html"><i class="fa fa-check"></i><b>9</b> Mapping with Google</a><ul>
-<li class="chapter" data-level="9.1" data-path="mapping-google.html"><a href="mapping-google.html#ggmap"><i class="fa fa-check"></i><b>9.1</b> <strong><code>ggmap</code></strong></a></li>
-<li class="chapter" data-level="9.2" data-path="mapping-google.html"><a href="mapping-google.html#mapping-cape-point"><i class="fa fa-check"></i><b>9.2</b> Mapping Cape Point</a></li>
-<li class="chapter" data-level="9.3" data-path="mapping-google.html"><a href="mapping-google.html#site-labels"><i class="fa fa-check"></i><b>9.3</b> Site labels</a></li>
-<li class="chapter" data-level="9.4" data-path="mapping-google.html"><a href="mapping-google.html#diy-maps"><i class="fa fa-check"></i><b>9.4</b> DIY maps</a></li>
-<li class="chapter" data-level="9.5" data-path="mapping-google.html"><a href="mapping-google.html#session-info-8"><i class="fa fa-check"></i><b>9.5</b> Session info</a></li>
+<li class="chapter" data-level="8" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>8</b> Mapping with <strong><code>ggplot2</code></strong></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="mapping.html"><a href="mapping.html#a-new-concept"><i class="fa fa-check"></i><b>8.1</b> A new concept?</a></li>
+<li class="chapter" data-level="8.2" data-path="mapping.html"><a href="mapping.html#land-mask"><i class="fa fa-check"></i><b>8.2</b> Land mask</a></li>
+<li class="chapter" data-level="8.3" data-path="mapping.html"><a href="mapping.html#borders"><i class="fa fa-check"></i><b>8.3</b> Borders</a></li>
+<li class="chapter" data-level="8.4" data-path="mapping.html"><a href="mapping.html#force-lonlat-extent"><i class="fa fa-check"></i><b>8.4</b> Force lon/lat extent</a></li>
+<li class="chapter" data-level="8.5" data-path="mapping.html"><a href="mapping.html#ocean-temperature"><i class="fa fa-check"></i><b>8.5</b> Ocean temperature</a></li>
+<li class="chapter" data-level="8.6" data-path="mapping.html"><a href="mapping.html#final-touches"><i class="fa fa-check"></i><b>8.6</b> Final touches</a></li>
+<li class="chapter" data-level="8.7" data-path="mapping.html"><a href="mapping.html#session-info-6"><i class="fa fa-check"></i><b>8.7</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>10</b> Tidy data</a><ul>
-<li class="chapter" data-level="10.1" data-path="tidy.html"><a href="tidy.html#gathering-and-spreading"><i class="fa fa-check"></i><b>10.1</b> Gathering and spreading</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="tidy.html"><a href="tidy.html#gathering"><i class="fa fa-check"></i><b>10.1.1</b> Gathering</a></li>
-<li class="chapter" data-level="10.1.2" data-path="tidy.html"><a href="tidy.html#spreading"><i class="fa fa-check"></i><b>10.1.2</b> Spreading</a></li>
+<li class="chapter" data-level="9" data-path="mapping-style.html"><a href="mapping-style.html"><i class="fa fa-check"></i><b>9</b> Mapping with style</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mapping-style.html"><a href="mapping-style.html#default-maps"><i class="fa fa-check"></i><b>9.1</b> Default maps</a></li>
+<li class="chapter" data-level="9.2" data-path="mapping-style.html"><a href="mapping-style.html#specific-labels"><i class="fa fa-check"></i><b>9.2</b> Specific labels</a></li>
+<li class="chapter" data-level="9.3" data-path="mapping-style.html"><a href="mapping-style.html#scale-bars"><i class="fa fa-check"></i><b>9.3</b> Scale bars</a></li>
+<li class="chapter" data-level="9.4" data-path="mapping-style.html"><a href="mapping-style.html#insetting"><i class="fa fa-check"></i><b>9.4</b> Insetting</a></li>
+<li class="chapter" data-level="9.5" data-path="mapping-style.html"><a href="mapping-style.html#rounding-it-out"><i class="fa fa-check"></i><b>9.5</b> Rounding it out</a></li>
+<li class="chapter" data-level="9.6" data-path="mapping-style.html"><a href="mapping-style.html#session-info-7"><i class="fa fa-check"></i><b>9.6</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="tidy.html"><a href="tidy.html#separating-and-uniting"><i class="fa fa-check"></i><b>10.2</b> Separating and uniting</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="tidy.html"><a href="tidy.html#separate"><i class="fa fa-check"></i><b>10.2.1</b> Separate</a></li>
-<li class="chapter" data-level="10.2.2" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>10.2.2</b> Unite</a></li>
+<li class="chapter" data-level="10" data-path="mapping-google.html"><a href="mapping-google.html"><i class="fa fa-check"></i><b>10</b> Mapping with Google</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="mapping-google.html"><a href="mapping-google.html#ggmap"><i class="fa fa-check"></i><b>10.1</b> <strong><code>ggmap</code></strong></a></li>
+<li class="chapter" data-level="10.2" data-path="mapping-google.html"><a href="mapping-google.html#mapping-cape-point"><i class="fa fa-check"></i><b>10.2</b> Mapping Cape Point</a></li>
+<li class="chapter" data-level="10.3" data-path="mapping-google.html"><a href="mapping-google.html#site-labels"><i class="fa fa-check"></i><b>10.3</b> Site labels</a></li>
+<li class="chapter" data-level="10.4" data-path="mapping-google.html"><a href="mapping-google.html#diy-maps"><i class="fa fa-check"></i><b>10.4</b> DIY maps</a></li>
+<li class="chapter" data-level="10.5" data-path="mapping-google.html"><a href="mapping-google.html#session-info-8"><i class="fa fa-check"></i><b>10.5</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="tidy.html"><a href="tidy.html#joining"><i class="fa fa-check"></i><b>10.3</b> Joining</a></li>
-<li class="chapter" data-level="10.4" data-path="tidy.html"><a href="tidy.html#but-why-though"><i class="fa fa-check"></i><b>10.4</b> But why though?</a></li>
-<li class="chapter" data-level="10.5" data-path="tidy.html"><a href="tidy.html#session-info-9"><i class="fa fa-check"></i><b>10.5</b> Session info</a></li>
+<li class="chapter" data-level="11" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>11</b> Tidy data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="tidy.html"><a href="tidy.html#gathering-and-spreading"><i class="fa fa-check"></i><b>11.1</b> Gathering and spreading</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="tidy.html"><a href="tidy.html#gathering"><i class="fa fa-check"></i><b>11.1.1</b> Gathering</a></li>
+<li class="chapter" data-level="11.1.2" data-path="tidy.html"><a href="tidy.html#spreading"><i class="fa fa-check"></i><b>11.1.2</b> Spreading</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="tidier.html"><a href="tidier.html"><i class="fa fa-check"></i><b>11</b> Tidier data</a><ul>
-<li class="chapter" data-level="11.1" data-path="tidier.html"><a href="tidier.html#comparison-operators"><i class="fa fa-check"></i><b>11.1</b> Comparison operators</a></li>
-<li class="chapter" data-level="11.2" data-path="tidier.html"><a href="tidier.html#logical-operators"><i class="fa fa-check"></i><b>11.2</b> Logical operators</a></li>
-<li class="chapter" data-level="11.3" data-path="tidier.html"><a href="tidier.html#arrange-observations-rows-with-arrange"><i class="fa fa-check"></i><b>11.3</b> Arrange observations (rows) with <code>arrange()</code></a></li>
-<li class="chapter" data-level="11.4" data-path="tidier.html"><a href="tidier.html#filter-observations-rows-with-filter"><i class="fa fa-check"></i><b>11.4</b> Filter observations (rows) with <code>filter()</code></a></li>
-<li class="chapter" data-level="11.5" data-path="tidier.html"><a href="tidier.html#select-variables-columns-withselect"><i class="fa fa-check"></i><b>11.5</b> Select variables (columns) with<code>select()</code></a></li>
-<li class="chapter" data-level="11.6" data-path="tidier.html"><a href="tidier.html#create-new-variables-columns-with-mutate"><i class="fa fa-check"></i><b>11.6</b> Create new variables (columns) with <code>mutate()</code></a></li>
-<li class="chapter" data-level="11.7" data-path="tidier.html"><a href="tidier.html#summarise-variables-columns-with-summarise"><i class="fa fa-check"></i><b>11.7</b> Summarise variables (columns) with <code>summarise()</code></a></li>
-<li class="chapter" data-level="11.8" data-path="tidier.html"><a href="tidier.html#session-info-10"><i class="fa fa-check"></i><b>11.8</b> Session info</a></li>
+<li class="chapter" data-level="11.2" data-path="tidy.html"><a href="tidy.html#separating-and-uniting"><i class="fa fa-check"></i><b>11.2</b> Separating and uniting</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="tidy.html"><a href="tidy.html#separate"><i class="fa fa-check"></i><b>11.2.1</b> Separate</a></li>
+<li class="chapter" data-level="11.2.2" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>11.2.2</b> Unite</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="tidiest.html"><a href="tidiest.html"><i class="fa fa-check"></i><b>12</b> Tidiest data</a><ul>
-<li class="chapter" data-level="12.1" data-path="tidiest.html"><a href="tidiest.html#group-observations-rows-by-variables-columns-with-group_by"><i class="fa fa-check"></i><b>12.1</b> Group observations (rows) by variables (columns) with <code>group_by()</code></a><ul>
-<li class="chapter" data-level="12.1.1" data-path="tidiest.html"><a href="tidiest.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>12.1.1</b> Grouping by multiple variables</a></li>
-<li class="chapter" data-level="12.1.2" data-path="tidiest.html"><a href="tidiest.html#ungrouping"><i class="fa fa-check"></i><b>12.1.2</b> Ungrouping</a></li>
+<li class="chapter" data-level="11.3" data-path="tidy.html"><a href="tidy.html#joining"><i class="fa fa-check"></i><b>11.3</b> Joining</a></li>
+<li class="chapter" data-level="11.4" data-path="tidy.html"><a href="tidy.html#but-why-though"><i class="fa fa-check"></i><b>11.4</b> But why though?</a></li>
+<li class="chapter" data-level="11.5" data-path="tidy.html"><a href="tidy.html#session-info-9"><i class="fa fa-check"></i><b>11.5</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="tidiest.html"><a href="tidiest.html#chain-functions-with-the-pipe"><i class="fa fa-check"></i><b>12.2</b> Chain functions with the pipe (<code>%&gt;%</code>)</a></li>
-<li class="chapter" data-level="12.3" data-path="tidiest.html"><a href="tidiest.html#group-all-the-functions"><i class="fa fa-check"></i><b>12.3</b> Group all the functions!</a></li>
-<li class="chapter" data-level="12.4" data-path="tidiest.html"><a href="tidiest.html#going-deeper"><i class="fa fa-check"></i><b>12.4</b> Going deeper</a></li>
-<li class="chapter" data-level="12.5" data-path="tidiest.html"><a href="tidiest.html#pipe-into-ggplot2"><i class="fa fa-check"></i><b>12.5</b> Pipe into <strong><code>ggplot2</code></strong></a></li>
-<li class="chapter" data-level="12.6" data-path="tidiest.html"><a href="tidiest.html#additional-useful-functions"><i class="fa fa-check"></i><b>12.6</b> Additional useful functions</a><ul>
-<li class="chapter" data-level="12.6.1" data-path="tidiest.html"><a href="tidiest.html#rename-variables-columns-with-rename"><i class="fa fa-check"></i><b>12.6.1</b> Rename variables (columns) with <code>rename()</code></a></li>
-<li class="chapter" data-level="12.6.2" data-path="tidiest.html"><a href="tidiest.html#create-a-new-dataframe-for-a-newly-created-variable-column-with-transmute"><i class="fa fa-check"></i><b>12.6.2</b> Create a new dataframe for a newly created variable (column) with <code>transmute()</code></a></li>
-<li class="chapter" data-level="12.6.3" data-path="tidiest.html"><a href="tidiest.html#count-observations-rows-with-n"><i class="fa fa-check"></i><b>12.6.3</b> Count observations (rows) with <code>n()</code></a></li>
-<li class="chapter" data-level="12.6.4" data-path="tidiest.html"><a href="tidiest.html#select-observations-rows-by-number-with-slice"><i class="fa fa-check"></i><b>12.6.4</b> Select observations (rows) by number with <code>slice()</code></a></li>
-<li class="chapter" data-level="12.6.5" data-path="tidiest.html"><a href="tidiest.html#summary-functions"><i class="fa fa-check"></i><b>12.6.5</b> Summary functions</a></li>
+<li class="chapter" data-level="12" data-path="tidier.html"><a href="tidier.html"><i class="fa fa-check"></i><b>12</b> Tidier data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="tidier.html"><a href="tidier.html#comparison-operators"><i class="fa fa-check"></i><b>12.1</b> Comparison operators</a></li>
+<li class="chapter" data-level="12.2" data-path="tidier.html"><a href="tidier.html#logical-operators"><i class="fa fa-check"></i><b>12.2</b> Logical operators</a></li>
+<li class="chapter" data-level="12.3" data-path="tidier.html"><a href="tidier.html#arrange-observations-rows-with-arrange"><i class="fa fa-check"></i><b>12.3</b> Arrange observations (rows) with <code>arrange()</code></a></li>
+<li class="chapter" data-level="12.4" data-path="tidier.html"><a href="tidier.html#filter-observations-rows-with-filter"><i class="fa fa-check"></i><b>12.4</b> Filter observations (rows) with <code>filter()</code></a></li>
+<li class="chapter" data-level="12.5" data-path="tidier.html"><a href="tidier.html#select-variables-columns-withselect"><i class="fa fa-check"></i><b>12.5</b> Select variables (columns) with<code>select()</code></a></li>
+<li class="chapter" data-level="12.6" data-path="tidier.html"><a href="tidier.html#create-new-variables-columns-with-mutate"><i class="fa fa-check"></i><b>12.6</b> Create new variables (columns) with <code>mutate()</code></a></li>
+<li class="chapter" data-level="12.7" data-path="tidier.html"><a href="tidier.html#summarise-variables-columns-with-summarise"><i class="fa fa-check"></i><b>12.7</b> Summarise variables (columns) with <code>summarise()</code></a></li>
+<li class="chapter" data-level="12.8" data-path="tidier.html"><a href="tidier.html#session-info-10"><i class="fa fa-check"></i><b>12.8</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="12.7" data-path="tidiest.html"><a href="tidiest.html#the-new-age-redux"><i class="fa fa-check"></i><b>12.7</b> The new age <em>redux</em></a></li>
-<li class="chapter" data-level="12.8" data-path="tidiest.html"><a href="tidiest.html#session-info-11"><i class="fa fa-check"></i><b>12.8</b> Session info</a></li>
+<li class="chapter" data-level="13" data-path="tidiest.html"><a href="tidiest.html"><i class="fa fa-check"></i><b>13</b> Tidiest data</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="tidiest.html"><a href="tidiest.html#group-observations-rows-by-variables-columns-with-group_by"><i class="fa fa-check"></i><b>13.1</b> Group observations (rows) by variables (columns) with <code>group_by()</code></a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="tidiest.html"><a href="tidiest.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>13.1.1</b> Grouping by multiple variables</a></li>
+<li class="chapter" data-level="13.1.2" data-path="tidiest.html"><a href="tidiest.html#ungrouping"><i class="fa fa-check"></i><b>13.1.2</b> Ungrouping</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="recap.html"><a href="recap.html"><i class="fa fa-check"></i><b>13</b> Recap</a><ul>
-<li class="chapter" data-level="13.1" data-path="recap.html"><a href="recap.html#the-future"><i class="fa fa-check"></i><b>13.1</b> The future</a></li>
-<li class="chapter" data-level="13.2" data-path="recap.html"><a href="recap.html#today"><i class="fa fa-check"></i><b>13.2</b> Today</a></li>
-<li class="chapter" data-level="13.3" data-path="recap.html"><a href="recap.html#session-info-12"><i class="fa fa-check"></i><b>13.3</b> Session info</a></li>
+<li class="chapter" data-level="13.2" data-path="tidiest.html"><a href="tidiest.html#chain-functions-with-the-pipe"><i class="fa fa-check"></i><b>13.2</b> Chain functions with the pipe (<code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="13.3" data-path="tidiest.html"><a href="tidiest.html#group-all-the-functions"><i class="fa fa-check"></i><b>13.3</b> Group all the functions!</a></li>
+<li class="chapter" data-level="13.4" data-path="tidiest.html"><a href="tidiest.html#going-deeper"><i class="fa fa-check"></i><b>13.4</b> Going deeper</a></li>
+<li class="chapter" data-level="13.5" data-path="tidiest.html"><a href="tidiest.html#pipe-into-ggplot2"><i class="fa fa-check"></i><b>13.5</b> Pipe into <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="13.6" data-path="tidiest.html"><a href="tidiest.html#additional-useful-functions"><i class="fa fa-check"></i><b>13.6</b> Additional useful functions</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="tidiest.html"><a href="tidiest.html#rename-variables-columns-with-rename"><i class="fa fa-check"></i><b>13.6.1</b> Rename variables (columns) with <code>rename()</code></a></li>
+<li class="chapter" data-level="13.6.2" data-path="tidiest.html"><a href="tidiest.html#create-a-new-dataframe-for-a-newly-created-variable-column-with-transmute"><i class="fa fa-check"></i><b>13.6.2</b> Create a new dataframe for a newly created variable (column) with <code>transmute()</code></a></li>
+<li class="chapter" data-level="13.6.3" data-path="tidiest.html"><a href="tidiest.html#count-observations-rows-with-n"><i class="fa fa-check"></i><b>13.6.3</b> Count observations (rows) with <code>n()</code></a></li>
+<li class="chapter" data-level="13.6.4" data-path="tidiest.html"><a href="tidiest.html#select-observations-rows-by-number-with-slice"><i class="fa fa-check"></i><b>13.6.4</b> Select observations (rows) by number with <code>slice()</code></a></li>
+<li class="chapter" data-level="13.6.5" data-path="tidiest.html"><a href="tidiest.html#summary-functions"><i class="fa fa-check"></i><b>13.6.5</b> Summary functions</a></li>
+</ul></li>
+<li class="chapter" data-level="13.7" data-path="tidiest.html"><a href="tidiest.html#the-new-age-redux"><i class="fa fa-check"></i><b>13.7</b> The new age <em>redux</em></a></li>
+<li class="chapter" data-level="13.8" data-path="tidiest.html"><a href="tidiest.html#session-info-11"><i class="fa fa-check"></i><b>13.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="recap.html"><a href="recap.html"><i class="fa fa-check"></i><b>14</b> Recap</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="recap.html"><a href="recap.html#the-future"><i class="fa fa-check"></i><b>14.1</b> The future</a></li>
+<li class="chapter" data-level="14.2" data-path="recap.html"><a href="recap.html#today"><i class="fa fa-check"></i><b>14.2</b> Today</a></li>
+<li class="chapter" data-level="14.3" data-path="recap.html"><a href="recap.html#session-info-12"><i class="fa fa-check"></i><b>14.3</b> Session info</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -290,8 +353,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="brewing" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Brewing colours in <strong><code>ggplot2</code></strong></h1>
+<div id="brewing" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Brewing colours in <strong><code>ggplot2</code></strong></h1>
 <blockquote>
 <p>“Every portrait that is painted with feeling is a portrait of the artist, not of the sitter.”</p>
 <p>— Oscar Wilde</p>
@@ -301,72 +364,72 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>— Edward Hopper</p>
 </blockquote>
 <p>Now that we have seen the basics of <strong><code>ggplot2</code></strong>, let’s take a moment to delve further into the beauty of our figures. It may sound vain at first, but the colour palette of a figure is actually very important. This is for two main reasons. The first being that a consistent colour palette looks more professional. But most importantly it is necessary to have a good colour palette because it makes the information in our figures easier to understand. The communication of information to others is central to good science.</p>
-<div id="r-data" class="section level2">
-<h2><span class="header-section-number">6.1</span> R Data</h2>
+<div id="r-data" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> R Data</h2>
 <p>Before we get going on our figures, we first need to learn more about the built in data that R has. The base R program that we all have loaded on our computers already comes with heaps of example dataframes that we may use for practice. We don’t need to load our own data. Additionally, whenever we install a new package (and by now we’ve already installed dozens) it usually comes with several new dataframes. There are many ways to look at the data that we have available from our packages. Below we show two of the many options.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To create a list of ALL available data</span>
-  <span class="co"># Not really recommended as the output is overwhelming</span>
-<span class="kw">data</span>(<span class="dt">package =</span> <span class="kw">.packages</span>(<span class="dt">all.available =</span> <span class="ot">TRUE</span>))
-
-<span class="co"># To look for datasets within a single known package</span>
-  <span class="co"># type the name of the package followed by &#39;::&#39;</span>
-  <span class="co"># This tells R you want to look in the specified package</span>
-  <span class="co"># When the autocomplete bubble comes up you may scroll</span>
-  <span class="co"># through it with the up and down arrows</span>
-  <span class="co"># Look for objects that have a mini spreadsheet icon</span>
-  <span class="co"># These are the datasets</span>
-
-<span class="co"># Try typing the following code and see what happens...</span>
-datasets<span class="op">::</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="brewing.html#cb1-1"></a><span class="co"># To create a list of ALL available data</span></span>
+<span id="cb1-2"><a href="brewing.html#cb1-2"></a>  <span class="co"># Not really recommended as the output is overwhelming</span></span>
+<span id="cb1-3"><a href="brewing.html#cb1-3"></a><span class="kw">data</span>(<span class="dt">package =</span> <span class="kw">.packages</span>(<span class="dt">all.available =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb1-4"><a href="brewing.html#cb1-4"></a></span>
+<span id="cb1-5"><a href="brewing.html#cb1-5"></a><span class="co"># To look for datasets within a single known package</span></span>
+<span id="cb1-6"><a href="brewing.html#cb1-6"></a>  <span class="co"># type the name of the package followed by &#39;::&#39;</span></span>
+<span id="cb1-7"><a href="brewing.html#cb1-7"></a>  <span class="co"># This tells R you want to look in the specified package</span></span>
+<span id="cb1-8"><a href="brewing.html#cb1-8"></a>  <span class="co"># When the autocomplete bubble comes up you may scroll</span></span>
+<span id="cb1-9"><a href="brewing.html#cb1-9"></a>  <span class="co"># through it with the up and down arrows</span></span>
+<span id="cb1-10"><a href="brewing.html#cb1-10"></a>  <span class="co"># Look for objects that have a mini spreadsheet icon</span></span>
+<span id="cb1-11"><a href="brewing.html#cb1-11"></a>  <span class="co"># These are the datasets</span></span>
+<span id="cb1-12"><a href="brewing.html#cb1-12"></a></span>
+<span id="cb1-13"><a href="brewing.html#cb1-13"></a><span class="co"># Try typing the following code and see what happens...</span></span>
+<span id="cb1-14"><a href="brewing.html#cb1-14"></a>datasets<span class="op">::</span></span></code></pre></div>
 <p>We have an amazing amount of data available to us. So the challenge is not to find a dataframe that works for us, but to just decide on one. My preferred method is to read the short descriptions of the dataframes and pick the one that sounds the funniest. But please use whatever method makes the most sense to you. One note of caution, in R there are generally two different forms of data: wide OR long. We will see in detail what this means on Day 4, and what to do about it. For now we just need to know that <strong><code>ggplot2</code></strong> works much better with long data. To look at a dataframe of interest we use the same method we would use to look up a help file for a function.</p>
 <p>Over the years I’ve installed so many packages on my computer that it is difficult to chose a dataframe. The package <strong><code>boot</code></strong> has some particularly interesting dataframes with a biological focus. Please install this now to access to these data. I have decided to load the <code>urine</code> dataframe here. Note that <code>library(boot)</code> will not work on your computer if you have not installed the package yet. With these data we will now make a scatterplot with two of the variables, while changing the colour of the dots with a third variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load libraries</span>
-<span class="kw">library</span>(tidyverse)
-<span class="kw">library</span>(boot)
-
-<span class="co"># Load data</span>
-urine &lt;-<span class="st"> </span>boot<span class="op">::</span>urine
-
-<span class="co"># Look at help file for more info</span>
-<span class="co"># ?urine</span>
-
-<span class="co"># Create a quick scatterplot</span>
-<span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> cond))</code></pre></div>
-<p><img src="06-brewing_files/figure-html/brew-1-1.png" width="672" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="brewing.html#cb2-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb2-2"><a href="brewing.html#cb2-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="brewing.html#cb2-3"></a><span class="kw">library</span>(boot)</span>
+<span id="cb2-4"><a href="brewing.html#cb2-4"></a></span>
+<span id="cb2-5"><a href="brewing.html#cb2-5"></a><span class="co"># Load data</span></span>
+<span id="cb2-6"><a href="brewing.html#cb2-6"></a>urine &lt;-<span class="st"> </span>boot<span class="op">::</span>urine</span>
+<span id="cb2-7"><a href="brewing.html#cb2-7"></a></span>
+<span id="cb2-8"><a href="brewing.html#cb2-8"></a><span class="co"># Look at help file for more info</span></span>
+<span id="cb2-9"><a href="brewing.html#cb2-9"></a><span class="co"># ?urine</span></span>
+<span id="cb2-10"><a href="brewing.html#cb2-10"></a></span>
+<span id="cb2-11"><a href="brewing.html#cb2-11"></a><span class="co"># Create a quick scatterplot</span></span>
+<span id="cb2-12"><a href="brewing.html#cb2-12"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span></span>
+<span id="cb2-13"><a href="brewing.html#cb2-13"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> cond))</span></code></pre></div>
+<p><img src="07-brewing_files/figure-html/brew-1-1.png" width="672" /></p>
 <p>And now we have a scatterplot that is showing the relationship between the osmolarity and pH of urine, with the conductivity of those urine samples shown in shades of blue. What is important to note here is that the colour scale is continuous. How can we now this by looking at the figure? Let’s look at the same figure but use a discrete variable for colouring.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="kw">as.factor</span>(r)))</code></pre></div>
-<p><img src="06-brewing_files/figure-html/brew-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="brewing.html#cb3-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span></span>
+<span id="cb3-2"><a href="brewing.html#cb3-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="kw">as.factor</span>(r)))</span></code></pre></div>
+<p><img src="07-brewing_files/figure-html/brew-2-1.png" width="672" /></p>
 <p>What is the first thing you notice about the difference in the colours? Why did we use <code>as.factor()</code> for the colour aesthetic for our points? What happens if we don’t use this? Try it now.</p>
 </div>
-<div id="rcolorbrewer" class="section level2">
-<h2><span class="header-section-number">6.2</span> <strong><code>RColorBrewer</code></strong></h2>
+<div id="rcolorbrewer" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> <strong><code>RColorBrewer</code></strong></h2>
 <p>Central to the purpose of <strong><code>ggplot2</code></strong> is the creation of beautiful figures. For this reason there are many built in functions that we may use in order to have precise control over the colours we use, as well as additional packages that extend our options even further. The <strong><code>RColorBrewer</code></strong> package should have been installed on your computer and activated automatically when we installed and activated the <strong><code>tidyverse</code></strong>. We will use this package for its lovely colour palettes. Let’s spruce up the previous continuous colour scale figure now.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The continuous colour scale figure</span>
-<span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> cond)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_colour_distiller</span>() <span class="co"># Change the continuous variable colour palette</span></code></pre></div>
-<p><img src="06-brewing_files/figure-html/brew-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="brewing.html#cb4-1"></a><span class="co"># The continuous colour scale figure</span></span>
+<span id="cb4-2"><a href="brewing.html#cb4-2"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span></span>
+<span id="cb4-3"><a href="brewing.html#cb4-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> cond)) <span class="op">+</span></span>
+<span id="cb4-4"><a href="brewing.html#cb4-4"></a><span class="st">  </span><span class="kw">scale_colour_distiller</span>() <span class="co"># Change the continuous variable colour palette</span></span></code></pre></div>
+<p><img src="07-brewing_files/figure-html/brew-3-1.png" width="672" /></p>
 <p>Does this look different? If so, how? The second page of the colour cheat sheet we included in the course material shows some different colour brewer palettes. Let’s look at how to use those here.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> cond)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_colour_distiller</span>(<span class="dt">palette =</span> <span class="st">&quot;Spectral&quot;</span>)</code></pre></div>
-<p><img src="06-brewing_files/figure-html/brew-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="brewing.html#cb5-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span></span>
+<span id="cb5-2"><a href="brewing.html#cb5-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> cond)) <span class="op">+</span></span>
+<span id="cb5-3"><a href="brewing.html#cb5-3"></a><span class="st">  </span><span class="kw">scale_colour_distiller</span>(<span class="dt">palette =</span> <span class="st">&quot;Spectral&quot;</span>)</span></code></pre></div>
+<p><img src="07-brewing_files/figure-html/brew-4-1.png" width="672" /></p>
 <p>Does that help us to see a pattern in the data? What do we see? Does it look like there are any significant relationships here? How would we test that?</p>
 <p>If we want to use colour brewer with a discrete variable we use a slightly different function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="kw">as.factor</span>(r))) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_colour_brewer</span>() <span class="co"># This is the different function</span></code></pre></div>
-<p><img src="06-brewing_files/figure-html/brew-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="brewing.html#cb6-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span></span>
+<span id="cb6-2"><a href="brewing.html#cb6-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="kw">as.factor</span>(r))) <span class="op">+</span></span>
+<span id="cb6-3"><a href="brewing.html#cb6-3"></a><span class="st">  </span><span class="kw">scale_colour_brewer</span>() <span class="co"># This is the different function</span></span></code></pre></div>
+<p><img src="07-brewing_files/figure-html/brew-5-1.png" width="672" /></p>
 <p>The default colour scale here is not helpful at all. So let’s pick a better one. If we look at our cheat sheet we will see a list of different continuous and discrete colour scales. All we need to do is copy and paste one of these names into our colour brewer function with inverted commas.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="kw">as.factor</span>(r))) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_colour_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="co"># Here I used &quot;Set1&quot;, but use what you like</span></code></pre></div>
-<p><img src="06-brewing_files/figure-html/brew-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="brewing.html#cb7-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span></span>
+<span id="cb7-2"><a href="brewing.html#cb7-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="kw">as.factor</span>(r))) <span class="op">+</span></span>
+<span id="cb7-3"><a href="brewing.html#cb7-3"></a><span class="st">  </span><span class="kw">scale_colour_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="co"># Here I used &quot;Set1&quot;, but use what you like</span></span></code></pre></div>
+<p><img src="07-brewing_files/figure-html/brew-6-1.png" width="672" /></p>
 </div>
-<div id="make-your-own-palettes" class="section level2">
-<h2><span class="header-section-number">6.3</span> Make your own palettes</h2>
+<div id="make-your-own-palettes" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Make your own palettes</h2>
 <p>This is all well and good. But didn’t we claim that this should give us complete control over our colours? So far it looks like it has just given us a few more palettes to use. And that’s nice, but it’s not ‘infinite choices’. That is where the Internet comes to our rescue. There are many places we may go to for support in this regard. The following links, in descending order, are very useful. And fun!</p>
 <ul>
 <li><a href="http://tristen.ca/hcl-picker/#/hlc/6/0.95/48B4B6/345363" class="uri">http://tristen.ca/hcl-picker/#/hlc/6/0.95/48B4B6/345363</a></li>
@@ -375,34 +438,34 @@ urine &lt;-<span class="st"> </span>boot<span class="op">::</span>urine
 </ul>
 <p>I find the first link the easiest to use. But the second and third links are better at generating discrete colour palettes. Take several minutes playing with the different websites and decide for yourself which one(s) you like.</p>
 </div>
-<div id="use-your-own-palettes" class="section level2">
-<h2><span class="header-section-number">6.4</span> Use your own palettes</h2>
+<div id="use-your-own-palettes" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Use your own palettes</h2>
 <p>Now that we’ve had some time to play around with the colour generators let’s look at how to use them with our figures. I’ve used the first web link to create a list of five colours. I then copy and pasted them into the code below, separating them with commas and placing them inside of <code>c()</code> and inverted commas. Be certain that you insert commas and inverted commas as necessary or you will get errors. Note also that we are using a new function to use our custom palette.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> cond)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colours =</span> <span class="kw">c</span>(<span class="st">&quot;#A5A94D&quot;</span>, <span class="st">&quot;#6FB16F&quot;</span>, <span class="st">&quot;#45B19B&quot;</span>,
-                                    <span class="st">&quot;#59A9BE&quot;</span>, <span class="st">&quot;#9699C4&quot;</span>, <span class="st">&quot;#CA86AD&quot;</span>))</code></pre></div>
-<p><img src="06-brewing_files/figure-html/brew-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="brewing.html#cb8-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span></span>
+<span id="cb8-2"><a href="brewing.html#cb8-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> cond)) <span class="op">+</span></span>
+<span id="cb8-3"><a href="brewing.html#cb8-3"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colours =</span> <span class="kw">c</span>(<span class="st">&quot;#A5A94D&quot;</span>, <span class="st">&quot;#6FB16F&quot;</span>, <span class="st">&quot;#45B19B&quot;</span>,</span>
+<span id="cb8-4"><a href="brewing.html#cb8-4"></a>                                    <span class="st">&quot;#59A9BE&quot;</span>, <span class="st">&quot;#9699C4&quot;</span>, <span class="st">&quot;#CA86AD&quot;</span>))</span></code></pre></div>
+<p><img src="07-brewing_files/figure-html/brew-7-1.png" width="672" /></p>
 <p>If we want to use our custom colour palettes with a discrete colour scale we use a different function as seen in the code below. While we are at it, let’s also see how to correct the title of the legend and its text labels. Sometimes the default output is not what we want for our final figure. Especially if we are going to be publishing it. Also note in the following code chunk that rather than using hexadecimal character strings to represent colours in our custom palette, we are simply writing in the human name for the colours we want. This will work for the continuous colour palettes above, too.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="kw">as.factor</span>(r))) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;pink&quot;</span>, <span class="st">&quot;maroon&quot;</span>), <span class="co"># How to use custom palette</span>
-                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="co"># How to change the legend text</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="st">&quot;crystals&quot;</span>) <span class="co"># How to change the legend title</span></code></pre></div>
-<p><img src="06-brewing_files/figure-html/brew-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="brewing.html#cb9-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> urine, <span class="kw">aes</span>(<span class="dt">x =</span> osmo, <span class="dt">y =</span> ph)) <span class="op">+</span></span>
+<span id="cb9-2"><a href="brewing.html#cb9-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="kw">as.factor</span>(r))) <span class="op">+</span></span>
+<span id="cb9-3"><a href="brewing.html#cb9-3"></a><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;pink&quot;</span>, <span class="st">&quot;maroon&quot;</span>), <span class="co"># How to use custom palette</span></span>
+<span id="cb9-4"><a href="brewing.html#cb9-4"></a>                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="co"># How to change the legend text</span></span>
+<span id="cb9-5"><a href="brewing.html#cb9-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="st">&quot;crystals&quot;</span>) <span class="co"># How to change the legend title</span></span></code></pre></div>
+<p><img src="07-brewing_files/figure-html/brew-8-1.png" width="672" /></p>
 <p>So now we have seen how to control the colours palettes in our figures. I know it is a but much. Four new functions just to change some colours! That’s a bummer. Don’t forget that one of the main benefits of R is that all of your code is written down, annotated and saved. You don’t need to remember which button to click to change the colours, you just need to remember where you saved the code that you will need. And that’s pretty great in my opinion.</p>
 </div>
-<div id="diy-figures" class="section level2">
-<h2><span class="header-section-number">6.5</span> DIY figures</h2>
+<div id="diy-figures" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> DIY figures</h2>
 <p>Today we learned the basics of <strong><code>ggplot2</code></strong>, how to facet, how to brew colours, and how to plot stats. Sjog, that’s a lot of stuff to remember! Which is why we will now spend the rest of Day 2 putting our new found skills to use. Please group up as you see fit to produce your very own <strong><code>ggplot2</code></strong> figures. We’ve not yet learned how to manipulate/tidy up our data so it may be challenging to grab any ol’ dataset and make a plan with it. To that end we recommend using the <code>laminaria</code> or <code>ecklonia</code> datasets we saw on Day 1. You are of course free to use whatever dataset you would like, including your own. The goal by the end of today is to have created at least two figures (first prize for four figures) and join them together via faceting. We will be walking the room to help with any issues that may arise.</p>
 </div>
-<div id="session-info-5" class="section level2">
-<h2><span class="header-section-number">6.6</span> Session info</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">installed.packages</span>()[<span class="kw">names</span>(<span class="kw">sessionInfo</span>()<span class="op">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</code></pre></div>
-<pre><code>R&gt;      boot   forcats   stringr     dplyr     purrr     readr     tidyr 
-R&gt;  &quot;1.3-20&quot;   &quot;0.3.0&quot;   &quot;1.3.0&quot;   &quot;0.7.4&quot;   &quot;0.2.4&quot;   &quot;1.1.1&quot;   &quot;0.8.0&quot; 
-R&gt;    tibble   ggplot2 tidyverse 
-R&gt;   &quot;1.4.2&quot;   &quot;2.2.1&quot;   &quot;1.2.1&quot;</code></pre>
+<div id="session-info-5" class="section level2" number="7.6">
+<h2><span class="header-section-number">7.6</span> Session info</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="brewing.html#cb10-1"></a><span class="kw">installed.packages</span>()[<span class="kw">names</span>(<span class="kw">sessionInfo</span>()<span class="op">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
+<pre><code>R&gt;      boot   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
+R&gt;  &quot;1.3-24&quot;   &quot;0.4.0&quot;   &quot;1.4.0&quot;   &quot;0.8.3&quot;   &quot;0.3.3&quot;   &quot;1.3.1&quot;   &quot;1.0.0&quot;   &quot;2.1.3&quot; 
+R&gt;   ggplot2 tidyverse 
+R&gt;   &quot;3.2.1&quot;   &quot;1.3.0&quot;</code></pre>
 
 </div>
 </div>
@@ -417,11 +480,13 @@ R&gt;   &quot;1.4.2&quot;   &quot;2.2.1&quot;   &quot;1.2.1&quot;</code></pre>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -429,12 +494,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -442,6 +506,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -460,19 +532,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

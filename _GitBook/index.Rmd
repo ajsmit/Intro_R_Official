@@ -3,12 +3,22 @@ title: 'Intro R Workshop: Data Manipulation, Analysis, and Visualisation'
 author: "Robert W Schlegel, AJ Smit & Amieroh Abrahams"
 date: "`r Sys.Date()`"
 output:
-  html_document:
-    df_print: paged
+  pdf_document: 
+    highlight: pygments
+    keep_tex: yes
+    latex_engine: xelatex
+    number_sections: yes
+    toc: yes
+  html_document: 
+    number_sections: true
+    pdf_print: paged
+    self_contained: false
+    theme: cerulean
+    keep_md: true
 bibliography: book.bib
 description: The basics for a safe voyage through the tidyverse.
 documentclass: book
-github-repo: ajsmit/Intro_R_Workshop
+github-repo: ajsmit/Intro_R_Official
 link-citations: yes
 cover-image: figures/769_life_finds_a_way.png
 site: bookdown::bookdown_site

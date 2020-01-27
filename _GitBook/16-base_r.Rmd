@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Base R primer {-}
 
 Please note that the following chapter departs from the syntax employed by the **`tidyverse`**, as utilised throughout this workshop, in favour of the base R syntax. This may be changed in the future, but has been left for now in order to better highlight the fundamental machinations of the R language, upon which the **`tidyverse`** is based.

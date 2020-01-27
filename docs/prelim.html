@@ -13,7 +13,7 @@
   
   <meta property="og:image" content="figures/769_life_finds_a_way.png" />
   <meta property="og:description" content="The basics for a safe voyage through the tidyverse." />
-  <meta name="github-repo" content="robwschlegel/Intro_R_Workshop" />
+  <meta name="github-repo" content="ajsmit/Intro_R_Official" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Preliminaries | Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
@@ -21,16 +21,10 @@
   <meta name="twitter:description" content="The basics for a safe voyage through the tidyverse." />
   <meta name="twitter:image" content="figures/769_life_finds_a_way.png" />
 
-<meta name="author" content="Robert W Schlegel &amp; AJ Smit" />
+<meta name="author" content="Robert W Schlegel, AJ Smit &amp; Amieroh Abrahams" />
 
 
-<<<<<<< HEAD
-<meta name="date" content="2018-03-02" />
-||||||| merged common ancestors
-<meta name="date" content="2018-01-22">
-=======
-<meta name="date" content="2018-01-29">
->>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
+<meta name="date" content="2020-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -39,6 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="rstudio.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -59,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -86,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -138,165 +134,204 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="prelim.html"><a href="prelim.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
-<li class="chapter" data-level="1.1" data-path="prelim.html"><a href="prelim.html#course-outline"><i class="fa fa-check"></i><b>1.1</b> Course outline</a><ul>
+<li class="chapter" data-level="1" data-path="prelim.html"><a href="prelim.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="prelim.html"><a href="prelim.html#venue-date-and-time"><i class="fa fa-check"></i><b>1.1</b> Venue, date and time</a></li>
+<li class="chapter" data-level="1.2" data-path="prelim.html"><a href="prelim.html#course-outline"><i class="fa fa-check"></i><b>1.2</b> Course outline</a>
+<ul>
 <li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-1-in-the-beginning"><i class="fa fa-check"></i>Day 1 – In the Beginning</a></li>
 <li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-2-show-and-tell"><i class="fa fa-check"></i>Day 2 – Show and tell</a></li>
 <li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-3-going-deeper"><i class="fa fa-check"></i>Day 3 – Going deeper</a></li>
 <li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-4-the-enlightened-researcher"><i class="fa fa-check"></i>Day 4 – The Enlightened Researcher</a></li>
 <li class="chapter" data-level="" data-path="prelim.html"><a href="prelim.html#day-5-the-world-is-yours"><i class="fa fa-check"></i>Day 5 – The world is yours</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="prelim.html"><a href="prelim.html#about-this-workshop"><i class="fa fa-check"></i><b>1.2</b> About this Workshop</a></li>
-<li class="chapter" data-level="1.3" data-path="prelim.html"><a href="prelim.html#why-use-r"><i class="fa fa-check"></i><b>1.3</b> Why use R?</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="prelim.html"><a href="prelim.html#some-negatives-of-using-r"><i class="fa fa-check"></i><b>1.3.1</b> Some negatives of using R</a></li>
-<li class="chapter" data-level="1.3.2" data-path="prelim.html"><a href="prelim.html#the-challenge-learning-to-program-in-r"><i class="fa fa-check"></i><b>1.3.2</b> The challenge: learning to program in R</a></li>
+<li class="chapter" data-level="1.3" data-path="prelim.html"><a href="prelim.html#about-this-workshop"><i class="fa fa-check"></i><b>1.3</b> About this Workshop</a></li>
+<li class="chapter" data-level="1.4" data-path="prelim.html"><a href="prelim.html#why-use-r"><i class="fa fa-check"></i><b>1.4</b> Why use R?</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="prelim.html"><a href="prelim.html#some-negatives-of-using-r"><i class="fa fa-check"></i><b>1.4.1</b> Some negatives of using R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="prelim.html"><a href="prelim.html#the-challenge-learning-to-program-in-r"><i class="fa fa-check"></i><b>1.4.2</b> The challenge: learning to program in R</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="prelim.html"><a href="prelim.html#using-your-own-computer"><i class="fa fa-check"></i><b>1.4</b> Using your own computer?</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="prelim.html"><a href="prelim.html#installing-r"><i class="fa fa-check"></i><b>1.4.1</b> Installing R</a></li>
-<li class="chapter" data-level="1.4.2" data-path="prelim.html"><a href="prelim.html#installing-rstudio"><i class="fa fa-check"></i><b>1.4.2</b> Installing RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path="prelim.html"><a href="prelim.html#using-your-own-computer"><i class="fa fa-check"></i><b>1.5</b> Using your own computer?</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="prelim.html"><a href="prelim.html#installing-r"><i class="fa fa-check"></i><b>1.5.1</b> Installing R</a></li>
+<li class="chapter" data-level="1.5.2" data-path="prelim.html"><a href="prelim.html#installing-rstudio"><i class="fa fa-check"></i><b>1.5.2</b> Installing RStudio</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="prelim.html"><a href="prelim.html#resources"><i class="fa fa-check"></i><b>1.5</b> Resources</a></li>
-<li class="chapter" data-level="1.6" data-path="prelim.html"><a href="prelim.html#style-and-code-conventions"><i class="fa fa-check"></i><b>1.6</b> Style and code conventions</a></li>
-<li class="chapter" data-level="1.7" data-path="prelim.html"><a href="prelim.html#about-this-document"><i class="fa fa-check"></i><b>1.7</b> About this document</a></li>
-<li class="chapter" data-level="1.8" data-path="prelim.html"><a href="prelim.html#exercise-it-which-shall-not-be-named"><i class="fa fa-check"></i><b>1.8</b> Exercise: It which shall not be named</a></li>
-<li class="chapter" data-level="1.9" data-path="prelim.html"><a href="prelim.html#session-info"><i class="fa fa-check"></i><b>1.9</b> Session info</a></li>
+<li class="chapter" data-level="1.6" data-path="prelim.html"><a href="prelim.html#resources"><i class="fa fa-check"></i><b>1.6</b> Resources</a></li>
+<li class="chapter" data-level="1.7" data-path="prelim.html"><a href="prelim.html#style-and-code-conventions"><i class="fa fa-check"></i><b>1.7</b> Style and code conventions</a></li>
+<li class="chapter" data-level="1.8" data-path="prelim.html"><a href="prelim.html#about-this-document"><i class="fa fa-check"></i><b>1.8</b> About this document</a></li>
+<li class="chapter" data-level="1.9" data-path="prelim.html"><a href="prelim.html#exercise-it-which-shall-not-be-named"><i class="fa fa-check"></i><b>1.9</b> Exercise: It which shall not be named</a></li>
+<li class="chapter" data-level="1.10" data-path="prelim.html"><a href="prelim.html#session-info"><i class="fa fa-check"></i><b>1.10</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>2</b> RStudio</a><ul>
-<li class="chapter" data-level="2.1" data-path="rstudio.html"><a href="rstudio.html#setting-up-the-workspace"><i class="fa fa-check"></i><b>2.1</b> Setting up the workspace</a><ul>
+<li class="chapter" data-level="2" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rstudio.html"><a href="rstudio.html#setting-up-the-workspace"><i class="fa fa-check"></i><b>2.1</b> Setting up the workspace</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="rstudio.html"><a href="rstudio.html#general-settings"><i class="fa fa-check"></i><b>2.1.1</b> General settings</a></li>
 <li class="chapter" data-level="2.1.2" data-path="rstudio.html"><a href="rstudio.html#customising-appearance"><i class="fa fa-check"></i><b>2.1.2</b> Customising appearance</a></li>
 <li class="chapter" data-level="2.1.3" data-path="rstudio.html"><a href="rstudio.html#configuring-panes"><i class="fa fa-check"></i><b>2.1.3</b> Configuring panes</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="rstudio.html"><a href="rstudio.html#the-rproject"><i class="fa fa-check"></i><b>2.2</b> The Rproject</a></li>
 <li class="chapter" data-level="2.3" data-path="rstudio.html"><a href="rstudio.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing packages</a></li>
-<li class="chapter" data-level="2.4" data-path="rstudio.html"><a href="rstudio.html#the-panes-of-rstudio"><i class="fa fa-check"></i><b>2.4</b> The panes of RStudio</a><ul>
+<li class="chapter" data-level="2.4" data-path="rstudio.html"><a href="rstudio.html#the-panes-of-rstudio"><i class="fa fa-check"></i><b>2.4</b> The panes of RStudio</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="rstudio.html"><a href="rstudio.html#source-editor"><i class="fa fa-check"></i><b>2.4.1</b> Source Editor</a></li>
 <li class="chapter" data-level="2.4.2" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>2.4.2</b> Console</a></li>
-<li class="chapter" data-level="2.4.3" data-path="rstudio.html"><a href="rstudio.html#environment-and-history-panes"><i class="fa fa-check"></i><b>2.4.3</b> Environment and History panes</a></li>
-<li class="chapter" data-level="2.4.4" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help-and-viewer-panes"><i class="fa fa-check"></i><b>2.4.4</b> Files, Plots, Packages, Help, and Viewer panes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="rstudio.html"><a href="rstudio.html#session-info-1"><i class="fa fa-check"></i><b>2.5</b> Session info</a></li>
+<li class="chapter" data-level="2.5" data-path="rstudio.html"><a href="rstudio.html#exercise"><i class="fa fa-check"></i><b>2.5</b> Exercise:</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="rstudio.html"><a href="rstudio.html#environment-and-history-panes"><i class="fa fa-check"></i><b>2.5.1</b> Environment and History panes</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help-and-viewer-panes"><i class="fa fa-check"></i><b>2.5.2</b> Files, Plots, Packages, Help, and Viewer panes</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>3</b> An R workflow</a><ul>
-<li class="chapter" data-level="3.1" data-path="workflow.html"><a href="workflow.html#r-scripts"><i class="fa fa-check"></i><b>3.1</b> R Scripts</a></li>
-<li class="chapter" data-level="3.2" data-path="workflow.html"><a href="workflow.html#reading-data-into-r"><i class="fa fa-check"></i><b>3.2</b> Reading data into R</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="workflow.html"><a href="workflow.html#preparing-data-for-r"><i class="fa fa-check"></i><b>3.2.1</b> Preparing data for R</a></li>
-<li class="chapter" data-level="3.2.2" data-path="workflow.html"><a href="workflow.html#converting-data"><i class="fa fa-check"></i><b>3.2.2</b> Converting data</a></li>
-<li class="chapter" data-level="3.2.3" data-path="workflow.html"><a href="workflow.html#importing-data"><i class="fa fa-check"></i><b>3.2.3</b> Importing data</a></li>
-<li class="chapter" data-level="3.2.4" data-path="workflow.html"><a href="workflow.html#loading-a-file"><i class="fa fa-check"></i><b>3.2.4</b> Loading a file</a></li>
+<li class="chapter" data-level="2.6" data-path="rstudio.html"><a href="rstudio.html#session-info-1"><i class="fa fa-check"></i><b>2.6</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="workflow.html"><a href="workflow.html#working-with-data"><i class="fa fa-check"></i><b>3.3</b> Working with data</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="workflow.html"><a href="workflow.html#examine-your-data"><i class="fa fa-check"></i><b>3.3.1</b> Examine your data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="workflow.html"><a href="workflow.html#tidyverse-sneak-peek"><i class="fa fa-check"></i><b>3.3.2</b> Tidyverse sneak peek</a></li>
-<li class="chapter" data-level="3.3.3" data-path="workflow.html"><a href="workflow.html#subsetting"><i class="fa fa-check"></i><b>3.3.3</b> Subsetting</a></li>
-<li class="chapter" data-level="3.3.4" data-path="workflow.html"><a href="workflow.html#basic-stats"><i class="fa fa-check"></i><b>3.3.4</b> Basic stats</a></li>
-<li class="chapter" data-level="3.3.5" data-path="workflow.html"><a href="workflow.html#summary-of-all-variables-in-a-dataframe"><i class="fa fa-check"></i><b>3.3.5</b> Summary of all variables in a dataframe</a></li>
-<li class="chapter" data-level="3.3.6" data-path="workflow.html"><a href="workflow.html#summary-statistics-by-variable"><i class="fa fa-check"></i><b>3.3.6</b> Summary statistics by variable</a></li>
-<li class="chapter" data-level="3.3.7" data-path="workflow.html"><a href="workflow.html#more-complex-calculations"><i class="fa fa-check"></i><b>3.3.7</b> More complex calculations</a></li>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> GitHub</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#what-is-github"><i class="fa fa-check"></i><b>3.1</b> What is GitHub?</a></li>
+<li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#installing-github-on-windows"><i class="fa fa-check"></i><b>3.2</b> Installing GitHub on Windows</a></li>
+<li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#create-and-account-and-a-repository"><i class="fa fa-check"></i><b>3.3</b> Create and account and a Repository</a></li>
+<li class="chapter" data-level="3.4" data-path="github.html"><a href="github.html#git-configuring-activation-and-connecting-to-a-remote-repository"><i class="fa fa-check"></i><b>3.4</b> Git configuring (activation) and connecting to a remote repository</a></li>
+<li class="chapter" data-level="3.5" data-path="github.html"><a href="github.html#clone-the-new-github-repository-to-your-computer-via-rstudio."><i class="fa fa-check"></i><b>3.5</b> Clone the new GitHub repository to your computer via RStudio.</a></li>
+<li class="chapter" data-level="3.6" data-path="github.html"><a href="github.html#commits"><i class="fa fa-check"></i><b>3.6</b> Commits</a></li>
+<li class="chapter" data-level="3.7" data-path="github.html"><a href="github.html#open-a-pull-request"><i class="fa fa-check"></i><b>3.7</b> Open a Pull Request</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="workflow.html"><a href="workflow.html#saving-data"><i class="fa fa-check"></i><b>3.4</b> Saving data</a></li>
-<li class="chapter" data-level="3.5" data-path="workflow.html"><a href="workflow.html#visualisations"><i class="fa fa-check"></i><b>3.5</b> Visualisations</a></li>
-<li class="chapter" data-level="3.6" data-path="workflow.html"><a href="workflow.html#clearing-the-memory"><i class="fa fa-check"></i><b>3.6</b> Clearing the memory</a></li>
-<li class="chapter" data-level="3.7" data-path="workflow.html"><a href="workflow.html#working-directories"><i class="fa fa-check"></i><b>3.7</b> Working directories</a></li>
-<li class="chapter" data-level="3.8" data-path="workflow.html"><a href="workflow.html#help"><i class="fa fa-check"></i><b>3.8</b> Help</a></li>
-<li class="chapter" data-level="3.9" data-path="workflow.html"><a href="workflow.html#session-info-2"><i class="fa fa-check"></i><b>3.9</b> Session info</a></li>
+<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> An R workflow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="workflow.html"><a href="workflow.html#r-scripts"><i class="fa fa-check"></i><b>4.1</b> R Scripts</a></li>
+<li class="chapter" data-level="4.2" data-path="workflow.html"><a href="workflow.html#reading-data-into-r"><i class="fa fa-check"></i><b>4.2</b> Reading data into R</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="workflow.html"><a href="workflow.html#preparing-data-for-r"><i class="fa fa-check"></i><b>4.2.1</b> Preparing data for R</a></li>
+<li class="chapter" data-level="4.2.2" data-path="workflow.html"><a href="workflow.html#converting-data"><i class="fa fa-check"></i><b>4.2.2</b> Converting data</a></li>
+<li class="chapter" data-level="4.2.3" data-path="workflow.html"><a href="workflow.html#importing-data"><i class="fa fa-check"></i><b>4.2.3</b> Importing data</a></li>
+<li class="chapter" data-level="4.2.4" data-path="workflow.html"><a href="workflow.html#loading-a-file"><i class="fa fa-check"></i><b>4.2.4</b> Loading a file</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>4</b> Graphics with <strong><code>ggplot2</code></strong></a><ul>
-<li class="chapter" data-level="4.1" data-path="graphics.html"><a href="graphics.html#example-figures"><i class="fa fa-check"></i><b>4.1</b> Example figures</a></li>
-<li class="chapter" data-level="4.2" data-path="graphics.html"><a href="graphics.html#basics-of-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Basics of <strong><code>ggplot2</code></strong></a></li>
-<li class="chapter" data-level="4.3" data-path="graphics.html"><a href="graphics.html#to-aes-or-not-to-aes-that-is-the-question"><i class="fa fa-check"></i><b>4.3</b> To <code>aes()</code> or not to <code>aes()</code>, that is the question</a></li>
-<li class="chapter" data-level="4.4" data-path="graphics.html"><a href="graphics.html#changing-labels"><i class="fa fa-check"></i><b>4.4</b> Changing labels</a></li>
-<li class="chapter" data-level="4.5" data-path="graphics.html"><a href="graphics.html#session-info-3"><i class="fa fa-check"></i><b>4.5</b> Session info</a></li>
+<li class="chapter" data-level="4.3" data-path="workflow.html"><a href="workflow.html#working-with-data"><i class="fa fa-check"></i><b>4.3</b> Working with data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="workflow.html"><a href="workflow.html#examine-your-data"><i class="fa fa-check"></i><b>4.3.1</b> Examine your data</a></li>
+<li class="chapter" data-level="4.3.2" data-path="workflow.html"><a href="workflow.html#tidyverse-sneak-peek"><i class="fa fa-check"></i><b>4.3.2</b> Tidyverse sneak peek</a></li>
+<li class="chapter" data-level="4.3.3" data-path="workflow.html"><a href="workflow.html#subsetting"><i class="fa fa-check"></i><b>4.3.3</b> Subsetting</a></li>
+<li class="chapter" data-level="4.3.4" data-path="workflow.html"><a href="workflow.html#basic-stats"><i class="fa fa-check"></i><b>4.3.4</b> Basic stats</a></li>
+<li class="chapter" data-level="4.3.5" data-path="workflow.html"><a href="workflow.html#summary-of-all-variables-in-a-dataframe"><i class="fa fa-check"></i><b>4.3.5</b> Summary of all variables in a dataframe</a></li>
+<li class="chapter" data-level="4.3.6" data-path="workflow.html"><a href="workflow.html#summary-statistics-by-variable"><i class="fa fa-check"></i><b>4.3.6</b> Summary statistics by variable</a></li>
+<li class="chapter" data-level="4.3.7" data-path="workflow.html"><a href="workflow.html#more-complex-calculations"><i class="fa fa-check"></i><b>4.3.7</b> More complex calculations</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>5</b> Faceting Figures</a><ul>
-<li class="chapter" data-level="5.1" data-path="faceting.html"><a href="faceting.html#faceting-one-figure"><i class="fa fa-check"></i><b>5.1</b> Faceting one figure</a></li>
-<li class="chapter" data-level="5.2" data-path="faceting.html"><a href="faceting.html#new-figure-types"><i class="fa fa-check"></i><b>5.2</b> New figure types</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="faceting.html"><a href="faceting.html#line-graph"><i class="fa fa-check"></i><b>5.2.1</b> Line graph</a></li>
-<li class="chapter" data-level="5.2.2" data-path="faceting.html"><a href="faceting.html#linear-model"><i class="fa fa-check"></i><b>5.2.2</b> Linear model</a></li>
-<li class="chapter" data-level="5.2.3" data-path="faceting.html"><a href="faceting.html#histogram"><i class="fa fa-check"></i><b>5.2.3</b> Histogram</a></li>
-<li class="chapter" data-level="5.2.4" data-path="faceting.html"><a href="faceting.html#boxplot"><i class="fa fa-check"></i><b>5.2.4</b> Boxplot</a></li>
+<li class="chapter" data-level="4.4" data-path="workflow.html"><a href="workflow.html#saving-data"><i class="fa fa-check"></i><b>4.4</b> Saving data</a></li>
+<li class="chapter" data-level="4.5" data-path="workflow.html"><a href="workflow.html#visualisations"><i class="fa fa-check"></i><b>4.5</b> Visualisations</a></li>
+<li class="chapter" data-level="4.6" data-path="workflow.html"><a href="workflow.html#clearing-the-memory"><i class="fa fa-check"></i><b>4.6</b> Clearing the memory</a></li>
+<li class="chapter" data-level="4.7" data-path="workflow.html"><a href="workflow.html#working-directories"><i class="fa fa-check"></i><b>4.7</b> Working directories</a></li>
+<li class="chapter" data-level="4.8" data-path="workflow.html"><a href="workflow.html#help"><i class="fa fa-check"></i><b>4.8</b> Help</a></li>
+<li class="chapter" data-level="4.9" data-path="workflow.html"><a href="workflow.html#session-info-2"><i class="fa fa-check"></i><b>4.9</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="faceting.html"><a href="faceting.html#gridding-figures"><i class="fa fa-check"></i><b>5.3</b> Gridding figures</a></li>
-<li class="chapter" data-level="5.4" data-path="faceting.html"><a href="faceting.html#session-info-4"><i class="fa fa-check"></i><b>5.4</b> Session info</a></li>
+<li class="chapter" data-level="5" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>5</b> Graphics with <strong><code>ggplot2</code></strong></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graphics.html"><a href="graphics.html#example-figures"><i class="fa fa-check"></i><b>5.1</b> Example figures</a></li>
+<li class="chapter" data-level="5.2" data-path="graphics.html"><a href="graphics.html#basics-of-ggplot2"><i class="fa fa-check"></i><b>5.2</b> Basics of <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="5.3" data-path="graphics.html"><a href="graphics.html#to-aes-or-not-to-aes-that-is-the-question"><i class="fa fa-check"></i><b>5.3</b> To <code>aes()</code> or not to <code>aes()</code>, that is the question</a></li>
+<li class="chapter" data-level="5.4" data-path="graphics.html"><a href="graphics.html#changing-labels"><i class="fa fa-check"></i><b>5.4</b> Changing labels</a></li>
+<li class="chapter" data-level="5.5" data-path="graphics.html"><a href="graphics.html#session-info-3"><i class="fa fa-check"></i><b>5.5</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="brewing.html"><a href="brewing.html"><i class="fa fa-check"></i><b>6</b> Brewing colours in <strong><code>ggplot2</code></strong></a><ul>
-<li class="chapter" data-level="6.1" data-path="brewing.html"><a href="brewing.html#r-data"><i class="fa fa-check"></i><b>6.1</b> R Data</a></li>
-<li class="chapter" data-level="6.2" data-path="brewing.html"><a href="brewing.html#rcolorbrewer"><i class="fa fa-check"></i><b>6.2</b> <strong><code>RColorBrewer</code></strong></a></li>
-<li class="chapter" data-level="6.3" data-path="brewing.html"><a href="brewing.html#make-your-own-palettes"><i class="fa fa-check"></i><b>6.3</b> Make your own palettes</a></li>
-<li class="chapter" data-level="6.4" data-path="brewing.html"><a href="brewing.html#use-your-own-palettes"><i class="fa fa-check"></i><b>6.4</b> Use your own palettes</a></li>
-<li class="chapter" data-level="6.5" data-path="brewing.html"><a href="brewing.html#diy-figures"><i class="fa fa-check"></i><b>6.5</b> DIY figures</a></li>
-<li class="chapter" data-level="6.6" data-path="brewing.html"><a href="brewing.html#session-info-5"><i class="fa fa-check"></i><b>6.6</b> Session info</a></li>
+<li class="chapter" data-level="6" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>6</b> Faceting Figures</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="faceting.html"><a href="faceting.html#faceting-one-figure"><i class="fa fa-check"></i><b>6.1</b> Faceting one figure</a></li>
+<li class="chapter" data-level="6.2" data-path="faceting.html"><a href="faceting.html#new-figure-types"><i class="fa fa-check"></i><b>6.2</b> New figure types</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="faceting.html"><a href="faceting.html#line-graph"><i class="fa fa-check"></i><b>6.2.1</b> Line graph</a></li>
+<li class="chapter" data-level="6.2.2" data-path="faceting.html"><a href="faceting.html#linear-model"><i class="fa fa-check"></i><b>6.2.2</b> Linear model</a></li>
+<li class="chapter" data-level="6.2.3" data-path="faceting.html"><a href="faceting.html#histogram"><i class="fa fa-check"></i><b>6.2.3</b> Histogram</a></li>
+<li class="chapter" data-level="6.2.4" data-path="faceting.html"><a href="faceting.html#boxplot"><i class="fa fa-check"></i><b>6.2.4</b> Boxplot</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>7</b> Mapping with <strong><code>ggplot2</code></strong></a><ul>
-<li class="chapter" data-level="7.1" data-path="mapping.html"><a href="mapping.html#a-new-concept"><i class="fa fa-check"></i><b>7.1</b> A new concept?</a></li>
-<li class="chapter" data-level="7.2" data-path="mapping.html"><a href="mapping.html#land-mask"><i class="fa fa-check"></i><b>7.2</b> Land mask</a></li>
-<li class="chapter" data-level="7.3" data-path="mapping.html"><a href="mapping.html#borders"><i class="fa fa-check"></i><b>7.3</b> Borders</a></li>
-<li class="chapter" data-level="7.4" data-path="mapping.html"><a href="mapping.html#force-lonlat-extent"><i class="fa fa-check"></i><b>7.4</b> Force lon/lat extent</a></li>
-<li class="chapter" data-level="7.5" data-path="mapping.html"><a href="mapping.html#ocean-temperature"><i class="fa fa-check"></i><b>7.5</b> Ocean temperature</a></li>
-<li class="chapter" data-level="7.6" data-path="mapping.html"><a href="mapping.html#final-touches"><i class="fa fa-check"></i><b>7.6</b> Final touches</a></li>
-<li class="chapter" data-level="7.7" data-path="mapping.html"><a href="mapping.html#session-info-6"><i class="fa fa-check"></i><b>7.7</b> Session info</a></li>
+<li class="chapter" data-level="6.3" data-path="faceting.html"><a href="faceting.html#gridding-figures"><i class="fa fa-check"></i><b>6.3</b> Gridding figures</a></li>
+<li class="chapter" data-level="6.4" data-path="faceting.html"><a href="faceting.html#session-info-4"><i class="fa fa-check"></i><b>6.4</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="mapping-style.html"><a href="mapping-style.html"><i class="fa fa-check"></i><b>8</b> Mapping with style</a><ul>
-<li class="chapter" data-level="8.1" data-path="mapping-style.html"><a href="mapping-style.html#default-maps"><i class="fa fa-check"></i><b>8.1</b> Default maps</a></li>
-<li class="chapter" data-level="8.2" data-path="mapping-style.html"><a href="mapping-style.html#specific-labels"><i class="fa fa-check"></i><b>8.2</b> Specific labels</a></li>
-<li class="chapter" data-level="8.3" data-path="mapping-style.html"><a href="mapping-style.html#scale-bars"><i class="fa fa-check"></i><b>8.3</b> Scale bars</a></li>
-<li class="chapter" data-level="8.4" data-path="mapping-style.html"><a href="mapping-style.html#insetting"><i class="fa fa-check"></i><b>8.4</b> Insetting</a></li>
-<li class="chapter" data-level="8.5" data-path="mapping-style.html"><a href="mapping-style.html#rounding-it-out"><i class="fa fa-check"></i><b>8.5</b> Rounding it out</a></li>
-<li class="chapter" data-level="8.6" data-path="mapping-style.html"><a href="mapping-style.html#session-info-7"><i class="fa fa-check"></i><b>8.6</b> Session info</a></li>
+<li class="chapter" data-level="7" data-path="brewing.html"><a href="brewing.html"><i class="fa fa-check"></i><b>7</b> Brewing colours in <strong><code>ggplot2</code></strong></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="brewing.html"><a href="brewing.html#r-data"><i class="fa fa-check"></i><b>7.1</b> R Data</a></li>
+<li class="chapter" data-level="7.2" data-path="brewing.html"><a href="brewing.html#rcolorbrewer"><i class="fa fa-check"></i><b>7.2</b> <strong><code>RColorBrewer</code></strong></a></li>
+<li class="chapter" data-level="7.3" data-path="brewing.html"><a href="brewing.html#make-your-own-palettes"><i class="fa fa-check"></i><b>7.3</b> Make your own palettes</a></li>
+<li class="chapter" data-level="7.4" data-path="brewing.html"><a href="brewing.html#use-your-own-palettes"><i class="fa fa-check"></i><b>7.4</b> Use your own palettes</a></li>
+<li class="chapter" data-level="7.5" data-path="brewing.html"><a href="brewing.html#diy-figures"><i class="fa fa-check"></i><b>7.5</b> DIY figures</a></li>
+<li class="chapter" data-level="7.6" data-path="brewing.html"><a href="brewing.html#session-info-5"><i class="fa fa-check"></i><b>7.6</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="mapping-google.html"><a href="mapping-google.html"><i class="fa fa-check"></i><b>9</b> Mapping with Google</a><ul>
-<li class="chapter" data-level="9.1" data-path="mapping-google.html"><a href="mapping-google.html#ggmap"><i class="fa fa-check"></i><b>9.1</b> <strong><code>ggmap</code></strong></a></li>
-<li class="chapter" data-level="9.2" data-path="mapping-google.html"><a href="mapping-google.html#mapping-cape-point"><i class="fa fa-check"></i><b>9.2</b> Mapping Cape Point</a></li>
-<li class="chapter" data-level="9.3" data-path="mapping-google.html"><a href="mapping-google.html#site-labels"><i class="fa fa-check"></i><b>9.3</b> Site labels</a></li>
-<li class="chapter" data-level="9.4" data-path="mapping-google.html"><a href="mapping-google.html#diy-maps"><i class="fa fa-check"></i><b>9.4</b> DIY maps</a></li>
-<li class="chapter" data-level="9.5" data-path="mapping-google.html"><a href="mapping-google.html#session-info-8"><i class="fa fa-check"></i><b>9.5</b> Session info</a></li>
+<li class="chapter" data-level="8" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>8</b> Mapping with <strong><code>ggplot2</code></strong></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="mapping.html"><a href="mapping.html#a-new-concept"><i class="fa fa-check"></i><b>8.1</b> A new concept?</a></li>
+<li class="chapter" data-level="8.2" data-path="mapping.html"><a href="mapping.html#land-mask"><i class="fa fa-check"></i><b>8.2</b> Land mask</a></li>
+<li class="chapter" data-level="8.3" data-path="mapping.html"><a href="mapping.html#borders"><i class="fa fa-check"></i><b>8.3</b> Borders</a></li>
+<li class="chapter" data-level="8.4" data-path="mapping.html"><a href="mapping.html#force-lonlat-extent"><i class="fa fa-check"></i><b>8.4</b> Force lon/lat extent</a></li>
+<li class="chapter" data-level="8.5" data-path="mapping.html"><a href="mapping.html#ocean-temperature"><i class="fa fa-check"></i><b>8.5</b> Ocean temperature</a></li>
+<li class="chapter" data-level="8.6" data-path="mapping.html"><a href="mapping.html#final-touches"><i class="fa fa-check"></i><b>8.6</b> Final touches</a></li>
+<li class="chapter" data-level="8.7" data-path="mapping.html"><a href="mapping.html#session-info-6"><i class="fa fa-check"></i><b>8.7</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>10</b> Tidy data</a><ul>
-<li class="chapter" data-level="10.1" data-path="tidy.html"><a href="tidy.html#gathering-and-spreading"><i class="fa fa-check"></i><b>10.1</b> Gathering and spreading</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="tidy.html"><a href="tidy.html#gathering"><i class="fa fa-check"></i><b>10.1.1</b> Gathering</a></li>
-<li class="chapter" data-level="10.1.2" data-path="tidy.html"><a href="tidy.html#spreading"><i class="fa fa-check"></i><b>10.1.2</b> Spreading</a></li>
+<li class="chapter" data-level="9" data-path="mapping-style.html"><a href="mapping-style.html"><i class="fa fa-check"></i><b>9</b> Mapping with style</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mapping-style.html"><a href="mapping-style.html#default-maps"><i class="fa fa-check"></i><b>9.1</b> Default maps</a></li>
+<li class="chapter" data-level="9.2" data-path="mapping-style.html"><a href="mapping-style.html#specific-labels"><i class="fa fa-check"></i><b>9.2</b> Specific labels</a></li>
+<li class="chapter" data-level="9.3" data-path="mapping-style.html"><a href="mapping-style.html#scale-bars"><i class="fa fa-check"></i><b>9.3</b> Scale bars</a></li>
+<li class="chapter" data-level="9.4" data-path="mapping-style.html"><a href="mapping-style.html#insetting"><i class="fa fa-check"></i><b>9.4</b> Insetting</a></li>
+<li class="chapter" data-level="9.5" data-path="mapping-style.html"><a href="mapping-style.html#rounding-it-out"><i class="fa fa-check"></i><b>9.5</b> Rounding it out</a></li>
+<li class="chapter" data-level="9.6" data-path="mapping-style.html"><a href="mapping-style.html#session-info-7"><i class="fa fa-check"></i><b>9.6</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="tidy.html"><a href="tidy.html#separating-and-uniting"><i class="fa fa-check"></i><b>10.2</b> Separating and uniting</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="tidy.html"><a href="tidy.html#separate"><i class="fa fa-check"></i><b>10.2.1</b> Separate</a></li>
-<li class="chapter" data-level="10.2.2" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>10.2.2</b> Unite</a></li>
+<li class="chapter" data-level="10" data-path="mapping-google.html"><a href="mapping-google.html"><i class="fa fa-check"></i><b>10</b> Mapping with Google</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="mapping-google.html"><a href="mapping-google.html#ggmap"><i class="fa fa-check"></i><b>10.1</b> <strong><code>ggmap</code></strong></a></li>
+<li class="chapter" data-level="10.2" data-path="mapping-google.html"><a href="mapping-google.html#mapping-cape-point"><i class="fa fa-check"></i><b>10.2</b> Mapping Cape Point</a></li>
+<li class="chapter" data-level="10.3" data-path="mapping-google.html"><a href="mapping-google.html#site-labels"><i class="fa fa-check"></i><b>10.3</b> Site labels</a></li>
+<li class="chapter" data-level="10.4" data-path="mapping-google.html"><a href="mapping-google.html#diy-maps"><i class="fa fa-check"></i><b>10.4</b> DIY maps</a></li>
+<li class="chapter" data-level="10.5" data-path="mapping-google.html"><a href="mapping-google.html#session-info-8"><i class="fa fa-check"></i><b>10.5</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="tidy.html"><a href="tidy.html#joining"><i class="fa fa-check"></i><b>10.3</b> Joining</a></li>
-<li class="chapter" data-level="10.4" data-path="tidy.html"><a href="tidy.html#but-why-though"><i class="fa fa-check"></i><b>10.4</b> But why though?</a></li>
-<li class="chapter" data-level="10.5" data-path="tidy.html"><a href="tidy.html#session-info-9"><i class="fa fa-check"></i><b>10.5</b> Session info</a></li>
+<li class="chapter" data-level="11" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>11</b> Tidy data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="tidy.html"><a href="tidy.html#gathering-and-spreading"><i class="fa fa-check"></i><b>11.1</b> Gathering and spreading</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="tidy.html"><a href="tidy.html#gathering"><i class="fa fa-check"></i><b>11.1.1</b> Gathering</a></li>
+<li class="chapter" data-level="11.1.2" data-path="tidy.html"><a href="tidy.html#spreading"><i class="fa fa-check"></i><b>11.1.2</b> Spreading</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="tidier.html"><a href="tidier.html"><i class="fa fa-check"></i><b>11</b> Tidier data</a><ul>
-<li class="chapter" data-level="11.1" data-path="tidier.html"><a href="tidier.html#comparison-operators"><i class="fa fa-check"></i><b>11.1</b> Comparison operators</a></li>
-<li class="chapter" data-level="11.2" data-path="tidier.html"><a href="tidier.html#logical-operators"><i class="fa fa-check"></i><b>11.2</b> Logical operators</a></li>
-<li class="chapter" data-level="11.3" data-path="tidier.html"><a href="tidier.html#arrange-observations-rows-with-arrange"><i class="fa fa-check"></i><b>11.3</b> Arrange observations (rows) with <code>arrange()</code></a></li>
-<li class="chapter" data-level="11.4" data-path="tidier.html"><a href="tidier.html#filter-observations-rows-with-filter"><i class="fa fa-check"></i><b>11.4</b> Filter observations (rows) with <code>filter()</code></a></li>
-<li class="chapter" data-level="11.5" data-path="tidier.html"><a href="tidier.html#select-variables-columns-withselect"><i class="fa fa-check"></i><b>11.5</b> Select variables (columns) with<code>select()</code></a></li>
-<li class="chapter" data-level="11.6" data-path="tidier.html"><a href="tidier.html#create-new-variables-columns-with-mutate"><i class="fa fa-check"></i><b>11.6</b> Create new variables (columns) with <code>mutate()</code></a></li>
-<li class="chapter" data-level="11.7" data-path="tidier.html"><a href="tidier.html#summarise-variables-columns-with-summarise"><i class="fa fa-check"></i><b>11.7</b> Summarise variables (columns) with <code>summarise()</code></a></li>
-<li class="chapter" data-level="11.8" data-path="tidier.html"><a href="tidier.html#session-info-10"><i class="fa fa-check"></i><b>11.8</b> Session info</a></li>
+<li class="chapter" data-level="11.2" data-path="tidy.html"><a href="tidy.html#separating-and-uniting"><i class="fa fa-check"></i><b>11.2</b> Separating and uniting</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="tidy.html"><a href="tidy.html#separate"><i class="fa fa-check"></i><b>11.2.1</b> Separate</a></li>
+<li class="chapter" data-level="11.2.2" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>11.2.2</b> Unite</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="tidiest.html"><a href="tidiest.html"><i class="fa fa-check"></i><b>12</b> Tidiest data</a><ul>
-<li class="chapter" data-level="12.1" data-path="tidiest.html"><a href="tidiest.html#group-observations-rows-by-variables-columns-with-group_by"><i class="fa fa-check"></i><b>12.1</b> Group observations (rows) by variables (columns) with <code>group_by()</code></a><ul>
-<li class="chapter" data-level="12.1.1" data-path="tidiest.html"><a href="tidiest.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>12.1.1</b> Grouping by multiple variables</a></li>
-<li class="chapter" data-level="12.1.2" data-path="tidiest.html"><a href="tidiest.html#ungrouping"><i class="fa fa-check"></i><b>12.1.2</b> Ungrouping</a></li>
+<li class="chapter" data-level="11.3" data-path="tidy.html"><a href="tidy.html#joining"><i class="fa fa-check"></i><b>11.3</b> Joining</a></li>
+<li class="chapter" data-level="11.4" data-path="tidy.html"><a href="tidy.html#but-why-though"><i class="fa fa-check"></i><b>11.4</b> But why though?</a></li>
+<li class="chapter" data-level="11.5" data-path="tidy.html"><a href="tidy.html#session-info-9"><i class="fa fa-check"></i><b>11.5</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="tidiest.html"><a href="tidiest.html#chain-functions-with-the-pipe"><i class="fa fa-check"></i><b>12.2</b> Chain functions with the pipe (<code>%&gt;%</code>)</a></li>
-<li class="chapter" data-level="12.3" data-path="tidiest.html"><a href="tidiest.html#group-all-the-functions"><i class="fa fa-check"></i><b>12.3</b> Group all the functions!</a></li>
-<li class="chapter" data-level="12.4" data-path="tidiest.html"><a href="tidiest.html#going-deeper"><i class="fa fa-check"></i><b>12.4</b> Going deeper</a></li>
-<li class="chapter" data-level="12.5" data-path="tidiest.html"><a href="tidiest.html#pipe-into-ggplot2"><i class="fa fa-check"></i><b>12.5</b> Pipe into <strong><code>ggplot2</code></strong></a></li>
-<li class="chapter" data-level="12.6" data-path="tidiest.html"><a href="tidiest.html#additional-useful-functions"><i class="fa fa-check"></i><b>12.6</b> Additional useful functions</a><ul>
-<li class="chapter" data-level="12.6.1" data-path="tidiest.html"><a href="tidiest.html#rename-variables-columns-with-rename"><i class="fa fa-check"></i><b>12.6.1</b> Rename variables (columns) with <code>rename()</code></a></li>
-<li class="chapter" data-level="12.6.2" data-path="tidiest.html"><a href="tidiest.html#create-a-new-dataframe-for-a-newly-created-variable-column-with-transmute"><i class="fa fa-check"></i><b>12.6.2</b> Create a new dataframe for a newly created variable (column) with <code>transmute()</code></a></li>
-<li class="chapter" data-level="12.6.3" data-path="tidiest.html"><a href="tidiest.html#count-observations-rows-with-n"><i class="fa fa-check"></i><b>12.6.3</b> Count observations (rows) with <code>n()</code></a></li>
-<li class="chapter" data-level="12.6.4" data-path="tidiest.html"><a href="tidiest.html#select-observations-rows-by-number-with-slice"><i class="fa fa-check"></i><b>12.6.4</b> Select observations (rows) by number with <code>slice()</code></a></li>
-<li class="chapter" data-level="12.6.5" data-path="tidiest.html"><a href="tidiest.html#summary-functions"><i class="fa fa-check"></i><b>12.6.5</b> Summary functions</a></li>
+<li class="chapter" data-level="12" data-path="tidier.html"><a href="tidier.html"><i class="fa fa-check"></i><b>12</b> Tidier data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="tidier.html"><a href="tidier.html#comparison-operators"><i class="fa fa-check"></i><b>12.1</b> Comparison operators</a></li>
+<li class="chapter" data-level="12.2" data-path="tidier.html"><a href="tidier.html#logical-operators"><i class="fa fa-check"></i><b>12.2</b> Logical operators</a></li>
+<li class="chapter" data-level="12.3" data-path="tidier.html"><a href="tidier.html#arrange-observations-rows-with-arrange"><i class="fa fa-check"></i><b>12.3</b> Arrange observations (rows) with <code>arrange()</code></a></li>
+<li class="chapter" data-level="12.4" data-path="tidier.html"><a href="tidier.html#filter-observations-rows-with-filter"><i class="fa fa-check"></i><b>12.4</b> Filter observations (rows) with <code>filter()</code></a></li>
+<li class="chapter" data-level="12.5" data-path="tidier.html"><a href="tidier.html#select-variables-columns-withselect"><i class="fa fa-check"></i><b>12.5</b> Select variables (columns) with<code>select()</code></a></li>
+<li class="chapter" data-level="12.6" data-path="tidier.html"><a href="tidier.html#create-new-variables-columns-with-mutate"><i class="fa fa-check"></i><b>12.6</b> Create new variables (columns) with <code>mutate()</code></a></li>
+<li class="chapter" data-level="12.7" data-path="tidier.html"><a href="tidier.html#summarise-variables-columns-with-summarise"><i class="fa fa-check"></i><b>12.7</b> Summarise variables (columns) with <code>summarise()</code></a></li>
+<li class="chapter" data-level="12.8" data-path="tidier.html"><a href="tidier.html#session-info-10"><i class="fa fa-check"></i><b>12.8</b> Session info</a></li>
 </ul></li>
-<li class="chapter" data-level="12.7" data-path="tidiest.html"><a href="tidiest.html#the-new-age-redux"><i class="fa fa-check"></i><b>12.7</b> The new age <em>redux</em></a></li>
-<li class="chapter" data-level="12.8" data-path="tidiest.html"><a href="tidiest.html#session-info-11"><i class="fa fa-check"></i><b>12.8</b> Session info</a></li>
+<li class="chapter" data-level="13" data-path="tidiest.html"><a href="tidiest.html"><i class="fa fa-check"></i><b>13</b> Tidiest data</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="tidiest.html"><a href="tidiest.html#group-observations-rows-by-variables-columns-with-group_by"><i class="fa fa-check"></i><b>13.1</b> Group observations (rows) by variables (columns) with <code>group_by()</code></a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="tidiest.html"><a href="tidiest.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>13.1.1</b> Grouping by multiple variables</a></li>
+<li class="chapter" data-level="13.1.2" data-path="tidiest.html"><a href="tidiest.html#ungrouping"><i class="fa fa-check"></i><b>13.1.2</b> Ungrouping</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="recap.html"><a href="recap.html"><i class="fa fa-check"></i><b>13</b> Recap</a><ul>
-<li class="chapter" data-level="13.1" data-path="recap.html"><a href="recap.html#the-future"><i class="fa fa-check"></i><b>13.1</b> The future</a></li>
-<li class="chapter" data-level="13.2" data-path="recap.html"><a href="recap.html#today"><i class="fa fa-check"></i><b>13.2</b> Today</a></li>
-<li class="chapter" data-level="13.3" data-path="recap.html"><a href="recap.html#session-info-12"><i class="fa fa-check"></i><b>13.3</b> Session info</a></li>
+<li class="chapter" data-level="13.2" data-path="tidiest.html"><a href="tidiest.html#chain-functions-with-the-pipe"><i class="fa fa-check"></i><b>13.2</b> Chain functions with the pipe (<code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="13.3" data-path="tidiest.html"><a href="tidiest.html#group-all-the-functions"><i class="fa fa-check"></i><b>13.3</b> Group all the functions!</a></li>
+<li class="chapter" data-level="13.4" data-path="tidiest.html"><a href="tidiest.html#going-deeper"><i class="fa fa-check"></i><b>13.4</b> Going deeper</a></li>
+<li class="chapter" data-level="13.5" data-path="tidiest.html"><a href="tidiest.html#pipe-into-ggplot2"><i class="fa fa-check"></i><b>13.5</b> Pipe into <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="13.6" data-path="tidiest.html"><a href="tidiest.html#additional-useful-functions"><i class="fa fa-check"></i><b>13.6</b> Additional useful functions</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="tidiest.html"><a href="tidiest.html#rename-variables-columns-with-rename"><i class="fa fa-check"></i><b>13.6.1</b> Rename variables (columns) with <code>rename()</code></a></li>
+<li class="chapter" data-level="13.6.2" data-path="tidiest.html"><a href="tidiest.html#create-a-new-dataframe-for-a-newly-created-variable-column-with-transmute"><i class="fa fa-check"></i><b>13.6.2</b> Create a new dataframe for a newly created variable (column) with <code>transmute()</code></a></li>
+<li class="chapter" data-level="13.6.3" data-path="tidiest.html"><a href="tidiest.html#count-observations-rows-with-n"><i class="fa fa-check"></i><b>13.6.3</b> Count observations (rows) with <code>n()</code></a></li>
+<li class="chapter" data-level="13.6.4" data-path="tidiest.html"><a href="tidiest.html#select-observations-rows-by-number-with-slice"><i class="fa fa-check"></i><b>13.6.4</b> Select observations (rows) by number with <code>slice()</code></a></li>
+<li class="chapter" data-level="13.6.5" data-path="tidiest.html"><a href="tidiest.html#summary-functions"><i class="fa fa-check"></i><b>13.6.5</b> Summary functions</a></li>
+</ul></li>
+<li class="chapter" data-level="13.7" data-path="tidiest.html"><a href="tidiest.html#the-new-age-redux"><i class="fa fa-check"></i><b>13.7</b> The new age <em>redux</em></a></li>
+<li class="chapter" data-level="13.8" data-path="tidiest.html"><a href="tidiest.html#session-info-11"><i class="fa fa-check"></i><b>13.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="recap.html"><a href="recap.html"><i class="fa fa-check"></i><b>14</b> Recap</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="recap.html"><a href="recap.html#the-future"><i class="fa fa-check"></i><b>14.1</b> The future</a></li>
+<li class="chapter" data-level="14.2" data-path="recap.html"><a href="recap.html#today"><i class="fa fa-check"></i><b>14.2</b> Today</a></li>
+<li class="chapter" data-level="14.3" data-path="recap.html"><a href="recap.html#session-info-12"><i class="fa fa-check"></i><b>14.3</b> Session info</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -318,7 +353,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="prelim" class="section level1">
+<div id="prelim" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Preliminaries</h1>
 <blockquote>
 <p>“In the beginning, the universe was created. This has made a lot of people very angry and been widely regarded as a bad move.”</p>
@@ -328,9 +363,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>“The history of life thus consists of long periods of boredom interrupted occasionally by panic.”</p>
 <p>— Elizabeth Kolbert, The Sixth Extinction</p>
 </blockquote>
-<div id="course-outline" class="section level2">
-<h2><span class="header-section-number">1.1</span> Course outline</h2>
-<div id="day-1-in-the-beginning" class="section level3 unnumbered">
+<div id="venue-date-and-time" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Venue, date and time</h2>
+<p>This workshop will take place in the week of <strong>28 January – 31 January 2020</strong>, from <strong>9:00–16:00</strong> each day. We will meet in the BCB computer lab on the 5th floor.</p>
+</div>
+<div id="course-outline" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Course outline</h2>
+<div id="day-1-in-the-beginning" class="section level3 unnumbered" number="">
 <h3>Day 1 – In the Beginning</h3>
 <ul>
 <li>Presentation: Preliminaries</li>
@@ -345,7 +384,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>– end –</li>
 </ul>
 </div>
-<div id="day-2-show-and-tell" class="section level3 unnumbered">
+<div id="day-2-show-and-tell" class="section level3 unnumbered" number="">
 <h3>Day 2 – Show and tell</h3>
 <ul>
 <li>Interactive Session: The basics of <strong><code>ggplot2</code></strong></li>
@@ -358,7 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>– end –</li>
 </ul>
 </div>
-<div id="day-3-going-deeper" class="section level3 unnumbered">
+<div id="day-3-going-deeper" class="section level3 unnumbered" number="">
 <h3>Day 3 – Going deeper</h3>
 <ul>
 <li>Interactive Session: Mapping with <strong><code>ggplot2</code></strong></li>
@@ -371,7 +410,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>– end –</li>
 </ul>
 </div>
-<div id="day-4-the-enlightened-researcher" class="section level3 unnumbered">
+<div id="day-4-the-enlightened-researcher" class="section level3 unnumbered" number="">
 <h3>Day 4 – The Enlightened Researcher</h3>
 <ul>
 <li>Interactive Session: Tidy data</li>
@@ -382,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>– end –</li>
 </ul>
 </div>
-<div id="day-5-the-world-is-yours" class="section level3 unnumbered">
+<div id="day-5-the-world-is-yours" class="section level3 unnumbered" number="">
 <h3>Day 5 – The world is yours</h3>
 <ul>
 <li>Presentation: Recap</li>
@@ -394,15 +433,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="about-this-workshop" class="section level2">
-<h2><span class="header-section-number">1.2</span> About this Workshop</h2>
+<div id="about-this-workshop" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> About this Workshop</h2>
 <p>The aim of this five-day introductory workshop is to guide you through the basics of using R via RStudio for analysis of environmental and biological data. It is ideal for people new to R or who have limited experience. This workshop is not comprehensive, but is necessarily selective. We are not hardcore statisticians, but rather ecologists who have an interest in statistics, and use R frequently. Our emphasis is thus on the steps required to analyse and visualise data in R, rather than focusing on the statistical theory.</p>
 <p>The workshop is laid out so it begins simply and slowly to impart the basics of using R. It then gathers pace, so that by the end we are doing intermediate level analyses. Day 1 is concerned with becoming familiar with getting data into R, doing some simple descriptive statistics, data manipulation and visualisation. Day 2 takes a more in depth look at manipulating and visualising data. Day 3 focuses on creating maps. Day 4 deals with the fundamentals of reproducible research. Day 5 allows one to utilise all of the skills learned throughout the week by creating a final project. The workshop is case-study driven, using data and examples primarily from our background in the marine sciences and real life situations. There is no homework but there are in class assignments.</p>
 <p>Don’t worry if you feel overwhelmed and do not follow everything at any time during the Workshop; that is totally natural with learning a new and powerful program. Remember that you have the notes and material to go through the exercises later at your own pace; we will also be walking the room during sessions and breaks so that we can answer questions one on one. We hope that this Workshop gives you the confidence to start incorporating R into your daily workflow, and if you are already a user, we hope that it will expose you to some new ways of doing things.</p>
 <p>Finally, bear in mind that we are self-taught when it comes to R. Our methods will work, but you will learn as you gain more experience with programming that there are many ways to get the right answer or to accomplish the same task.</p>
 </div>
-<div id="why-use-r" class="section level2">
-<h2><span class="header-section-number">1.3</span> Why use R?</h2>
+<div id="why-use-r" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Why use R?</h2>
 <p>As scientists, we are increasingly driven to analyse and manipulate datasets. As these datasets grow in size our analyses are becoming more sophisticated. There are many statistical packages on the market that one can use, but R is becoming the global standard. There are several reasons for this trend:</p>
 <ol style="list-style-type: decimal">
 <li><p>It is <strong>free</strong>, which is nice if you despise commercial software such as Microsoft Office, as we do — in fact, this entire document was written in Rmarkdown and the files supporting this Workshop material can be edited on <em>any</em> computer using a variety of operating systems such as Mac OS X, Linux and Microsoft Windows</p></li>
@@ -414,8 +453,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>It does not depend on a pointy-and-clicky interface, such as SPSS, and requires one to write scripts — more on the advantages of scripts later</p></li>
 </ol>
 <p>It is truly amazing that such a powerful and comprehensive package is freely available and we are indebted to the developers of R for going down this path.</p>
-<div id="some-negatives-of-using-r" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Some negatives of using R</h3>
+<div id="some-negatives-of-using-r" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Some negatives of using R</h3>
 <p>Although there are many positives of using R, there are some negatives:</p>
 <ol style="list-style-type: decimal">
 <li><p>It can have a steep learning curve for those whom do not like statistics or data manipulation, and it does require frequent use to remain familiar with it and to develop advanced skills</p></li>
@@ -426,8 +465,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>There are multiple ways of doing the same thing</p></li>
 </ol>
 </div>
-<div id="the-challenge-learning-to-program-in-r" class="section level3">
-<h3><span class="header-section-number">1.3.2</span> The challenge: learning to program in R</h3>
+<div id="the-challenge-learning-to-program-in-r" class="section level3" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> The challenge: learning to program in R</h3>
 <p>The big difference between R and many other statistical packages that you might have used is that it is not, and never will be, a menu-driven ‘point and click’ package. R requires you to write your own computer code to tell it exactly what you want to do. This means that there is a learning curve, but these are outweighed by numerous advantages:</p>
 <ol style="list-style-type: decimal">
 <li><p>To write new programs, you can modify your existing ones or those of others, saving you considerable time</p></li>
@@ -443,10 +482,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 </div>
-<div id="using-your-own-computer" class="section level2">
-<h2><span class="header-section-number">1.4</span> Using your own computer?</h2>
-<div id="installing-r" class="section level3">
-<h3><span class="header-section-number">1.4.1</span> Installing R</h3>
+<div id="using-your-own-computer" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Using your own computer?</h2>
+<div id="installing-r" class="section level3" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Installing R</h3>
 <p>It is straightforward installing R on your machine. Follow these steps:</p>
 <ol style="list-style-type: decimal">
 <li><p>Go to the CRAN (Comprehensive R Archive Network) <a href="http://cran.r-project.org">R website</a>. If you type ‘r’ into Google it is the first entry</p></li>
@@ -456,8 +495,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>If you are a Linux user, you know what to do!</p></li>
 </ol>
 </div>
-<div id="installing-rstudio" class="section level3">
-<h3><span class="header-section-number">1.4.2</span> Installing RStudio</h3>
+<div id="installing-rstudio" class="section level3" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Installing RStudio</h3>
 <p>Although R can run in its own console or in a terminal window (Mac and Linux; the Windows command line is a bit limiting), we will use RStudio in this Workshop. RStudio is a free front-end to R for Windows, Mac or Linux (<em>i.e.</em>, R is working in the background). It makes working with R easier, more productive, and organised, especially for new users. There are other front-ends, but RStudio is the most popular. To install:</p>
 <ol style="list-style-type: decimal">
 <li><p>Go to the <a href="http://www.rstudio.com">RStudio</a> website.</p></li>
@@ -466,12 +505,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Choose the relevant ‘Installers for ALL Platforms’ to download</p></li>
 <li><p>Install RStudio as per the instructions.</p></li>
 </ol>
-<p>See you on Monday, 19 February 2018.</p>
-<p>— Cheers, AJ and Robert</p>
+<p>See you on Monday, 28 January 2020.</p>
+<p>— Cheers, AJ and Amieroh</p>
 </div>
 </div>
-<div id="resources" class="section level2">
-<h2><span class="header-section-number">1.5</span> Resources</h2>
+<div id="resources" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Resources</h2>
 <p>Below you can find the source code to some books and other links to websites about R. With some of the technical skills you’ll learn in this course you’ll be able to download the source code, compile the book on your own computer and arrive at the fully formatted (typeset) copy of the books that you can purchase for lots of money:</p>
 <ul>
 <li><a href="https://github.com/hadley/ggplot2-book">ggplot2. Elegant Graphics for Data Analysis</a> — the R graphics bible</li>
@@ -481,8 +520,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://shiny.rstudio.com">Shiny</a> — interactive website driven by R</li>
 </ul>
 </div>
-<div id="style-and-code-conventions" class="section level2">
-<h2><span class="header-section-number">1.6</span> Style and code conventions</h2>
+<div id="style-and-code-conventions" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Style and code conventions</h2>
 <p>Early on, develop the habit of unambiguous and consistent style and formatting when writing your code, or anything else for that matter. Pay attention to detail and be pedantic. This will benefit your scientific writing in general. Although many R commands rely on precisely formatted statements (code blocks), style can nevertheless to <em>some extent</em> have a personal flavour to it. The key is <em>consistency</em>. In this book we use certain conventions to improve readability. We use a consistent set of conventions to refer to code, and in particular to typed commands and package names.</p>
 <ul>
 <li>Package names are shown in a bold font over a grey box, <em>e.g.</em> <strong><code>tidyr</code></strong>.</li>
@@ -491,19 +530,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Sometimes we might directly specify the package that contains the function by using two colons, <em>e.g.</em> <code>dplyr::filter()</code>.</li>
 <li>Commands entered onto the R command line (console) and the output that is returned will be shown in a code block, which is a light grey background with code font. The commands entered start at the beginning of a line and the output it produces is preceded by <code>R&gt;</code>, like so:</li>
 </ul>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">13</span>)</a></code></pre></div>
-<pre><code>R&gt;  [1]   8.456394  25.339966   2.400483  -5.324928 -19.015978 -13.649343
-R&gt;  [7]   8.861297 -15.396341   4.659186  -4.029187</code></pre>
-||||||| merged common ancestors
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">13</span>)</code></pre></div>
-<pre><code>R&gt;  [1]  13.282161   1.570640  -9.654022 -22.956362 -13.091880 -27.520508
-R&gt;  [7]  10.021484   7.571590  -6.293136 -10.031823</code></pre>
-=======
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">13</span>)</code></pre></div>
-<pre><code>R&gt;  [1]  -7.392528   1.493839  -0.930235  -5.216910 -23.652843  -5.398330
-R&gt;  [7]   1.977597  16.606545  -4.948219  14.373923</code></pre>
->>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="prelim.html#cb1-1"></a><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">13</span>)</span></code></pre></div>
+<pre><code>R&gt;  [1]   0.01785809  -4.03812905   6.02210539  -2.80262064  15.03619935
+R&gt;  [6]  -1.02033889   5.83265003  -4.10753282 -10.72271068  -7.09518280</code></pre>
 <p>Consult these resources for more about R code style :</p>
 <ul>
 <li><a href="https://google.github.io/styleguide/Rguide.xml">Google’s R style guide</a></li>
@@ -512,8 +541,8 @@ R&gt;  [7]   1.977597  16.606545  -4.948219  14.373923</code></pre>
 </ul>
 <p>We can also insert maths expressions, like this <span class="math inline">\(f(k) = {n \choose k} p^{k} (1-p)^{n-k}\)</span> or this: <span class="math display">\[f(k) = {n \choose k} p^{k} (1-p)^{n-k}\]</span></p>
 </div>
-<div id="about-this-document" class="section level2">
-<h2><span class="header-section-number">1.7</span> About this document</h2>
+<div id="about-this-document" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> About this document</h2>
 <p>This document was written in <strong><code>bookdown</code></strong> and transformed into the ‘GitBook’ you see here by <strong><code>knitr</code></strong>, <strong>pandoc</strong> and  (Figure <a href="prelim.html#fig:rmarkdown">1.1</a>). All the source code and associated data are available at AJ Smit’s <a href="https://github.com/ajsmit/Intro_R_Workshop">GitHub page</a>. You can download the source code and compile this document on your own computer. If you can compile the document yourself you are officially a geek – welcome to the club! Note that you will need to complete the exercises in the chapter, An R workflow, before this will be possible.</p>
 <div class="figure" style="text-align: center"><span id="fig:rmarkdown"></span>
 <img src="figures/RMarkdownFlow.png" alt="The Rmarkdown workflow." width="100%" />
@@ -522,73 +551,15 @@ Figure 1.1: The Rmarkdown workflow.
 </p>
 </div>
 <p>You will notice that this repository uses <a href="https://github.com">GitHub</a>, and you are advised to set up your own repository for R scripts and all your data. We will touch on GitHub and the principles of reproducible research later, and GitHub forms a core ingredient of such a workflow.</p>
-<<<<<<< HEAD
-||||||| merged common ancestors
-<p>The R session information when compiling this book is shown below:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
-<pre><code>R&gt; R version 3.4.3 (2017-11-30)
-R&gt; Platform: x86_64-pc-linux-gnu (64-bit)
-R&gt; Running under: Ubuntu 16.04.3 LTS
-R&gt; 
-R&gt; Matrix products: default
-R&gt; BLAS: /usr/lib/libblas/libblas.so.3.6.0
-R&gt; LAPACK: /usr/lib/lapack/liblapack.so.3.6.0
-R&gt; 
-R&gt; locale:
-R&gt;  [1] LC_CTYPE=en_ZA.UTF-8       LC_NUMERIC=C              
-R&gt;  [3] LC_TIME=en_ZA.UTF-8        LC_COLLATE=en_ZA.UTF-8    
-R&gt;  [5] LC_MONETARY=en_ZA.UTF-8    LC_MESSAGES=en_ZA.UTF-8   
-R&gt;  [7] LC_PAPER=en_ZA.UTF-8       LC_NAME=C                 
-R&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-R&gt; [11] LC_MEASUREMENT=en_ZA.UTF-8 LC_IDENTIFICATION=C       
-R&gt; 
-R&gt; attached base packages:
-R&gt; [1] stats     graphics  grDevices utils     datasets  base     
-R&gt; 
-R&gt; loaded via a namespace (and not attached):
-R&gt;  [1] compiler_3.4.3  backports_1.1.0 bookdown_0.5    magrittr_1.5   
-R&gt;  [5] rprojroot_1.2   tools_3.4.3     htmltools_0.3.6 yaml_2.1.14    
-R&gt;  [9] Rcpp_0.12.14    stringi_1.1.5   rmarkdown_1.6   highr_0.6      
-R&gt; [13] knitr_1.17      methods_3.4.3   stringr_1.2.0   digest_0.6.13  
-R&gt; [17] evaluate_0.10.1</code></pre>
-=======
-<p>The R session information when compiling this book is shown below:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
-<pre><code>R&gt; R version 3.4.3 (2017-11-30)
-R&gt; Platform: x86_64-pc-linux-gnu (64-bit)
-R&gt; Running under: Ubuntu 16.04.3 LTS
-R&gt; 
-R&gt; Matrix products: default
-R&gt; BLAS: /usr/lib/libblas/libblas.so.3.6.0
-R&gt; LAPACK: /usr/lib/lapack/liblapack.so.3.6.0
-R&gt; 
-R&gt; locale:
-R&gt;  [1] LC_CTYPE=en_ZA.UTF-8       LC_NUMERIC=C              
-R&gt;  [3] LC_TIME=en_ZA.UTF-8        LC_COLLATE=en_ZA.UTF-8    
-R&gt;  [5] LC_MONETARY=en_ZA.UTF-8    LC_MESSAGES=en_ZA.UTF-8   
-R&gt;  [7] LC_PAPER=en_ZA.UTF-8       LC_NAME=C                 
-R&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-R&gt; [11] LC_MEASUREMENT=en_ZA.UTF-8 LC_IDENTIFICATION=C       
-R&gt; 
-R&gt; attached base packages:
-R&gt; [1] stats     graphics  grDevices utils     datasets  base     
-R&gt; 
-R&gt; loaded via a namespace (and not attached):
-R&gt;  [1] compiler_3.4.3  backports_1.1.0 bookdown_0.5    magrittr_1.5   
-R&gt;  [5] rprojroot_1.2   tools_3.4.3     htmltools_0.3.6 yaml_2.1.14    
-R&gt;  [9] Rcpp_0.12.14    stringi_1.1.5   rmarkdown_1.6   highr_0.6      
-R&gt; [13] knitr_1.17      methods_3.4.3   stringr_1.2.0   digest_0.6.15  
-R&gt; [17] evaluate_0.10.1</code></pre>
->>>>>>> 2c362b6d0ed299e20dc1737ccc49ffeabb813743
 </div>
-<div id="exercise-it-which-shall-not-be-named" class="section level2">
-<h2><span class="header-section-number">1.8</span> Exercise: It which shall not be named</h2>
+<div id="exercise-it-which-shall-not-be-named" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> Exercise: It which shall not be named</h2>
 <p>Now that you have heard (and perhaps read) our argument about the merits of using R, let’s double down and spend the next hour seeing first-hand why we think this. Please open the file ‘data/SACTN_data.csv’ in MS Excel. Gasp! Yes I know. After all of that and now we are using MS Excel? But trust us, there is method to this madness. Your mission, should you choose to accept it, is to spend the next hour creating monthly climatologies and plotting them as a line graph. The South African Coastal Temperature Network (SACTN, which will be used several times during this workshop) data are three monthly temperature time series, each about 30 years long. To complete this objective you will need to first split up the three different time series, and then figure out how to create a monthly climatology for each. A monthly climatology is the average temperature for a given month at a given place. So in this instance, because we have three time series, we will want 36 total values comprised of January - December monthly means for each site (if a time series is 30 years long, then a climatological December will be the mean temperature of all of the data within the 30 Decembers for which data are available). Once those values have been calculated, it should be a relatively easy task to plot them as a dot and line graph. Please keep an eye on the time, if you are not done within an hour please stop anyway. Less than a quarter of workshop attendees have completed this task in the past.</p>
 <p>After an hour has passed we will take a break. When we return we will see how to complete this task via R as part of ‘The New Age’ demonstration.</p>
 </div>
-<div id="session-info" class="section level2">
-<h2><span class="header-section-number">1.9</span> Session info</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">installed.packages</span>()[<span class="kw">names</span>(<span class="kw">sessionInfo</span>()<span class="op">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</a></code></pre></div>
+<div id="session-info" class="section level2" number="1.10">
+<h2><span class="header-section-number">1.10</span> Session info</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="prelim.html#cb3-1"></a><span class="kw">installed.packages</span>()[<span class="kw">names</span>(<span class="kw">sessionInfo</span>()<span class="op">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
 <pre><code>R&gt; character(0)</code></pre>
 
 </div>
@@ -641,7 +612,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Intro_R_Workshop.pdf"],
+"download": null,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true,
