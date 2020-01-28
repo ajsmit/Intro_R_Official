@@ -108,6 +108,46 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
+
+\usepackage[a4paper,text={16.5cm,25.2cm},centering,margin=2.6cm]{geometry}
+% \usepackage[left=1.0in,top=1.0in,right=1.0in,bottom=1.0in]{geometry}
+\usepackage{hyperref,amsmath,amssymb,bm,url,enumitem,dcolumn,upquote,framed,alltt,textgreek,xfrac,fixltx2e}
+\usepackage[australian]{babel}
+\usepackage[compact,small]{titlesec}
+
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX} % To support LaTeX quoting style
+ \defaultfontfeatures{Ligatures=TeX}
+ \setmainfont{Calibri}
+ \setsansfont[Scale=MatchLowercase]{Calibri}
+ \setmonofont[Scale=0.75]{Fira Code}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+  \usepackage[full]{textcomp} % directly use the degree (and some other) symbol
+\fi
+
+% place after fonts; even better typesetting for improved readability:
+% \graphicspath{ {figure/} }
+\usepackage{tabularx} % for 'tabularx' environment and 'X' column type
+\usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
+\usepackage{siunitx}
+    \sisetup{%
+        detect-mode,
+        group-digits            = false,
+        input-symbols           = ( ) [ ] - + < > *,
+        table-align-text-post   = false,
+        round-mode              = places,
+        round-precision         = 3
+        }
+% \usepackage[font={small, sf}, labelfont=bf]{caption} % tweaking the captions
+\usepackage[font={small}, labelfont=bf]{caption} % tweaking the captions
+\usepackage[color=yellow, textsize=tiny]{todonotes}
+\frenchspacing%
+% \usepackage[kerning=false,protrusion=true,expansion=true]{microtype}
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
@@ -464,8 +504,8 @@ Early on, develop the habit of unambiguous and consistent style and formatting w
 \end{Shaded}
 
 \begin{verbatim}
-R>  [1]  -8.0898257  -9.4523837  -6.1044685  -0.9303430  -4.4789227  -6.4535747
-R>  [7] -14.6096660   8.5695342  -0.8837037  -7.8309203
+R>  [1]   5.749432372   7.018963444 -12.233828485 -43.724557719   0.005553667
+R>  [6]  -0.781449641 -24.101282509  -8.097543949  11.019860226   8.551607232
 \end{verbatim}
 
 Consult these resources for more about R code style :
@@ -553,7 +593,7 @@ Before we start using RStudio (which is a code editor and environment that runs 
 \hypertarget{customising-appearance}{%
 \subsection{Customising appearance}\label{customising-appearance}}
 
-RStudio is highly customisable. Under the \textbf{Appearance} tab under `Tools'/`Global Options' you can see all of the different themes that come with RStudio. We recommend choosing a theme with a black background (e.g.~Chaos) as this will be easier on your eyes and your computer. It is also good to choose a theme with a sufficient amount of contrast between the different colours used to denote different types of objects/values in your code.
+RStudio is highly customisable. Under the \textbf{Appearance} tab under `Tools'/`Global Options' you can see all of the different themes that come with RStudio. We recommend choosing a theme with a black background (\emph{e.g.} Chaos) as this will be easier on your eyes and your computer. It is also good to choose a theme with a sufficient amount of contrast between the different colours used to denote different types of objects/values in your code.
 
 \hypertarget{configuring-panes}{%
 \subsection{Configuring panes}\label{configuring-panes}}
@@ -563,7 +603,7 @@ You cannot rearrange panes (see below) in RStudio by dragging them, but you can 
 \hypertarget{the-rproject}{%
 \section{The Rproject}\label{the-rproject}}
 
-A very nifty way of managing workflow in RStudio is through the built-in functionality of the Rproject. We do not need to install any packages or change any settings to use these. Creating a new project is a very simple task, as well. For this course we will be using the \texttt{Intro\_R\_Workshop.Rproj} file you downloaded with the course material so that we are all running identical projects. This will prevent a lot of issues by ensuring we are doing things by the same standard. Better yet, an Rproject integrates seamlessly into version control software (e.g.~GitHub) and allows for instant world class collaboration on any research project. To initialise the `Intro\_R\_Workshop' project on your machine please find where you saved \texttt{Intro\_R\_Workshop.Rproj} file and click on it. We will cover the concepts and benefits of an Rproject more as we move through the course.
+A very nifty way of managing workflow in RStudio is through the built-in functionality of the Rproject. We do not need to install any packages or change any settings to use these. Creating a new project is a very simple task, as well. For this course we will be using the \texttt{Intro\_R\_Workshop.Rproj} file you downloaded with the course material so that we are all running identical projects. This will prevent a lot of issues by ensuring we are doing things by the same standard. Better yet, an Rproject integrates seamlessly into version control software (\emph{e.g.} GitHub) and allows for instant world class collaboration on any research project. To initialise the `Intro\_R\_Workshop' project on your machine please find where you saved \texttt{Intro\_R\_Workshop.Rproj} file and click on it. We will cover the concepts and benefits of an Rproject more as we move through the course.
 
 \hypertarget{installing-packages}{%
 \section{Installing packages}\label{installing-packages}}
