@@ -120,7 +120,7 @@
 \makeatother
 \subtitle{UWC BCB Honours 2020}
 \author{AJ Smit, Amieroh Abrahams \& Robert W Schlegel}
-\date{2020-01-27}
+\date{2020-01-28}
 
 \begin{document}
 \maketitle
@@ -136,7 +136,7 @@
 \begin{center}\includegraphics[width=1\linewidth]{figures/769_life_finds_a_way} \end{center}
 
 This online book contains all of the content to be covered in this Intro R Workshop.\\
-The associated files may be downloaded at: \url{https://github.com/ajsmit/Intro_R_Official}\\
+The associated files may be downloaded at \url{https://github.com/ajsmit/Intro_R_Official}\\
 Please use the table of contents (TOC) on the left to navigate the course content as desired.
 
 \hypertarget{prelim}{%
@@ -281,23 +281,23 @@ This workshop will take place in the week of \textbf{28 January -- 31 January 20
 \hypertarget{about-this-workshop}{%
 \section{About this Workshop}\label{about-this-workshop}}
 
-The aim of this five-day introductory workshop is to guide you through the basics of using R via RStudio for analysis of environmental and biological data. It is ideal for people new to R or who have limited experience. This workshop is not comprehensive, but is necessarily selective. We are not hardcore statisticians, but rather ecologists who have an interest in statistics, and use R frequently. Our emphasis is thus on the steps required to analyse and visualise data in R, rather than focusing on the statistical theory.
+The aim of this 4-day introductory workshop is to guide you through the basics of using R via RStudio for analysis of environmental and biological data. It is ideal for people new to R or who have limited experience. This workshop is not comprehensive, but is necessarily selective. We are not hardcore statisticians, but rather ecologists who have an interest in statistics, and use R frequently. Our emphasis is thus on the steps required to analyse and visualise data in R, rather than focusing on the statistical theory.
 
-The workshop is laid out so it begins simply and slowly to impart the basics of using R. It then gathers pace, so that by the end we are doing intermediate level analyses. Day 1 is concerned with becoming familiar with getting data into R, doing some simple descriptive statistics, data manipulation and visualisation. Day 2 takes a more in depth look at manipulating and visualising data. Day 3 focuses on creating maps. Day 4 deals with the fundamentals of reproducible research. Day 5 allows one to utilise all of the skills learned throughout the week by creating a final project. The workshop is case-study driven, using data and examples primarily from our background in the marine sciences and real life situations. There is no homework but there are in class assignments.
+The workshop is laid out so it begins simply and slowly to impart the basics of using R. It then gathers pace, so that by the end we are doing intermediate level analyses. Day 1 is concerned with becoming familiar with getting data into R, doing some simple descriptive statistics, data manipulation and visualisation. Day 2 takes a more in depth look at manipulating and visualising data. Day 3 focuses on creating maps. Day 4 deals with the fundamentals of reproducible research. The 3-week self study/practice opportunity allows one to utilise all of the skills learned throughout the week by creating a final project. The workshop is case-study driven, using data and examples primarily from our background in the marine sciences and real life situations. There is homework and in class assignments.
 
-Don't worry if you feel overwhelmed and do not follow everything at any time during the Workshop; that is totally natural with learning a new and powerful program. Remember that you have the notes and material to go through the exercises later at your own pace; we will also be walking the room during sessions and breaks so that we can answer questions one on one. We hope that this Workshop gives you the confidence to start incorporating R into your daily workflow, and if you are already a user, we hope that it will expose you to some new ways of doing things.
+Don't worry if you feel overwhelmed and do not follow everything at any time during the Workshop; that is totally natural with learning a new and powerful program. Remember that you have the notes and material to go through the exercises later at your own pace; we will also be walking the room during sessions and breaks so that we can answer questions one-on-one. We hope that this Workshop gives you the confidence to start incorporating R into your daily workflow, and if you are already a user, we hope that it will expose you to some new ways of doing things.
 
 Finally, bear in mind that we are self-taught when it comes to R. Our methods will work, but you will learn as you gain more experience with programming that there are many ways to get the right answer or to accomplish the same task.
 
 \hypertarget{why-use-r}{%
 \section{Why use R?}\label{why-use-r}}
 
-As scientists, we are increasingly driven to analyse and manipulate datasets. As these datasets grow in size our analyses are becoming more sophisticated. There are many statistical packages on the market that one can use, but R is becoming the global standard. There are several reasons for this trend:
+As scientists, we are increasingly driven to analyse and manipulate datasets. As these datasets grow in size our analyses are becoming more sophisticated. There are many statistical packages on the market that one can use, but R has become the global standard. There are several reasons for this trend in R gaining popularity:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  It is \textbf{free}, which is nice if you despise commercial software such as Microsoft Office, as we do --- in fact, this entire document was written in Rmarkdown and the files supporting this Workshop material can be edited on \emph{any} computer using a variety of operating systems such as Mac OS X, Linux and Microsoft Windows
+  It is \textbf{free}, which is nice if you despise commercial software such as Microsoft Office, as we do --- in fact, this entire document was written in Rmarkdown and the files supporting this Workshop material can be edited on \emph{any} computer using a variety of operating systems such as MacOS, Linux, and Microsoft Windows
 \item
   It is powerful, flexible and robust; it is developed and used by leading academic statisticians
 \item
@@ -310,6 +310,12 @@ As scientists, we are increasingly driven to analyse and manipulate datasets. As
   Users continually extend the functionality by updating existing packages and adding new ones and make these available for free
 \item
   It does not depend on a pointy-and-clicky interface, such as SPSS, and requires one to write scripts --- more on the advantages of scripts later
+\item
+  It is a coding langauge, so has tools to easily eliminate repetitive tasks
+\item
+  It is equally suited to simple calculations and unbelievably complex data analytical workflows
+\item
+  It permits and encourages the principles of \textbf{Reproducible Research} (more on this later)
 \end{enumerate}
 
 It is truly amazing that such a powerful and comprehensive package is freely available and we are indebted to the developers of R for going down this path.
@@ -317,7 +323,7 @@ It is truly amazing that such a powerful and comprehensive package is freely ava
 \hypertarget{some-negatives-of-using-r}{%
 \subsection{Some negatives of using R}\label{some-negatives-of-using-r}}
 
-Although there are many positives of using R, there are some negatives:
+Although there are many positives of using R, some people perceive some negatives:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -359,10 +365,14 @@ The big difference between R and many other statistical packages that you might 
 \item
   You can provide and share code that underpins published analyses; journals are starting to request the code for analyses in papers, to increase transparency and repeatability
 \item
-  Integration with tools like git (\emph{e.g.} GitHub and Bitbucket) enable online collaboration in large statistical research programmes and they allow one to rely on version control systems
+  Integration with tools like git (\emph{e.g.} GitHub and Bitbucket) enables online collaboration in large statistical research programmes and they allow one to rely on version control systems
 \item
   Programming is simply heaps more fun than point-and-click!
 \end{enumerate}
+
+\begin{quote}
+Code represents the ideas of humans.
+\end{quote}
 
 \hypertarget{using-your-own-computer}{%
 \section{Using your own computer?}\label{using-your-own-computer}}
@@ -454,8 +464,8 @@ Early on, develop the habit of unambiguous and consistent style and formatting w
 \end{Shaded}
 
 \begin{verbatim}
-R>  [1] -14.864905   8.677557 -10.540345   5.831034  -5.643159  14.075562
-R>  [7] -16.662296   6.973559 -13.423149 -26.202160
+R>  [1]  -8.0898257  -9.4523837  -6.1044685  -0.9303430  -4.4789227  -6.4535747
+R>  [7] -14.6096660   8.5695342  -0.8837037  -7.8309203
 \end{verbatim}
 
 Consult these resources for more about R code style :
@@ -558,7 +568,7 @@ A very nifty way of managing workflow in RStudio is through the built-in functio
 \hypertarget{installing-packages}{%
 \section{Installing packages}\label{installing-packages}}
 
-The most common functions used in R are contained within the \textbf{\texttt{base}} package; this makes R useful `out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the \href{https://cran.r-project.org/web/packages/}{CRAN website}. There are currently (\texttt{2020-01-27}) \texttt{15364} packages available for R!
+The most common functions used in R are contained within the \textbf{\texttt{base}} package; this makes R useful `out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the \href{https://cran.r-project.org/web/packages/}{CRAN website}. There are currently (\texttt{2020-01-28}) \texttt{15363} packages available for R!
 
 If the thought of searching for and finding R packages is daunting, a good place to start is the \href{http://cran.r-project.org/web/views/}{R Task View} page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.
 
@@ -715,27 +725,27 @@ Spaces are also optional around assignment operators. It is good practice to use
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-R> [1] FALSE
-\end{verbatim}
-
 Note that the first line of code assigns \texttt{d} a value of \texttt{2}, whereas the second statement asks R whether this variable has a value less than 2. When asked, it responds with FALSE. If we hadn't used spaces, how would R have known what we meant?
 
 Another important question here is, is R case sensitive? Is \texttt{A} the same as \texttt{a}? Figure out a way to check for yourself.
 
 \hypertarget{exercise}{%
-\section{Exercise:}\label{exercise}}
+\section{Exercise}\label{exercise}}
 
 What are the values after each statement in the following?
 
-mass \textless- 48
-mass \textless- mass * 2.0 \# mass?
-age \textless- age - 17 \# age? m
-ass\_index \textless- mass/age \# mass\_index?
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mass <{-}}\StringTok{ }\DecValTok{48} 
+\NormalTok{mass <{-}}\StringTok{ }\NormalTok{mass }\OperatorTok{*}\StringTok{ }\FloatTok{2.0} \CommentTok{\# mass? }
+\NormalTok{age <{-}}\StringTok{ }\NormalTok{age }\OperatorTok{{-}}\StringTok{ }\DecValTok{17} \CommentTok{\# age? m}
+\NormalTok{mass\_index <{-}}\StringTok{ }\NormalTok{mass }\OperatorTok{/}\StringTok{ }\NormalTok{age }\CommentTok{\# mass\_index?}
+\end{Highlighting}
+\end{Shaded}
 
 Use R to calculate some simple mathematical expressions entered.
 
-Assign the value of 40 to x Assign the value of 23 to y. Make z the value of x-y Display z in the console
+Assign the value of 40 to \texttt{x} and Assign the value of 23 to \texttt{y}. Make \texttt{z} the value of \texttt{x-y} Display \texttt{z} in the console
 
 We can create a vector in R by using the combine \texttt{c()} function:
 
@@ -839,7 +849,7 @@ Typing the following into the \textbf{Console} will list everything you've loade
 \end{Shaded}
 
 \begin{verbatim}
-R> [1] "a"        "apples"   "b"        "d"        "pkgs_lst" "url"
+R> [1] "a"        "apples"   "b"        "pkgs_lst" "url"
 \end{verbatim}
 
 What do we have loaded into our environment? Did all of these objects come from one script, or more than one? How can we tell where an object was generated?
@@ -907,45 +917,33 @@ R>   "0.8.3"   "0.3.5"   "1.2.2"
 \hypertarget{what-is-github}{%
 \section{What is GitHub?}\label{what-is-github}}
 
-GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere. The following teaches you the GitHub essentials like repositories, branches, commits, and Pull Requests. You will first create your own account and repository, and learn GitHub's Pull and Push Request workflow, a popular way to create and review code.
+GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere. The following teaches you the GitHub essentials like \textbf{Repositories}, \textbf{Branches}, \textbf{Commits}, and \textbf{Pull Requests}. You will first create your own account and repository, and learn GitHub's Pull and Push Request workflow, a popular way to create and review code.
 
 \hypertarget{installing-github-on-windows}{%
 \section{Installing GitHub on Windows}\label{installing-github-on-windows}}
 
-By default, Git is installed on Linux and macOS computers as a command line option. However, Microsoft Windows does not include a Git command. To install GitHub on windows open the Git website (\url{https://git-scm.com/}). Click the Download link to download Git. The download should automatically start. Once downloaded, start the installation from the browser or the download folder. In the Select Components window, leave all default options checked and check any other additional components you want installed. Click the Install button. Once completed, you can check the option to Launch Git Bash if you want to open a Bash command line.
+By default, Git is installed on Linux and macOS computers as a command line option. However, Microsoft Windows does not include a Git command. To install GitHub on Windows open the Git website (\url{https://git-scm.com/}). Click the `Download' link to download Git. The download should automatically start. Once downloaded, start the installation from the browser or the download folder. In the `Select Components' window, leave all default options checked and check any other additional components you want installed. Click the `Install' button. Once completed, you can check the option to launch Git Bash if you want to open a Bash command line.
 
 \hypertarget{create-and-account-and-a-repository}{%
-\section{Create and account and a Repository}\label{create-and-account-and-a-repository}}
+\section{Create and account and a repository}\label{create-and-account-and-a-repository}}
 
-Create a GitHub account (\url{https://github.com/join}), complete the application steps. This should take less than five minutes. Now lets create a repository. A repository is usually used to organize a single project. Repositories can contain folders and files, images, videos, spreadsheets, and data sets -- anything your project needs. We recommend including a README, or a file with information about your project. GitHub makes it easy to add one at the same time you create your new repository.
+Create a GitHub account (\url{https://github.com/join}), complete the application steps. This should take less than five minutes. Now lets create a repository. A repository is usually used to organise a single project. Repositories can contain folders and files, images, videos, spreadsheets, and data sets -- anything your project needs. We recommend including a README, or a file with information about your project. GitHub makes it easy to add one at the same time you create your new repository.
 
-To create a new repository
-
-\begin{verbatim}
-In the upper right corner, next to your avatar or identicon, click 
-\end{verbatim}
-
-and then select New repository
-Name your repository (Intro\_R)
-Write a short description
+Create a new repository --- in the upper right corner, next to your avatar or identicon, click and then select `New repository'. Name your repository (Intro\_R) and write a short description.
 
 \hypertarget{git-configuring-activation-and-connecting-to-a-remote-repository}{%
 \section{Git configuring (activation) and connecting to a remote repository}\label{git-configuring-activation-and-connecting-to-a-remote-repository}}
 
-Launch Git Bash
-Type the following command to configure your Git username, where will be your GitHub username.
+Launch Git Bash and type the following command to configure your Git username, where will be your GitHub username:
 
 \begin{verbatim}
         git config --global user.name "<your name>"
-        
 \end{verbatim}
 
 After entering the above command, you should be returned to the command prompt. Next, enter your e-mail address by typing the following command, where is your e-mail address.
 
 \begin{verbatim}
         git config --global user.email "<your e-mail>"
-        
-        
 \end{verbatim}
 
 \hypertarget{clone-the-new-github-repository-to-your-computer-via-rstudio.}{%
@@ -953,18 +951,18 @@ After entering the above command, you should be returned to the command prompt. 
 
 Select the repository URL from GitHub. It will be something like \url{https://github.com/AmierohAbrahams/Intro_R}.
 
-Enter Rstudio. On the top left of the screen select the tab `New Project'. Then select the `version control' tab followed by the Git tab. Complete each option by placing the repository URL into the first box and complete the rest
+Enter RStudio. On the top left of the screen select the tab `New Project'. Then select the `Version control' tab followed by the `Git' tab. Complete each option by placing the repository URL into the first box and complete the rest.
 
 \hypertarget{commits}{%
 \section{Commits}\label{commits}}
 
-Bravo! Now, on GitHub, saved changes are called commits. Each commit has an associated commit message, which is a description explaining why a particular change was made. Commit messages capture the history of your changes, so other contributors can understand what you've done and why.
-Make and commit changes
+Bravo! Now, on GitHub, saved changes are called \emph{Commits}. Each commit has an associated commit message, which is a description explaining why a particular change was made. Commit messages capture the history of your changes, so other contributors can understand what you've done and why.
+Make and commit changes.
 
 \hypertarget{open-a-pull-request}{%
 \section{Open a Pull Request}\label{open-a-pull-request}}
 
-Nice edits! Now that you have changes in a branch off of master, you can open a pull request.
+Nice edits! Now that you have changes in a branch off of master, you can open a Pull Request.
 
 Pull Requests are the heart of collaboration on GitHub. When you open a pull request, you're proposing your changes and requesting that someone review and pull in your contribution and merge them into their branch. Pull requests show diffs, or differences, of the content from both branches. The changes, additions, and subtractions are shown in green and red.
 
@@ -1246,9 +1244,9 @@ Or, if we want to select only the row with the greatest total length:
 \end{Shaded}
 
 \hypertarget{exercise-1}{%
-\chapter{Exercise:}\label{exercise-1}}
+\section{Exercise}\label{exercise-1}}
 
-Using pipes, subset the laminaria data to include regions where the blade thickness is thicker than 5cm and retain only the columns site, region, blade weight and blade thickness.
+Using pipes, subset the laminaria data to include regions where the blade thickness is thicker than 5 cm and retain only the columns site, region, blade weight and blade thickness.
 
 Now exit RStudio. Pretend it is three days later and revisit your analysis. Calculate the number of entries at Kommetjie and find the row with the greatest length. Do this now.
 
@@ -1427,13 +1425,13 @@ Using this new information, \emph{calculate} the mean stipe mass and the corresp
 \end{quote}
 
 \hypertarget{exercise-2}{%
-\chapter{Exercise:}\label{exercise-2}}
+\section{Exercise}\label{exercise-2}}
 
 Create a new data frame from the laminaria dataset that meets the following criteria: contains only the site column and a new column called total\_length\_half containing values that are half of the total\_length. In this total\_length\_half column, there are no NAs and all values are less than 100. Hint: think about how the commands should be ordered to produce this data frame!
 
-Use group\_by() and summarize() to find the mean, min, and max blade\_length for each site. Also add the number of observations (hint: see ?n).
+Use \texttt{group\_by()} and \texttt{summarise()} to find the mean, min, and max blade\_length for each site. Also add the number of observations (hint: see \texttt{?n}).
 
-What was the heaviest stipe measured in each site? Return the columns site, region, and stipe\_length.
+What was the heaviest stipe measured in each site? Return the columns \texttt{site}, \texttt{region}, and \texttt{stipe\_length}.
 
 \hypertarget{saving-data}{%
 \section{Saving data}\label{saving-data}}

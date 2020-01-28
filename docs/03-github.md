@@ -2,8 +2,7 @@
 
 ## What is GitHub?
 
-GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere. The following teaches you the GitHub essentials like *Repositories*, *Branches*, *Commits*, and *Pull Requests*. You will first create your own account and repository, and learn GitHub’s Pull and Push Request workflow, a popular way to create  and review code.
-
+GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere. The following teaches you the GitHub essentials like **Repositories**, **Branches**, **Commits**, and **Pull Requests**. You will first create your own account and repository, and learn GitHub’s Pull and Push Request workflow, a popular way to create  and review code.
 
 ## Installing GitHub on Windows
 
@@ -13,29 +12,28 @@ By default, Git is installed on Linux and macOS computers as a command line opti
 
 Create a GitHub account (https://github.com/join), complete the application steps. This should take less than five minutes. Now lets create a repository. A repository is usually used to organise a single project. Repositories can contain folders and files, images, videos, spreadsheets, and data sets – anything your project needs. We recommend including a README, or a file with information about your project. GitHub makes it easy to add one at the same time you create your new repository. 
 
-Create a new repository--in the upper right corner, next to your avatar or identicon, click and then select 'New repository'. Name your repository (Intro_R) and write a short description
+Create a new repository --- in the upper right corner, next to your avatar or identicon, click and then select 'New repository'. Name your repository (Intro_R) and write a short description.
 
 ## Git configuring (activation) and connecting to a remote repository
 
 Launch Git Bash and type the following command to configure your Git username, where <your name> will be your GitHub username:
 
             git config --global user.name "<your name>"
-            
+
 After entering the above command, you should be returned to the command prompt. Next, enter your e-mail address by typing the following command, where <your e-mail> is your e-mail address.
 
             git config --global user.email "<your e-mail>"
-            
-            
+
 ## Clone the new GitHub repository to your computer via RStudio. 
 
 Select the repository URL from GitHub. It will be something like https://github.com/AmierohAbrahams/Intro_R. 
 
-Enter RStudio. On the top left of the screen select the tab 'New Project'. Then select the 'Version control' tab followed by the 'Git' tab. Complete each option by placing the repository URL into the first box and complete the rest
+Enter RStudio. On the top left of the screen select the tab 'New Project'. Then select the 'Version control' tab followed by the 'Git' tab. Complete each option by placing the repository URL into the first box and complete the rest.
 
 ## Commits
 
 Bravo! Now, on GitHub, saved changes are called *Commits*. Each commit has an associated commit message, which is a description explaining why a particular change was made. Commit messages capture the history of your changes, so other contributors can understand what you’ve done and why.
-Make and commit changes
+Make and commit changes.
 
 ## Open a Pull Request
 

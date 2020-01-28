@@ -1,7 +1,7 @@
 --- 
 title: 'Intro R Workshop: Data Manipulation, Analysis, and Visualisation'
 author: "AJ Smit, Amieroh Abrahams & Robert W Schlegel"
-date: "2020-01-27"
+date: "2020-01-28"
 bibliography: book.bib
 description: The basics for a safe voyage through the tidyverse.
 documentclass: book
@@ -24,5 +24,5 @@ biblio-style: apalike
 \begin{center}\includegraphics[width=1\linewidth]{figures/769_life_finds_a_way} \end{center}
 
 This online book contains all of the content to be covered in this Intro R Workshop.  
-The associated files may be downloaded at: https://github.com/ajsmit/Intro_R_Official  
+The associated files may be downloaded at https://github.com/ajsmit/Intro_R_Official  
 Please use the table of contents (TOC) on the left to navigate the course content as desired.

@@ -25,5 +25,5 @@ knitr::include_graphics("figures/769_life_finds_a_way.png")
 ```
 
 This online book contains all of the content to be covered in this Intro R Workshop.  
-The associated files may be downloaded at: https://github.com/ajsmit/Intro_R_Official  
+The associated files may be downloaded at https://github.com/ajsmit/Intro_R_Official  
 Please use the table of contents (TOC) on the left to navigate the course content as desired.

@@ -224,9 +224,9 @@ laminaria %>% # Tell R which dataset to use
   filter(total_length == max(total_length)) # Select row with max total length
 ```
 
-# Exercise:
+## Exercise
 
-Using pipes, subset the laminaria data to include regions where the blade thickness is thicker than 5cm and retain only the columns site, region, blade weight and blade thickness.
+Using pipes, subset the laminaria data to include regions where the blade thickness is thicker than 5 cm and retain only the columns site, region, blade weight and blade thickness.
 
 Now exit RStudio. Pretend it is three days later and revisit your analysis. Calculate the number of entries at Kommetjie and find the row with the greatest length. Do this now.
 
@@ -384,13 +384,13 @@ You will notice that the function `na.omit()` removes NAs from the variable that
 > **DIY: Using `na.omit()`**
 Using this new information, *calculate* the mean stipe mass and the corresponding standard error.
 
-# Exercise:
+## Exercise
 
 Create a new data frame from the laminaria dataset that meets the following criteria: contains only the site column and a new column called total_length_half containing values that are half of the total_length. In this total_length_half column, there are no NAs and all values are less than 100. Hint: think about how the commands should be ordered to produce this data frame!
 
-Use group_by() and summarize() to find the mean, min, and max blade_length for each site. Also add the number of observations (hint: see ?n).
+Use `group_by()` and `summarise()` to find the mean, min, and max blade_length for each site. Also add the number of observations (hint: see `?n`).
 
-What was the heaviest stipe measured in each site? Return the columns site, region, and stipe_length.
+What was the heaviest stipe measured in each site? Return the columns `site`, `region`, and `stipe_length`.
 
 ## Saving data
 
