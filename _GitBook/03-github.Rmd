@@ -2,9 +2,9 @@
 
 ## What is GitHub?
 
-GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere. The following teaches you the GitHub essentials like **Repositories**, **Branches**, **Commits**, and **Pull Requests**. You will first create your own account and repository, and learn GitHub’s Pull and Push Request workflow, a popular way to create  and review code.
+GitHub is a code hosting platform for version control and collaboration. It uses the software Git to let you and others work together on projects from anywhere. The following teaches you the GitHub essentials like **Repositories**, **Branches**, **Commits**, and **Pull Requests**. You will first create your own account and repository, and learn GitHub’s Pull and Push Request workflow, a popular way to create  and review code.
 
-## Installing GitHub on Windows
+## Installing Git on Windows
 
 By default, Git is installed on Linux and macOS computers as a command line option. However, Microsoft Windows does not include a Git command. To install GitHub on Windows open the Git website (https://git-scm.com/). Click the 'Download' link to download Git. The download should automatically start. Once downloaded, start the installation from the browser or the download folder. In the 'Select Components' window, leave all default options checked and check any other additional components you want installed. Click the 'Install' button. Once completed, you can check the option to launch Git Bash if you want to open a Bash command line.
 

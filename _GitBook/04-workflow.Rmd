@@ -158,7 +158,7 @@ The pipe works best in tandem with the following five common functions:
   
 * Arrange observations (rows)  with `arrange()`  
 * Filter observations (rows) with `filter()`  
-* Select variables (columns) with`select()`  
+* Select variables (columns) with `select()`  
 * Create new variables (columns) with `mutate()`  
 * Summarise variables (columns) with `summarise()`  
   
@@ -382,7 +382,6 @@ A major advantage of R over many other statistics packages is that you can gener
 ```{r, eval=FALSE}
 write_csv(site_by_region, path = "data/kelp_summary.csv")
 ```
-
 The first argument is simply the name of an object in R, in this case our table (a data object of class *table*) of counts by region and site (other sorts of data are available, so play around to see what can be done). The second argument is the name of the file you want to write to. This file will always be written to your working directory, unless otherwise specified by including a different path in the file name. Remember that file names need to be within quotation marks. The resultant file can sadly be opened in Excel.
 
 ## Visualisations
