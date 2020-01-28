@@ -114,15 +114,16 @@
 \usepackage{hyperref,amsmath,amssymb,bm,url,enumitem,dcolumn,upquote,framed,alltt,textgreek,xfrac,fixltx2e}
 \usepackage[australian]{babel}
 \usepackage[compact,small]{titlesec}
+\usepackage{xcolor}
 
 \usepackage{ifxetex}
 \ifxetex
-  \usepackage{fontspec}
-  \defaultfontfeatures{Ligatures=TeX} % To support LaTeX quoting style
+ \usepackage{fontspec}
+ \defaultfontfeatures{Ligatures=TeX} % To support LaTeX quoting style
  \defaultfontfeatures{Ligatures=TeX}
  \setmainfont{Calibri}
  \setsansfont[Scale=MatchLowercase]{Calibri}
- \setmonofont[Scale=0.75]{Fira Code}
+ \setmonofont[Scale=0.75,Color=blue]{Fira Code}
 \else
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -147,7 +148,6 @@
 \usepackage[font={small}, labelfont=bf]{caption} % tweaking the captions
 \usepackage[color=yellow, textsize=tiny]{todonotes}
 \frenchspacing%
-% \usepackage[kerning=false,protrusion=true,expansion=true]{microtype}
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
@@ -504,8 +504,8 @@ Early on, develop the habit of unambiguous and consistent style and formatting w
 \end{Shaded}
 
 \begin{verbatim}
-R>  [1]   5.749432372   7.018963444 -12.233828485 -43.724557719   0.005553667
-R>  [6]  -0.781449641 -24.101282509  -8.097543949  11.019860226   8.551607232
+R>  [1] -21.3659446   4.6646059  -5.2923774   0.3180709  -9.2697690   2.6566760
+R>  [7]  -0.7615035  19.5577185  22.0104464 -11.2243041
 \end{verbatim}
 
 Consult these resources for more about R code style :

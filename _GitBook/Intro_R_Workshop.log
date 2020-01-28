@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.19)  28 JAN 2020 08:24
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.19)  28 JAN 2020 08:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -821,7 +821,7 @@ pping=tex-text;"
 (fontspec)             <->s*[1]"Calibri/BI/OT:script=latn;language=DFLT;+smcp;m
 apping=tex-text;"
 
-LaTeX Info: Redefining \rmfamily on input line 124.
+LaTeX Info: Redefining \rmfamily on input line 125.
 
 Package fontspec Info: Font family 'Calibri(1)' created for font 'Calibri'
 (fontspec)             with options [Ligatures=TeX].
@@ -855,13 +855,13 @@ text;"
 g=tex-text;"
 
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/Calibri(1)/m/n on input line 124.
+(Font)                  OT1/lmr/m/n --> TU/Calibri(1)/m/n on input line 125.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/Calibri(1)/m/it on input line 124.
+(Font)                  OT1/lmr/m/it --> TU/Calibri(1)/m/it on input line 125.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/Calibri(1)/bx/n on input line 124.
+(Font)                  OT1/lmr/bx/n --> TU/Calibri(1)/bx/n on input line 125.
 LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 124.
+(Font)              scaled to size 10.0pt on input line 125.
 
 Package fontspec Info: Calibri scale = 1.
 
@@ -922,7 +922,7 @@ mapping=tex-text;"
 (fontspec)             <->s*[0.990625]"Calibri/BI/OT:script=latn;language=DFLT;
 +smcp;mapping=tex-text;"
 
-LaTeX Info: Redefining \sffamily on input line 125.
+LaTeX Info: Redefining \sffamily on input line 126.
 
 Package fontspec Info: Calibri scale = 1.
 
@@ -983,9 +983,9 @@ mapping=tex-text;"
 +smcp;mapping=tex-text;"
 
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/Calibri(3)/m/n on input line 125.
+(Font)                  OT1/lmss/m/n --> TU/Calibri(3)/m/n on input line 126.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/Calibri(3)/bx/n on input line 125.
+(Font)                  OT1/lmss/bx/n --> TU/Calibri(3)/bx/n on input line 126.
 
 
 Package fontspec Info: Could not resolve font "Fira Code/I" (it probably
@@ -995,13 +995,15 @@ Package fontspec Info: Could not resolve font "Fira Code/I" (it probably
 Package fontspec Info: Font family 'FiraCode(0)' created for font 'Fira Code'
 (fontspec)             with options
 (fontspec)             [Ligatures=TeX,WordSpace={1,0,0},HyphenChar=None,Punctua
-tionSpace=WordSpace,Scale=0.75].
+tionSpace=WordSpace,Scale=0.75,Color=blue].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.: <->s*[0.75]"Fira
-(fontspec)             Code/OT:script=latn;language=DFLT;mapping=tex-text;"
+(fontspec)             Code/OT:script=latn;language=DFLT;mapping=tex-text;color
+=0000FFFF
+(fontspec)             ;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
 (fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
@@ -1009,7 +1011,9 @@ tionSpace=WordSpace,Scale=0.75].
 (fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
 (fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 (fontspec)             - 'bold' (bx/n) with NFSS spec.: <->s*[0.75]"Fira
-(fontspec)             Code/B/OT:script=latn;language=DFLT;mapping=tex-text;"
+(fontspec)             Code/B/OT:script=latn;language=DFLT;mapping=tex-text;col
+or=0000FFFF
+(fontspec)             ;"
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
 (fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
@@ -1018,7 +1022,9 @@ tionSpace=WordSpace,Scale=0.75].
 (fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 (fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
 (fontspec)             <->s*[0.75]"Fira
-(fontspec)             Code/BI/OT:script=latn;language=DFLT;mapping=tex-text;"
+(fontspec)             Code/BI/OT:script=latn;language=DFLT;mapping=tex-text;co
+lor=0000FFFF
+(fontspec)             ;"
 (fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
 (fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
@@ -1026,33 +1032,39 @@ tionSpace=WordSpace,Scale=0.75].
 (fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
 (fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 
-LaTeX Info: Redefining \ttfamily on input line 126.
+LaTeX Info: Redefining \ttfamily on input line 127.
 
 Package fontspec Info: Could not resolve font "Fira Code/I" (it probably
 (fontspec)             doesn't exist).
 
 
 Package fontspec Info: Font family 'FiraCode(1)' created for font 'Fira Code'
-(fontspec)             with options [Ligatures=TeX,Scale=0.75].
+(fontspec)             with options [Ligatures=TeX,Scale=0.75,Color=blue].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.: <->s*[0.75]"Fira
-(fontspec)             Code/OT:script=latn;language=DFLT;mapping=tex-text;"
+(fontspec)             Code/OT:script=latn;language=DFLT;mapping=tex-text;color
+=0000FFFF
+(fontspec)             ;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (bx/n) with NFSS spec.: <->s*[0.75]"Fira
-(fontspec)             Code/B/OT:script=latn;language=DFLT;mapping=tex-text;"
+(fontspec)             Code/B/OT:script=latn;language=DFLT;mapping=tex-text;col
+or=0000FFFF
+(fontspec)             ;"
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
 (fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
 (fontspec)             <->s*[0.75]"Fira
-(fontspec)             Code/BI/OT:script=latn;language=DFLT;mapping=tex-text;"
+(fontspec)             Code/BI/OT:script=latn;language=DFLT;mapping=tex-text;co
+lor=0000FFFF
+(fontspec)             ;"
 (fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/FiraCode(1)/m/n on input line 126.
+(Font)                  OT1/lmtt/m/n --> TU/FiraCode(1)/m/n on input line 127.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/FiraCode(1)/bx/n on input line 126.
+(Font)                  OT1/lmtt/m/n --> TU/FiraCode(1)/bx/n on input line 127.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
@@ -2353,9 +2365,9 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 46468 strings out of 492480
- 918457 string characters out of 6129411
- 1127198 words of memory out of 5000000
+ 46469 strings out of 492480
+ 918711 string characters out of 6129411
+ 1127242 words of memory out of 5000000
  50186 multiletter control sequences out of 15000+600000
  560555 words of font info for 124 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
