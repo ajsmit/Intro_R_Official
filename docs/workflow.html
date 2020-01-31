@@ -24,7 +24,7 @@
 <meta name="author" content="AJ Smit, Amieroh Abrahams &amp; Robert W Schlegel" />
 
 
-<meta name="date" content="2020-01-28" />
+<meta name="date" content="2020-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -231,7 +231,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="graphics.html"><a href="graphics.html#basics-of-ggplot2"><i class="fa fa-check"></i><b>5.2</b> Basics of <strong><code>ggplot2</code></strong></a></li>
 <li class="chapter" data-level="5.3" data-path="graphics.html"><a href="graphics.html#to-aes-or-not-to-aes-that-is-the-question"><i class="fa fa-check"></i><b>5.3</b> To <code>aes()</code> or not to <code>aes()</code>, that is the question</a></li>
 <li class="chapter" data-level="5.4" data-path="graphics.html"><a href="graphics.html#changing-labels"><i class="fa fa-check"></i><b>5.4</b> Changing labels</a></li>
-<li class="chapter" data-level="5.5" data-path="graphics.html"><a href="graphics.html#session-info-3"><i class="fa fa-check"></i><b>5.5</b> Session info</a></li>
+<li class="chapter" data-level="5.5" data-path="graphics.html"><a href="graphics.html#exercise-3"><i class="fa fa-check"></i><b>5.5</b> Exercise</a></li>
+<li class="chapter" data-level="5.6" data-path="graphics.html"><a href="graphics.html#session-info-3"><i class="fa fa-check"></i><b>5.6</b> Session info</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>6</b> Faceting Figures</a>
 <ul>
@@ -292,7 +293,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2" data-path="tidy.html"><a href="tidy.html#separating-and-uniting"><i class="fa fa-check"></i><b>11.2</b> Separating and uniting</a>
 <ul>
 <li class="chapter" data-level="11.2.1" data-path="tidy.html"><a href="tidy.html#separate"><i class="fa fa-check"></i><b>11.2.1</b> Separate</a></li>
-<li class="chapter" data-level="11.2.2" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>11.2.2</b> Unite</a></li>
+<li class="chapter" data-level="11.2.2" data-path="tidy.html"><a href="tidy.html#separating-dates-using-mutate"><i class="fa fa-check"></i><b>11.2.2</b> Separating dates using <code>mutate()</code></a></li>
+<li class="chapter" data-level="11.2.3" data-path="tidy.html"><a href="tidy.html#unite"><i class="fa fa-check"></i><b>11.2.3</b> Unite</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="tidy.html"><a href="tidy.html#joining"><i class="fa fa-check"></i><b>11.3</b> Joining</a></li>
 <li class="chapter" data-level="11.4" data-path="tidy.html"><a href="tidy.html#but-why-though"><i class="fa fa-check"></i><b>11.4</b> But why though?</a></li>
@@ -371,11 +373,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> R Scripts</h2>
 <p>The first step for any project in R is to create a new script. We do this by clicking on the ‘New Document’ button (in the top left and selecting ‘R Script’). This creates an unnamed file in the <strong>Source Editor</strong> pane. Best to save it first of all so we do not lose what we do. ‘File’/‘Save As’/ and the Working Directory should come up. Type in <code>Day_1</code> as the file name and click ‘save.’ R will automatically add a <code>.R</code> extension.</p>
 <p>It is recommended to start a script with some basic information for you to refer back to later. Start with a comment line (the line begins with a <code>#</code>) that tells you the name of the script, something about the script, who created it, and the date it was created. In the source editor enter to following lines and save the file again:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="workflow.html#cb1-1"></a><span class="co"># Day_1.R</span></span>
-<span id="cb1-2"><a href="workflow.html#cb1-2"></a><span class="co"># Reads in some data about Laminaria collected along the Cape Peninsula</span></span>
-<span id="cb1-3"><a href="workflow.html#cb1-3"></a><span class="co"># Do various data manipulations, analyses and graphs</span></span>
-<span id="cb1-4"><a href="workflow.html#cb1-4"></a><span class="co"># &lt;your_name&gt;</span></span>
-<span id="cb1-5"><a href="workflow.html#cb1-5"></a><span class="co"># &lt;curent_date&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="workflow.html#cb35-1"></a><span class="co"># Day_1.R</span></span>
+<span id="cb35-2"><a href="workflow.html#cb35-2"></a><span class="co"># Reads in some data about Laminaria collected along the Cape Peninsula</span></span>
+<span id="cb35-3"><a href="workflow.html#cb35-3"></a><span class="co"># Do various data manipulations, analyses and graphs</span></span>
+<span id="cb35-4"><a href="workflow.html#cb35-4"></a><span class="co"># &lt;your_name&gt;</span></span>
+<span id="cb35-5"><a href="workflow.html#cb35-5"></a><span class="co"># &lt;curent_date&gt;</span></span></code></pre></div>
 <p>Remember that anything appearing after the <code>#</code> is not executed by R as script and is a comment.</p>
 <p>It is recommend that for each workshop session you start a new script (in the <strong>Source Editor</strong>), type in the code as we go along, and only execute the required lines. That way you will have a record of what you have done.</p>
 <p>Below we will learn how to import the file <code>laminaria.csv</code> into R, assign it to a dataframe named <code>laminaria</code>, and spend a while looking it over. These data reflect results of a sampling campaign on one of the species of kelps (<em>Laminaria pallida</em>) in the Western Cape designed to find the morphometric properties of populations at different sites. We visited 13 different locations along the Cape Peninsula (<code>site</code>), and at each site, collected <em>ca.</em> 13 specimens of the largest kelps we could find. We then brought the kelps back to the shore and measured/calculated nine morphometric properties of the plants (<em>e.g.</em> the mass of the fronds (<code>blade_weight</code>), the frond length (<code>blade_length</code>), <em>etc.</em>).</p>
@@ -418,23 +420,23 @@ R has pedantic requirements for naming variables. It is safest to not use spaces
 <div id="loading-a-file" class="section level3" number="4.2.4">
 <h3><span class="header-section-number">4.2.4</span> Loading a file</h3>
 <p>To load the <code>laminaria.csv</code> file we created, and assign it to an object name in R, we will use the <code>read_csv()</code> function from the <strong><code>tidyverse</code></strong> package, so let’s make sure it is activated.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="workflow.html#cb2-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="workflow.html#cb36-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>Depending on the version of Excel you are using, or perhaps the settings within it, the ‘laminaria.csv’ file you created may be corrupted in different ways. Generally Excel likes to replace the <code>,</code> between columns in our .csv files with <code>;</code>. This may seem like a triviality but sadly it is not. Lucky for use, the <strong><code>tidyverse</code></strong> knows about this problem and they have made a plan. Please open your ‘laminaria.csv’ file and look at which character is being used to separate columns. If it is <code>,</code> then we will load the data with <code>read_csv()</code>. If the columns are separated with <code>;</code> we will use <code>read_csv2()</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="workflow.html#cb3-1"></a><span class="co"># Run this if &#39;laminaria.csv` has columns separated by &#39;,&#39;</span></span>
-<span id="cb3-2"><a href="workflow.html#cb3-2"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span>
-<span id="cb3-3"><a href="workflow.html#cb3-3"></a><span class="co"># Run this if &#39;laminaria.csv` has columns separated by &#39;;&#39;</span></span>
-<span id="cb3-4"><a href="workflow.html#cb3-4"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="workflow.html#cb37-1"></a><span class="co"># Run this if &#39;laminaria.csv` has columns separated by &#39;,&#39;</span></span>
+<span id="cb37-2"><a href="workflow.html#cb37-2"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span>
+<span id="cb37-3"><a href="workflow.html#cb37-3"></a><span class="co"># Run this if &#39;laminaria.csv` has columns separated by &#39;;&#39;</span></span>
+<span id="cb37-4"><a href="workflow.html#cb37-4"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span></code></pre></div>
 <p>If one clicks on the newly created <code>laminaria</code> object in the <strong>Environment</strong> pane it will open a new panel that shows the information as a spreadsheet. To go back to your script click the appropriate tab in the <strong>Source Editor</strong> pane. With these data loaded we may now perform analyses on them.</p>
 <p>At any point when working in R, you can see exactly what objects are in memory in several ways. First, you can look at the <strong>Environment</strong> tab in RStudio, then <strong>Workspace Browser</strong>. Alternatively you can type either of the following:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="workflow.html#cb4-1"></a><span class="kw">ls</span>()</span>
-<span id="cb4-2"><a href="workflow.html#cb4-2"></a><span class="co"># or</span></span>
-<span id="cb4-3"><a href="workflow.html#cb4-3"></a><span class="kw">objects</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="workflow.html#cb38-1"></a><span class="kw">ls</span>()</span>
+<span id="cb38-2"><a href="workflow.html#cb38-2"></a><span class="co"># or</span></span>
+<span id="cb38-3"><a href="workflow.html#cb38-3"></a><span class="kw">objects</span>()</span></code></pre></div>
 <p>You can delete an object from memory by specifying the <code>rm()</code> function with the name of the object:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="workflow.html#cb5-1"></a><span class="kw">rm</span>(laminaria)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="workflow.html#cb39-1"></a><span class="kw">rm</span>(laminaria)</span></code></pre></div>
 <p>This will of course delete our variable, so we will import it in again using whichever of the following two lines of code matched our Excel situation.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="workflow.html#cb6-1"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span>
-<span id="cb6-2"><a href="workflow.html#cb6-2"></a><span class="co"># OR</span></span>
-<span id="cb6-3"><a href="workflow.html#cb6-3"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="workflow.html#cb40-1"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span>
+<span id="cb40-2"><a href="workflow.html#cb40-2"></a><span class="co"># OR</span></span>
+<span id="cb40-3"><a href="workflow.html#cb40-3"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span></code></pre></div>
 <blockquote>
 <p><strong>Managing variables</strong><br />
 It is good practice to remove variables from memory that you are not using, especially if they are large.</p>
@@ -446,15 +448,15 @@ It is good practice to remove variables from memory that you are not using, espe
 <div id="examine-your-data" class="section level3" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Examine your data</h3>
 <p>Once the data are in R, you need to check there are no glaring errors. It is useful to call up the first few lines of the dataframe using the function <code>head()</code>. Try it yourself by typing:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="workflow.html#cb7-1"></a><span class="kw">head</span>(laminaria)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="workflow.html#cb41-1"></a><span class="kw">head</span>(laminaria)</span></code></pre></div>
 <p>This lists the first six lines of each of the variables in the dataframe as a table. You can similarly retrieve the last six lines of a dataframe by an identical call to the function <code>tail()</code>. Of course, this works better when you have fewer than 10 or so variables (columns); for larger data sets, things can get a little messy. If you want more or fewer rows in your head or tail, tell R how many rows it is you want by adding this information to your function call. Try typing:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="workflow.html#cb8-1"></a><span class="kw">head</span>(laminaria, <span class="dt">n =</span> <span class="dv">3</span>)</span>
-<span id="cb8-2"><a href="workflow.html#cb8-2"></a><span class="kw">tail</span>(laminaria, <span class="dt">n =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="workflow.html#cb42-1"></a><span class="kw">head</span>(laminaria, <span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb42-2"><a href="workflow.html#cb42-2"></a><span class="kw">tail</span>(laminaria, <span class="dt">n =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p>You can also check the structure of your data by using the <code>glimpse()</code> function:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="workflow.html#cb9-1"></a><span class="kw">glimpse</span>(laminaria)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="workflow.html#cb43-1"></a><span class="kw">glimpse</span>(laminaria)</span></code></pre></div>
 <p>This very handy function lists the variables in your dataframe by name, tells you what sorts of data are contained in each variable (<em>e.g.</em>, continuous number, discrete factor) and provides an indication of the actual contents of each.</p>
 <p>If we wanted only the names of the variables (columns) in the dataframe, we could use:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="workflow.html#cb10-1"></a><span class="kw">names</span>(laminaria)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="workflow.html#cb44-1"></a><span class="kw">names</span>(laminaria)</span></code></pre></div>
 </div>
 <div id="tidyverse-sneak-peek" class="section level3" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Tidyverse sneak peek</h3>
@@ -476,19 +478,19 @@ It is good practice to remove variables from memory that you are not using, espe
 <div id="subsetting" class="section level3" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> Subsetting</h3>
 <p>Now let’s have a look at specific parts of the data. You will likely need to do this in almost every script you write. If we want to refer to a variable, we specify the dataframe then the column name within the <code>select()</code> function. In your script type:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="workflow.html#cb11-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataframe we are using</span></span>
-<span id="cb11-2"><a href="workflow.html#cb11-2"></a><span class="st">  </span><span class="kw">select</span>(site, total_length) <span class="co"># Select only specific columns</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="workflow.html#cb45-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataframe we are using</span></span>
+<span id="cb45-2"><a href="workflow.html#cb45-2"></a><span class="st">  </span><span class="kw">select</span>(site, total_length) <span class="co"># Select only specific columns</span></span></code></pre></div>
 <p>If we want to only select values from specific columns we insert one more line of code.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="workflow.html#cb12-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb12-2"><a href="workflow.html#cb12-2"></a><span class="st">  </span><span class="kw">select</span>(site, total_length) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select specific columns first</span></span>
-<span id="cb12-3"><a href="workflow.html#cb12-3"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">56</span><span class="op">:</span><span class="dv">78</span>)</span>
-<span id="cb12-4"><a href="workflow.html#cb12-4"></a><span class="co"># what does the &#39;56:78&#39; do? Change some numbers and run the code again. What happens?</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="workflow.html#cb46-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb46-2"><a href="workflow.html#cb46-2"></a><span class="st">  </span><span class="kw">select</span>(site, total_length) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select specific columns first</span></span>
+<span id="cb46-3"><a href="workflow.html#cb46-3"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">56</span><span class="op">:</span><span class="dv">78</span>)</span>
+<span id="cb46-4"><a href="workflow.html#cb46-4"></a><span class="co"># what does the &#39;56:78&#39; do? Change some numbers and run the code again. What happens?</span></span></code></pre></div>
 <p>If we wanted to select only the rows of data belonging to the Kommetjie site, we could type:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="workflow.html#cb13-1"></a>laminaria <span class="op">%&gt;%</span></span>
-<span id="cb13-2"><a href="workflow.html#cb13-2"></a><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="workflow.html#cb47-1"></a>laminaria <span class="op">%&gt;%</span></span>
+<span id="cb47-2"><a href="workflow.html#cb47-2"></a><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>)</span></code></pre></div>
 <p>The function <code>filter()</code> has two arguments: the first is a dataframe (we specify <code>laminaria</code> in the previous line and the pipe supplies this for us) and the second is an expression that relates to which rows of a particular variable we want to include. Here we include all rows for Kommetjie and we find that in the variable site. It returns a subset that is actually a dataframe itself; it is in the same form as the original dataframe. We could assign that subset of the full dataframe to a new dataframe if we wanted to.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="workflow.html#cb14-1"></a>lam_kom &lt;-<span class="st"> </span>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb14-2"><a href="workflow.html#cb14-2"></a><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="workflow.html#cb48-1"></a>lam_kom &lt;-<span class="st"> </span>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb48-2"><a href="workflow.html#cb48-2"></a><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>)</span></code></pre></div>
 <blockquote>
 <p><strong>DIY: Subsetting</strong><br />
 In the script you have started, create a new named dataframe containing only kelps from two of the sites. Check that the new dataframe has the correct values in it. What purpose can the naming of a newly-created dataframe serve?</p>
@@ -497,12 +499,12 @@ In the script you have started, create a new named dataframe containing only kel
 <div id="basic-stats" class="section level3" number="4.3.4">
 <h3><span class="header-section-number">4.3.4</span> Basic stats</h3>
 <p>Straight out of the box it is possible in R to perform a broad range of statistical calculations on a dataframe. If we wanted to know how many samples we have at Kommetjie, we simply type the following:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="workflow.html#cb15-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataset to use</span></span>
-<span id="cb15-2"><a href="workflow.html#cb15-2"></a><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Filter out only records from Kommetjie</span></span>
-<span id="cb15-3"><a href="workflow.html#cb15-3"></a><span class="st">  </span><span class="kw">nrow</span>() <span class="co"># Count the number of remaining rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="workflow.html#cb49-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataset to use</span></span>
+<span id="cb49-2"><a href="workflow.html#cb49-2"></a><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Filter out only records from Kommetjie</span></span>
+<span id="cb49-3"><a href="workflow.html#cb49-3"></a><span class="st">  </span><span class="kw">nrow</span>() <span class="co"># Count the number of remaining rows</span></span></code></pre></div>
 <p>Or, if we want to select only the row with the greatest total length:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="workflow.html#cb16-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataset to use</span></span>
-<span id="cb16-2"><a href="workflow.html#cb16-2"></a><span class="st">  </span><span class="kw">filter</span>(total_length <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(total_length)) <span class="co"># Select row with max total length</span></span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="workflow.html#cb50-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataset to use</span></span>
+<span id="cb50-2"><a href="workflow.html#cb50-2"></a><span class="st">  </span><span class="kw">filter</span>(total_length <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(total_length)) <span class="co"># Select row with max total length</span></span></code></pre></div>
 </div>
 </div>
 <div id="exercise-1" class="section level2" number="4.4">
@@ -516,46 +518,46 @@ The <code>.csv</code> file format is usually the most robust for reading data in
 </blockquote>
 <p>So far we have calculated the mean and standard deviation of some data in the <em>Laminaria</em> data set. If you have not, please append those lines of code to the end of your script. You can run individual lines of code by highlighting them and pressing <strong>ctrl-Enter</strong> (<strong>cmd-Enter</strong> on a Mac). Do this.</p>
 <p>Your file will now look similar to this one, but of course you will have added your own notes and comments as you went along:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="workflow.html#cb17-1"></a><span class="co"># Day_1.R</span></span>
-<span id="cb17-2"><a href="workflow.html#cb17-2"></a><span class="co"># Reads in some data about Laminaria collected along the Cape Peninsula</span></span>
-<span id="cb17-3"><a href="workflow.html#cb17-3"></a><span class="co"># do various data manipulations, analyses and graphs</span></span>
-<span id="cb17-4"><a href="workflow.html#cb17-4"></a><span class="co"># AJ Smit</span></span>
-<span id="cb17-5"><a href="workflow.html#cb17-5"></a><span class="co"># 9 January 2020</span></span>
-<span id="cb17-6"><a href="workflow.html#cb17-6"></a></span>
-<span id="cb17-7"><a href="workflow.html#cb17-7"></a><span class="co"># Find the current working directory (it will be correct if a project was</span></span>
-<span id="cb17-8"><a href="workflow.html#cb17-8"></a><span class="co"># created as instructed earlier)</span></span>
-<span id="cb17-9"><a href="workflow.html#cb17-9"></a><span class="kw">getwd</span>()</span>
-<span id="cb17-10"><a href="workflow.html#cb17-10"></a></span>
-<span id="cb17-11"><a href="workflow.html#cb17-11"></a><span class="co"># If the directory is wrong because you chose not to use an Rworkspace (project),</span></span>
-<span id="cb17-12"><a href="workflow.html#cb17-12"></a><span class="co"># set your directory manually to where the script will be saved and where the data</span></span>
-<span id="cb17-13"><a href="workflow.html#cb17-13"></a><span class="co"># are located</span></span>
-<span id="cb17-14"><a href="workflow.html#cb17-14"></a><span class="co"># setwd(&quot;&lt;insert_path_here&gt;&quot;)</span></span>
-<span id="cb17-15"><a href="workflow.html#cb17-15"></a></span>
-<span id="cb17-16"><a href="workflow.html#cb17-16"></a><span class="co"># Load libraries</span></span>
-<span id="cb17-17"><a href="workflow.html#cb17-17"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb17-18"><a href="workflow.html#cb17-18"></a></span>
-<span id="cb17-19"><a href="workflow.html#cb17-19"></a><span class="co"># Load the data</span></span>
-<span id="cb17-20"><a href="workflow.html#cb17-20"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span>
-<span id="cb17-21"><a href="workflow.html#cb17-21"></a></span>
-<span id="cb17-22"><a href="workflow.html#cb17-22"></a><span class="co"># Examine the data</span></span>
-<span id="cb17-23"><a href="workflow.html#cb17-23"></a><span class="kw">head</span>(laminaria, <span class="dv">5</span>) <span class="co"># First five lines</span></span>
-<span id="cb17-24"><a href="workflow.html#cb17-24"></a><span class="kw">tail</span>(laminaria, <span class="dv">2</span>) <span class="co"># Last two lines</span></span>
-<span id="cb17-25"><a href="workflow.html#cb17-25"></a><span class="kw">glimpse</span>(laminaria) <span class="co"># A more thorough summary</span></span>
-<span id="cb17-26"><a href="workflow.html#cb17-26"></a><span class="kw">names</span>(laminaria) <span class="co"># THe names of the columns</span></span>
-<span id="cb17-27"><a href="workflow.html#cb17-27"></a></span>
-<span id="cb17-28"><a href="workflow.html#cb17-28"></a><span class="co"># Subsetting data</span></span>
-<span id="cb17-29"><a href="workflow.html#cb17-29"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataframe to use</span></span>
-<span id="cb17-30"><a href="workflow.html#cb17-30"></a><span class="st">  </span><span class="kw">select</span>(site, total_length) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select specific columns</span></span>
-<span id="cb17-31"><a href="workflow.html#cb17-31"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">56</span><span class="op">:</span><span class="dv">78</span>) <span class="co"># Select specific rows</span></span>
-<span id="cb17-32"><a href="workflow.html#cb17-32"></a></span>
-<span id="cb17-33"><a href="workflow.html#cb17-33"></a><span class="co"># How many data points do we have at Kommetjie?</span></span>
-<span id="cb17-34"><a href="workflow.html#cb17-34"></a>laminaria <span class="op">%&gt;%</span></span>
-<span id="cb17-35"><a href="workflow.html#cb17-35"></a><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb17-36"><a href="workflow.html#cb17-36"></a><span class="st">  </span><span class="kw">nrow</span>()</span>
-<span id="cb17-37"><a href="workflow.html#cb17-37"></a></span>
-<span id="cb17-38"><a href="workflow.html#cb17-38"></a><span class="co"># The row with the greatest length</span></span>
-<span id="cb17-39"><a href="workflow.html#cb17-39"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataset to use</span></span>
-<span id="cb17-40"><a href="workflow.html#cb17-40"></a><span class="st">  </span><span class="kw">filter</span>(total_length <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(total_length)) <span class="co"># Select row with max total length</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="workflow.html#cb51-1"></a><span class="co"># Day_1.R</span></span>
+<span id="cb51-2"><a href="workflow.html#cb51-2"></a><span class="co"># Reads in some data about Laminaria collected along the Cape Peninsula</span></span>
+<span id="cb51-3"><a href="workflow.html#cb51-3"></a><span class="co"># do various data manipulations, analyses and graphs</span></span>
+<span id="cb51-4"><a href="workflow.html#cb51-4"></a><span class="co"># AJ Smit</span></span>
+<span id="cb51-5"><a href="workflow.html#cb51-5"></a><span class="co"># 9 January 2020</span></span>
+<span id="cb51-6"><a href="workflow.html#cb51-6"></a></span>
+<span id="cb51-7"><a href="workflow.html#cb51-7"></a><span class="co"># Find the current working directory (it will be correct if a project was</span></span>
+<span id="cb51-8"><a href="workflow.html#cb51-8"></a><span class="co"># created as instructed earlier)</span></span>
+<span id="cb51-9"><a href="workflow.html#cb51-9"></a><span class="kw">getwd</span>()</span>
+<span id="cb51-10"><a href="workflow.html#cb51-10"></a></span>
+<span id="cb51-11"><a href="workflow.html#cb51-11"></a><span class="co"># If the directory is wrong because you chose not to use an Rworkspace (project),</span></span>
+<span id="cb51-12"><a href="workflow.html#cb51-12"></a><span class="co"># set your directory manually to where the script will be saved and where the data</span></span>
+<span id="cb51-13"><a href="workflow.html#cb51-13"></a><span class="co"># are located</span></span>
+<span id="cb51-14"><a href="workflow.html#cb51-14"></a><span class="co"># setwd(&quot;&lt;insert_path_here&gt;&quot;)</span></span>
+<span id="cb51-15"><a href="workflow.html#cb51-15"></a></span>
+<span id="cb51-16"><a href="workflow.html#cb51-16"></a><span class="co"># Load libraries</span></span>
+<span id="cb51-17"><a href="workflow.html#cb51-17"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb51-18"><a href="workflow.html#cb51-18"></a></span>
+<span id="cb51-19"><a href="workflow.html#cb51-19"></a><span class="co"># Load the data</span></span>
+<span id="cb51-20"><a href="workflow.html#cb51-20"></a>laminaria &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/laminaria.csv&quot;</span>)</span>
+<span id="cb51-21"><a href="workflow.html#cb51-21"></a></span>
+<span id="cb51-22"><a href="workflow.html#cb51-22"></a><span class="co"># Examine the data</span></span>
+<span id="cb51-23"><a href="workflow.html#cb51-23"></a><span class="kw">head</span>(laminaria, <span class="dv">5</span>) <span class="co"># First five lines</span></span>
+<span id="cb51-24"><a href="workflow.html#cb51-24"></a><span class="kw">tail</span>(laminaria, <span class="dv">2</span>) <span class="co"># Last two lines</span></span>
+<span id="cb51-25"><a href="workflow.html#cb51-25"></a><span class="kw">glimpse</span>(laminaria) <span class="co"># A more thorough summary</span></span>
+<span id="cb51-26"><a href="workflow.html#cb51-26"></a><span class="kw">names</span>(laminaria) <span class="co"># THe names of the columns</span></span>
+<span id="cb51-27"><a href="workflow.html#cb51-27"></a></span>
+<span id="cb51-28"><a href="workflow.html#cb51-28"></a><span class="co"># Subsetting data</span></span>
+<span id="cb51-29"><a href="workflow.html#cb51-29"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataframe to use</span></span>
+<span id="cb51-30"><a href="workflow.html#cb51-30"></a><span class="st">  </span><span class="kw">select</span>(site, total_length) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select specific columns</span></span>
+<span id="cb51-31"><a href="workflow.html#cb51-31"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">56</span><span class="op">:</span><span class="dv">78</span>) <span class="co"># Select specific rows</span></span>
+<span id="cb51-32"><a href="workflow.html#cb51-32"></a></span>
+<span id="cb51-33"><a href="workflow.html#cb51-33"></a><span class="co"># How many data points do we have at Kommetjie?</span></span>
+<span id="cb51-34"><a href="workflow.html#cb51-34"></a>laminaria <span class="op">%&gt;%</span></span>
+<span id="cb51-35"><a href="workflow.html#cb51-35"></a><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;Kommetjie&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb51-36"><a href="workflow.html#cb51-36"></a><span class="st">  </span><span class="kw">nrow</span>()</span>
+<span id="cb51-37"><a href="workflow.html#cb51-37"></a></span>
+<span id="cb51-38"><a href="workflow.html#cb51-38"></a><span class="co"># The row with the greatest length</span></span>
+<span id="cb51-39"><a href="workflow.html#cb51-39"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R which dataset to use</span></span>
+<span id="cb51-40"><a href="workflow.html#cb51-40"></a><span class="st">  </span><span class="kw">filter</span>(total_length <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(total_length)) <span class="co"># Select row with max total length</span></span></code></pre></div>
 <p>Making sure all the latest edits in your R script have been saved, close your R session. Pretend this is now 2019 and you need to revisit the analysis. Open the file you created in 2017 in RStudio. All you need to do now is highlight the file’s entire contents and hit <strong>ctrl-Enter</strong>.</p>
 <blockquote>
 <p><strong>Stick with <code>.csv</code> files</strong><br />
@@ -568,24 +570,24 @@ Friends don’t let friends use Excel.</p>
 <div id="summary-of-all-variables-in-a-dataframe" class="section level3" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> Summary of all variables in a dataframe</h3>
 <p>Import the data into a dataframe called <code>laminaria</code> once more (if it isn’t already in your <strong>Environment</strong>), and check that it is in order. Once we’re happy that the data have imported correctly, and that we know what the variables are called and what sorts of data they contain, we can dig a little deeper. Try typing:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="workflow.html#cb18-1"></a><span class="kw">summary</span>(laminaria)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="workflow.html#cb52-1"></a><span class="kw">summary</span>(laminaria)</span></code></pre></div>
 <p>The output is quite informative. It tabulates variables by name, and for each provides summary statistics. For continuous variables, the name, minimum, maximum, first, second (median) and third quartiles, and the mean are provided. For factors (categorical variables), a list of the levels of the factor and the count of each level are given. In either case, the last line of the table indicates how many NAs are contained in the variable. The function <code>summary()</code> is useful to remember as it can be applied to many different R objects (<em>e.g.</em>, variables, dataframes, models, arrays, <em>etc.</em>) and will give you a summary of that object. We will use it liberally throughout the workshop.</p>
 </div>
 <div id="summary-statistics-by-variable" class="section level3" number="4.4.2">
 <h3><span class="header-section-number">4.4.2</span> Summary statistics by variable</h3>
 <p>This is all very convenient, but we may want to ask R specifically for just the mean of a particular variable. In this case, we simply need to tell R which summary statistic we are interested in, and to specify the variable to apply it to using <code>summarise()</code>. Try typing:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="workflow.html#cb19-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Chose the dataframe</span></span>
-<span id="cb19-2"><a href="workflow.html#cb19-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_bld_wdt =</span> <span class="kw">mean</span>(blade_length)) <span class="co"># Calculate mean blade length</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="workflow.html#cb53-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Chose the dataframe</span></span>
+<span id="cb53-2"><a href="workflow.html#cb53-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_bld_wdt =</span> <span class="kw">mean</span>(blade_length)) <span class="co"># Calculate mean blade length</span></span></code></pre></div>
 <p>Or, if we wanted to know the mean and standard deviation for the total lengths of all the plants across all sites, do:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="workflow.html#cb20-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R that we want to use the &#39;laminaria&#39; dataframe</span></span>
-<span id="cb20-2"><a href="workflow.html#cb20-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ln =</span> <span class="kw">mean</span>(total_length), <span class="co"># Create a summary of the mean of the total lengths</span></span>
-<span id="cb20-3"><a href="workflow.html#cb20-3"></a>            <span class="dt">sd_stp_ln =</span> <span class="kw">sd</span>(total_length)) <span class="co"># Create a summary of the sd of the total lengths</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="workflow.html#cb54-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Tell R that we want to use the &#39;laminaria&#39; dataframe</span></span>
+<span id="cb54-2"><a href="workflow.html#cb54-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ln =</span> <span class="kw">mean</span>(total_length), <span class="co"># Create a summary of the mean of the total lengths</span></span>
+<span id="cb54-3"><a href="workflow.html#cb54-3"></a>            <span class="dt">sd_stp_ln =</span> <span class="kw">sd</span>(total_length)) <span class="co"># Create a summary of the sd of the total lengths</span></span></code></pre></div>
 <p>Of course, the mean and standard deviation are not the only summary statistic that R can calculate. Try <code>max()</code>, <code>min()</code>, <code>median()</code>, <code>range()</code>, <code>sd()</code> and <code>var()</code>. Do they return the values you expected? Now try:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="workflow.html#cb21-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb21-2"><a href="workflow.html#cb21-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ms =</span> <span class="kw">mean</span>(stipe_mass))</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="workflow.html#cb55-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb55-2"><a href="workflow.html#cb55-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ms =</span> <span class="kw">mean</span>(stipe_mass))</span></code></pre></div>
 <p>The answer probably isn’t what you would expect. Why not? Sometimes, you need to tell R how you want it to deal with missing data. In this case, you have NAs in the named variable, and R takes the cautious approach of giving you the answer of <code>NA</code>, meaning that there are missing values here. This may not seem useful, but as the programmer, you can tell R to respond differently, and it will. Simply append an argument to your function call, and you will get a different response. Type:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="workflow.html#cb22-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb22-2"><a href="workflow.html#cb22-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ms =</span> <span class="kw">mean</span>(stipe_mass, <span class="dt">na.rm =</span> T))</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="workflow.html#cb56-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb56-2"><a href="workflow.html#cb56-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg_stp_ms =</span> <span class="kw">mean</span>(stipe_mass, <span class="dt">na.rm =</span> T))</span></code></pre></div>
 <p>The <code>na.rm</code> argument tells R to remove (or more correctly ‘strip’) NAs from the data string before calculating the mean. It now returns the correct answer. Although needing to deal explicitly with missing values in this way can be a bit painful, it does make you more aware of missing data, what the analyses in R are doing, and makes you decide explicitly how you will treat missing data.</p>
 </div>
 <div id="more-complex-calculations" class="section level3" number="4.4.3">
@@ -594,21 +596,21 @@ Friends don’t let friends use Excel.</p>
 <p>The trick is to remember that R is a calculator, so we can use it to do maths, even complex maths (which we won’t do). The formula for standard error is:</p>
 <p><span class="math display">\[se = \sqrt{\frac{var}{n}}\]</span></p>
 <p>We know that the variance is given by <code>var()</code>, so all we need to do is figure out how to get <code>n</code> and calculate a square root. The simplest way to determine the number of elements in a variable is a call to the function <code>nrow()</code>, as we saw previously. We may therefore calculate standard error with one chunk of code, step by step, using the pipe. Furthermore, by using <code>group_by()</code> we may calculate the standard error for all sites in one go.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="workflow.html#cb23-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select &#39;laminaria&#39;</span></span>
-<span id="cb23-2"><a href="workflow.html#cb23-2"></a><span class="st">  </span><span class="kw">group_by</span>(site) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Group the dataframe by site</span></span>
-<span id="cb23-3"><a href="workflow.html#cb23-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">var_bl =</span> <span class="kw">var</span>(blade_length), <span class="co"># Calculate variance</span></span>
-<span id="cb23-4"><a href="workflow.html#cb23-4"></a>            <span class="dt">n_bl =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Count number of values</span></span>
-<span id="cb23-5"><a href="workflow.html#cb23-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">se_bl =</span> <span class="kw">sqrt</span>(var_bl <span class="op">/</span><span class="st"> </span>n_bl)) <span class="co"># Calculate se</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="workflow.html#cb57-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Select &#39;laminaria&#39;</span></span>
+<span id="cb57-2"><a href="workflow.html#cb57-2"></a><span class="st">  </span><span class="kw">group_by</span>(site) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Group the dataframe by site</span></span>
+<span id="cb57-3"><a href="workflow.html#cb57-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">var_bl =</span> <span class="kw">var</span>(blade_length), <span class="co"># Calculate variance</span></span>
+<span id="cb57-4"><a href="workflow.html#cb57-4"></a>            <span class="dt">n_bl =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Count number of values</span></span>
+<span id="cb57-5"><a href="workflow.html#cb57-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">se_bl =</span> <span class="kw">sqrt</span>(var_bl <span class="op">/</span><span class="st"> </span>n_bl)) <span class="co"># Calculate se</span></span></code></pre></div>
 <p>When calculating the mean, we specified that R should strip the NAs, using the argument <code>na.rm = TRUE</code>. In the example above, we didn’t have NAs in the variable of interest. What happens if we <em>do</em>?</p>
 <p>Unfortunately, the call to the function <code>nrow()</code> has no arguments telling R how to treat NAs; instead, they are simply treated as elements of the variable and are therefore counted. The easiest way to resolve this problem is to strip out NAs in advance of any calculations. Try typing:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="workflow.html#cb24-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb24-2"><a href="workflow.html#cb24-2"></a><span class="st">  </span><span class="kw">select</span>(stipe_mass) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb24-3"><a href="workflow.html#cb24-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="workflow.html#cb58-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb58-2"><a href="workflow.html#cb58-2"></a><span class="st">  </span><span class="kw">select</span>(stipe_mass) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb58-3"><a href="workflow.html#cb58-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</span></code></pre></div>
 <p>then:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="workflow.html#cb25-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb25-2"><a href="workflow.html#cb25-2"></a><span class="st">  </span><span class="kw">select</span>(stipe_mass) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb25-3"><a href="workflow.html#cb25-3"></a><span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb25-4"><a href="workflow.html#cb25-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="workflow.html#cb59-1"></a>laminaria <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb59-2"><a href="workflow.html#cb59-2"></a><span class="st">  </span><span class="kw">select</span>(stipe_mass) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb59-3"><a href="workflow.html#cb59-3"></a><span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb59-4"><a href="workflow.html#cb59-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</span></code></pre></div>
 <p>You will notice that the function <code>na.omit()</code> removes NAs from the variable that is specified as its argument.</p>
 <blockquote>
 <p><strong>DIY: Using <code>na.omit()</code></strong>
@@ -625,15 +627,15 @@ Using this new information, <em>calculate</em> the mean stipe mass and the corre
 <div id="saving-data" class="section level2" number="4.6">
 <h2><span class="header-section-number">4.6</span> Saving data</h2>
 <p>A major advantage of R over many other statistics packages is that you can generate exactly the same answers time and time again by simply re-running saved code. However, there are times when you will want to output data to a file that can be read by a spreadsheet program such as Excel (but try not to… please). The simplest general format is .csv (comma-separated values). This format is easily read by Excel, and also by many other software programs. To output a .csv type:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="workflow.html#cb26-1"></a><span class="kw">write_csv</span>(site_by_region, <span class="dt">path =</span> <span class="st">&quot;data/kelp_summary.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="workflow.html#cb60-1"></a><span class="kw">write_csv</span>(site_by_region, <span class="dt">path =</span> <span class="st">&quot;data/kelp_summary.csv&quot;</span>)</span></code></pre></div>
 <p>The first argument is simply the name of an object in R, in this case our table (a data object of class <em>table</em>) of counts by region and site (other sorts of data are available, so play around to see what can be done). The second argument is the name of the file you want to write to. This file will always be written to your working directory, unless otherwise specified by including a different path in the file name. Remember that file names need to be within quotation marks. The resultant file can sadly be opened in Excel.</p>
 </div>
 <div id="visualisations" class="section level2" number="4.7">
 <h2><span class="header-section-number">4.7</span> Visualisations</h2>
 <p>R has powerful and flexible graphics capabilities. In this Workshop we will not use the traditional graphics (<em>i.e.</em> <em>base graphics</em> in the graphics package automatically loaded in R). We will instead use a package called <strong><code>ggplot2</code></strong> that has the ability for extensive customisation (see the examples at the beginning of tomorrow’s section), so it will cover most of the graphs that you will want to produce. We will spend the next two days working on our <strong><code>ggplot2</code></strong> skills. Here is a quick example of a <strong><code>ggplot2</code></strong> graphic made from two of the kelp variables to show the relationship between them:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="workflow.html#cb27-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> laminaria, <span class="kw">aes</span>(<span class="dt">x =</span> stipe_mass, <span class="dt">y =</span> stipe_length)) <span class="op">+</span></span>
-<span id="cb27-2"><a href="workflow.html#cb27-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">colour =</span> <span class="st">&quot;salmon&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></span>
-<span id="cb27-3"><a href="workflow.html#cb27-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Stipe mass (kg)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Stipe length (cm)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="workflow.html#cb61-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> laminaria, <span class="kw">aes</span>(<span class="dt">x =</span> stipe_mass, <span class="dt">y =</span> stipe_length)) <span class="op">+</span></span>
+<span id="cb61-2"><a href="workflow.html#cb61-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">colour =</span> <span class="st">&quot;salmon&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></span>
+<span id="cb61-3"><a href="workflow.html#cb61-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Stipe mass (kg)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Stipe length (cm)&quot;</span>)</span></code></pre></div>
 <p><img src="04-workflow_files/figure-html/workflow-1-1.png" width="672" /></p>
 </div>
 <div id="clearing-the-memory" class="section level2" number="4.8">
@@ -650,14 +652,14 @@ Using this new information, <em>calculate</em> the mean stipe mass and the corre
 <li><p>Use <code>setwd()</code>, providing the name of your desired working directory as a character string</p></li>
 </ol>
 <p>In the <strong>Files</strong> tab, use the directory structure to navigate to the Intro R Workshop directory… this will differ from person to person. Then under ‘More’, select the small upside down (drill-down) triangle and select ‘Set As Working Directory’. This means that whenever you read or write a file it will always be working in that directory. This gives us the code for setting the directory (below is the code that I would enter in the <strong>Console</strong> on my computer):</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="workflow.html#cb28-1"></a><span class="kw">setwd</span>(<span class="st">&quot;~/Intro_R_Workshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="workflow.html#cb62-1"></a><span class="kw">setwd</span>(<span class="st">&quot;~/Intro_R_Workshop&quot;</span>)</span></code></pre></div>
 <p>It will be different for you, but copy it into your script and make a note for future reference.</p>
 <blockquote>
 <p><strong>Working directories</strong><br />
 For Windows users, if you copy from a file path the slashes will be the wrong way around and must be changed!</p>
 </blockquote>
 <p>You can check that R got this right by typing into the <strong>Console</strong>:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="workflow.html#cb29-1"></a><span class="kw">getwd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="workflow.html#cb63-1"></a><span class="kw">getwd</span>()</span></code></pre></div>
 <blockquote>
 <p><strong>Organising R projects</strong><br />
 For every R project, set up a separate directory that includes the scripts, data files and outputs.</p>
@@ -676,7 +678,7 @@ Figure 4.1: A portion of the help page produced by the above command.
 </div>
 <div id="session-info-2" class="section level2" number="4.11">
 <h2><span class="header-section-number">4.11</span> Session info</h2>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="workflow.html#cb30-1"></a><span class="kw">installed.packages</span>()[<span class="kw">names</span>(<span class="kw">sessionInfo</span>()<span class="op">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="workflow.html#cb64-1"></a><span class="kw">installed.packages</span>()[<span class="kw">names</span>(<span class="kw">sessionInfo</span>()<span class="op">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
 <pre><code>R&gt;   forcats   stringr     dplyr     purrr     readr     tidyr    tibble   ggplot2 
 R&gt;   &quot;0.4.0&quot;   &quot;1.4.0&quot;   &quot;0.8.3&quot;   &quot;0.3.3&quot;   &quot;1.3.1&quot;   &quot;1.0.0&quot;   &quot;2.1.3&quot;   &quot;3.2.1&quot; 
 R&gt; tidyverse 

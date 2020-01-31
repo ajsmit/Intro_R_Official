@@ -207,7 +207,7 @@ ggplot(data = ChickWeight, aes(x = Time, y = weight, colour = Diet)) +
 
 Notice that when we place the legend at the bottom of the figure ggplot automatically makes it horizontal for us. Why do we use 'colour' inside of `labs()` to change the legend title?
 
-# Exercise:
+## Exercise
 
 With all of this information in hand, please take another five minutes to either improve one of the plots generated or create a beautiful graph of your own. Here are some ideas:
 

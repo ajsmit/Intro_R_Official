@@ -160,7 +160,7 @@
 \makeatother
 \subtitle{UWC BCB Honours 2020}
 \author{AJ Smit, Amieroh Abrahams \& Robert W Schlegel}
-\date{2020-01-28}
+\date{2020-01-31}
 
 \begin{document}
 \maketitle
@@ -504,8 +504,8 @@ Early on, develop the habit of unambiguous and consistent style and formatting w
 \end{Shaded}
 
 \begin{verbatim}
-R>  [1]  11.3559856   1.4398187 -20.7567644  -2.8172428 -14.4399367  -8.4246514
-R>  [7]  -0.3166477 -19.7374468  -6.8411501 -11.4653549
+R>  [1] 10.4917451  1.0683589 -3.7437561 -3.2334131  7.9644976 -2.3130205
+R>  [7]  5.0977896  4.3434540 -0.1304216  7.7361639
 \end{verbatim}
 
 Consult these resources for more about R code style :
@@ -608,7 +608,7 @@ A very nifty way of managing workflow in RStudio is through the built-in functio
 \hypertarget{installing-packages}{%
 \section{Installing packages}\label{installing-packages}}
 
-The most common functions used in R are contained within the \textbf{\texttt{base}} package; this makes R useful `out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the \href{https://cran.r-project.org/web/packages/}{CRAN website}. There are currently (\texttt{2020-01-28}) \texttt{15363} packages available for R!
+The most common functions used in R are contained within the \textbf{\texttt{base}} package; this makes R useful `out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the \href{https://cran.r-project.org/web/packages/}{CRAN website}. There are currently (\texttt{2020-01-31}) \texttt{15357} packages available for R!
 
 If the thought of searching for and finding R packages is daunting, a good place to start is the \href{http://cran.r-project.org/web/views/}{R Task View} page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.
 
@@ -1206,7 +1206,7 @@ The pipe works best in tandem with the following five common functions:
 \item
   Filter observations (rows) with \texttt{filter()}\\
 \item
-  Select variables (columns) with\texttt{select()}\\
+  Select variables (columns) with \texttt{select()}\\
 \item
   Create new variables (columns) with \texttt{mutate()}\\
 \item
@@ -1806,7 +1806,7 @@ When we use \textbf{\texttt{ggplot2}} we have control over every minute aspect o
 Notice that when we place the legend at the bottom of the figure ggplot automatically makes it horizontal for us. Why do we use `colour' inside of \texttt{labs()} to change the legend title?
 
 \hypertarget{exercise-3}{%
-\chapter{Exercise:}\label{exercise-3}}
+\section{Exercise}\label{exercise-3}}
 
 With all of this information in hand, please take another five minutes to either improve one of the plots generated or create a beautiful graph of your own. Here are some ideas:
 
@@ -2837,7 +2837,7 @@ The \href{http://tidyverse.org}{Tidyverse} is a collection of R packages that ad
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{figures/tidyverse} 
+{\centering \includegraphics[width=1\linewidth]{figures/tidy_workflow} 
 
 }
 
@@ -2868,15 +2868,15 @@ But what exactly are \textbf{tidy data}? It is not just a a buzz word, there is 
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Each variable must have its own column---i.e.~each of the things known \emph{about} the data in its own column.
+  Each variable must have its own column---\emph{i.e.} each of the things \textbf{known about} the data in its own column.
 \item
-  Each observation must have its own row---each of the things \emph{measured} in its own row; for example, in the \emph{Laminaria} data the measured things include \texttt{blade\_length}, \texttt{blade\_weight}, etc., and they can all be captured in one column named, for example, \texttt{measurement}.\\
+  Each observation must have its own row---each of the things \textbf{measured} in its own row; for example, in the \emph{Laminaria} data the measured things include \texttt{blade\_length}, \texttt{blade\_weight}, \emph{etc.}, and they can all be captured in one column named, for example, \texttt{measurement}.\\
 \item
-  Each value must have its own cell---each of the things that are known or measured must be in its own cell.
+  Each value must have its own cell---each of the things that is known and measured must be in its own cell.
 \end{enumerate}
 \end{quote}
 
-This is represented graphically in figure \ref{fig:tidy-structure}. One will generally satisfy these three rules effortlessly simply by never putting more than one dataset in a file, and never putting more (or less) than one variable in the same column. We will go over this several more times today so do not fret if those guidelines are not immediately clear.
+This is represented graphically in F \ref{fig:tidy-structure}. One will generally satisfy these three rules effortlessly simply by never putting more than one dataset in a file, and never putting more (or less) than one variable in the same column. We will go over this several more times today so do not fret if those guidelines are not immediately clear.
 
 \begin{figure}
 
@@ -2887,7 +2887,7 @@ This is represented graphically in figure \ref{fig:tidy-structure}. One will gen
 \caption{Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)}\label{fig:tidy-structure}
 \end{figure}
 
-In order to illustrate the meaning of this three part definition we are going to learn how to manipulate a non-tidy dataset into a tidy one. To do so we will need to learn a few new, very useful functions. Let's load our demo dataset to get started. This snippet from the SACTN dataset contains only data for 2008-2009 for three time series, with some notable (untidy) changes. The purpose of the following exercises is not only to show how to tidy data, but to also illustrate that these steps may be done more quickly in R than excel, allowing for ones raw data to remain exactly how they were collected, with all of the manipulations performed on them documented in an R script. This is a centrally important part of reproducible research.
+In order to illustrate the meaning of this three part definition, we are going to learn how to manipulate a non-tidy dataset into a tidy one. To do so we will need to learn a few new, very useful functions. Let's load our demo dataset to get started. This snippet from the SACTN dataset contains only data for 2008-2009 for three time series, with some notable (untidy) changes. The purpose of the following exercises is not only to show how to tidy data, but to also illustrate that these steps may be done more quickly in R than MS Excel, allowing for ones raw data to remain exactly how they were collected, with all of the manipulations performed on them documented in an R script. This is a centrally important part of reproducible research.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2895,7 +2895,7 @@ In order to illustrate the meaning of this three part definition we are going to
 \end{Highlighting}
 \end{Shaded}
 
-With our data loaded let's now have a peek at them. We will first see that we have loaded not one, but five different objects into our environment pane in the top left our RStudio window. These all contain the exact same data in different states of disrepair. As one may guess, some of these datasets will be easier to use than others.
+With our data loaded let's now have a peek at them. We will first see that we have loaded not one, but five different objects into our environment pane in the top right of our RStudio window. These all contain the exact same data in different states of disrepair. As one may guess, some of these datasets will be easier to use than others.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2924,7 +2924,7 @@ We start off by looking at \texttt{SACTN1}. If these data look just like all of 
 
 \begin{quote}
 \textbf{\texttt{\%\textgreater{}\%}}~\\
-Remember that this funny series of symbols is the pipe operator. It combines consequetive rows of code together so that they run as though they were one `chunk'. We will be seeing this symbol a lot today. The keyboard shortcut for \texttt{\%\textgreater{}\%} is \textbf{ctrl shift m}.
+Remember that this funny series of symbols is the pipe operator. It combines consequetive rows of code together so that they run as though they were one `chunk'. We will be seeing this symbol a lot today. The keyboard shortcut for \texttt{\%\textgreater{}\%} is \textbf{ctrl-shift-m}.
 \end{quote}
 
 \hypertarget{gathering-and-spreading}{%
@@ -2932,12 +2932,12 @@ Remember that this funny series of symbols is the pipe operator. It combines con
 
 Before \emph{tidy} became the adjective used to describe neatly formatted data, people used to say \emph{long}. This is because well organised dataframes tend to always be longer than they are wide (with the exception of species assemblage data). The opposite of \emph{long} data are \emph{wide} data. If one ever finds a dataset that is wider than it is long then this is probably because the person that created them saved one variable across many columns.
 
-As we sit here and read through these examples it may seem odd that so much effort is being spent on something so straightforward as tidy data. Surely this is too obvious to devote an entire day of work to it? Unfortunately not. As we go out into the wild world of `real life data', we tend to find that very few datasets (especially those collected by hand) are tidy. Rather they are plagued by any number of issues. The first step then for tidying up the data are to have a look at them and discern what are the observations that were made/recorded (the `measurements'), and what are the variables within those observations. We also need to know something about \emph{how} or \emph{where} the data were collected, or what threy represent --- this is information \emph{about} the data, i.e.~some meta-data. Let's have a look now at \texttt{SACTN2} for an example of what \emph{wide} data looks like, and how to fix it.
+As we sit here and read through these examples it may seem odd that so much effort is being spent on something so straightforward as tidy data. Surely this is too obvious to devote an entire day of work to it? Unfortunately not. As we go out into the wild world of `real life data', we tend to find that very few datasets (especially those collected by hand) are tidy. Rather they are plagued by any number of issues. The first step then for tidying up the data are to have a look at them and discern what are the observations that were made/recorded (the `measurements'), and what are the variables within those observations. We also need to know something about \emph{how} or \emph{where} the data were collected, or what threy represent --- this is information \emph{about} the data, \emph{i.e.} some meta-data. Let's have a look now at \texttt{SACTN2} for an example of what \emph{wide} data look like, and how to fix it.
 
 \hypertarget{gathering}{%
 \subsection{Gathering}\label{gathering}}
 
-In \texttt{SACTN2} we can see that the \texttt{src} column has been removed and that the temperatures are placed in columns that denote the collecting source. This may at first seem like a reasonable way to organise these data, but it is not tidy because the collecting source is one variable, and so should not take up more than one column. We need to \texttt{gather()} these source columns back together. We do this by telling \texttt{gather()} what the names of the columns are we want to squish together. We then tell it the name of the `key' column. This is the column that will contain all of the old column names we are gathering. In this case we will call it `src'. The last piece of this puzzle is the `value' column. This is where we decide what the name of the column will be for values we are gathering up. In this case we will name it `temp', because we are gathering up the temperature values that were incorrectly spread out by month.
+In \texttt{SACTN2} we can see that the \texttt{src} column has been removed and that the temperatures are placed in columns that denote the collecting source. This may at first seem like a reasonable way to organise these data, but it is not tidy because the collecting source is one variable, and so should not take up more than one column. We need to \texttt{gather()} these source columns back together. We do this by telling \texttt{gather()} what the names of the columns are we want to squish together. We then tell it the name of the \textbf{key} column. This is the column that will contain all of the old column names we are gathering. In this case we will call it \texttt{src}. The last piece of this puzzle is the \textbf{value} column. This is where we decide what the name of the column will be for values we are gathering up. In this case we will name it \texttt{temp}, because we are gathering up the temperature values that were incorrectly spread out by month.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2949,11 +2949,11 @@ In \texttt{SACTN2} we can see that the \texttt{src} column has been removed and 
 \hypertarget{spreading}{%
 \subsection{Spreading}\label{spreading}}
 
-Should ones data be too long, meaning when individual observations are spread across multiple rows, we will need to use \texttt{spread()} to rectify the situation. This is generally the case when we have two or more variables stored within the same column, as we may see in \texttt{SACTN3}. This is not terribly common as it would require someone to put quite a bit of time into making a dataframe this way. But never say never. To spread data we first tell R what the name of the column is that contains more than one variable, in this case the `var' column. We then tell R what the name of the column is that contains the values that need to be spread, in this case the `val' column. Notice here that these two column names are not given in inverted commas. This is because with gather, we were creating two new columns, and so we fed them to R as character vectors (i.e.~inside of inverted commas). With the spread function we are naming existing columns and so we give them to R without inverted commas.
+Should ones data be too long, meaning when individual observations are spread across multiple rows, we will need to use \texttt{spread()} to rectify the situation. This is generally the case when we have two or more variables stored within the same column, as we may see in \texttt{SACTN3}. This is not terribly common as it would require someone to put quite a bit of time into making a dataframe this way. But never say never. To spread data we first tell R what the name of the column is that contains more than one variable, in this case the `var' column. We then tell R what the name of the column is that contains the values that need to be spread, in this case the `val' column. Notice here that these two column names are not given in inverted commas. This is because with gather, we were creating two new columns, and so we fed them to R as character vectors (\emph{i.e.} inside of inverted commas). With the spread function we are naming existing columns and so we give them to R without inverted commas.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN3\_tidy <{-}}\StringTok{ }\NormalTok{SACTN3 }\OperatorTok{\%>\%}\StringTok{ }
+\NormalTok{SACTN3\_tidy1 <{-}}\StringTok{ }\NormalTok{SACTN3 }\OperatorTok{\%>\%}\StringTok{ }
 \StringTok{  }\KeywordTok{spread}\NormalTok{(}\DataTypeTok{key =}\NormalTok{ var, }\DataTypeTok{value =}\NormalTok{ val)}
 \end{Highlighting}
 \end{Shaded}
@@ -2975,10 +2975,27 @@ If we look at \texttt{SACTN4a} we see that we no longer have a \texttt{site} and
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{separating-dates-using-mutate}{%
+\subsection{\texorpdfstring{Separating dates using \texttt{mutate()}}{Separating dates using mutate()}}\label{separating-dates-using-mutate}}
+
+Although the \texttt{date} column represents an example of a date type (a kind of data in its own right), one might also want to split this column into its constituent parts, \emph{i.e.} create separate columns for day, month, and year. In this case we can spread these components of the date vector into three columns using the \texttt{mutate()} function and some functions in the \textbf{lubridate} package (contained within \textbf{tidyverse}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SACTN\_tidy2 <{-}}\StringTok{ }\NormalTok{SACTN4a }\OperatorTok{\%>\%}\StringTok{ }
+\StringTok{  }\KeywordTok{separate}\NormalTok{(}\DataTypeTok{col =}\NormalTok{ index, }\DataTypeTok{into =} \KeywordTok{c}\NormalTok{(}\StringTok{"site"}\NormalTok{, }\StringTok{"src"}\NormalTok{), }\DataTypeTok{sep =} \StringTok{"/ "}\NormalTok{) }\OperatorTok{\%>\%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{day =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{day}\NormalTok{(date),}
+         \DataTypeTok{month =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{month}\NormalTok{(date),}
+         \DataTypeTok{year =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{year}\NormalTok{(date))}
+\end{Highlighting}
+\end{Shaded}
+
+Note that when the date is split into component parts the data are no longer tidy (see below).
+
 \hypertarget{unite}{%
 \subsection{Unite}\label{unite}}
 
-It is not uncommon that field/lab instruments split values across multiple columns while they are making recordings. I see this most often with date values. Often the year, month, and day values are given in different columns. There are uses for the data in this way, though it is not terribly tidy. We usually want the date of any observation to be shown in just one column. If we look at \texttt{SACTN4b} we will see that there is a \texttt{year}, \texttt{month}, and \texttt{day} column. To \texttt{unite()} them we must first tell R what we want the united column to be labelled, in this case we will use `date'. We then list the columns to be united, her this is \texttt{year}, \texttt{month}, and \texttt{day}. Lastly we must specify if we want the united values to have a separator between them. The standard separator for date values is `-'.
+It is not uncommon that field/lab instruments split values across multiple columns while they are making recordings. I see this most often with date values. Often the year, month, and day values are given in different columns. There are uses for the data in this way, though it is not terribly tidy. We usually want the date of any observation to be shown in just one column. If we look at \texttt{SACTN4b} we will see that there is a \texttt{year}, \texttt{month}, and \texttt{day} column. To \texttt{unite()} them we must first tell R what we want the united column to be labelled, in this case we will use \texttt{date}. We then list the columns to be united, her this is \texttt{year}, \texttt{month}, and \texttt{day}. Lastly we must specify if we want the united values to have a separator between them. The standard separator for date values is `-'.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3002,7 +3019,7 @@ We will end this session with the concept of joining two different dataframes. R
 R> Joining, by = c("site", "src", "date")
 \end{verbatim}
 
-As we see above, if we let \texttt{left\_join()} do it's thing it will make a plan for us and find the common columns and match up the values and observations for us best it thinks. It then returns a message letting us know what it's done. That is a pleasant convenience, but we most likely want to exert more control over this process than that. In order to specify the columns to be used for joining we must add one more argument to \texttt{left\_join()}. The \texttt{by} argument must be fed a list of column names in inverted commas if we want to specify how to join our dataframes. Not that when we run this it does not produce a message as we have provided enough explicit information that the machine is no longer needing to think for itself.
+As we see above, if we let \texttt{left\_join()} do it's thing it will make a plan for us and find the common columns and match up the values and observations for us as best it can. It then returns a message letting us know what it's done. That is a pleasant convenience, but we most likely want to exert more control over this process than that. In order to specify the columns to be used for joining we must add one more argument to \texttt{left\_join()}. The \texttt{by} argument must be fed a list of column names in inverted commas if we want to specify how to join our dataframes. Not that when we run this it does not produce a message as we have provided enough explicit information that the machine is no longer needing to think for itself.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3010,25 +3027,12 @@ As we see above, if we let \texttt{left\_join()} do it's thing it will make a pl
 \end{Highlighting}
 \end{Shaded}
 
+There are also other kinds of joins: see for example also \texttt{inner\_join}, \texttt{right\_join}, \texttt{full\_join}, \texttt{semi-join}, \texttt{nest\_join}, and \texttt{anti\_join} in the \textbf{dplyr} package contained within \textbf{tidyverse}.
+
 \hypertarget{but-why-though}{%
 \section{But why though?}\label{but-why-though}}
 
-At this point one may be wondering what the point of all of this is. Sure it's all well and good to see how to tidy one's data in R, but couldn't this be done more quickly and easily in Excel? Perhaps, yes, with a small dataset. But remember, (for many) the main reason we are learning R is to ensure that we are performing reproducible research. This means that every step in our workflow must be documented. And we accomplish this by writing R scripts.
-
-\hypertarget{exercise-4}{%
-\chapter{Exercise}\label{exercise-4}}
-
-Create two vectors: x \textless- c( 1, 6, 21, 19 , NA, 73, NA) and y \textless- c(NA, NA, 3, NA, 13, 24, NA)
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi})}
-\item
-  Count the number of elements are missing in both x and y
-\item
-  Transform the code, used above (a), into a function
-\item
-  Create three new vectors and test the function created in (b)
-\end{enumerate}
+At this point one may be wondering what the point of all of this is. Sure it's all well and good to see how to tidy one's data in R, but couldn't this be done more quickly and easily in MS Excel? Perhaps, yes, with a small dataset. But remember, (for many) the main reason we are learning R is to ensure that we are performing reproducible research. This means that every step in our workflow must be documented. And we accomplish this by writing R scripts, and part of the purpose of these scripts is to ensure that we capture all the steps taken to get the raw data into a neat and tidy format that can unambiguously be read into R in the format that will quicky get us up and running with our analyses and visualisations.
 
 \hypertarget{session-info-9}{%
 \section{Session info}\label{session-info-9}}

@@ -413,7 +413,7 @@ ggplot(data = laminaria, aes(x = stipe_mass, y = stipe_length)) +
   labs(x = "Stipe mass (kg)", y = "Stipe length (cm)")
 ```
 
-<img src="04-workflow_files/figure-html/workflow-1-1.png" width="672" />
+![](04-workflow_files/figure-latex/workflow-1-1.pdf)<!-- --> 
 
 ## Clearing the memory
 
@@ -457,10 +457,14 @@ For every R project, set up a separate directory that includes the scripts, data
 
 The help files in R are not readily clear. It requires a bit of work to understand them well. There is method however to what appears to be madness. The figure below shows the beginning of a  help file for a function in R. Please type `?read.table()` in your console now to bring up this help file in your RStudio GUI.
 
-<div class="figure" style="text-align: center">
-<img src="figures/help_output.png" alt="A portion of the help page produced by the above command." width="100%" />
-<p class="caption">(\#fig:help-output)A portion of the help page produced by the above command.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/help_output} 
+
+}
+
+\caption{A portion of the help page produced by the above command.}(\#fig:help-output)
+\end{figure}
 
 The first thing we see at the top of the help file in small font is the name of the function, and the package it comes from in curly braces. After this, in very large text, is a very short description of what the function is used for. After this is the 'Description' section, which gives a sentence or two more fully explaining the use(s) of the function. The 'Usage' then shows all of the arguments that may be given to the function, and what their default settings are. When we write a function in our script we do *not* need to include all of the possible arguments. The help file shows us all of them so that we know what our options are. In some cases a help file will show the usage of several different functions together. This is done, as is the case here, if these functions forma a sort of 'family' and share many common purposes. The 'Arguments' section gives a long explanation for what each individual argument may do. The Arguments section here is particularly verbose. Up next is the 'Details' section that gives a more in depth description of what the function does. The 'Value' section tells us what sort of output we may expect from the function. Some of the more well documented functions, such as this one, will have additional sections that are not a requirement for function documentation. In this case the 'Memory usage' and 'Note' sections are not things one should always expect to see in help files. Also not always present is a 'References' section. Should there be actual published documentation for the function, or the function has been used in a publication for some other purpose, these references tend to be listed here. There are many functions in the **`vegan`** package that have been used in dozens of publications. If there is additional reading relevant to the function in question, the authors may also have included a 'See also' section, but this is not standard. Lastly, any well documented function should end with an 'Examples' section. The code is this section is designed to be able to be copy-pasted directly from the help file into the users R script or console and run *as is*. It is perhaps a bad habit, but when I am looking up a help file for a function, I tend to look first at the Examples section. And only if I can't solve my problem with the examples do I actually read the documentation.
 

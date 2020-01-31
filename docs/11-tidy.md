@@ -12,10 +12,14 @@
 
 The [Tidyverse](http://tidyverse.org) is a collection of R packages that adhere to the *tidy data* principles of data analysis and graphing. The purpose of these packages is to make working with data more efficient. The core Tidyverse packages were created by Hadley Wickham, but over the last few years other individuals have added some packages to the collective, which has significantly expanded our data analytical capabilities through improved ease of use and efficiency. The Tidyverse packages can be loaded collectively by calling the **`tidyverse`** package, as we have seen throughout this workshop. The packages making up the Tidyverse are shown in Figure \@ref(fig:tidyverse).
 
-<div class="figure" style="text-align: center">
-<img src="figures/tidy_workflow.png" alt="The Tidyverse by Hadley Wickham and co." width="100%" />
-<p class="caption">(\#fig:tidyverse)The Tidyverse by Hadley Wickham and co.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/tidy_workflow} 
+
+}
+
+\caption{The Tidyverse by Hadley Wickham and co.}(\#fig:tidyverse)
+\end{figure}
   
 
 ```r
@@ -24,10 +28,14 @@ library(tidyverse)
 
 As we may see in the following figure (Figure \@ref(fig:tidy)), the tidying of ones data should be the second step in any workflow, after the loading of the data.
 
-<div class="figure" style="text-align: center">
-<img src="figures/data-science-wrangle.png" alt="Data tidying in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)" width="100%" />
-<p class="caption">(\#fig:tidy)Data tidying in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/data-science-wrangle} 
+
+}
+
+\caption{Data tidying in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)}(\#fig:tidy)
+\end{figure}
 
 But what exactly are **tidy data**? It is not just a a buzz word, there is a real definition. In three parts, to be exact. Taken from Hadley Wickham's [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html):
 
@@ -37,10 +45,14 @@ But what exactly are **tidy data**? It is not just a a buzz word, there is a rea
 
 This is represented graphically in F \@ref(fig:tidy-structure). One will generally satisfy these three rules effortlessly simply by never putting more than one dataset in a file, and never putting more (or less) than one variable in the same column. We will go over this several more times today so do not fret if those guidelines are not immediately clear.
 
-<div class="figure" style="text-align: center">
-<img src="figures/tidy-1.png" alt="Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)" width="100%" />
-<p class="caption">(\#fig:tidy-structure)Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/tidy-1} 
+
+}
+
+\caption{Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)}(\#fig:tidy-structure)
+\end{figure}
 
 In order to illustrate the meaning of this three part definition, we are going to learn how to manipulate a non-tidy dataset into a tidy one. To do so we will need to learn a few new, very useful functions. Let's load our demo dataset to get started. This snippet from the SACTN dataset contains only data for 2008-2009 for three time series, with some notable (untidy) changes. The purpose of the following exercises is not only to show how to tidy data, but to also illustrate that these steps may be done more quickly in R than MS Excel, allowing for ones raw data to remain exactly how they were collected, with all of the manipulations performed on them documented in an R script. This is a centrally important part of reproducible research.
 
@@ -72,7 +84,7 @@ ggplot(data = SACTN1, aes(x = date, y = temp)) +
   theme_bw()
 ```
 
-<img src="11-tidy_files/figure-html/tidy-1-1.png" width="672" />
+![](11-tidy_files/figure-latex/tidy-1-1.pdf)<!-- --> 
 
 > **`%>%`**  
 Remember that this funny series of symbols is the pipe operator. It combines consequetive rows of code together so that they run as though they were one 'chunk'. We will be seeing this symbol a lot today. The keyboard shortcut for `%>%` is **ctrl-shift-m**. 
@@ -166,17 +178,17 @@ There are also other kinds of joins: see for example also `inner_join`, `right_j
 
 ## But why though?
 
-At this point one may be wondering what the point of all of this is. Sure it's all well and good to see how to tidy one's data in R, but couldn't this be done more quickly and easily in Excel? Perhaps, yes, with a small dataset. But remember, (for many) the main reason we are learning R is to ensure that we are performing reproducible research. This means that every step in our workflow must be documented. And we accomplish this by writing R scripts.
+At this point one may be wondering what the point of all of this is. Sure it's all well and good to see how to tidy one's data in R, but couldn't this be done more quickly and easily in MS Excel? Perhaps, yes, with a small dataset. But remember, (for many) the main reason we are learning R is to ensure that we are performing reproducible research. This means that every step in our workflow must be documented. And we accomplish this by writing R scripts, and part of the purpose of these scripts is to ensure that we capture all the steps taken to get the raw data into a neat and tidy format that can unambiguously be read into R in the format that will quicky get us up and running with our analyses and visualisations.
 
-## Exercise
+<!-- ## Exercise -->
 
-Create two vectors: `x <- c( 1, 6, 21, 19 , NA, 73, NA)` and `y <- c(NA, NA, 3, NA, 13, 24, NA)`
+<!-- Create two vectors: `x <- c( 1, 6, 21, 19 , NA, 73, NA)` and `y <- c(NA, NA, 3, NA, 13, 24, NA)` -->
 
-a) Count the number of elements are missing in both `x` and `y`
+<!-- a) Count the number of elements are missing in both `x` and `y` -->
 
-b) Transform the code, used above (a), into a function
+<!-- b) Transform the code, used above (a), into a function -->
 
-c) Create three new vectors and test the function created in (b)
+<!-- c) Create three new vectors and test the function created in (b) -->
 
 ## Session info
 

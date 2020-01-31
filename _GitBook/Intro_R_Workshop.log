@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.19)  28 JAN 2020 09:49
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.19)  31 JAN 2020 08:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2074,13 +2074,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 Chapter 6.
-[51] [52
-
-]
-Chapter 7.
 File: 06-faceting_files/figure-latex/facet-1-1.pdf Graphic file (type pdf)
 <use 06-faceting_files/figure-latex/facet-1-1.pdf>
-[53]
+[51]
 File: 06-faceting_files/figure-latex/facet-line-1.pdf Graphic file (type pdf)
 <use 06-faceting_files/figure-latex/facet-line-1.pdf>
 File: 06-faceting_files/figure-latex/facet-lm-1.pdf Graphic file (type pdf)
@@ -2089,14 +2085,14 @@ File: 06-faceting_files/figure-latex/facet-hist-1.pdf Graphic file (type pdf)
 <use 06-faceting_files/figure-latex/facet-hist-1.pdf>
 File: 06-faceting_files/figure-latex/facet-box-1.pdf Graphic file (type pdf)
 <use 06-faceting_files/figure-latex/facet-box-1.pdf>
-[54] [55] [56]
+[52] [53] [54]
 File: 06-faceting_files/figure-latex/facet-grid-1.pdf Graphic file (type pdf)
 <use 06-faceting_files/figure-latex/facet-grid-1.pdf>
-[57] [58
+[55] [56
 
 ]
-Chapter 8.
-[59]
+Chapter 7.
+[57]
 File: 07-brewing_files/figure-latex/brew-1-1.pdf Graphic file (type pdf)
 <use 07-brewing_files/figure-latex/brew-1-1.pdf>
 File: 07-brewing_files/figure-latex/brew-2-1.pdf Graphic file (type pdf)
@@ -2104,108 +2100,108 @@ File: 07-brewing_files/figure-latex/brew-2-1.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[60]
+[58]
 File: 07-brewing_files/figure-latex/brew-3-1.pdf Graphic file (type pdf)
 <use 07-brewing_files/figure-latex/brew-3-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[61]
+[59]
 File: 07-brewing_files/figure-latex/brew-4-1.pdf Graphic file (type pdf)
 <use 07-brewing_files/figure-latex/brew-4-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[62]
+[60]
 File: 07-brewing_files/figure-latex/brew-5-1.pdf Graphic file (type pdf)
 <use 07-brewing_files/figure-latex/brew-5-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[63]
+[61]
 File: 07-brewing_files/figure-latex/brew-6-1.pdf Graphic file (type pdf)
 <use 07-brewing_files/figure-latex/brew-6-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[64]
+[62]
 File: 07-brewing_files/figure-latex/brew-7-1.pdf Graphic file (type pdf)
 <use 07-brewing_files/figure-latex/brew-7-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[65]
+[63]
 File: 07-brewing_files/figure-latex/brew-8-1.pdf Graphic file (type pdf)
 <use 07-brewing_files/figure-latex/brew-8-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[66] [67] [68
+[64] [65] [66
 
 ]
-Chapter 9.
+Chapter 8.
 File: figures/map_complete.pdf Graphic file (type pdf)
 <use figures/map_complete.pdf>
-[69]
+[67]
 File: 08-mapping_files/figure-latex/map-point-1-1.pdf Graphic file (type pdf)
 <use 08-mapping_files/figure-latex/map-point-1-1.pdf>
 File: 08-mapping_files/figure-latex/map-point-2-1.pdf Graphic file (type pdf)
 <use 08-mapping_files/figure-latex/map-point-2-1.pdf>
 File: 08-mapping_files/figure-latex/map-polygon-1.pdf Graphic file (type pdf)
 <use 08-mapping_files/figure-latex/map-polygon-1.pdf>
-[70] [71]
+[68] [69]
 File: 08-mapping_files/figure-latex/map-province-1.pdf Graphic file (type pdf)
 <use 08-mapping_files/figure-latex/map-province-1.pdf>
 File: 08-mapping_files/figure-latex/map-expand-1.pdf Graphic file (type pdf)
 <use 08-mapping_files/figure-latex/map-expand-1.pdf>
 File: 08-mapping_files/figure-latex/map-MUR-1.pdf Graphic file (type pdf)
 <use 08-mapping_files/figure-latex/map-MUR-1.pdf>
-[72] [73]
+[70] [71]
 File: 08-mapping_files/figure-latex/map-colour-1.pdf Graphic file (type pdf)
 <use 08-mapping_files/figure-latex/map-colour-1.pdf>
-[74]
+[72]
 File: 08-mapping_files/figure-latex/map-raster-1.pdf Graphic file (type pdf)
 <use 08-mapping_files/figure-latex/map-raster-1.pdf>
 LaTeX Font Info:    Font shape `TU/Calibri(0)/m/it' will be
 (Font)              scaled to size 9.0pt on input line 2442.
 File: 08-mapping_files/figure-latex/map-final-1.pdf Graphic file (type pdf)
 <use 08-mapping_files/figure-latex/map-final-1.pdf>
-[75] [76]
-Chapter 10.
+[73] [74]
+Chapter 9.
 File: 09-mapping_style_files/figure-latex/maps-world-1.pdf Graphic file (type p
 df)
 <use 09-mapping_style_files/figure-latex/maps-world-1.pdf>
 File: 09-mapping_style_files/figure-latex/maps-SA-1-1.pdf Graphic file (type pd
 f)
 <use 09-mapping_style_files/figure-latex/maps-SA-1-1.pdf>
-[77
+[75
 
-] [78]
+] [76]
 File: 09-mapping_style_files/figure-latex/maps-labels-1.pdf Graphic file (type 
 pdf)
 <use 09-mapping_style_files/figure-latex/maps-labels-1.pdf>
 File: 09-mapping_style_files/figure-latex/maps-scale-1.pdf Graphic file (type p
 df)
 <use 09-mapping_style_files/figure-latex/maps-scale-1.pdf>
-[79]
+[77]
 File: 09-mapping_style_files/figure-latex/maps-mini-1.pdf Graphic file (type pd
 f)
 <use 09-mapping_style_files/figure-latex/maps-mini-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[80]
+[78]
 File: 09-mapping_style_files/figure-latex/maps-inset-1.pdf Graphic file (type p
 df)
 <use 09-mapping_style_files/figure-latex/maps-inset-1.pdf>
 File: 09-mapping_style_files/figure-latex/maps-final-1.pdf Graphic file (type p
 df)
 <use 09-mapping_style_files/figure-latex/maps-final-1.pdf>
-[81] [82] [83] [84
+[79] [80] [81] [82
 
 ]
-Chapter 11.
-[85]
+Chapter 10.
+[83]
 File: 10-mapping_google_files/figure-latex/ggmap-1-1.pdf Graphic file (type pdf
 )
 <use 10-mapping_google_files/figure-latex/ggmap-1-1.pdf>
@@ -2215,51 +2211,36 @@ File: 10-mapping_google_files/figure-latex/ggmap-2-1.pdf Graphic file (type pdf
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[86] [87] [88
+[84] [85] [86
 
 ]
-Chapter 12.
-File: figures/tidyverse.png Graphic file (type bmp)
-<figures/tidyverse.png>
+Chapter 11.
+File: figures/tidy_workflow.png Graphic file (type bmp)
+<figures/tidy_workflow.png>
+[87]
 File: figures/data-science-wrangle.png Graphic file (type bmp)
 <figures/data-science-wrangle.png>
 
 Underfull \hbox (badness 10000) in paragraph at lines 2861--2861
-[]\TU/Calibri(0)/bx/n/9 Figure 12.2: |\TU/Calibri(0)/m/n/9 Data tidying in the 
+[]\TU/Calibri(0)/bx/n/9 Figure 11.2: |\TU/Calibri(0)/m/n/9 Data tidying in the 
 data processing pipeline. Reproduced from [R for Data
  []
 
-[89]
+
 Underfull \hbox (badness 10000) in paragraph at lines 2873--2875
 
  []
 
 File: figures/tidy-1.png Graphic file (type bmp)
 <figures/tidy-1.png>
-[90]
+[88]
 File: 11-tidy_files/figure-latex/tidy-1-1.pdf Graphic file (type pdf)
 <use 11-tidy_files/figure-latex/tidy-1-1.pdf>
-[91]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[89]
+Underfull \vbox (badness 1442) has occurred while \output is active []
 
-[92] [93] [94
-
-]
-Chapter 13.
-[95] [96
-
-]
-Chapter 14.
-
-Underfull \hbox (badness 10000) in paragraph at lines 3071--3073
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3073--3075
-
- []
-
+[90] [91] [92]
+Chapter 12.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3075--3077
 
@@ -2271,12 +2252,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 3077--3079
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3109--3111
+Underfull \hbox (badness 10000) in paragraph at lines 3079--3081
 
  []
 
-[97]
-Underfull \hbox (badness 10000) in paragraph at lines 3111--3113
+
+Underfull \hbox (badness 10000) in paragraph at lines 3081--3083
 
  []
 
@@ -2285,7 +2266,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 3113--3115
 
  []
 
+[93
 
+]
 Underfull \hbox (badness 10000) in paragraph at lines 3115--3117
 
  []
@@ -2296,81 +2279,91 @@ Underfull \hbox (badness 10000) in paragraph at lines 3117--3119
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3143--3145
+Underfull \hbox (badness 10000) in paragraph at lines 3119--3121
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3145--3147
+Underfull \hbox (badness 10000) in paragraph at lines 3121--3123
 
  []
 
-[98] [99] [100] [101] [102]
-Chapter 15.
-[103
+
+Underfull \hbox (badness 10000) in paragraph at lines 3147--3149
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3149--3151
+
+ []
+
+[94] [95] [96] [97] [98]
+Chapter 13.
+[99
 
 ]
 File: 13-tidiest_files/figure-latex/tidiest-group-2-1.pdf Graphic file (type pd
 f)
 <use 13-tidiest_files/figure-latex/tidiest-group-2-1.pdf>
-[104]
-Overfull \hbox (4.31424pt too wide) in paragraph at lines 3545--3546
+[100]
+Overfull \hbox (4.31424pt too wide) in paragraph at lines 3549--3550
 []\TU/Calibri(3)/m/n/10 Take a moment and compare the \TU/FiraCode(0)/m/sl/10 S
 ACTN_depth_mean_2 \TU/Calibri(3)/m/n/10 object that we’ve just created against 
 the \TU/FiraCode(0)/m/sl/10 SACTN_depth_mean
  []
 
-[105]
-Overfull \hbox (55.0624pt too wide) in paragraph at lines 3623--3623
+[101]
+Overfull \hbox (55.0624pt too wide) in paragraph at lines 3627--3627
 []\TU/FiraCode(0)/m/sl/10 R> Error in site == ”Paternoster” | ”Oudekraal”: oper
 ations are possible only for numeric, logical or complex types[] 
  []
 
 
-Overfull \vbox (0.97086pt too high) detected at line 3639
+Overfull \vbox (0.97086pt too high) detected at line 3643
  []
 
-[106]
+[102]
 File: 13-tidiest_files/figure-latex/tidyiest-ggplot-1.pdf Graphic file (type pd
 f)
 <use 13-tidiest_files/figure-latex/tidyiest-ggplot-1.pdf>
-[107] [108]
+[103] [104]
 File: 13-tidiest_files/figure-latex/tidiest-n-1-1.pdf Graphic file (type pdf)
 <use 13-tidiest_files/figure-latex/tidiest-n-1-1.pdf>
 File: 13-tidiest_files/figure-latex/tidiest-n-2-1.pdf Graphic file (type pdf)
 <use 13-tidiest_files/figure-latex/tidiest-n-2-1.pdf>
-[109] [110]
+[105] [106]
 File: 13-tidiest_files/figure-latex/tidiest-n-3-1.pdf Graphic file (type pdf)
 <use 13-tidiest_files/figure-latex/tidiest-n-3-1.pdf>
-[111]
+[107]
 LaTeX Font Info:    Font shape `TU/Calibri(0)/bx/it' will be
-(Font)              scaled to size 12.0pt on input line 3934.
-[112]
+(Font)              scaled to size 12.0pt on input line 3938.
+[108]
 File: 13-tidiest_files/figure-latex/tidiest-new-age-1.pdf Graphic file (type pd
 f)
 <use 13-tidiest_files/figure-latex/tidiest-new-age-1.pdf>
-[113] [114
+[109] [110
 
 ]
-Chapter 16.
+Chapter 14.
 No file Intro_R_Workshop.bbl.
-[115]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4038.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4038.
+[111]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4042.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4042.
 (./Intro_R_Workshop.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4038.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4038.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4042.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4042.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 46469 strings out of 492480
- 918708 string characters out of 6129411
- 1127239 words of memory out of 5000000
- 50186 multiletter control sequences out of 15000+600000
+ 46468 strings out of 492480
+ 918764 string characters out of 6129411
+ 1126289 words of memory out of 5000000
+ 50185 multiletter control sequences out of 15000+600000
  560555 words of font info for 124 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  68i,6n,118p,2422b,879s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Intro_R_Workshop.pdf (115 pages).
+Output written on Intro_R_Workshop.pdf (111 pages).
