@@ -40,7 +40,7 @@ A very nifty way of managing workflow in RStudio is through the built-in functio
 
 
 
-The most common functions used in R are contained within the **`base`** package; this makes R useful 'out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the [CRAN website](https://cran.r-project.org/web/packages/). There are currently (``2020-01-31``) ``15357`` packages available for R!
+The most common functions used in R are contained within the **`base`** package; this makes R useful 'out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the [CRAN website](https://cran.r-project.org/web/packages/). There are currently (``2021-03-14``) ``17303`` packages available for R!
 
 If the thought of searching for and finding R packages is daunting, a good place to start is the [R Task View](http://cran.r-project.org/web/views/) page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.
 
@@ -320,8 +320,8 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 
 ```
 R>   forcats   stringr     purrr     readr    tibble   ggplot2 tidyverse     tidyr 
-R>   "0.4.0"   "1.4.0"   "0.3.3"   "1.3.1"   "2.1.3"   "3.2.1"   "1.3.0"   "1.0.0" 
-R>     dplyr     rvest      xml2 
-R>   "0.8.3"   "0.3.5"   "1.2.2"
+R>   "0.5.1"   "1.4.0"   "0.3.4"   "1.4.0"   "3.1.0"   "3.3.3"   "1.3.0"   "1.1.3" 
+R>     dplyr     rvest 
+R>   "1.0.5"   "1.0.0"
 ```
 

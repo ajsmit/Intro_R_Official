@@ -3,14 +3,14 @@
 > "There's no map to human behaviour."
 >
 > --- Bjork
-  
+
 > "Here be dragons"
-> 
+>
 > --- Unknown
 
 
 
-Yesterday we learned how to create **`ggplot2`** figures, change their aesthetics, labels, colour palettes, and facet/arrange them. Now we are going to look at how to create maps. 
+Yesterday we learned how to create **`ggplot2`** figures, change their aesthetics, labels, colour palettes, and facet/arrange them. Now we are going to look at how to create maps.
 
 Most of the work that we perform as environmental/biological scientists involves going out to a location and sampling information there. Sometimes only once, and sometimes over a period of time. All of these different sampling methods lend themselves to different types of figures. One of those, collection of data at different points, is best shown with maps. As we will see over the course of Day 3, creating maps in **`ggplot2`** is very straight forward and is extensively supported. For that reason we are going to have plenty of time to also learn how to do some more advanced things. Our goal in this chapter is to produce the figure below.
 
@@ -186,7 +186,7 @@ final_map
 
 ![(\#fig:map-final)The cleaned up map of South Africa. Resplendent with coastal and ocean temperatures (°C).](08-mapping_files/figure-latex/map-final-1.pdf) 
 
-That is a very clean looking map so let's go ahead and save it on our computers
+That is a very clean looking map so let's go ahead and save it on our computers.
 
 
 ```r
@@ -195,13 +195,14 @@ ggsave(plot = final_map, "figures/map_complete.pdf", height = 6, width = 9)
 
 ## Session info
 
+
 ```r
 installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 ```
 
 ```
-R>    ggpubr  magrittr   forcats   stringr     dplyr     purrr     readr     tidyr 
-R>   "0.2.4"     "1.5"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0" 
-R>    tibble   ggplot2 tidyverse 
-R>   "2.1.3"   "3.2.1"   "1.3.0"
+R>    ggpubr   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
+R>   "0.4.0"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
+R>   ggplot2 tidyverse 
+R>   "3.3.3"   "1.3.0"
 ```

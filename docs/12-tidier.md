@@ -58,7 +58,10 @@ SACTN %>%
 ```
 
 ```
-R> Error: `site` (`site = "Amanzimtoti"`) must not be named, do you need `==`?
+R> Error: Problem with `filter()` input `..1`.
+R> x Input `..1` is named.
+R> i This usually means that you've used `=` instead of `==`.
+R> i Did you mean `site == "Amanzimtoti"`?
 ```
 
 ## Logical operators
@@ -298,7 +301,7 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 
 ```
 R> lubridate   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
-R>   "1.7.4"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0"   "2.1.3" 
+R>  "1.7.10"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
 R>   ggplot2 tidyverse 
-R>   "3.2.1"   "1.3.0"
+R>   "3.3.3"   "1.3.0"
 ```
