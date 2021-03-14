@@ -1,7 +1,7 @@
 ---
 output:
   pdf_document: 
-    latex_engine: xelatex
+    latex_engine: pdflatex
     keep_tex: yes
   html_document: default
 ---

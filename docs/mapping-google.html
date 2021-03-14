@@ -372,28 +372,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ggmap" class="section level2" number="10.1">
 <h2><span class="header-section-number">10.1</span> <strong><code>ggmap</code></strong></h2>
 <p>The package we will need for this tut is <strong><code>ggmap</code></strong>. It is a bit beefy so let’s get started on installing it now. Once it’s done we will activated the packages we need and load some site points for mapping.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="mapping-google.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
-<span id="cb116-2"><a href="mapping-google.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb116-3"><a href="mapping-google.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
-<span id="cb116-4"><a href="mapping-google.html#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-5"><a href="mapping-google.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb116-6"><a href="mapping-google.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/cape_point_sites.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="mapping-google.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb114-2"><a href="mapping-google.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb114-3"><a href="mapping-google.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
+<span id="cb114-4"><a href="mapping-google.html#cb114-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-5"><a href="mapping-google.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb114-6"><a href="mapping-google.html#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/cape_point_sites.RData&quot;</span>)</span></code></pre></div>
 <p>Take a moment to look at the data we loaded. What does it show?</p>
 </div>
 <div id="mapping-cape-point" class="section level2" number="10.2">
 <h2><span class="header-section-number">10.2</span> Mapping Cape Point</h2>
 <p>We will be creating our Google map in two steps. The first step is to use the <code>get_map()</code> function to tell Google what area of the world we want a map of, as well as what sort of map we want. Remember how Google maps can be switched from satellite view to map view? We may do that in R as well. For now we are only going to use the satellite view so that we may insert out own labels. But if we look in the help file we may see a description of all the different map types available. There are a bunch!</p>
 <p>The <code>get_map()</code> function relies on a healthy Internet connection to run. The downloading of Google maps can be a tenuous process without a stable connection. For that reason, if your Internet connection is not great you may run the commented out line of code in favour of loading the Google map. This is a pre-saved file of the output of the code chunk below. Please rather run the <code>get_map()</code> function first, and if it won’t connect only then load the saved file as shown below.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="mapping-google.html#cb117-1" aria-hidden="true" tabindex="-1"></a>cape_point <span class="ot">&lt;-</span> <span class="fu">get_map</span>(<span class="at">location =</span> <span class="fu">c</span>(<span class="at">lon =</span> <span class="fl">18.36519</span>, <span class="at">lat =</span> <span class="sc">-</span><span class="fl">34.2352581</span>),</span>
-<span id="cb117-2"><a href="mapping-google.html#cb117-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">zoom =</span> <span class="dv">10</span>, <span class="at">maptype =</span> <span class="st">&#39;satellite&#39;</span>)</span>
-<span id="cb117-3"><a href="mapping-google.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load(&quot;data/cape_point.RData&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="mapping-google.html#cb115-1" aria-hidden="true" tabindex="-1"></a>cape_point <span class="ot">&lt;-</span> <span class="fu">get_map</span>(<span class="at">location =</span> <span class="fu">c</span>(<span class="at">lon =</span> <span class="fl">18.36519</span>, <span class="at">lat =</span> <span class="sc">-</span><span class="fl">34.2352581</span>),</span>
+<span id="cb115-2"><a href="mapping-google.html#cb115-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">zoom =</span> <span class="dv">10</span>, <span class="at">maptype =</span> <span class="st">&#39;satellite&#39;</span>)</span>
+<span id="cb115-3"><a href="mapping-google.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load(&quot;data/cape_point.RData&quot;)</span></span></code></pre></div>
 <p>If we look in the environment panel in the top right corner, what do we see? What do we think the code above is doing?</p>
 <p>The second step in the process is to treat the Google data we downloaded as though it is just any ordinary <strong><code>ggplot2</code></strong> object. The same as the ones we created yesterday and today. For this reason we may use <code>+</code> to add new lines of <strong><code>ggplot2</code></strong> code to the Google object we downloaded in order to show site locations etc. Let’s first just see how the map looks when we add some points. Note that we do not use the function <code>ggplot()</code> at the beginning of our code, but rather <code>ggmap()</code>.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="mapping-google.html#cb118-1" aria-hidden="true" tabindex="-1"></a>cp_1 <span class="ot">&lt;-</span> <span class="fu">ggmap</span>(cape_point) <span class="sc">+</span></span>
-<span id="cb118-2"><a href="mapping-google.html#cb118-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> cape_point_sites, <span class="fu">aes</span>(<span class="at">x =</span> lon<span class="fl">+0.002</span>, <span class="at">y =</span> lat<span class="fl">-0.007</span>), </span>
-<span id="cb118-3"><a href="mapping-google.html#cb118-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span>  <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb118-4"><a href="mapping-google.html#cb118-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb118-5"><a href="mapping-google.html#cb118-5" aria-hidden="true" tabindex="-1"></a>cp_1</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="mapping-google.html#cb116-1" aria-hidden="true" tabindex="-1"></a>cp_1 <span class="ot">&lt;-</span> <span class="fu">ggmap</span>(cape_point) <span class="sc">+</span></span>
+<span id="cb116-2"><a href="mapping-google.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> cape_point_sites, <span class="fu">aes</span>(<span class="at">x =</span> lon<span class="fl">+0.002</span>, <span class="at">y =</span> lat<span class="fl">-0.007</span>), </span>
+<span id="cb116-3"><a href="mapping-google.html#cb116-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span>  <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb116-4"><a href="mapping-google.html#cb116-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb116-5"><a href="mapping-google.html#cb116-5" aria-hidden="true" tabindex="-1"></a>cp_1</span></code></pre></div>
 <div class="figure"><span id="fig:ggmap-1"></span>
 <img src="10-mapping_google_files/figure-html/ggmap-1-1.png" alt="Google map of Cape Point with some site locations highlighted with red points." width="672" />
 <p class="caption">
@@ -405,12 +405,12 @@ Figure 10.1: Google map of Cape Point with some site locations highlighted with 
 <div id="site-labels" class="section level2" number="10.3">
 <h2><span class="header-section-number">10.3</span> Site labels</h2>
 <p>The previous figure shows our sites along Cape Point, which is great, but which site is which?! We need site labels. This is a relatively straightforward process, so we’ve given a complicated example of how to do so here.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="mapping-google.html#cb119-1" aria-hidden="true" tabindex="-1"></a>cp_2 <span class="ot">&lt;-</span> cp_1 <span class="sc">+</span></span>
-<span id="cb119-2"><a href="mapping-google.html#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> cape_point_sites, <span class="co"># Choose dataframe</span></span>
-<span id="cb119-3"><a href="mapping-google.html#cb119-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(lon<span class="fl">+0.002</span>, lat<span class="fl">-0.007</span>, <span class="at">label =</span> site), <span class="co"># Set aesthetics</span></span>
-<span id="cb119-4"><a href="mapping-google.html#cb119-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="fl">1.15</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="co"># Adjust vertical and horizontal</span></span>
-<span id="cb119-5"><a href="mapping-google.html#cb119-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>, <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>) <span class="co"># Adjust appearance</span></span>
-<span id="cb119-6"><a href="mapping-google.html#cb119-6" aria-hidden="true" tabindex="-1"></a>cp_2</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="mapping-google.html#cb117-1" aria-hidden="true" tabindex="-1"></a>cp_2 <span class="ot">&lt;-</span> cp_1 <span class="sc">+</span></span>
+<span id="cb117-2"><a href="mapping-google.html#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> cape_point_sites, <span class="co"># Choose dataframe</span></span>
+<span id="cb117-3"><a href="mapping-google.html#cb117-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(lon<span class="fl">+0.002</span>, lat<span class="fl">-0.007</span>, <span class="at">label =</span> site), <span class="co"># Set aesthetics</span></span>
+<span id="cb117-4"><a href="mapping-google.html#cb117-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="fl">1.15</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="co"># Adjust vertical and horizontal</span></span>
+<span id="cb117-5"><a href="mapping-google.html#cb117-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>, <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>) <span class="co"># Adjust appearance</span></span>
+<span id="cb117-6"><a href="mapping-google.html#cb117-6" aria-hidden="true" tabindex="-1"></a>cp_2</span></code></pre></div>
 <div class="figure"><span id="fig:ggmap-2"></span>
 <img src="10-mapping_google_files/figure-html/ggmap-2-1.png" alt="Google map of Cape Point with site point labeled" width="672" />
 <p class="caption">
@@ -424,7 +424,7 @@ Figure 10.2: Google map of Cape Point with site point labeled
 </div>
 <div id="session-info-7" class="section level2" number="10.5">
 <h2><span class="header-section-number">10.5</span> Session info</h2>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="mapping-google.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installed.packages</span>()[<span class="fu">names</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="mapping-google.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installed.packages</span>()[<span class="fu">names</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
 <pre><code>R&gt;     ggmap   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
 R&gt;   &quot;3.0.0&quot;   &quot;0.5.1&quot;   &quot;1.4.0&quot;   &quot;1.0.5&quot;   &quot;0.3.4&quot;   &quot;1.4.0&quot;   &quot;1.1.3&quot;   &quot;3.1.0&quot; 
 R&gt;   ggplot2 tidyverse 

@@ -381,18 +381,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Summarise variables (columns) with <code>summarise()</code></li>
 </ul>
 <p>We will use the full South African Coastal Temperature Network dataset for these exercises. Before we begin however we will need to cover two new concepts.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="tidier.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
-<span id="cb136-2"><a href="tidier.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb136-3"><a href="tidier.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb136-4"><a href="tidier.html#cb136-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb136-5"><a href="tidier.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data from a .RData file</span></span>
-<span id="cb136-6"><a href="tidier.html#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/SACTNmonthly_v4.0.RData&quot;</span>)</span>
-<span id="cb136-7"><a href="tidier.html#cb136-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb136-8"><a href="tidier.html#cb136-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the data as a dataframe with a shorter name</span></span>
-<span id="cb136-9"><a href="tidier.html#cb136-9" aria-hidden="true" tabindex="-1"></a>SACTN <span class="ot">&lt;-</span> SACTNmonthly_v4<span class="fl">.0</span></span>
-<span id="cb136-10"><a href="tidier.html#cb136-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb136-11"><a href="tidier.html#cb136-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the original</span></span>
-<span id="cb136-12"><a href="tidier.html#cb136-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(SACTNmonthly_v4<span class="fl">.0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="tidier.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb134-2"><a href="tidier.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb134-3"><a href="tidier.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb134-4"><a href="tidier.html#cb134-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-5"><a href="tidier.html#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data from a .RData file</span></span>
+<span id="cb134-6"><a href="tidier.html#cb134-6" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/SACTNmonthly_v4.0.RData&quot;</span>)</span>
+<span id="cb134-7"><a href="tidier.html#cb134-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-8"><a href="tidier.html#cb134-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the data as a dataframe with a shorter name</span></span>
+<span id="cb134-9"><a href="tidier.html#cb134-9" aria-hidden="true" tabindex="-1"></a>SACTN <span class="ot">&lt;-</span> SACTNmonthly_v4<span class="fl">.0</span></span>
+<span id="cb134-10"><a href="tidier.html#cb134-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-11"><a href="tidier.html#cb134-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the original</span></span>
+<span id="cb134-12"><a href="tidier.html#cb134-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(SACTNmonthly_v4<span class="fl">.0</span>)</span></code></pre></div>
 <div id="comparison-operators" class="section level2" number="12.1">
 <h2><span class="header-section-number">12.1</span> Comparison operators</h2>
 <p>The assignment operator (<code>&lt;-</code>) is a symbol that we use to assign some bit of code to an object in our environment. Likewise, comparison operators are symbols we use to compare different objects. This is how we tell R how to decide to do many different things. We will see these symbols often out in the ‘real world’ so let’s spend a moment now getting to know them better. Most of these should be very familiar to us:</p>
@@ -410,8 +410,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Not equal to: <code>!=</code></li>
 </ul>
 <p>It is important here to note that <code>==</code> is for comparisons and <code>=</code> is for maths. They are <strong>not</strong> interchangeable, as we may see in the following code chunk. This is one of the more common mistakes one makes when writing code. Luckily the error message this creates should provide us with the clues we need to figure out that we have made this specific mistake.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="tidier.html#cb137-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb137-2"><a href="tidier.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="at">site =</span> <span class="st">&quot;Amanzimtoti&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="tidier.html#cb135-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb135-2"><a href="tidier.html#cb135-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="at">site =</span> <span class="st">&quot;Amanzimtoti&quot;</span>)</span></code></pre></div>
 <pre><code>R&gt; Error: Problem with `filter()` input `..1`.
 R&gt; x Input `..1` is named.
 R&gt; ℹ This usually means that you&#39;ve used `=` instead of `==`.
@@ -428,8 +428,8 @@ R&gt; ℹ Did you mean `site == &quot;Amanzimtoti&quot;`?</code></pre>
 <li>not: <code>!</code></li>
 </ul>
 <p>When writing a line of tidy code we tend to use these logical operator to combine two or more arguments that use comparison operators. For example, the following code chunk uses the <code>filter()</code> function to find all temperatures recorded at Pollock Beach during December <strong>OR</strong> January. Don’t worry if the following line of code is difficult to piece out, but make sure you can locate which symbols are comparison operators and which are logical operators. Please note that for purposes of brevity all of the outputs in this section are limited to ten lines, but when one runs these code chunks on ones own computer they will be much longer.</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="tidier.html#cb139-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb139-2"><a href="tidier.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;Pollock Beach&quot;</span>, <span class="fu">month</span>(date) <span class="sc">==</span> <span class="dv">12</span> <span class="sc">|</span> <span class="fu">month</span>(date) <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="tidier.html#cb137-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb137-2"><a href="tidier.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;Pollock Beach&quot;</span>, <span class="fu">month</span>(date) <span class="sc">==</span> <span class="dv">12</span> <span class="sc">|</span> <span class="fu">month</span>(date) <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>R&gt;             site  src       date     temp depth   type
 R&gt; 1  Pollock Beach SAWS 1999-12-01 19.95000     0 thermo
 R&gt; 2  Pollock Beach SAWS 2000-01-01 19.03333     0 thermo
@@ -446,8 +446,8 @@ R&gt; 10 Pollock Beach SAWS 2004-01-01 21.34839     0 thermo</code></pre>
 <div id="arrange-observations-rows-with-arrange" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> Arrange observations (rows) with <code>arrange()</code></h2>
 <p>First up in our greatest hits reunion tour is the function <code>arrange()</code>. This very simply arranges the observations (rows) in a dataframe based on the variables (columns) it is given. If we are concerned with ties in the ordering of our data we provide additional columns to <code>arrange()</code>. The importance of the columns for arranging the rows is given in order from left to right.</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="tidier.html#cb141-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb141-2"><a href="tidier.html#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(depth, temp)</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="tidier.html#cb139-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb139-2"><a href="tidier.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(depth, temp)</span></code></pre></div>
 <pre><code>R&gt;             site  src       date      temp depth   type
 R&gt; 1      Sea Point SAWS 1990-07-01  9.635484     0 thermo
 R&gt; 2     Muizenberg SAWS 1984-07-01  9.708333     0 thermo
@@ -460,8 +460,8 @@ R&gt; 8  Hondeklipbaai SAWS 2003-07-01 10.340909     0 thermo
 R&gt; 9      Sea Point SAWS 2000-12-01 10.380645     0 thermo
 R&gt; 10    Muizenberg SAWS 1984-08-01 10.387097     0 thermo</code></pre>
 <p>If we would rather arrange our data in descending order, as is perhaps more often the case, we simply wrap the column name we are arranging by with the <code>desc()</code> function as shown below.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="tidier.html#cb143-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb143-2"><a href="tidier.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(temp))</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="tidier.html#cb141-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb141-2"><a href="tidier.html#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(temp))</span></code></pre></div>
 <pre><code>R&gt;             site   src       date     temp depth type
 R&gt; 1        Sodwana   DEA 2000-02-01 28.34648    18  UTR
 R&gt; 2        Sodwana   DEA 1999-03-01 28.04890    18  UTR
@@ -478,8 +478,8 @@ R&gt; 10       Sodwana EKZNW 2007-02-01 27.44054    12  UTR</code></pre>
 <div id="filter-observations-rows-with-filter" class="section level2" number="12.4">
 <h2><span class="header-section-number">12.4</span> Filter observations (rows) with <code>filter()</code></h2>
 <p>When simply arranging data is not enough, and we need to remove rows of data we do not want, <code>filter()</code> is the tool to use. For example, we can select all monthly temperatures recorded at the <code>site</code> Humewood during the <code>year</code> 1990 with the following code chunk:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="tidier.html#cb145-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb145-2"><a href="tidier.html#cb145-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;Humewood&quot;</span>, <span class="fu">year</span>(date) <span class="sc">==</span> <span class="dv">1990</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="tidier.html#cb143-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb143-2"><a href="tidier.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;Humewood&quot;</span>, <span class="fu">year</span>(date) <span class="sc">==</span> <span class="dv">1990</span>)</span></code></pre></div>
 <pre><code>R&gt;        site  src       date     temp depth   type
 R&gt; 1  Humewood SAWS 1990-01-01 21.87097     0 thermo
 R&gt; 2  Humewood SAWS 1990-02-01 18.64286     0 thermo
@@ -492,57 +492,57 @@ R&gt; 8  Humewood SAWS 1990-08-01 16.09677     0 thermo
 R&gt; 9  Humewood SAWS 1990-09-01 16.41667     0 thermo
 R&gt; 10 Humewood SAWS 1990-10-01 17.14194     0 thermo</code></pre>
 <p>Remember to use the assignment operator (<code>&lt;-</code>, keyboard shortcut <strong>alt -</strong>) if one wants to create an object in the environment with the new results.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="tidier.html#cb147-1" aria-hidden="true" tabindex="-1"></a>humewood_90s <span class="ot">&lt;-</span> SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb147-2"><a href="tidier.html#cb147-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;Humewood&quot;</span>, <span class="fu">year</span>(date) <span class="sc">%in%</span> <span class="fu">seq</span>(<span class="dv">1990</span>, <span class="dv">1999</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="tidier.html#cb145-1" aria-hidden="true" tabindex="-1"></a>humewood_90s <span class="ot">&lt;-</span> SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb145-2"><a href="tidier.html#cb145-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;Humewood&quot;</span>, <span class="fu">year</span>(date) <span class="sc">%in%</span> <span class="fu">seq</span>(<span class="dv">1990</span>, <span class="dv">1999</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p>It must be mentioned that <code>filter()</code> also automatically removes any rows in the filtering column that contain <code>NA</code> values. Should one want to keep rows that contain missing values, insert the <code>is.na()</code> function into the line of code in question. To illustrate this let’s filter the temperatures for the Port Nolloth data collected by the DEA that were at or below 11°C OR were missing values. We’ll put each argument on a separate line to help keep things clear. Note how R automatically indents the last line in this chunk to help remind us that they are in fact part of the same argument. Also note how I have put the last bracket at the end of this argument on it’s own line. This is not required, but I like to do so as it is a very common mistake to forget the last bracket.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="tidier.html#cb148-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb148-2"><a href="tidier.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;Port Nolloth&quot;</span>, <span class="co"># First give the site to filter</span></span>
-<span id="cb148-3"><a href="tidier.html#cb148-3" aria-hidden="true" tabindex="-1"></a>         src <span class="sc">==</span> <span class="st">&quot;DEA&quot;</span>, <span class="co"># Then specify the source</span></span>
-<span id="cb148-4"><a href="tidier.html#cb148-4" aria-hidden="true" tabindex="-1"></a>         temp <span class="sc">&lt;=</span> <span class="dv">11</span> <span class="sc">|</span> <span class="co"># Temperatures at or below 11°C OR</span></span>
-<span id="cb148-5"><a href="tidier.html#cb148-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">is.na</span>(temp) <span class="co"># Include missing values</span></span>
-<span id="cb148-6"><a href="tidier.html#cb148-6" aria-hidden="true" tabindex="-1"></a>         )</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="tidier.html#cb146-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb146-2"><a href="tidier.html#cb146-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;Port Nolloth&quot;</span>, <span class="co"># First give the site to filter</span></span>
+<span id="cb146-3"><a href="tidier.html#cb146-3" aria-hidden="true" tabindex="-1"></a>         src <span class="sc">==</span> <span class="st">&quot;DEA&quot;</span>, <span class="co"># Then specify the source</span></span>
+<span id="cb146-4"><a href="tidier.html#cb146-4" aria-hidden="true" tabindex="-1"></a>         temp <span class="sc">&lt;=</span> <span class="dv">11</span> <span class="sc">|</span> <span class="co"># Temperatures at or below 11°C OR</span></span>
+<span id="cb146-5"><a href="tidier.html#cb146-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">is.na</span>(temp) <span class="co"># Include missing values</span></span>
+<span id="cb146-6"><a href="tidier.html#cb146-6" aria-hidden="true" tabindex="-1"></a>         )</span></code></pre></div>
 </div>
 <div id="select-variables-columns-withselect" class="section level2" number="12.5">
 <h2><span class="header-section-number">12.5</span> Select variables (columns) with<code>select()</code></h2>
 <p>When one loads a dataset that contains more columns than will be useful or required it is preferable to shave off the excess. We do this with the <code>select()</code> function. In the following four examples we are going to remove the <code>depth</code> and <code>type</code> columns. There are many ways to do this and none are technically better or faster. So it is up to the user to find a favourite technique.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="tidier.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select columns individually by name</span></span>
-<span id="cb149-2"><a href="tidier.html#cb149-2" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb149-3"><a href="tidier.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(site, src, date, temp)</span>
-<span id="cb149-4"><a href="tidier.html#cb149-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-5"><a href="tidier.html#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all columns between site and temp like a sequence</span></span>
-<span id="cb149-6"><a href="tidier.html#cb149-6" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb149-7"><a href="tidier.html#cb149-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(site<span class="sc">:</span>temp)</span>
-<span id="cb149-8"><a href="tidier.html#cb149-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-9"><a href="tidier.html#cb149-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all columns except those stated individually</span></span>
-<span id="cb149-10"><a href="tidier.html#cb149-10" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb149-11"><a href="tidier.html#cb149-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date, <span class="sc">-</span>depth)</span>
-<span id="cb149-12"><a href="tidier.html#cb149-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-13"><a href="tidier.html#cb149-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all columns except those within a given sequence</span></span>
-<span id="cb149-14"><a href="tidier.html#cb149-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Note that the &#39;-&#39; goes outside of a new set of brackets</span></span>
-<span id="cb149-15"><a href="tidier.html#cb149-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># that are wrapped around the sequence of columns to remove</span></span>
-<span id="cb149-16"><a href="tidier.html#cb149-16" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb149-17"><a href="tidier.html#cb149-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>(date<span class="sc">:</span>depth))</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="tidier.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select columns individually by name</span></span>
+<span id="cb147-2"><a href="tidier.html#cb147-2" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb147-3"><a href="tidier.html#cb147-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(site, src, date, temp)</span>
+<span id="cb147-4"><a href="tidier.html#cb147-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-5"><a href="tidier.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all columns between site and temp like a sequence</span></span>
+<span id="cb147-6"><a href="tidier.html#cb147-6" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb147-7"><a href="tidier.html#cb147-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(site<span class="sc">:</span>temp)</span>
+<span id="cb147-8"><a href="tidier.html#cb147-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-9"><a href="tidier.html#cb147-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all columns except those stated individually</span></span>
+<span id="cb147-10"><a href="tidier.html#cb147-10" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb147-11"><a href="tidier.html#cb147-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date, <span class="sc">-</span>depth)</span>
+<span id="cb147-12"><a href="tidier.html#cb147-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-13"><a href="tidier.html#cb147-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all columns except those within a given sequence</span></span>
+<span id="cb147-14"><a href="tidier.html#cb147-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Note that the &#39;-&#39; goes outside of a new set of brackets</span></span>
+<span id="cb147-15"><a href="tidier.html#cb147-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># that are wrapped around the sequence of columns to remove</span></span>
+<span id="cb147-16"><a href="tidier.html#cb147-16" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb147-17"><a href="tidier.html#cb147-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>(date<span class="sc">:</span>depth))</span></code></pre></div>
 <p>We may also use <code>select()</code> to reorder the columns in a dataframe. In this case the inclusion of the <code>everything()</code> function may be a useful shortcut as illustrated below.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="tidier.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change up order by specifying individual columns</span></span>
-<span id="cb150-2"><a href="tidier.html#cb150-2" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb150-3"><a href="tidier.html#cb150-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(temp, src, date, site)</span>
-<span id="cb150-4"><a href="tidier.html#cb150-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-5"><a href="tidier.html#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the everything function to grab all columns </span></span>
-<span id="cb150-6"><a href="tidier.html#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="co"># not already specified</span></span>
-<span id="cb150-7"><a href="tidier.html#cb150-7" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb150-8"><a href="tidier.html#cb150-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(type, src, <span class="fu">everything</span>())</span>
-<span id="cb150-9"><a href="tidier.html#cb150-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-10"><a href="tidier.html#cb150-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Or go bananas and use all of the rules at once</span></span>
-<span id="cb150-11"><a href="tidier.html#cb150-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remember, when dealing with tidy data,</span></span>
-<span id="cb150-12"><a href="tidier.html#cb150-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># everything may be interchanged</span></span>
-<span id="cb150-13"><a href="tidier.html#cb150-13" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb150-14"><a href="tidier.html#cb150-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(temp<span class="sc">:</span>type, <span class="fu">everything</span>(), <span class="sc">-</span>src)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="tidier.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change up order by specifying individual columns</span></span>
+<span id="cb148-2"><a href="tidier.html#cb148-2" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb148-3"><a href="tidier.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(temp, src, date, site)</span>
+<span id="cb148-4"><a href="tidier.html#cb148-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-5"><a href="tidier.html#cb148-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the everything function to grab all columns </span></span>
+<span id="cb148-6"><a href="tidier.html#cb148-6" aria-hidden="true" tabindex="-1"></a><span class="co"># not already specified</span></span>
+<span id="cb148-7"><a href="tidier.html#cb148-7" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb148-8"><a href="tidier.html#cb148-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(type, src, <span class="fu">everything</span>())</span>
+<span id="cb148-9"><a href="tidier.html#cb148-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-10"><a href="tidier.html#cb148-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Or go bananas and use all of the rules at once</span></span>
+<span id="cb148-11"><a href="tidier.html#cb148-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remember, when dealing with tidy data,</span></span>
+<span id="cb148-12"><a href="tidier.html#cb148-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># everything may be interchanged</span></span>
+<span id="cb148-13"><a href="tidier.html#cb148-13" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb148-14"><a href="tidier.html#cb148-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(temp<span class="sc">:</span>type, <span class="fu">everything</span>(), <span class="sc">-</span>src)</span></code></pre></div>
 </div>
 <div id="create-new-variables-columns-with-mutate" class="section level2" number="12.6">
 <h2><span class="header-section-number">12.6</span> Create new variables (columns) with <code>mutate()</code></h2>
 <p>When one is performing data analysis/statistics in R this is likely because it is necessary to create some new values that did not exist in the raw data. The previous three functions we looked at (<code>arrange()</code>, <code>filter()</code>, <code>select()</code>) will prepare us to create new data, but do not do so themselves. This is when we need to use <code>mutate()</code>. We must however be very mindful that <code>mutate()</code> is only useful if we want to create new variables (columns) that are a function of one or more <em>existing</em> columns. This means that any column we create with <code>mutate()</code> will always have the same number of rows as the dataframe we are working with. In order to create a new column we must first tell R what the name of the column will be, in this case let’s create a column named <code>kelvin</code>. The second step is to then tell R what to put in the new column. AS you may have guessed, we are going to convert the <code>temp</code> column into Kelvin (°K) by adding 273.15 to every row.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="tidier.html#cb151-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb151-2"><a href="tidier.html#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">kelvin =</span> temp <span class="sc">+</span> <span class="fl">273.15</span>)<span class="er">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="tidier.html#cb149-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb149-2"><a href="tidier.html#cb149-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">kelvin =</span> temp <span class="sc">+</span> <span class="fl">273.15</span>)<span class="er">)</span></span></code></pre></div>
 <pre><code>R&gt;            site src       date     temp depth type   kelvin
 R&gt; 1  Port Nolloth DEA 1991-02-01 11.47029     5  UTR 284.6203
 R&gt; 2  Port Nolloth DEA 1991-03-01 11.99409     5  UTR 285.1441
@@ -559,24 +559,24 @@ R&gt; 10 Port Nolloth DEA 1991-11-01 10.98208     5  UTR 284.1321</code></pre>
 <div id="summarise-variables-columns-with-summarise" class="section level2" number="12.7">
 <h2><span class="header-section-number">12.7</span> Summarise variables (columns) with <code>summarise()</code></h2>
 <p>Finally this brings us to the last tool for this section. To create new columns we use <code>mutate()</code>, but to calculate any sort of summary/statistic from a column that will return fewer rows than the dataframe has we will use <code>summarise()</code>. This makes <code>summarise()</code> much more powerful than the other functions in this section, but because it is able to do more, it can also be more unpredictable, making it’s use potentially more challenging. We will almost always end op using this function in our work flows however so it behoves us to become well acquainted with it. The following chunk very simply calculates the overall mean temperature for the entire SACTN.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="tidier.html#cb153-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb153-2"><a href="tidier.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="tidier.html#cb151-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb151-2"><a href="tidier.html#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>R&gt;   mean_temp
 R&gt; 1  19.26955</code></pre>
 <p>Note how the above chunk created a new dataframe. This is done because it cannot add this one result to the previous dataframe due to the mismatch in the number of rows. Were we to want to create additional columns with other summaries we may do so within the same <code>summarise()</code> function. These multiple summaries are displayed on individual lines in the following chunk to help keep things clear.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="tidier.html#cb155-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
-<span id="cb155-2"><a href="tidier.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb155-3"><a href="tidier.html#cb155-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_temp =</span> <span class="fu">sd</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb155-4"><a href="tidier.html#cb155-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_temp =</span> <span class="fu">min</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb155-5"><a href="tidier.html#cb155-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_temp =</span> <span class="fu">max</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb155-6"><a href="tidier.html#cb155-6" aria-hidden="true" tabindex="-1"></a>            )</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="tidier.html#cb153-1" aria-hidden="true" tabindex="-1"></a>SACTN <span class="sc">%&gt;%</span> </span>
+<span id="cb153-2"><a href="tidier.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb153-3"><a href="tidier.html#cb153-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_temp =</span> <span class="fu">sd</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb153-4"><a href="tidier.html#cb153-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_temp =</span> <span class="fu">min</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb153-5"><a href="tidier.html#cb153-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_temp =</span> <span class="fu">max</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb153-6"><a href="tidier.html#cb153-6" aria-hidden="true" tabindex="-1"></a>            )</span></code></pre></div>
 <pre><code>R&gt;   mean_temp  sd_temp min_temp max_temp
 R&gt; 1  19.26955 3.682122 9.136322 28.34648</code></pre>
 <p>Creating summaries of the <em>entire</em> SACTN dataset in this way is not appropriate as we should not be combining time series from such different parts of the coast. In order to calculate summaries within variables we will need to learn how to use <code>group_by()</code>, which in turn will first require us to learn how to chain multiple functions together within a pipe (<code>%&gt;%</code>). That is how we will begin the next session for today. Finishing with several tips on how to make our data the tidiest that it may be.</p>
 </div>
 <div id="session-info-9" class="section level2" number="12.8">
 <h2><span class="header-section-number">12.8</span> Session info</h2>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="tidier.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installed.packages</span>()[<span class="fu">names</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="tidier.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installed.packages</span>()[<span class="fu">names</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
 <pre><code>R&gt; lubridate   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
 R&gt;  &quot;1.7.10&quot;   &quot;0.5.1&quot;   &quot;1.4.0&quot;   &quot;1.0.5&quot;   &quot;0.3.4&quot;   &quot;1.4.0&quot;   &quot;1.1.3&quot;   &quot;3.1.0&quot; 
 R&gt;   ggplot2 tidyverse 

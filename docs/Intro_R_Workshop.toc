@@ -1,0 +1,151 @@
+\babel@toc {australian}{}
+\contentsline {chapter}{Preface}{7}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Preliminaries}{9}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Venue, date and time}{9}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Course outline}{9}{section.1.2}%
+\contentsline {subsection}{Day 1 -- In the Beginning}{9}{section.1.2}%
+\contentsline {subsection}{Day 2 -- Show and tell}{9}{section.1.2}%
+\contentsline {subsection}{Day 3 -- Going deeper}{9}{section.1.2}%
+\contentsline {subsection}{Day 4 -- The Enlightened Researcher}{10}{section.1.2}%
+\contentsline {subsection}{Day 5 -- The world is yours}{10}{section.1.2}%
+\contentsline {section}{\numberline {1.3}About this Workshop}{10}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Why use R?}{10}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Some negatives of using R}{11}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}The challenge: learning to program in R}{11}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}Using your own computer?}{11}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Installing R}{11}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Installing RStudio}{12}{subsection.1.5.2}%
+\contentsline {section}{\numberline {1.6}Resources}{12}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Style and code conventions}{12}{section.1.7}%
+\contentsline {section}{\numberline {1.8}About this document}{13}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Exercise: It which shall not be named}{13}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Session info}{13}{section.1.10}%
+\contentsline {chapter}{\numberline {2}RStudio}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Setting up the workspace}{15}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}General settings}{15}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Customising appearance}{15}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Configuring panes}{15}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}The Rproject}{15}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Installing packages}{15}{section.2.3}%
+\contentsline {section}{\numberline {2.4}The panes of RStudio}{17}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Source Editor}{17}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Console}{18}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Exercise}{19}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Environment and History panes}{20}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Files, Plots, Packages, Help, and Viewer panes}{20}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Session info}{21}{section.2.6}%
+\contentsline {chapter}{\numberline {3}GitHub}{23}{chapter.3}%
+\contentsline {section}{\numberline {3.1}What is GitHub?}{23}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Installing Git on Windows}{23}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Create and account and a repository}{23}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Git configuring (activation) and connecting to a remote repository}{23}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Clone the new GitHub repository to your computer via RStudio.}{23}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Commits}{24}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Open a Pull Request}{24}{section.3.7}%
+\contentsline {chapter}{\numberline {4}An R workflow}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}R Scripts}{25}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Reading data into R}{25}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Preparing data for R}{26}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Converting data}{26}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Importing data}{26}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Loading a file}{27}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}Working with data}{27}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Examine your data}{27}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Tidyverse sneak peek}{28}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Subsetting}{28}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Basic stats}{29}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Exercise}{29}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Summary of all variables in a dataframe}{30}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Summary statistics by variable}{31}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}More complex calculations}{31}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Exercise}{32}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Saving data}{32}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Visualisations}{32}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Clearing the memory}{33}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Working directories}{33}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Help}{34}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Session info}{35}{section.4.11}%
+\contentsline {chapter}{\numberline {5}Graphics with \textbf {\texttt {ggplot2}}}{37}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Example figures}{37}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Basics of \textbf {\texttt {ggplot2}}}{37}{section.5.2}%
+\contentsline {section}{\numberline {5.3}To \texttt {aes()} or not to \texttt {aes()}, that is the question}{45}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Changing labels}{45}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Exercise}{46}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Session info}{46}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Faceting Figures}{47}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Faceting one figure}{47}{section.6.1}%
+\contentsline {section}{\numberline {6.2}New figure types}{48}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Line graph}{48}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Linear model}{48}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Histogram}{48}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Boxplot}{48}{subsection.6.2.4}%
+\contentsline {section}{\numberline {6.3}Gridding figures}{49}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Session info}{49}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Brewing colours in \textbf {\texttt {ggplot2}}}{51}{chapter.7}%
+\contentsline {section}{\numberline {7.1}R Data}{51}{section.7.1}%
+\contentsline {section}{\numberline {7.2}\textbf {\texttt {RColorBrewer}}}{52}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Make your own palettes}{53}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Use your own palettes}{54}{section.7.4}%
+\contentsline {section}{\numberline {7.5}DIY figures}{54}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Session info}{55}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Mapping with \textbf {\texttt {ggplot2}}}{57}{chapter.8}%
+\contentsline {section}{\numberline {8.1}A new concept?}{58}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Land mask}{59}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Borders}{59}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Force lon/lat extent}{59}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Ocean temperature}{59}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Final touches}{60}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Session info}{61}{section.8.7}%
+\contentsline {chapter}{\numberline {9}Mapping with style}{63}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Default maps}{63}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Specific labels}{64}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Scale bars}{64}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Insetting}{65}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Rounding it out}{65}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Session info}{66}{section.9.6}%
+\contentsline {chapter}{\numberline {10}Mapping with Google}{67}{chapter.10}%
+\contentsline {section}{\numberline {10.1}\textbf {\texttt {ggmap}}}{67}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Mapping Cape Point}{67}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Site labels}{68}{section.10.3}%
+\contentsline {section}{\numberline {10.4}DIY maps}{68}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Session info}{68}{section.10.5}%
+\contentsline {chapter}{\numberline {11}Tidy data}{71}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Gathering and spreading}{73}{section.11.1}%
+\contentsline {subsection}{\numberline {11.1.1}Gathering}{73}{subsection.11.1.1}%
+\contentsline {subsection}{\numberline {11.1.2}Spreading}{74}{subsection.11.1.2}%
+\contentsline {section}{\numberline {11.2}Separating and uniting}{74}{section.11.2}%
+\contentsline {subsection}{\numberline {11.2.1}Separate}{74}{subsection.11.2.1}%
+\contentsline {subsection}{\numberline {11.2.2}Separating dates using \texttt {mutate()}}{74}{subsection.11.2.2}%
+\contentsline {subsection}{\numberline {11.2.3}Unite}{75}{subsection.11.2.3}%
+\contentsline {section}{\numberline {11.3}Joining}{75}{section.11.3}%
+\contentsline {section}{\numberline {11.4}But why though?}{75}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Session info}{75}{section.11.5}%
+\contentsline {chapter}{\numberline {12}Tidier data}{77}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Comparison operators}{77}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Logical operators}{78}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Arrange observations (rows) with \texttt {arrange()}}{79}{section.12.3}%
+\contentsline {section}{\numberline {12.4}Filter observations (rows) with \texttt {filter()}}{79}{section.12.4}%
+\contentsline {section}{\numberline {12.5}Select variables (columns) with\texttt {select()}}{80}{section.12.5}%
+\contentsline {section}{\numberline {12.6}Create new variables (columns) with \texttt {mutate()}}{81}{section.12.6}%
+\contentsline {section}{\numberline {12.7}Summarise variables (columns) with \texttt {summarise()}}{81}{section.12.7}%
+\contentsline {section}{\numberline {12.8}Session info}{82}{section.12.8}%
+\contentsline {chapter}{\numberline {13}Tidiest data}{83}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Group observations (rows) by variables (columns) with \texttt {group\_by()}}{83}{section.13.1}%
+\contentsline {subsection}{\numberline {13.1.1}Grouping by multiple variables}{84}{subsection.13.1.1}%
+\contentsline {subsection}{\numberline {13.1.2}Ungrouping}{84}{subsection.13.1.2}%
+\contentsline {section}{\numberline {13.2}Chain functions with the pipe (\texttt {\%\textgreater {}\%})}{85}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Group all the functions!}{85}{section.13.3}%
+\contentsline {section}{\numberline {13.4}Going deeper}{86}{section.13.4}%
+\contentsline {section}{\numberline {13.5}Pipe into \textbf {\texttt {ggplot2}}}{87}{section.13.5}%
+\contentsline {section}{\numberline {13.6}Additional useful functions}{87}{section.13.6}%
+\contentsline {subsection}{\numberline {13.6.1}Rename variables (columns) with \texttt {rename()}}{88}{subsection.13.6.1}%
+\contentsline {subsection}{\numberline {13.6.2}Create a new dataframe for a newly created variable (column) with \texttt {transmute()}}{88}{subsection.13.6.2}%
+\contentsline {subsection}{\numberline {13.6.3}Count observations (rows) with \texttt {n()}}{88}{subsection.13.6.3}%
+\contentsline {subsection}{\numberline {13.6.4}Select observations (rows) by number with \texttt {slice()}}{90}{subsection.13.6.4}%
+\contentsline {subsection}{\numberline {13.6.5}Summary functions}{91}{subsection.13.6.5}%
+\contentsline {section}{\numberline {13.7}The new age \emph {redux}}{91}{section.13.7}%
+\contentsline {section}{\numberline {13.8}Session info}{91}{section.13.8}%
+\contentsline {chapter}{\numberline {14}Recap}{93}{chapter.14}%
+\contentsline {section}{\numberline {14.1}The future}{93}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Today}{93}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Session info}{93}{section.14.3}%
