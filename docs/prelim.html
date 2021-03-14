@@ -369,7 +369,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <div id="venue-date-and-time" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Venue, date and time</h2>
-<p>This workshop will take place in the week of <strong>28 January – 31 January 2020</strong>, from <strong>9:00–16:00</strong> each day. We will meet in the BCB computer lab on the 5th floor.</p>
+<p>This workshop will take place in the week of <strong>15 – 19 March 2021</strong>, from <strong>9:00–16:00</strong> each day. We will meet in the BCB computer lab on the 5th floor.</p>
 </div>
 <div id="course-outline" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Course outline</h2>
@@ -541,8 +541,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Commands entered onto the R command line (console) and the output that is returned will be shown in a code block, which is a light grey background with code font. The commands entered start at the beginning of a line and the output it produces is preceded by <code>R&gt;</code>, like so:</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="prelim.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">13</span>)</span></code></pre></div>
-<pre><code>R&gt;  [1]   9.437449  11.067538   5.418050  -5.151036   1.418741   3.019960
-R&gt;  [7] -10.227933  15.292745  12.972483  13.349903</code></pre>
+<pre><code>R&gt;  [1]  -8.500892  17.800032 -16.295473  -2.393832  10.148270 -13.767724
+R&gt;  [7]  -1.301800   5.986854  11.903125  16.616716</code></pre>
 <p>Consult these resources for more about R code style :</p>
 <ul>
 <li><a href="https://google.github.io/styleguide/Rguide.xml">Google’s R style guide</a></li>
@@ -569,8 +569,7 @@ Figure 1.1: The Rmarkdown workflow.
 </div>
 <div id="session-info" class="section level2" number="1.10">
 <h2><span class="header-section-number">1.10</span> Session info</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="prelim.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installed.packages</span>()[<span class="fu">names</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
-<pre><code>R&gt; character(0)</code></pre>
+<p>`<code>{r, echo=TRUE, include=TRUE} installed.packages()[names(sessionInfo()$otherPkgs), "Version"]</code></p>
 
 </div>
 </div>
