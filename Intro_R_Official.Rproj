@@ -10,7 +10,8 @@ NumSpacesForTab: 2
 Encoding: UTF-8
 
 RnwWeave: Sweave
-LaTeX: pdfLaTeX
+LaTeX: XeLaTeX
+RootDocument: _GitBook/index.Rmd
 
 BuildType: Website
 WebsitePath: _GitBook

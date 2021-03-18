@@ -57,6 +57,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -381,10 +382,10 @@ Figure 8.1: The goal for today.
 <span id="cb94-3"><a href="mapping.html#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
 <span id="cb94-4"><a href="mapping.html#cb94-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-5"><a href="mapping.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb94-6"><a href="mapping.html#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/south_africa_coast.RData&quot;</span>)</span>
+<span id="cb94-6"><a href="mapping.html#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/south_africa_coast.Rdata&quot;</span>)</span>
 <span id="cb94-7"><a href="mapping.html#cb94-7" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/sa_provinces.RData&quot;</span>)</span>
-<span id="cb94-8"><a href="mapping.html#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/rast_annual.RData&quot;</span>)</span>
-<span id="cb94-9"><a href="mapping.html#cb94-9" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/MUR.RData&quot;</span>)</span>
+<span id="cb94-8"><a href="mapping.html#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/rast_annual.Rdata&quot;</span>)</span>
+<span id="cb94-9"><a href="mapping.html#cb94-9" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/MUR.Rdata&quot;</span>)</span>
 <span id="cb94-10"><a href="mapping.html#cb94-10" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/MUR_low_res.RData&quot;</span>)</span>
 <span id="cb94-11"><a href="mapping.html#cb94-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-12"><a href="mapping.html#cb94-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose which SST product you would like to use</span></span>
@@ -392,7 +393,7 @@ Figure 8.1: The goal for today.
 <span id="cb94-14"><a href="mapping.html#cb94-14" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
 <span id="cb94-15"><a href="mapping.html#cb94-15" aria-hidden="true" tabindex="-1"></a>sst <span class="ot">&lt;-</span> MUR</span>
 <span id="cb94-16"><a href="mapping.html#cb94-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-17"><a href="mapping.html#cb94-17" aria-hidden="true" tabindex="-1"></a><span class="co"># The colour pallette we will use for ocean temperature</span></span>
+<span id="cb94-17"><a href="mapping.html#cb94-17" aria-hidden="true" tabindex="-1"></a><span class="co"># The colour palette we will use for ocean temperature</span></span>
 <span id="cb94-18"><a href="mapping.html#cb94-18" aria-hidden="true" tabindex="-1"></a>cols11 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#004dcd&quot;</span>, <span class="st">&quot;#0068db&quot;</span>, <span class="st">&quot;#007ddb&quot;</span>, <span class="st">&quot;#008dcf&quot;</span>, <span class="st">&quot;#009bbc&quot;</span>,</span>
 <span id="cb94-19"><a href="mapping.html#cb94-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;#00a7a9&quot;</span>, <span class="st">&quot;#1bb298&quot;</span>, <span class="st">&quot;#6cba8f&quot;</span>, <span class="st">&quot;#9ac290&quot;</span>, <span class="st">&quot;#bec99a&quot;</span>)</span></code></pre></div>
 <div id="a-new-concept" class="section level2" number="8.1">

@@ -8,30 +8,23 @@
 
 library(tidyverse)
 library(lubridate)
-load("data/SACTNmonthly_v4.0.RData")
+SACTN <- read_csv("data/SACTN_data.csv")
 
 
 # Do stuff ----------------------------------------------------------------
 
-SACTN <- SACTNmonthly_v4.0
-
 SACTN_grp <- SACTN %>%
-  mutate(yr = year(date))
+  mutate(yr = year(date),
+         mo = month(date)) %>% 
+  group_by(site, mo) %>% 
+  summarise(mean_temp = mean(temp, na.rm = TRUE)) %>% 
+  ungroup()
 
-SACTN_grp <- SACTN %>%
-  separate(date, into = c("yr", "mo", "da"), sep = "-") %>% 
-  filter(src == "KZNSB") %>% 
-  mutate(yr = as.numeric(yr)) %>% 
-  group_by(yr, site) %>% 
-  summarise(mn.temp = mean(temp, na.rm = TRUE))
-
-ggplot(SACTN_grp, aes(x = yr, y = mn.temp)) +
+ggplot(SACTN_grp, aes(x = mo, y = mean_temp)) +
   geom_line(aes(group = site), colour = "salmon") +
-  facet_wrap(~site) +
-  scale_x_continuous(breaks = c(1980, 2000)) +
-  scale_y_continuous(breaks = c(20, 24)) +
+  facet_wrap(~site, nrow = 3) +
   labs(x = "Year", y = "Temperature (°C)",
-       title = "KZNSB: annual mean temperature")
+       title = "Monthly mean temperature")
 
 
 # Laminaria data ----------------------------------------------------------

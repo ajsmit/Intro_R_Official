@@ -32,10 +32,10 @@ library(tidyverse)
 library(ggpubr)
 
 # Load data
-load("data/south_africa_coast.RData")
+load("data/south_africa_coast.Rdata")
 load("data/sa_provinces.RData")
-load("data/rast_annual.RData")
-load("data/MUR.RData")
+load("data/rast_annual.Rdata")
+load("data/MUR.Rdata")
 load("data/MUR_low_res.RData")
 
 # Choose which SST product you would like to use
@@ -43,7 +43,7 @@ sst <- MUR_low_res
 # OR
 sst <- MUR
 
-# The colour pallette we will use for ocean temperature
+# The colour palette we will use for ocean temperature
 cols11 <- c("#004dcd", "#0068db", "#007ddb", "#008dcf", "#009bbc",
             "#00a7a9", "#1bb298", "#6cba8f", "#9ac290", "#bec99a")
 ```
@@ -123,7 +123,7 @@ ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
 
 There's a colour palette that would make Jacques Cousteau swoon. When we set the colour palette for a figure in **`ggplot2`** we must use that colour palette for all other instances of those types of values, too. What this means is that any other discrete values that will be filled in, like the ocean colour above, must use the same colour palette (there are some technical exceptions to this rule that we will not cover in this course). We normally want **`ggplot2`** to use consistent colour palettes anyway, but it is important to note that this constraint exists. Let's see what we mean. Next we will add the coastal pixels to our figure with one more line of code. We won't change anything else. Note how **`ggplot2`** changes the colour of the coastal pixels to match the ocean colour automatically.
 
-```{r map-raster, fig.cap="Map of SOuth Africa showing *in situ* temeperatures (°C) as pixels along the coast."}
+```{r map-raster, fig.cap="Map of South Africa showing *in situ* temeperatures (°C) as pixels along the coast."}
 ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
   geom_raster(data = sst, aes(fill = bins)) +
   geom_polygon(colour = "black", fill = "grey70", aes(group = group)) +

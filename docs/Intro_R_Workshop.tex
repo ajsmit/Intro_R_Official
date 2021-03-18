@@ -4,8 +4,8 @@
 %
 \documentclass[
 ]{book}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
@@ -81,7 +81,8 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
@@ -107,10 +108,7 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-\usepackage{booktabs}
-
 \usepackage[a4paper,text={16.5cm,25.2cm},centering,margin=2.6cm]{geometry}
-% \usepackage[left=1.0in,top=1.0in,right=1.0in,bottom=1.0in]{geometry}
 \usepackage{hyperref,amsmath,amssymb,bm,url,enumitem,dcolumn,upquote,framed,alltt,textgreek,xfrac}
 \usepackage[australian]{babel}
 \usepackage[compact,small]{titlesec}
@@ -119,20 +117,22 @@
 \usepackage{ifxetex}
 \ifxetex
  \usepackage{fontspec}
- \defaultfontfeatures{Ligatures=TeX} % To support LaTeX quoting style
  \defaultfontfeatures{Ligatures=TeX}
- \setmainfont{Calibri}
- \setsansfont[Scale=MatchLowercase]{SF Pro}
+ \defaultfontfeatures{Ligatures=TeX}
+ % \setmainfont{Gentium Basic}
+ \setmainfont{TeX Gyre Schola}
+ \setsansfont[Scale=MatchLowercase]{TeX Gyre Schola}
  \setmonofont[Scale=0.75,Color=blue]{Fira Code}
 \else
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{lmodern}
-  % \usepackage[full]{textcomp} % directly use the degree (and some other) symbol
+  \usepackage[full]{textcomp} % directly use the degree (and some other) symbol
 \fi
 
 % place after fonts; even better typesetting for improved readability:
 % \graphicspath{ {figure/} }
+\usepackage{booktabs}
 \usepackage{tabularx} % for 'tabularx' environment and 'X' column type
 \usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
 \usepackage{siunitx}
@@ -148,6 +148,9 @@
 \usepackage[font={small}, labelfont=bf]{caption} % tweaking the captions
 \usepackage[color=yellow, textsize=tiny]{todonotes}
 \frenchspacing%
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
@@ -158,9 +161,9 @@
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
-\subtitle{UWC BCB Honours 2020}
+\subtitle{UWC BCB Honours 2021}
 \author{AJ Smit, Amieroh Abrahams \& Robert W Schlegel}
-\date{2020-01-31}
+\date{2021-03-14}
 
 \begin{document}
 \maketitle
@@ -499,13 +502,13 @@ Early on, develop the habit of unambiguous and consistent style and formatting w
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{rnorm}\NormalTok{(}\DataTypeTok{n =} \DecValTok{10}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{0}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{13}\NormalTok{)}
+\FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{10}\NormalTok{, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{13}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-R>  [1] 10.4917451  1.0683589 -3.7437561 -3.2334131  7.9644976 -2.3130205
-R>  [7]  5.0977896  4.3434540 -0.1304216  7.7361639
+R>  [1]   0.2532359 -15.3737447  -8.4908818  16.7060693   1.3620953  10.7214376
+R>  [7]  16.6178063  20.0209822  23.9696270   1.7923426
 \end{verbatim}
 
 Consult these resources for more about R code style :
@@ -548,15 +551,7 @@ After an hour has passed we will take a break. When we return we will see how to
 \hypertarget{session-info}{%
 \section{Session info}\label{session-info}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-R> character(0)
-\end{verbatim}
+`\texttt{\{r,\ echo=TRUE,\ include=TRUE\}\ installed.packages(){[}names(sessionInfo()\$otherPkgs),\ "Version"{]}}
 
 \hypertarget{rstudio}{%
 \chapter{RStudio}\label{rstudio}}
@@ -608,7 +603,7 @@ A very nifty way of managing workflow in RStudio is through the built-in functio
 \hypertarget{installing-packages}{%
 \section{Installing packages}\label{installing-packages}}
 
-The most common functions used in R are contained within the \textbf{\texttt{base}} package; this makes R useful `out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the \href{https://cran.r-project.org/web/packages/}{CRAN website}. There are currently (\texttt{2020-01-31}) \texttt{15357} packages available for R!
+The most common functions used in R are contained within the \textbf{\texttt{base}} package; this makes R useful `out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the \href{https://cran.r-project.org/web/packages/}{CRAN website}. There are currently (\texttt{2021-03-14}) \texttt{17305} packages available for R!
 
 If the thought of searching for and finding R packages is daunting, a good place to start is the \href{http://cran.r-project.org/web/views/}{R Task View} page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.
 
@@ -618,7 +613,7 @@ The installation process makes sure that the functions within the packages conta
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -710,7 +705,7 @@ Entering code in the command line is intuitive and easy. For example, we can use
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{6} \OperatorTok{*}\StringTok{ }\DecValTok{3}
+\DecValTok{6} \SpecialCharTok{*} \DecValTok{3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -720,7 +715,7 @@ R> [1] 18
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{5} \OperatorTok{+}\StringTok{ }\DecValTok{4}
+\DecValTok{5} \SpecialCharTok{+} \DecValTok{4}
 \end{Highlighting}
 \end{Shaded}
 
@@ -730,7 +725,7 @@ R> [1] 9
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{2} \OperatorTok{\^{}}\StringTok{ }\DecValTok{3}
+\DecValTok{2} \SpecialCharTok{\^{}} \DecValTok{3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -744,9 +739,9 @@ We can also use the assignment operator \texttt{\textless{}-} to assign any calc
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{a <{-}}\StringTok{ }\DecValTok{2}
-\NormalTok{b <{-}}\StringTok{ }\DecValTok{7}
-\NormalTok{a }\OperatorTok{+}\StringTok{ }\NormalTok{b}
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{b }\OtherTok{\textless{}{-}} \DecValTok{7}
+\NormalTok{a }\SpecialCharTok{+}\NormalTok{ b}
 \end{Highlighting}
 \end{Shaded}
 
@@ -760,8 +755,8 @@ Spaces are also optional around assignment operators. It is good practice to use
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{d<{-}}\DecValTok{2}
-\NormalTok{d }\OperatorTok{<}\StringTok{ }\DecValTok{{-}2}
+\NormalTok{d}\OtherTok{\textless{}{-}}\DecValTok{2}
+\NormalTok{d }\SpecialCharTok{\textless{}} \SpecialCharTok{{-}}\DecValTok{2}
 \end{Highlighting}
 \end{Shaded}
 
@@ -776,10 +771,10 @@ What are the values after each statement in the following?
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mass <{-}}\StringTok{ }\DecValTok{48} 
-\NormalTok{mass <{-}}\StringTok{ }\NormalTok{mass }\OperatorTok{*}\StringTok{ }\FloatTok{2.0} \CommentTok{\# mass? }
-\NormalTok{age <{-}}\StringTok{ }\NormalTok{age }\OperatorTok{{-}}\StringTok{ }\DecValTok{17} \CommentTok{\# age? m}
-\NormalTok{mass\_index <{-}}\StringTok{ }\NormalTok{mass }\OperatorTok{/}\StringTok{ }\NormalTok{age }\CommentTok{\# mass\_index?}
+\NormalTok{mass }\OtherTok{\textless{}{-}} \DecValTok{48} 
+\NormalTok{mass }\OtherTok{\textless{}{-}}\NormalTok{ mass }\SpecialCharTok{*} \FloatTok{2.0} \CommentTok{\# mass? }
+\NormalTok{age }\OtherTok{\textless{}{-}}\NormalTok{ age }\SpecialCharTok{{-}} \DecValTok{17} \CommentTok{\# age? m}
+\NormalTok{mass\_index }\OtherTok{\textless{}{-}}\NormalTok{ mass }\SpecialCharTok{/}\NormalTok{ age }\CommentTok{\# mass\_index?}
 \end{Highlighting}
 \end{Shaded}
 
@@ -791,7 +786,7 @@ We can create a vector in R by using the combine \texttt{c()} function:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{apples <{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{5.3}\NormalTok{, }\FloatTok{3.8}\NormalTok{, }\FloatTok{4.5}\NormalTok{)}
+\NormalTok{apples }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{5.3}\NormalTok{, }\FloatTok{3.8}\NormalTok{, }\FloatTok{4.5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -813,7 +808,7 @@ Finally, there are default functions in R for nearly all basic statistical analy
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{mean}\NormalTok{(apples)}
+\FunctionTok{mean}\NormalTok{(apples)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -823,7 +818,7 @@ R> [1] 4.533333
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{sd}\NormalTok{(apples)}
+\FunctionTok{sd}\NormalTok{(apples)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -840,7 +835,7 @@ Or try this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{round}\NormalTok{(}\KeywordTok{sd}\NormalTok{(apples), }\DecValTok{2}\NormalTok{)}
+\FunctionTok{round}\NormalTok{(}\FunctionTok{sd}\NormalTok{(apples), }\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -884,7 +879,7 @@ Typing the following into the \textbf{Console} will list everything you've loade
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ls}\NormalTok{()}
+\FunctionTok{ls}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -911,7 +906,7 @@ Methods of getting help from the \textbf{Console} include\ldots{}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{help}\NormalTok{(mean)}
+\FunctionTok{help}\NormalTok{(mean)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -921,11 +916,11 @@ To reproduced Figure \ref{fig:ggplot2-1} in the \textbf{Plot} tab, simply copy a
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(tidyverse)}
-\NormalTok{x <{-}}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.01}\NormalTok{)}
-\NormalTok{y <{-}}\StringTok{ }\DecValTok{2} \OperatorTok{*}\StringTok{ }\KeywordTok{sin}\NormalTok{(}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{pi }\OperatorTok{*}\StringTok{ }\NormalTok{(x }\OperatorTok{{-}}\StringTok{ }\DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{))}
-\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x, }\DataTypeTok{y =}\NormalTok{ y), }\DataTypeTok{shape =} \DecValTok{21}\NormalTok{, }\DataTypeTok{col =} \StringTok{"salmon"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"white"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.01}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*} \FunctionTok{sin}\NormalTok{(}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ pi }\SpecialCharTok{*}\NormalTok{ (x }\SpecialCharTok{{-}} \DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{))}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y), }\AttributeTok{shape =} \DecValTok{21}\NormalTok{, }\AttributeTok{col =} \StringTok{"salmon"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"white"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -940,15 +935,15 @@ To reproduced Figure \ref{fig:ggplot2-1} in the \textbf{Plot} tab, simply copy a
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 R>   forcats   stringr     purrr     readr    tibble   ggplot2 tidyverse     tidyr 
-R>   "0.4.0"   "1.4.0"   "0.3.3"   "1.3.1"   "2.1.3"   "3.2.1"   "1.3.0"   "1.0.0" 
-R>     dplyr     rvest      xml2 
-R>   "0.8.3"   "0.3.5"   "1.2.2"
+R>   "0.5.1"   "1.4.0"   "0.3.4"   "1.4.0"   "3.1.0"   "3.3.3"   "1.3.0"   "1.1.3" 
+R>     dplyr     rvest 
+R>   "1.0.5"   "1.0.0"
 \end{verbatim}
 
 \hypertarget{github}{%
@@ -1035,8 +1030,8 @@ It is recommended to start a script with some basic information for you to refer
 \CommentTok{\# Day\_1.R}
 \CommentTok{\# Reads in some data about Laminaria collected along the Cape Peninsula}
 \CommentTok{\# Do various data manipulations, analyses and graphs}
-\CommentTok{\# <your\_name>}
-\CommentTok{\# <curent\_date>}
+\CommentTok{\# \textless{}your\_name\textgreater{}}
+\CommentTok{\# \textless{}curent\_date\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1101,7 +1096,7 @@ To load the \texttt{laminaria.csv} file we created, and assign it to an object n
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1110,9 +1105,9 @@ Depending on the version of Excel you are using, or perhaps the settings within 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Run this if \textquotesingle{}laminaria.csv\textasciigrave{} has columns separated by \textquotesingle{},\textquotesingle{}}
-\NormalTok{laminaria <{-}}\StringTok{ }\KeywordTok{read\_csv}\NormalTok{(}\StringTok{"data/laminaria.csv"}\NormalTok{)}
+\NormalTok{laminaria }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"data/laminaria.csv"}\NormalTok{)}
 \CommentTok{\# Run this if \textquotesingle{}laminaria.csv\textasciigrave{} has columns separated by \textquotesingle{};\textquotesingle{}}
-\NormalTok{laminaria <{-}}\StringTok{ }\KeywordTok{read\_csv2}\NormalTok{(}\StringTok{"data/laminaria.csv"}\NormalTok{)}
+\NormalTok{laminaria }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv2}\NormalTok{(}\StringTok{"data/laminaria.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1122,9 +1117,9 @@ At any point when working in R, you can see exactly what objects are in memory i
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ls}\NormalTok{()}
+\FunctionTok{ls}\NormalTok{()}
 \CommentTok{\# or}
-\KeywordTok{objects}\NormalTok{()}
+\FunctionTok{objects}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1132,7 +1127,7 @@ You can delete an object from memory by specifying the \texttt{rm()} function wi
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{rm}\NormalTok{(laminaria)}
+\FunctionTok{rm}\NormalTok{(laminaria)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1140,9 +1135,9 @@ This will of course delete our variable, so we will import it in again using whi
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria <{-}}\StringTok{ }\KeywordTok{read\_csv}\NormalTok{(}\StringTok{"data/laminaria.csv"}\NormalTok{)}
+\NormalTok{laminaria }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"data/laminaria.csv"}\NormalTok{)}
 \CommentTok{\# OR}
-\NormalTok{laminaria <{-}}\StringTok{ }\KeywordTok{read\_csv2}\NormalTok{(}\StringTok{"data/laminaria.csv"}\NormalTok{)}
+\NormalTok{laminaria }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv2}\NormalTok{(}\StringTok{"data/laminaria.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1161,7 +1156,7 @@ Once the data are in R, you need to check there are no glaring errors. It is use
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(laminaria)}
+\FunctionTok{head}\NormalTok{(laminaria)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1169,8 +1164,8 @@ This lists the first six lines of each of the variables in the dataframe as a ta
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(laminaria, }\DataTypeTok{n =} \DecValTok{3}\NormalTok{)}
-\KeywordTok{tail}\NormalTok{(laminaria, }\DataTypeTok{n =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(laminaria, }\AttributeTok{n =} \DecValTok{3}\NormalTok{)}
+\FunctionTok{tail}\NormalTok{(laminaria, }\AttributeTok{n =} \DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1178,7 +1173,7 @@ You can also check the structure of your data by using the \texttt{glimpse()} fu
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{glimpse}\NormalTok{(laminaria)}
+\FunctionTok{glimpse}\NormalTok{(laminaria)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1188,7 +1183,7 @@ If we wanted only the names of the variables (columns) in the dataframe, we coul
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{names}\NormalTok{(laminaria)}
+\FunctionTok{names}\NormalTok{(laminaria)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1222,8 +1217,8 @@ Now let's have a look at specific parts of the data. You will likely need to do 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Tell R which dataframe we are using}
-\StringTok{  }\KeywordTok{select}\NormalTok{(site, total\_length) }\CommentTok{\# Select only specific columns}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Tell R which dataframe we are using}
+  \FunctionTok{select}\NormalTok{(site, total\_length) }\CommentTok{\# Select only specific columns}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1231,9 +1226,9 @@ If we want to only select values from specific columns we insert one more line o
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(site, total\_length) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Select specific columns first}
-\StringTok{  }\KeywordTok{slice}\NormalTok{(}\DecValTok{56}\OperatorTok{:}\DecValTok{78}\NormalTok{)}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(site, total\_length) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Select specific columns first}
+  \FunctionTok{slice}\NormalTok{(}\DecValTok{56}\SpecialCharTok{:}\DecValTok{78}\NormalTok{)}
 \CommentTok{\# what does the \textquotesingle{}56:78\textquotesingle{} do? Change some numbers and run the code again. What happens?}
 \end{Highlighting}
 \end{Shaded}
@@ -1242,8 +1237,8 @@ If we wanted to select only the rows of data belonging to the Kommetjie site, we
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Kommetjie"}\NormalTok{)}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Kommetjie"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1251,8 +1246,8 @@ The function \texttt{filter()} has two arguments: the first is a dataframe (we s
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{lam\_kom <{-}}\StringTok{ }\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Kommetjie"}\NormalTok{)}
+\NormalTok{lam\_kom }\OtherTok{\textless{}{-}}\NormalTok{ laminaria }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Kommetjie"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1268,9 +1263,9 @@ Straight out of the box it is possible in R to perform a broad range of statisti
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Tell R which dataset to use}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Kommetjie"}\NormalTok{) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Filter out only records from Kommetjie}
-\StringTok{  }\KeywordTok{nrow}\NormalTok{() }\CommentTok{\# Count the number of remaining rows}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Tell R which dataset to use}
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Kommetjie"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Filter out only records from Kommetjie}
+  \FunctionTok{nrow}\NormalTok{() }\CommentTok{\# Count the number of remaining rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1278,8 +1273,8 @@ Or, if we want to select only the row with the greatest total length:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Tell R which dataset to use}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(total\_length }\OperatorTok{==}\StringTok{ }\KeywordTok{max}\NormalTok{(total\_length)) }\CommentTok{\# Select row with max total length}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Tell R which dataset to use}
+  \FunctionTok{filter}\NormalTok{(total\_length }\SpecialCharTok{==} \FunctionTok{max}\NormalTok{(total\_length)) }\CommentTok{\# Select row with max total length}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1311,38 +1306,38 @@ Your file will now look similar to this one, but of course you will have added y
 
 \CommentTok{\# Find the current working directory (it will be correct if a project was}
 \CommentTok{\# created as instructed earlier)}
-\KeywordTok{getwd}\NormalTok{()}
+\FunctionTok{getwd}\NormalTok{()}
 
 \CommentTok{\# If the directory is wrong because you chose not to use an Rworkspace (project),}
 \CommentTok{\# set your directory manually to where the script will be saved and where the data}
 \CommentTok{\# are located}
-\CommentTok{\# setwd("<insert\_path\_here>")}
+\CommentTok{\# setwd("\textless{}insert\_path\_here\textgreater{}")}
 
 \CommentTok{\# Load libraries}
-\KeywordTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
 
 \CommentTok{\# Load the data}
-\NormalTok{laminaria <{-}}\StringTok{ }\KeywordTok{read\_csv}\NormalTok{(}\StringTok{"data/laminaria.csv"}\NormalTok{)}
+\NormalTok{laminaria }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"data/laminaria.csv"}\NormalTok{)}
 
 \CommentTok{\# Examine the data}
-\KeywordTok{head}\NormalTok{(laminaria, }\DecValTok{5}\NormalTok{) }\CommentTok{\# First five lines}
-\KeywordTok{tail}\NormalTok{(laminaria, }\DecValTok{2}\NormalTok{) }\CommentTok{\# Last two lines}
-\KeywordTok{glimpse}\NormalTok{(laminaria) }\CommentTok{\# A more thorough summary}
-\KeywordTok{names}\NormalTok{(laminaria) }\CommentTok{\# THe names of the columns}
+\FunctionTok{head}\NormalTok{(laminaria, }\DecValTok{5}\NormalTok{) }\CommentTok{\# First five lines}
+\FunctionTok{tail}\NormalTok{(laminaria, }\DecValTok{2}\NormalTok{) }\CommentTok{\# Last two lines}
+\FunctionTok{glimpse}\NormalTok{(laminaria) }\CommentTok{\# A more thorough summary}
+\FunctionTok{names}\NormalTok{(laminaria) }\CommentTok{\# THe names of the columns}
 
 \CommentTok{\# Subsetting data}
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Tell R which dataframe to use}
-\StringTok{  }\KeywordTok{select}\NormalTok{(site, total\_length) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Select specific columns}
-\StringTok{  }\KeywordTok{slice}\NormalTok{(}\DecValTok{56}\OperatorTok{:}\DecValTok{78}\NormalTok{) }\CommentTok{\# Select specific rows}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Tell R which dataframe to use}
+  \FunctionTok{select}\NormalTok{(site, total\_length) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Select specific columns}
+  \FunctionTok{slice}\NormalTok{(}\DecValTok{56}\SpecialCharTok{:}\DecValTok{78}\NormalTok{) }\CommentTok{\# Select specific rows}
 
 \CommentTok{\# How many data points do we have at Kommetjie?}
-\NormalTok{laminaria }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Kommetjie"}\NormalTok{) }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{nrow}\NormalTok{()}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Kommetjie"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{nrow}\NormalTok{()}
 
 \CommentTok{\# The row with the greatest length}
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Tell R which dataset to use}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(total\_length }\OperatorTok{==}\StringTok{ }\KeywordTok{max}\NormalTok{(total\_length)) }\CommentTok{\# Select row with max total length}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Tell R which dataset to use}
+  \FunctionTok{filter}\NormalTok{(total\_length }\SpecialCharTok{==} \FunctionTok{max}\NormalTok{(total\_length)) }\CommentTok{\# Select row with max total length}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1365,7 +1360,7 @@ Import the data into a dataframe called \texttt{laminaria} once more (if it isn'
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{summary}\NormalTok{(laminaria)}
+\FunctionTok{summary}\NormalTok{(laminaria)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1378,8 +1373,8 @@ This is all very convenient, but we may want to ask R specifically for just the 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Chose the dataframe}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{avg\_bld\_wdt =} \KeywordTok{mean}\NormalTok{(blade\_length)) }\CommentTok{\# Calculate mean blade length}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Chose the dataframe}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{avg\_bld\_wdt =} \FunctionTok{mean}\NormalTok{(blade\_length)) }\CommentTok{\# Calculate mean blade length}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1387,9 +1382,9 @@ Or, if we wanted to know the mean and standard deviation for the total lengths o
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Tell R that we want to use the \textquotesingle{}laminaria\textquotesingle{} dataframe}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{avg\_stp\_ln =} \KeywordTok{mean}\NormalTok{(total\_length), }\CommentTok{\# Create a summary of the mean of the total lengths}
-            \DataTypeTok{sd\_stp\_ln =} \KeywordTok{sd}\NormalTok{(total\_length)) }\CommentTok{\# Create a summary of the sd of the total lengths}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Tell R that we want to use the \textquotesingle{}laminaria\textquotesingle{} dataframe}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{avg\_stp\_ln =} \FunctionTok{mean}\NormalTok{(total\_length), }\CommentTok{\# Create a summary of the mean of the total lengths}
+            \AttributeTok{sd\_stp\_ln =} \FunctionTok{sd}\NormalTok{(total\_length)) }\CommentTok{\# Create a summary of the sd of the total lengths}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1397,8 +1392,8 @@ Of course, the mean and standard deviation are not the only summary statistic th
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{avg\_stp\_ms =} \KeywordTok{mean}\NormalTok{(stipe\_mass))}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{avg\_stp\_ms =} \FunctionTok{mean}\NormalTok{(stipe\_mass))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1406,8 +1401,8 @@ The answer probably isn't what you would expect. Why not? Sometimes, you need to
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{avg\_stp\_ms =} \KeywordTok{mean}\NormalTok{(stipe\_mass, }\DataTypeTok{na.rm =}\NormalTok{ T))}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{avg\_stp\_ms =} \FunctionTok{mean}\NormalTok{(stipe\_mass, }\AttributeTok{na.rm =}\NormalTok{ T))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1426,11 +1421,11 @@ We know that the variance is given by \texttt{var()}, so all we need to do is fi
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Select \textquotesingle{}laminaria\textquotesingle{}}
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Group the dataframe by site}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{var\_bl =} \KeywordTok{var}\NormalTok{(blade\_length), }\CommentTok{\# Calculate variance}
-            \DataTypeTok{n\_bl =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{\%>\%}\StringTok{  }\CommentTok{\# Count number of values}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{se\_bl =} \KeywordTok{sqrt}\NormalTok{(var\_bl }\OperatorTok{/}\StringTok{ }\NormalTok{n\_bl)) }\CommentTok{\# Calculate se}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Select \textquotesingle{}laminaria\textquotesingle{}}
+  \FunctionTok{group\_by}\NormalTok{(site) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Group the dataframe by site}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{var\_bl =} \FunctionTok{var}\NormalTok{(blade\_length), }\CommentTok{\# Calculate variance}
+            \AttributeTok{n\_bl =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}  \CommentTok{\# Count number of values}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{se\_bl =} \FunctionTok{sqrt}\NormalTok{(var\_bl }\SpecialCharTok{/}\NormalTok{ n\_bl)) }\CommentTok{\# Calculate se}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1440,9 +1435,9 @@ Unfortunately, the call to the function \texttt{nrow()} has no arguments telling
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(stipe\_mass) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{())}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(stipe\_mass) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{n}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1450,10 +1445,10 @@ then:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{laminaria }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(stipe\_mass) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{na.omit}\NormalTok{() }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{())}
+\NormalTok{laminaria }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(stipe\_mass) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{na.omit}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{n}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1480,7 +1475,7 @@ A major advantage of R over many other statistics packages is that you can gener
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{write\_csv}\NormalTok{(site\_by\_region, }\DataTypeTok{path =} \StringTok{"data/kelp\_summary.csv"}\NormalTok{)}
+\FunctionTok{write\_csv}\NormalTok{(site\_by\_region, }\AttributeTok{path =} \StringTok{"data/kelp\_summary.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1493,9 +1488,9 @@ R has powerful and flexible graphics capabilities. In this Workshop we will not 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ laminaria, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ stipe\_mass, }\DataTypeTok{y =}\NormalTok{ stipe\_length)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\DataTypeTok{shape =} \DecValTok{21}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"salmon"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"white"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Stipe mass (kg)"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Stipe length (cm)"}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ laminaria, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ stipe\_mass, }\AttributeTok{y =}\NormalTok{ stipe\_length)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{shape =} \DecValTok{21}\NormalTok{, }\AttributeTok{colour =} \StringTok{"salmon"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Stipe mass (kg)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Stipe length (cm)"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1527,7 +1522,7 @@ In the \textbf{Files} tab, use the directory structure to navigate to the Intro 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{setwd}\NormalTok{(}\StringTok{"\textasciitilde{}/Intro\_R\_Workshop"}\NormalTok{)}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"\textasciitilde{}/Intro\_R\_Workshop"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1542,7 +1537,7 @@ You can check that R got this right by typing into the \textbf{Console}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{getwd}\NormalTok{()}
+\FunctionTok{getwd}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1572,13 +1567,13 @@ The first thing we see at the top of the help file in small font is the name of 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 R>   forcats   stringr     dplyr     purrr     readr     tidyr    tibble   ggplot2 
-R>   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0"   "2.1.3"   "3.2.1" 
+R>   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0"   "3.3.3" 
 R> tidyverse 
 R>   "1.3.0"
 \end{verbatim}
@@ -1715,15 +1710,15 @@ One may see below that the code naturally indents itself if the previous line en
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load libraries}
-\KeywordTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
 
 \CommentTok{\# Load data}
-\NormalTok{ChickWeight <{-}}\StringTok{ }\NormalTok{datasets}\OperatorTok{::}\NormalTok{ChickWeight}
+\NormalTok{ChickWeight }\OtherTok{\textless{}{-}}\NormalTok{ datasets}\SpecialCharTok{::}\NormalTok{ChickWeight}
 
 \CommentTok{\# Create a basic figure}
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Time, }\DataTypeTok{y =}\NormalTok{ weight)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ Chick))}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickWeight, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ weight)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ Chick))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1735,9 +1730,9 @@ This figure doesn't look like much yet. We saw some examples above that show how
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Time, }\DataTypeTok{y =}\NormalTok{ weight, }\DataTypeTok{colour =}\NormalTok{ Diet)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ Chick))}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickWeight, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ weight, }\AttributeTok{colour =}\NormalTok{ Diet)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ Chick))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1747,9 +1742,9 @@ Do any patterns appear to emerge from the data? Perhaps there is a better way to
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Time, }\DataTypeTok{y =}\NormalTok{ weight, }\DataTypeTok{colour =}\NormalTok{ Diet)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickWeight, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ weight, }\AttributeTok{colour =}\NormalTok{ Diet)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1764,9 +1759,9 @@ The astute eye will have noticed by now that most arguments we have added to the
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Time, }\DataTypeTok{y =}\NormalTok{ weight)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ Chick, }\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{))}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickWeight, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ weight)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{colour =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ Chick, }\AttributeTok{colour =} \StringTok{"blue"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1776,9 +1771,9 @@ Why are the points blue, but the lines are salmon with a legend that says they a
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Time, }\DataTypeTok{y =}\NormalTok{ weight, }\DataTypeTok{colour =}\NormalTok{ Diet)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =}\NormalTok{ weight)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.2}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickWeight, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ weight, }\AttributeTok{colour =}\NormalTok{ Diet)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{size =}\NormalTok{ weight)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1793,11 +1788,11 @@ When we use \textbf{\texttt{ggplot2}} we have control over every minute aspect o
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Time, }\DataTypeTok{y =}\NormalTok{ weight, }\DataTypeTok{colour =}\NormalTok{ Diet)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Days"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Mass (g)"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"diet type"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Change the labels}
-\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{) }\CommentTok{\# Change the legend position}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickWeight, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ weight, }\AttributeTok{colour =}\NormalTok{ Diet)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Days"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Mass (g)"}\NormalTok{, }\AttributeTok{colour =} \StringTok{"diet type"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Change the labels}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{) }\CommentTok{\# Change the legend position}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1831,13 +1826,13 @@ With all of this information in hand, please take another five minutes to either
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 R>   forcats   stringr     dplyr     purrr     readr     tidyr    tibble   ggplot2 
-R>   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0"   "2.1.3"   "3.2.1" 
+R>   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0"   "3.3.3" 
 R> tidyverse 
 R>   "1.3.0"
 \end{verbatim}
@@ -1862,8 +1857,8 @@ So far we have only looked at single panel figures. But as you may have guessed 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load libraries}
-\KeywordTok{library}\NormalTok{(tidyverse)}
-\KeywordTok{library}\NormalTok{(ggpubr)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(ggpubr)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1875,14 +1870,14 @@ Faceting a single figure is built into \textbf{\texttt{ggplot2}} from the ground
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load data}
-\NormalTok{ChickWeight <{-}}\StringTok{ }\NormalTok{datasets}\OperatorTok{::}\NormalTok{ChickWeight}
+\NormalTok{ChickWeight }\OtherTok{\textless{}{-}}\NormalTok{ datasets}\SpecialCharTok{::}\NormalTok{ChickWeight}
 
 \CommentTok{\# Create faceted figure}
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Time, }\DataTypeTok{y =}\NormalTok{ weight, }\DataTypeTok{colour =}\NormalTok{ Diet)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Note the \textasciigrave{}+\textasciigrave{} sign here}
-\StringTok{  }\KeywordTok{facet\_wrap}\NormalTok{(}\OperatorTok{\textasciitilde{}}\NormalTok{Diet, }\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{\# This is the line that creates the facets}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Days"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Mass (g)"}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickWeight, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ weight, }\AttributeTok{colour =}\NormalTok{ Diet)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Note the \textasciigrave{}+\textasciigrave{} sign here}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Diet, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# This is the line that creates the facets}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Days"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Mass (g)"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1899,8 +1894,8 @@ Before we can create a gridded figure of several smaller figures, we need to lea
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ChickLast <{-}}\StringTok{ }\NormalTok{ChickWeight }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(Time }\OperatorTok{==}\StringTok{ }\DecValTok{21}\NormalTok{)}
+\NormalTok{ChickLast }\OtherTok{\textless{}{-}}\NormalTok{ ChickWeight }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(Time }\SpecialCharTok{==} \DecValTok{21}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1909,11 +1904,11 @@ Before we can create a gridded figure of several smaller figures, we need to lea
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{line\_}\DecValTok{1}\NormalTok{ <{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Time, }\DataTypeTok{y =}\NormalTok{ weight, }\DataTypeTok{colour =}\NormalTok{ Diet)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ Chick)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Days"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Mass (g)"}\NormalTok{)}
-\NormalTok{line\_}\DecValTok{1}
+\NormalTok{line\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickWeight, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ weight, }\AttributeTok{colour =}\NormalTok{ Diet)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ Chick)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Days"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Mass (g)"}\NormalTok{)}
+\NormalTok{line\_1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1928,11 +1923,11 @@ Before we can create a gridded figure of several smaller figures, we need to lea
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{lm\_}\DecValTok{1}\NormalTok{ <{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Time, }\DataTypeTok{y =}\NormalTok{ weight, }\DataTypeTok{colour =}\NormalTok{ Diet)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"gam"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Days"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Mass (g)"}\NormalTok{)}
-\NormalTok{lm\_}\DecValTok{1}
+\NormalTok{lm\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickWeight, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ weight, }\AttributeTok{colour =}\NormalTok{ Diet)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"gam"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Days"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Mass (g)"}\NormalTok{)}
+\NormalTok{lm\_1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1948,10 +1943,10 @@ Before we can create a gridded figure of several smaller figures, we need to lea
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Note that we are using \textquotesingle{}ChickLast\textquotesingle{}, not \textquotesingle{}ChickWeight\textquotesingle{}}
-\NormalTok{histogram\_}\DecValTok{1}\NormalTok{ <{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickLast, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ weight)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_histogram}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ Diet), }\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{, }\DataTypeTok{binwidth =} \DecValTok{100}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Final Mass (g)"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Count"}\NormalTok{)}
-\NormalTok{histogram\_}\DecValTok{1}
+\NormalTok{histogram\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickLast, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weight)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ Diet), }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{, }\AttributeTok{binwidth =} \DecValTok{100}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Final Mass (g)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{)}
+\NormalTok{histogram\_1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1967,10 +1962,10 @@ Before we can create a gridded figure of several smaller figures, we need to lea
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Note that we are using \textquotesingle{}ChickLast\textquotesingle{}, not \textquotesingle{}ChickWeight\textquotesingle{}}
-\NormalTok{box\_}\DecValTok{1}\NormalTok{ <{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickLast, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Diet, }\DataTypeTok{y =}\NormalTok{ weight)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_boxplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ Diet)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Diet"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Final Mass (g)"}\NormalTok{)}
-\NormalTok{box\_}\DecValTok{1}
+\NormalTok{box\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickLast, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Diet, }\AttributeTok{y =}\NormalTok{ weight)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ Diet)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Diet"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Final Mass (g)"}\NormalTok{)}
+\NormalTok{box\_1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1987,10 +1982,10 @@ With these four different figures created we may now look at how to combine them
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggarrange}\NormalTok{(line\_}\DecValTok{1}\NormalTok{, lm\_}\DecValTok{1}\NormalTok{, histogram\_}\DecValTok{1}\NormalTok{, box\_}\DecValTok{1}\NormalTok{, }
-          \DataTypeTok{ncol =} \DecValTok{2}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{, }\CommentTok{\# Set number of rows and columns}
-          \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{), }\CommentTok{\# Label each figure}
-          \DataTypeTok{common.legend =} \OtherTok{TRUE}\NormalTok{) }\CommentTok{\# Create common legend}
+\FunctionTok{ggarrange}\NormalTok{(line\_1, lm\_1, histogram\_1, box\_1, }
+          \AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\CommentTok{\# Set number of rows and columns}
+          \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{), }\CommentTok{\# Label each figure}
+          \AttributeTok{common.legend =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\# Create common legend}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2005,13 +2000,13 @@ The above figure looks great, so let's save a copy of it as a PDF to our compute
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# First we must assign the code to an object name}
-\NormalTok{grid\_}\DecValTok{1}\NormalTok{ <{-}}\StringTok{ }\KeywordTok{ggarrange}\NormalTok{(lm\_}\DecValTok{1}\NormalTok{, histogram\_}\DecValTok{1}\NormalTok{, density\_}\DecValTok{1}\NormalTok{, violin\_}\DecValTok{1}\NormalTok{, }
-                    \DataTypeTok{ncol =} \DecValTok{2}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{, }
-                    \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{),}
-                    \DataTypeTok{common.legend =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{grid\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ggarrange}\NormalTok{(lm\_1, histogram\_1, density\_1, violin\_1, }
+                    \AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }
+                    \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{),}
+                    \AttributeTok{common.legend =} \ConstantTok{TRUE}\NormalTok{)}
 
 \CommentTok{\# Then we save the object we created}
-\KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{plot =}\NormalTok{ grid\_}\DecValTok{1}\NormalTok{, }\DataTypeTok{filename =} \StringTok{"figures/grid\_1.pdf"}\NormalTok{)}
+\FunctionTok{ggsave}\NormalTok{(}\AttributeTok{plot =}\NormalTok{ grid\_1, }\AttributeTok{filename =} \StringTok{"figures/grid\_1.pdf"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2020,15 +2015,15 @@ The above figure looks great, so let's save a copy of it as a PDF to our compute
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-R>    ggpubr  magrittr   forcats   stringr     dplyr     purrr     readr     tidyr 
-R>   "0.2.4"     "1.5"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0" 
-R>    tibble   ggplot2 tidyverse 
-R>   "2.1.3"   "3.2.1"   "1.3.0"
+R>    ggpubr   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
+R>   "0.4.0"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
+R>   ggplot2 tidyverse 
+R>   "3.3.3"   "1.3.0"
 \end{verbatim}
 
 \hypertarget{brewing}{%
@@ -2057,7 +2052,7 @@ Before we get going on our figures, we first need to learn more about the built 
 \begin{Highlighting}[]
 \CommentTok{\# To create a list of ALL available data}
   \CommentTok{\# Not really recommended as the output is overwhelming}
-\KeywordTok{data}\NormalTok{(}\DataTypeTok{package =} \KeywordTok{.packages}\NormalTok{(}\DataTypeTok{all.available =} \OtherTok{TRUE}\NormalTok{))}
+\FunctionTok{data}\NormalTok{(}\AttributeTok{package =} \FunctionTok{.packages}\NormalTok{(}\AttributeTok{all.available =} \ConstantTok{TRUE}\NormalTok{))}
 
 \CommentTok{\# To look for datasets within a single known package}
   \CommentTok{\# type the name of the package followed by \textquotesingle{}::\textquotesingle{}}
@@ -2068,7 +2063,7 @@ Before we get going on our figures, we first need to learn more about the built 
   \CommentTok{\# These are the datasets}
 
 \CommentTok{\# Try typing the following code and see what happens...}
-\NormalTok{datasets}\OperatorTok{::}
+\NormalTok{datasets}\SpecialCharTok{::}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2079,18 +2074,18 @@ Over the years I've installed so many packages on my computer that it is difficu
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load libraries}
-\KeywordTok{library}\NormalTok{(tidyverse)}
-\KeywordTok{library}\NormalTok{(boot)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(boot)}
 
 \CommentTok{\# Load data}
-\NormalTok{urine <{-}}\StringTok{ }\NormalTok{boot}\OperatorTok{::}\NormalTok{urine}
+\NormalTok{urine }\OtherTok{\textless{}{-}}\NormalTok{ boot}\SpecialCharTok{::}\NormalTok{urine}
 
 \CommentTok{\# Look at help file for more info}
 \CommentTok{\# ?urine}
 
 \CommentTok{\# Create a quick scatterplot}
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ urine, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ osmo, }\DataTypeTok{y =}\NormalTok{ ph)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ cond))}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ urine, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ osmo, }\AttributeTok{y =}\NormalTok{ ph)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ cond))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2100,8 +2095,8 @@ And now we have a scatterplot that is showing the relationship between the osmol
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ urine, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ osmo, }\DataTypeTok{y =}\NormalTok{ ph)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \KeywordTok{as.factor}\NormalTok{(r)))}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ urine, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ osmo, }\AttributeTok{y =}\NormalTok{ ph)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \FunctionTok{as.factor}\NormalTok{(r)))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2117,9 +2112,9 @@ Central to the purpose of \textbf{\texttt{ggplot2}} is the creation of beautiful
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# The continuous colour scale figure}
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ urine, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ osmo, }\DataTypeTok{y =}\NormalTok{ ph)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ cond)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_colour\_distiller}\NormalTok{() }\CommentTok{\# Change the continuous variable colour palette}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ urine, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ osmo, }\AttributeTok{y =}\NormalTok{ ph)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ cond)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_distiller}\NormalTok{() }\CommentTok{\# Change the continuous variable colour palette}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2129,9 +2124,9 @@ Does this look different? If so, how? The second page of the colour cheat sheet 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ urine, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ osmo, }\DataTypeTok{y =}\NormalTok{ ph)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ cond)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_colour\_distiller}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Spectral"}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ urine, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ osmo, }\AttributeTok{y =}\NormalTok{ ph)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ cond)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_distiller}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Spectral"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2143,9 +2138,9 @@ If we want to use colour brewer with a discrete variable we use a slightly diffe
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ urine, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ osmo, }\DataTypeTok{y =}\NormalTok{ ph)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \KeywordTok{as.factor}\NormalTok{(r))) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_colour\_brewer}\NormalTok{() }\CommentTok{\# This is the different function}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ urine, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ osmo, }\AttributeTok{y =}\NormalTok{ ph)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \FunctionTok{as.factor}\NormalTok{(r))) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_brewer}\NormalTok{() }\CommentTok{\# This is the different function}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2155,9 +2150,9 @@ The default colour scale here is not helpful at all. So let's pick a better one.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ urine, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ osmo, }\DataTypeTok{y =}\NormalTok{ ph)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \KeywordTok{as.factor}\NormalTok{(r))) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_colour\_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set1"}\NormalTok{) }\CommentTok{\# Here I used "Set1", but use what you like}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ urine, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ osmo, }\AttributeTok{y =}\NormalTok{ ph)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \FunctionTok{as.factor}\NormalTok{(r))) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set1"}\NormalTok{) }\CommentTok{\# Here I used "Set1", but use what you like}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2187,9 +2182,9 @@ Now that we've had some time to play around with the colour generators let's loo
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ urine, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ osmo, }\DataTypeTok{y =}\NormalTok{ ph)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ cond)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_colour\_gradientn}\NormalTok{(}\DataTypeTok{colours =} \KeywordTok{c}\NormalTok{(}\StringTok{"\#A5A94D"}\NormalTok{, }\StringTok{"\#6FB16F"}\NormalTok{, }\StringTok{"\#45B19B"}\NormalTok{,}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ urine, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ osmo, }\AttributeTok{y =}\NormalTok{ ph)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ cond)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_gradientn}\NormalTok{(}\AttributeTok{colours =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#A5A94D"}\NormalTok{, }\StringTok{"\#6FB16F"}\NormalTok{, }\StringTok{"\#45B19B"}\NormalTok{,}
                                     \StringTok{"\#59A9BE"}\NormalTok{, }\StringTok{"\#9699C4"}\NormalTok{, }\StringTok{"\#CA86AD"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -2200,11 +2195,11 @@ If we want to use our custom colour palettes with a discrete colour scale we use
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ urine, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ osmo, }\DataTypeTok{y =}\NormalTok{ ph)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \KeywordTok{as.factor}\NormalTok{(r))) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_colour\_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"pink"}\NormalTok{, }\StringTok{"maroon"}\NormalTok{), }\CommentTok{\# How to use custom palette}
-                     \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"no"}\NormalTok{, }\StringTok{"yes"}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\CommentTok{\# How to change the legend text}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"crystals"}\NormalTok{) }\CommentTok{\# How to change the legend title}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ urine, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ osmo, }\AttributeTok{y =}\NormalTok{ ph)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \FunctionTok{as.factor}\NormalTok{(r))) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"pink"}\NormalTok{, }\StringTok{"maroon"}\NormalTok{), }\CommentTok{\# How to use custom palette}
+                     \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"no"}\NormalTok{, }\StringTok{"yes"}\NormalTok{)) }\SpecialCharTok{+} \CommentTok{\# How to change the legend text}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{colour =} \StringTok{"crystals"}\NormalTok{) }\CommentTok{\# How to change the legend title}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2222,15 +2217,15 @@ Today we learned the basics of \textbf{\texttt{ggplot2}}, how to facet, how to b
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 R>      boot   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
-R>  "1.3-24"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0"   "2.1.3" 
+R>  "1.3-27"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
 R>   ggplot2 tidyverse 
-R>   "3.2.1"   "1.3.0"
+R>   "3.3.3"   "1.3.0"
 \end{verbatim}
 
 \hypertarget{mapping}{%
@@ -2266,23 +2261,23 @@ Before we begin let's go ahead and load the packages we will need, as well as th
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load libraries}
-\KeywordTok{library}\NormalTok{(tidyverse)}
-\KeywordTok{library}\NormalTok{(ggpubr)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(ggpubr)}
 
 \CommentTok{\# Load data}
-\KeywordTok{load}\NormalTok{(}\StringTok{"data/south\_africa\_coast.RData"}\NormalTok{)}
-\KeywordTok{load}\NormalTok{(}\StringTok{"data/sa\_provinces.RData"}\NormalTok{)}
-\KeywordTok{load}\NormalTok{(}\StringTok{"data/rast\_annual.RData"}\NormalTok{)}
-\KeywordTok{load}\NormalTok{(}\StringTok{"data/MUR.RData"}\NormalTok{)}
-\KeywordTok{load}\NormalTok{(}\StringTok{"data/MUR\_low\_res.RData"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/south\_africa\_coast.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/sa\_provinces.RData"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/rast\_annual.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/MUR.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/MUR\_low\_res.RData"}\NormalTok{)}
 
 \CommentTok{\# Choose which SST product you would like to use}
-\NormalTok{sst <{-}}\StringTok{ }\NormalTok{MUR\_low\_res}
+\NormalTok{sst }\OtherTok{\textless{}{-}}\NormalTok{ MUR\_low\_res}
 \CommentTok{\# OR}
-\NormalTok{sst <{-}}\StringTok{ }\NormalTok{MUR}
+\NormalTok{sst }\OtherTok{\textless{}{-}}\NormalTok{ MUR}
 
-\CommentTok{\# The colour pallette we will use for ocean temperature}
-\NormalTok{cols11 <{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"\#004dcd"}\NormalTok{, }\StringTok{"\#0068db"}\NormalTok{, }\StringTok{"\#007ddb"}\NormalTok{, }\StringTok{"\#008dcf"}\NormalTok{, }\StringTok{"\#009bbc"}\NormalTok{,}
+\CommentTok{\# The colour palette we will use for ocean temperature}
+\NormalTok{cols11 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"\#004dcd"}\NormalTok{, }\StringTok{"\#0068db"}\NormalTok{, }\StringTok{"\#007ddb"}\NormalTok{, }\StringTok{"\#008dcf"}\NormalTok{, }\StringTok{"\#009bbc"}\NormalTok{,}
             \StringTok{"\#00a7a9"}\NormalTok{, }\StringTok{"\#1bb298"}\NormalTok{, }\StringTok{"\#6cba8f"}\NormalTok{, }\StringTok{"\#9ac290"}\NormalTok{, }\StringTok{"\#bec99a"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2296,8 +2291,8 @@ Chicken dots:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Time, }\DataTypeTok{y =}\NormalTok{ weight)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{()}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ChickWeight, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ weight)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2311,8 +2306,8 @@ South African coast dots:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ south\_africa\_coast, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{()}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ south\_africa\_coast, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon, }\AttributeTok{y =}\NormalTok{ lat)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2331,8 +2326,8 @@ Now that we have seen that a map is nothing more than a bunch of dots and shapes
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ south\_africa\_coast, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_polygon}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\CommentTok{\# The land mask}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ south\_africa\_coast, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon, }\AttributeTok{y =}\NormalTok{ lat)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_polygon}\NormalTok{(}\AttributeTok{colour =} \StringTok{"black"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\CommentTok{\# The land mask}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2349,9 +2344,9 @@ The first thing we will add is the province borders as seen in Figure \ref{fig:m
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ south\_africa\_coast, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_polygon}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_path}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ sa\_provinces, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\CommentTok{\# The province borders}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ south\_africa\_coast, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon, }\AttributeTok{y =}\NormalTok{ lat)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_polygon}\NormalTok{(}\AttributeTok{colour =} \StringTok{"black"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_path}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sa\_provinces, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\CommentTok{\# The province borders}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2368,10 +2363,10 @@ Unfortunately when we added our borders it increased the plotting area of our ma
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ south\_africa\_coast, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_polygon}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_path}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ sa\_provinces, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}\StringTok{ }
-\StringTok{  }\KeywordTok{coord\_equal}\NormalTok{(}\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{34}\NormalTok{), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{36}\NormalTok{, }\DecValTok{{-}26}\NormalTok{), }\DataTypeTok{expand =} \DecValTok{0}\NormalTok{) }\CommentTok{\# Force lon/lat extent}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ south\_africa\_coast, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon, }\AttributeTok{y =}\NormalTok{ lat)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_polygon}\NormalTok{(}\AttributeTok{colour =} \StringTok{"black"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_path}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sa\_provinces, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+} 
+  \FunctionTok{coord\_equal}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{34}\NormalTok{), }\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{36}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{26}\NormalTok{), }\AttributeTok{expand =} \DecValTok{0}\NormalTok{) }\CommentTok{\# Force lon/lat extent}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2388,11 +2383,11 @@ This is starting to look pretty fancy, but it would be nicer if there was some c
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ south\_africa\_coast, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_raster}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ sst, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ bins)) }\OperatorTok{+}\StringTok{ }\CommentTok{\# The ocean temperatures}
-\StringTok{  }\KeywordTok{geom\_polygon}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_path}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ sa\_provinces, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{coord\_equal}\NormalTok{(}\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{34}\NormalTok{), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{36}\NormalTok{, }\DecValTok{{-}26}\NormalTok{), }\DataTypeTok{expand =} \DecValTok{0}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ south\_africa\_coast, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon, }\AttributeTok{y =}\NormalTok{ lat)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_raster}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sst, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ bins)) }\SpecialCharTok{+} \CommentTok{\# The ocean temperatures}
+  \FunctionTok{geom\_polygon}\NormalTok{(}\AttributeTok{colour =} \StringTok{"black"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_path}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sa\_provinces, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{coord\_equal}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{34}\NormalTok{), }\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{36}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{26}\NormalTok{), }\AttributeTok{expand =} \DecValTok{0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2406,12 +2401,12 @@ That looks\ldots{} odd. Why do the colours look like someone melted a big bucket
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ south\_africa\_coast, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_raster}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ sst, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ bins)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_polygon}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_path}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ sa\_provinces, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_fill\_manual}\NormalTok{(}\StringTok{"Temp. (°C)"}\NormalTok{, }\DataTypeTok{values =}\NormalTok{ cols11) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Set the colour palette}
-\StringTok{  }\KeywordTok{coord\_equal}\NormalTok{(}\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{34}\NormalTok{), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{36}\NormalTok{, }\DecValTok{{-}26}\NormalTok{), }\DataTypeTok{expand =} \DecValTok{0}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ south\_africa\_coast, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon, }\AttributeTok{y =}\NormalTok{ lat)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_raster}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sst, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ bins)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_polygon}\NormalTok{(}\AttributeTok{colour =} \StringTok{"black"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_path}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sa\_provinces, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\StringTok{"Temp. (°C)"}\NormalTok{, }\AttributeTok{values =}\NormalTok{ cols11) }\SpecialCharTok{+} \CommentTok{\# Set the colour palette}
+  \FunctionTok{coord\_equal}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{34}\NormalTok{), }\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{36}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{26}\NormalTok{), }\AttributeTok{expand =} \DecValTok{0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2425,21 +2420,21 @@ There's a colour palette that would make Jacques Cousteau swoon. When we set the
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ south\_africa\_coast, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_raster}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ sst, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ bins)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_polygon}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_path}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ sa\_provinces, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_tile}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ rast\_annual, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat, }\DataTypeTok{fill =}\NormalTok{ bins), }
-            \DataTypeTok{colour =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{\# The coastal temperature values}
-\StringTok{  }\KeywordTok{scale\_fill\_manual}\NormalTok{(}\StringTok{"Temp. (°C)"}\NormalTok{, }\DataTypeTok{values =}\NormalTok{ cols11) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{coord\_equal}\NormalTok{(}\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{34}\NormalTok{), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{36}\NormalTok{, }\DecValTok{{-}26}\NormalTok{), }\DataTypeTok{expand =} \DecValTok{0}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ south\_africa\_coast, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon, }\AttributeTok{y =}\NormalTok{ lat)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_raster}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sst, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ bins)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_polygon}\NormalTok{(}\AttributeTok{colour =} \StringTok{"black"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_path}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sa\_provinces, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tile}\NormalTok{(}\AttributeTok{data =}\NormalTok{ rast\_annual, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon, }\AttributeTok{y =}\NormalTok{ lat, }\AttributeTok{fill =}\NormalTok{ bins), }
+            \AttributeTok{colour =} \StringTok{"white"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# The coastal temperature values}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\StringTok{"Temp. (°C)"}\NormalTok{, }\AttributeTok{values =}\NormalTok{ cols11) }\SpecialCharTok{+}
+  \FunctionTok{coord\_equal}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{34}\NormalTok{), }\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{36}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{26}\NormalTok{), }\AttributeTok{expand =} \DecValTok{0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}
 \centering
 \includegraphics{08-mapping_files/figure-latex/map-raster-1.pdf}
-\caption{\label{fig:map-raster}Map of SOuth Africa showing \emph{in situ} temeperatures (°C) as pixels along the coast.}
+\caption{\label{fig:map-raster}Map of South Africa showing \emph{in situ} temeperatures (°C) as pixels along the coast.}
 \end{figure}
 
 \hypertarget{final-touches}{%
@@ -2449,22 +2444,22 @@ We used \texttt{geom\_tile()} instead of \texttt{geom\_rast()} to add the coasta
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{final\_map <{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ south\_africa\_coast, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_raster}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ sst, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ bins)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_polygon}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_path}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ sa\_provinces, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_tile}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ rast\_annual, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat, }\DataTypeTok{fill =}\NormalTok{ bins), }
-            \DataTypeTok{colour =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.1}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_fill\_manual}\NormalTok{(}\StringTok{"Temp. (°C)"}\NormalTok{, }\DataTypeTok{values =}\NormalTok{ cols11) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{coord\_equal}\NormalTok{(}\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{34}\NormalTok{), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{36}\NormalTok{, }\DecValTok{{-}26}\NormalTok{), }\DataTypeTok{expand =} \DecValTok{0}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_x\_continuous}\NormalTok{(}\DataTypeTok{position =} \StringTok{"top"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Put x axis labels on top of figure}
-\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.title =} \KeywordTok{element\_blank}\NormalTok{(), }\CommentTok{\# Remove the axis labels}
-        \DataTypeTok{legend.text =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{7}\NormalTok{), }\CommentTok{\# Change text size in legend}
-        \DataTypeTok{legend.title =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{7}\NormalTok{), }\CommentTok{\# Change legend title text size}
-        \DataTypeTok{legend.key.height =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.3}\NormalTok{, }\StringTok{"cm"}\NormalTok{), }\CommentTok{\# Change size of legend}
-        \DataTypeTok{legend.background =} \KeywordTok{element\_rect}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{), }\CommentTok{\# Add legend background}
-        \DataTypeTok{legend.justification =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{), }\CommentTok{\# Change position of legend}
-        \DataTypeTok{legend.position =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.55}\NormalTok{, }\FloatTok{0.4}\NormalTok{) }\CommentTok{\# Fine tune position of legend}
+\NormalTok{final\_map }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ south\_africa\_coast, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon, }\AttributeTok{y =}\NormalTok{ lat)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_raster}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sst, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ bins)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_polygon}\NormalTok{(}\AttributeTok{colour =} \StringTok{"black"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_path}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sa\_provinces, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tile}\NormalTok{(}\AttributeTok{data =}\NormalTok{ rast\_annual, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon, }\AttributeTok{y =}\NormalTok{ lat, }\AttributeTok{fill =}\NormalTok{ bins), }
+            \AttributeTok{colour =} \StringTok{"white"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\StringTok{"Temp. (°C)"}\NormalTok{, }\AttributeTok{values =}\NormalTok{ cols11) }\SpecialCharTok{+}
+  \FunctionTok{coord\_equal}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{34}\NormalTok{), }\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{36}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{26}\NormalTok{), }\AttributeTok{expand =} \DecValTok{0}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{position =} \StringTok{"top"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Put x axis labels on top of figure}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.title =} \FunctionTok{element\_blank}\NormalTok{(), }\CommentTok{\# Remove the axis labels}
+        \AttributeTok{legend.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{7}\NormalTok{), }\CommentTok{\# Change text size in legend}
+        \AttributeTok{legend.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{7}\NormalTok{), }\CommentTok{\# Change legend title text size}
+        \AttributeTok{legend.key.height =} \FunctionTok{unit}\NormalTok{(}\FloatTok{0.3}\NormalTok{, }\StringTok{"cm"}\NormalTok{), }\CommentTok{\# Change size of legend}
+        \AttributeTok{legend.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{colour =} \StringTok{"white"}\NormalTok{), }\CommentTok{\# Add legend background}
+        \AttributeTok{legend.justification =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{), }\CommentTok{\# Change position of legend}
+        \AttributeTok{legend.position =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.55}\NormalTok{, }\FloatTok{0.4}\NormalTok{) }\CommentTok{\# Fine tune position of legend}
 \NormalTok{        )}
 \NormalTok{final\_map}
 \end{Highlighting}
@@ -2476,11 +2471,11 @@ We used \texttt{geom\_tile()} instead of \texttt{geom\_rast()} to add the coasta
 \caption{\label{fig:map-final}The cleaned up map of South Africa. Resplendent with coastal and ocean temperatures (°C).}
 \end{figure}
 
-That is a very clean looking map so let's go ahead and save it on our computers
+That is a very clean looking map so let's go ahead and save it on our computers.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{plot =}\NormalTok{ final\_map, }\StringTok{"figures/map\_complete.pdf"}\NormalTok{, }\DataTypeTok{height =} \DecValTok{6}\NormalTok{, }\DataTypeTok{width =} \DecValTok{9}\NormalTok{)}
+\FunctionTok{ggsave}\NormalTok{(}\AttributeTok{plot =}\NormalTok{ final\_map, }\StringTok{"figures/map\_complete.pdf"}\NormalTok{, }\AttributeTok{height =} \DecValTok{6}\NormalTok{, }\AttributeTok{width =} \DecValTok{9}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2489,15 +2484,15 @@ That is a very clean looking map so let's go ahead and save it on our computers
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-R>    ggpubr  magrittr   forcats   stringr     dplyr     purrr     readr     tidyr 
-R>   "0.2.4"     "1.5"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0" 
-R>    tibble   ggplot2 tidyverse 
-R>   "2.1.3"   "3.2.1"   "1.3.0"
+R>    ggpubr   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
+R>   "0.4.0"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
+R>   ggplot2 tidyverse 
+R>   "3.3.3"   "1.3.0"
 \end{verbatim}
 
 \hypertarget{mapping_style}{%
@@ -2522,12 +2517,12 @@ If we have not yet loaded the \textbf{\texttt{tidyverse}} let's do so.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load libraries}
-\KeywordTok{library}\NormalTok{(tidyverse)}
-\KeywordTok{library}\NormalTok{(scales)}
-\KeywordTok{library}\NormalTok{(ggsn)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(scales)}
+\FunctionTok{library}\NormalTok{(ggsn)}
 
 \CommentTok{\# Load Africa map}
-\KeywordTok{load}\NormalTok{(}\StringTok{"data/africa\_map.RData"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/africa\_map.RData"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2538,9 +2533,9 @@ In order to access the default maps included with the \textbf{\texttt{tidyverse}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{borders}\NormalTok{() }\OperatorTok{+}\StringTok{ }\CommentTok{\# The global shape file}
-\StringTok{  }\KeywordTok{coord\_equal}\NormalTok{() }\CommentTok{\# Equal sizing for lon/lat }
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{borders}\NormalTok{() }\SpecialCharTok{+} \CommentTok{\# The global shape file}
+  \FunctionTok{coord\_equal}\NormalTok{() }\CommentTok{\# Equal sizing for lon/lat }
 \end{Highlighting}
 \end{Shaded}
 
@@ -2554,10 +2549,10 @@ Jikes! It's as simple as that to load a map of the whole planet. Usually we are 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{sa\_}\DecValTok{1}\NormalTok{ <{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{borders}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{coord\_equal}\NormalTok{(}\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{36}\NormalTok{), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{38}\NormalTok{, }\DecValTok{{-}22}\NormalTok{), }\DataTypeTok{expand =} \DecValTok{0}\NormalTok{) }\CommentTok{\# Force lon/lat extent}
-\NormalTok{sa\_}\DecValTok{1}
+\NormalTok{sa\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{borders}\NormalTok{(}\AttributeTok{fill =} \StringTok{"grey70"}\NormalTok{, }\AttributeTok{colour =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_equal}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{36}\NormalTok{), }\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{38}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{22}\NormalTok{), }\AttributeTok{expand =} \DecValTok{0}\NormalTok{) }\CommentTok{\# Force lon/lat extent}
+\NormalTok{sa\_1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2576,18 +2571,18 @@ A map is almost always going to need some labels and other visual cues. We saw i
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{sa\_}\DecValTok{2}\NormalTok{ <{-}}\StringTok{ }\NormalTok{sa\_}\DecValTok{1} \OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label =} \StringTok{"Atlantic}\CharTok{\textbackslash{}n}\StringTok{Ocean"}\NormalTok{, }
-           \DataTypeTok{x =} \FloatTok{15.1}\NormalTok{, }\DataTypeTok{y =} \FloatTok{{-}32.0}\NormalTok{, }
-           \DataTypeTok{size =} \FloatTok{5.0}\NormalTok{, }
-           \DataTypeTok{angle =} \DecValTok{30}\NormalTok{, }
-           \DataTypeTok{colour =} \StringTok{"navy"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label =} \StringTok{"Indian}\CharTok{\textbackslash{}n}\StringTok{Ocean"}\NormalTok{, }
-           \DataTypeTok{x =} \FloatTok{33.2}\NormalTok{, }\DataTypeTok{y =} \FloatTok{{-}34.2}\NormalTok{, }
-           \DataTypeTok{size =} \FloatTok{5.0}\NormalTok{, }
-           \DataTypeTok{angle =} \DecValTok{330}\NormalTok{, }
-           \DataTypeTok{colour =} \StringTok{"springgreen"}\NormalTok{)}
-\NormalTok{sa\_}\DecValTok{2}
+\NormalTok{sa\_2 }\OtherTok{\textless{}{-}}\NormalTok{ sa\_1 }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{label =} \StringTok{"Atlantic}\SpecialCharTok{\textbackslash{}n}\StringTok{Ocean"}\NormalTok{, }
+           \AttributeTok{x =} \FloatTok{15.1}\NormalTok{, }\AttributeTok{y =} \SpecialCharTok{{-}}\FloatTok{32.0}\NormalTok{, }
+           \AttributeTok{size =} \FloatTok{5.0}\NormalTok{, }
+           \AttributeTok{angle =} \DecValTok{30}\NormalTok{, }
+           \AttributeTok{colour =} \StringTok{"navy"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{label =} \StringTok{"Indian}\SpecialCharTok{\textbackslash{}n}\StringTok{Ocean"}\NormalTok{, }
+           \AttributeTok{x =} \FloatTok{33.2}\NormalTok{, }\AttributeTok{y =} \SpecialCharTok{{-}}\FloatTok{34.2}\NormalTok{, }
+           \AttributeTok{size =} \FloatTok{5.0}\NormalTok{, }
+           \AttributeTok{angle =} \DecValTok{330}\NormalTok{, }
+           \AttributeTok{colour =} \StringTok{"springgreen"}\NormalTok{)}
+\NormalTok{sa\_2}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2604,13 +2599,13 @@ With our fancy labels added, let's insert a scale bar next. There is no default 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{sa\_}\DecValTok{3}\NormalTok{ <{-}}\StringTok{ }\NormalTok{sa\_}\DecValTok{2} \OperatorTok{+}
-\StringTok{  }\CommentTok{\# scalebar(x.min = 22, x.max = 26, y.min = {-}36, y.max = {-}35, \# Set location of bar}
-\StringTok{  }\CommentTok{\#          dist = 200, height = 1, st.dist = 0.8, st.size = 4, \# Set particulars}
-\StringTok{  }\CommentTok{\#          transform = TRUE, model = "WGS84") + \# Set appearance}
-\StringTok{  }\KeywordTok{north}\NormalTok{(}\DataTypeTok{x.min =} \FloatTok{22.5}\NormalTok{, }\DataTypeTok{x.max =} \FloatTok{25.5}\NormalTok{, }\DataTypeTok{y.min =} \DecValTok{{-}33}\NormalTok{, }\DataTypeTok{y.max =} \DecValTok{{-}31}\NormalTok{, }\CommentTok{\# Set location of symbol}
-        \DataTypeTok{scale =} \FloatTok{1.2}\NormalTok{, }\DataTypeTok{symbol =} \DecValTok{16}\NormalTok{)}
-\NormalTok{sa\_}\DecValTok{3}
+\NormalTok{sa\_3 }\OtherTok{\textless{}{-}}\NormalTok{ sa\_2 }\SpecialCharTok{+}
+  \CommentTok{\# scalebar(x.min = 22, x.max = 26, y.min = {-}36, y.max = {-}35, \# Set location of bar}
+  \CommentTok{\#          dist = 200, height = 1, st.dist = 0.8, st.size = 4, \# Set particulars}
+  \CommentTok{\#          transform = TRUE, model = "WGS84") + \# Set appearance}
+  \FunctionTok{north}\NormalTok{(}\AttributeTok{x.min =} \FloatTok{22.5}\NormalTok{, }\AttributeTok{x.max =} \FloatTok{25.5}\NormalTok{, }\AttributeTok{y.min =} \SpecialCharTok{{-}}\DecValTok{33}\NormalTok{, }\AttributeTok{y.max =} \SpecialCharTok{{-}}\DecValTok{31}\NormalTok{, }\CommentTok{\# Set location of symbol}
+        \AttributeTok{scale =} \FloatTok{1.2}\NormalTok{, }\AttributeTok{symbol =} \DecValTok{16}\NormalTok{)}
+\NormalTok{sa\_3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2620,85 +2615,20 @@ With our fancy labels added, let's insert a scale bar next. There is no default 
 \caption{\label{fig:maps-scale}Map of southern Africa with labels and a scale bar.}
 \end{figure}
 
-\hypertarget{insetting}{%
-\section{Insetting}\label{insetting}}
-
-In order to inset a smaller map inside of a larger map we must first create the smaller map. We have already loaded just such a map of Africa so we will use that for this example.
+\hypertarget{session-inf}{%
+\section{Session inf}\label{session-inf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{africa\_map}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{center}\includegraphics{09-mapping_style_files/figure-latex/maps-mini-1} \end{center}
-
-And now to inset this map of Africa into our map of southern Africa we will need to learn how to create a `grob'. This is very simple and does not require any extra work on our part. Remember that \textbf{\texttt{ggplot2}} objects are different from normal objects (i.e.~dataframes), and that they have their own way of storing and accessing data. In order to convert any sort of thing into a format that ggplot understands we convert it into a grob, as shown below. Once converted, we may then plop it onto our figure/map wherever we please. Both of these steps are accomplished with the single function \texttt{annotation\_custom()}. This is also a good way to add logos or any other sort of image to a map/figure. You can really go completely bananas. It's even possible to add GIFs. Such happy. Much excite. Very wonderment.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{sa\_}\DecValTok{4}\NormalTok{ <{-}}\StringTok{ }\NormalTok{sa\_}\DecValTok{3} \OperatorTok{+}
-\StringTok{  }\KeywordTok{annotation\_custom}\NormalTok{(}\DataTypeTok{grob =} \KeywordTok{ggplotGrob}\NormalTok{(africa\_map),}
-                    \DataTypeTok{xmin =} \FloatTok{20.9}\NormalTok{, }\DataTypeTok{xmax =} \FloatTok{26.9}\NormalTok{,}
-                    \DataTypeTok{ymin =} \DecValTok{{-}30}\NormalTok{, }\DataTypeTok{ymax =} \DecValTok{{-}24}\NormalTok{)}
-\NormalTok{sa\_}\DecValTok{4}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{09-mapping_style_files/figure-latex/maps-inset-1.pdf}
-\caption{\label{fig:maps-inset}Map of southern Africa, with labels, scale bar, and an inset map of Africa.}
-\end{figure}
-
-\hypertarget{rounding-it-out}{%
-\section{Rounding it out}\label{rounding-it-out}}
-
-There are a lot of exciting things going on in our figure now. To round out our adventures in mapping let's tweak the lon/lat labels to a more prestigious convention. There are two ways to do this. One of which requires us to install the \textbf{\texttt{scales}} package. Don't worry, it's a small one!
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{sa\_final <{-}}\StringTok{ }\NormalTok{sa\_}\DecValTok{4} \OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_x\_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{seq}\NormalTok{(}\DecValTok{16}\NormalTok{, }\DecValTok{32}\NormalTok{, }\DecValTok{4}\NormalTok{),}
-                     \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"16°E"}\NormalTok{, }\StringTok{"20°E"}\NormalTok{, }\StringTok{"24°E"}\NormalTok{, }\StringTok{"28°E"}\NormalTok{, }\StringTok{"32°E"}\NormalTok{),}
-                     \DataTypeTok{position =} \StringTok{"bottom"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale\_y\_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{seq}\NormalTok{(}\OperatorTok{{-}}\DecValTok{36}\NormalTok{, }\DecValTok{{-}24}\NormalTok{, }\DecValTok{4}\NormalTok{),}
-                     \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"36.0°S"}\NormalTok{, }\StringTok{"32.0°S"}\NormalTok{, }\StringTok{"28.0°S"}\NormalTok{, }\StringTok{"24.0°S"}\NormalTok{),}
-                     \DataTypeTok{position =} \StringTok{"right"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =} \StringTok{""}\NormalTok{)}
-\NormalTok{sa\_final}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{09-mapping_style_files/figure-latex/maps-final-1.pdf}
-\caption{\label{fig:maps-final}The final map with all of the bells and whistles.}
-\end{figure}
-
-And lastly we save the fruits of our labours.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{plot =}\NormalTok{ sa\_final, }\DataTypeTok{filename =} \StringTok{"figures/southern\_africa\_final.pdf"}\NormalTok{, }
-       \DataTypeTok{height =} \DecValTok{6}\NormalTok{, }\DataTypeTok{width =} \DecValTok{8}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{session-info-7}{%
-\section{Session info}\label{session-info-7}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 R>      ggsn    scales   forcats   stringr     dplyr     purrr     readr     tidyr 
-R>   "0.5.0"   "1.1.0"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0" 
+R>   "0.5.0"   "1.1.1"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3" 
 R>    tibble   ggplot2 tidyverse 
-R>   "2.1.3"   "3.2.1"   "1.3.0"
+R>   "3.1.0"   "3.3.3"   "1.3.0"
 \end{verbatim}
 
 \hypertarget{mapping_google}{%
@@ -2728,11 +2658,11 @@ The package we will need for this tut is \textbf{\texttt{ggmap}}. It is a bit be
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load libraries}
-\KeywordTok{library}\NormalTok{(tidyverse)}
-\KeywordTok{library}\NormalTok{(ggmap)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(ggmap)}
 
 \CommentTok{\# Load data}
-\KeywordTok{load}\NormalTok{(}\StringTok{"data/cape\_point\_sites.RData"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/cape\_point\_sites.RData"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2747,8 +2677,8 @@ The \texttt{get\_map()} function relies on a healthy Internet connection to run.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cape\_point <{-}}\StringTok{ }\KeywordTok{get\_map}\NormalTok{(}\DataTypeTok{location =} \KeywordTok{c}\NormalTok{(}\DataTypeTok{lon =} \FloatTok{18.36519}\NormalTok{, }\DataTypeTok{lat =} \FloatTok{{-}34.2352581}\NormalTok{),}
-                        \DataTypeTok{zoom =} \DecValTok{10}\NormalTok{, }\DataTypeTok{maptype =} \StringTok{\textquotesingle{}satellite\textquotesingle{}}\NormalTok{)}
+\NormalTok{cape\_point }\OtherTok{\textless{}{-}} \FunctionTok{get\_map}\NormalTok{(}\AttributeTok{location =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lon =} \FloatTok{18.36519}\NormalTok{, }\AttributeTok{lat =} \SpecialCharTok{{-}}\FloatTok{34.2352581}\NormalTok{),}
+                        \AttributeTok{zoom =} \DecValTok{10}\NormalTok{, }\AttributeTok{maptype =} \StringTok{\textquotesingle{}satellite\textquotesingle{}}\NormalTok{)}
 \CommentTok{\# load("data/cape\_point.RData")}
 \end{Highlighting}
 \end{Shaded}
@@ -2759,11 +2689,11 @@ The second step in the process is to treat the Google data we downloaded as thou
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cp\_}\DecValTok{1}\NormalTok{ <{-}}\StringTok{ }\KeywordTok{ggmap}\NormalTok{(cape\_point) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ cape\_point\_sites, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon}\FloatTok{+0.002}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ lat}\FloatTok{{-}0.007}\NormalTok{), }
-             \DataTypeTok{colour =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{size =}  \FloatTok{2.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =} \StringTok{""}\NormalTok{)}
-\NormalTok{cp\_}\DecValTok{1}
+\NormalTok{cp\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ggmap}\NormalTok{(cape\_point) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{data =}\NormalTok{ cape\_point\_sites, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon}\FloatTok{+0.002}\NormalTok{, }\AttributeTok{y =}\NormalTok{ lat}\FloatTok{{-}0.007}\NormalTok{), }
+             \AttributeTok{colour =} \StringTok{"red"}\NormalTok{, }\AttributeTok{size =}  \FloatTok{2.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{""}\NormalTok{)}
+\NormalTok{cp\_1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2782,12 +2712,12 @@ The previous figure shows our sites along Cape Point, which is great, but which 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cp\_}\DecValTok{2}\NormalTok{ <{-}}\StringTok{ }\NormalTok{cp\_}\DecValTok{1} \OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_text}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ cape\_point\_sites, }\CommentTok{\# Choose dataframe}
-            \KeywordTok{aes}\NormalTok{(lon}\FloatTok{+0.002}\NormalTok{, lat}\FloatTok{{-}0.007}\NormalTok{, }\DataTypeTok{label =}\NormalTok{ site), }\CommentTok{\# Set aesthetics}
-            \DataTypeTok{hjust =} \FloatTok{1.15}\NormalTok{, }\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\CommentTok{\# Adjust vertical and horizontal}
-            \DataTypeTok{size =} \DecValTok{3}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{) }\CommentTok{\# Adjust appearance}
-\NormalTok{cp\_}\DecValTok{2}
+\NormalTok{cp\_2 }\OtherTok{\textless{}{-}}\NormalTok{ cp\_1 }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\AttributeTok{data =}\NormalTok{ cape\_point\_sites, }\CommentTok{\# Choose dataframe}
+            \FunctionTok{aes}\NormalTok{(lon}\FloatTok{+0.002}\NormalTok{, lat}\FloatTok{{-}0.007}\NormalTok{, }\AttributeTok{label =}\NormalTok{ site), }\CommentTok{\# Set aesthetics}
+            \AttributeTok{hjust =} \FloatTok{1.15}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\CommentTok{\# Adjust vertical and horizontal}
+            \AttributeTok{size =} \DecValTok{3}\NormalTok{, }\AttributeTok{colour =} \StringTok{"white"}\NormalTok{) }\CommentTok{\# Adjust appearance}
+\NormalTok{cp\_2}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2802,20 +2732,20 @@ The previous figure shows our sites along Cape Point, which is great, but which 
 
 Now that we have learned how to make conventional maps, as well as fancy Google maps, it is time for us to branch out once again at let our creative juices flow. Please group up as you see fit and create your own beautiful map of wherever you like. Bonus points for faceting in additional figures showing supplementary information. Feel free to use either conventional maps or the Google alternative. Same as yesterday, we will be walking the room to help with any issues that may arise.
 
-\hypertarget{session-info-8}{%
-\section{Session info}\label{session-info-8}}
+\hypertarget{session-info-7}{%
+\section{Session info}\label{session-info-7}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 R>     ggmap   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
-R>   "3.0.0"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0"   "2.1.3" 
+R>   "3.0.0"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
 R>   ggplot2 tidyverse 
-R>   "3.2.1"   "1.3.0"
+R>   "3.3.3"   "1.3.0"
 \end{verbatim}
 
 \hypertarget{tidy}{%
@@ -2846,7 +2776,7 @@ The \href{http://tidyverse.org}{Tidyverse} is a collection of R packages that ad
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2891,7 +2821,7 @@ In order to illustrate the meaning of this three part definition, we are going t
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{load}\NormalTok{(}\StringTok{"data/SACTN\_mangled.RData"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/SACTN\_mangled.RData"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2913,10 +2843,10 @@ We start off by looking at \texttt{SACTN1}. If these data look just like all of 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ SACTN1, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ date, }\DataTypeTok{y =}\NormalTok{ temp)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ site, }\DataTypeTok{group =} \KeywordTok{paste0}\NormalTok{(site, src))) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Temperature (°C)"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"Site"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme\_bw}\NormalTok{()}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ SACTN1, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ temp)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ site, }\AttributeTok{group =} \FunctionTok{paste0}\NormalTok{(site, src))) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"Temperature (°C)"}\NormalTok{, }\AttributeTok{colour =} \StringTok{"Site"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2941,8 +2871,8 @@ In \texttt{SACTN2} we can see that the \texttt{src} column has been removed and 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN2\_tidy <{-}}\StringTok{ }\NormalTok{SACTN2 }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{gather}\NormalTok{(DEA, KZNSB, SAWS, }\DataTypeTok{key =} \StringTok{"src"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"temp"}\NormalTok{)}
+\NormalTok{SACTN2\_tidy }\OtherTok{\textless{}{-}}\NormalTok{ SACTN2 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gather}\NormalTok{(DEA, KZNSB, SAWS, }\AttributeTok{key =} \StringTok{"src"}\NormalTok{, }\AttributeTok{value =} \StringTok{"temp"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2953,8 +2883,8 @@ Should ones data be too long, meaning when individual observations are spread ac
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN3\_tidy1 <{-}}\StringTok{ }\NormalTok{SACTN3 }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{spread}\NormalTok{(}\DataTypeTok{key =}\NormalTok{ var, }\DataTypeTok{value =}\NormalTok{ val)}
+\NormalTok{SACTN3\_tidy1 }\OtherTok{\textless{}{-}}\NormalTok{ SACTN3 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{spread}\NormalTok{(}\AttributeTok{key =}\NormalTok{ var, }\AttributeTok{value =}\NormalTok{ val)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2970,8 +2900,8 @@ If we look at \texttt{SACTN4a} we see that we no longer have a \texttt{site} and
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN4a\_tidy <{-}}\StringTok{ }\NormalTok{SACTN4a }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{separate}\NormalTok{(}\DataTypeTok{col =}\NormalTok{ index, }\DataTypeTok{into =} \KeywordTok{c}\NormalTok{(}\StringTok{"site"}\NormalTok{, }\StringTok{"src"}\NormalTok{), }\DataTypeTok{sep =} \StringTok{"/ "}\NormalTok{)}
+\NormalTok{SACTN4a\_tidy }\OtherTok{\textless{}{-}}\NormalTok{ SACTN4a }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate}\NormalTok{(}\AttributeTok{col =}\NormalTok{ index, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"site"}\NormalTok{, }\StringTok{"src"}\NormalTok{), }\AttributeTok{sep =} \StringTok{"/ "}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2982,11 +2912,11 @@ Although the \texttt{date} column represents an example of a date type (a kind o
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN\_tidy2 <{-}}\StringTok{ }\NormalTok{SACTN4a }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{separate}\NormalTok{(}\DataTypeTok{col =}\NormalTok{ index, }\DataTypeTok{into =} \KeywordTok{c}\NormalTok{(}\StringTok{"site"}\NormalTok{, }\StringTok{"src"}\NormalTok{), }\DataTypeTok{sep =} \StringTok{"/ "}\NormalTok{) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{day =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{day}\NormalTok{(date),}
-         \DataTypeTok{month =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{month}\NormalTok{(date),}
-         \DataTypeTok{year =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{year}\NormalTok{(date))}
+\NormalTok{SACTN\_tidy2 }\OtherTok{\textless{}{-}}\NormalTok{ SACTN4a }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate}\NormalTok{(}\AttributeTok{col =}\NormalTok{ index, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"site"}\NormalTok{, }\StringTok{"src"}\NormalTok{), }\AttributeTok{sep =} \StringTok{"/ "}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{day =}\NormalTok{ lubridate}\SpecialCharTok{::}\FunctionTok{day}\NormalTok{(date),}
+         \AttributeTok{month =}\NormalTok{ lubridate}\SpecialCharTok{::}\FunctionTok{month}\NormalTok{(date),}
+         \AttributeTok{year =}\NormalTok{ lubridate}\SpecialCharTok{::}\FunctionTok{year}\NormalTok{(date))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2999,8 +2929,8 @@ It is not uncommon that field/lab instruments split values across multiple colum
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN4b\_tidy <{-}}\StringTok{ }\NormalTok{SACTN4b }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{unite}\NormalTok{(year, month, day, }\DataTypeTok{col =} \StringTok{"date"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{"{-}"}\NormalTok{)}
+\NormalTok{SACTN4b\_tidy }\OtherTok{\textless{}{-}}\NormalTok{ SACTN4b }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{unite}\NormalTok{(year, month, day, }\AttributeTok{col =} \StringTok{"date"}\NormalTok{, }\AttributeTok{sep =} \StringTok{"{-}"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3011,7 +2941,7 @@ We will end this session with the concept of joining two different dataframes. R
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN4\_tidy <{-}}\StringTok{ }\KeywordTok{left\_join}\NormalTok{(SACTN4a\_tidy, SACTN4b\_tidy)}
+\NormalTok{SACTN4\_tidy }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{(SACTN4a\_tidy, SACTN4b\_tidy)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3023,7 +2953,7 @@ As we see above, if we let \texttt{left\_join()} do it's thing it will make a pl
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN4\_tidy <{-}}\StringTok{ }\KeywordTok{left\_join}\NormalTok{(SACTN4a\_tidy, SACTN4b\_tidy, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"site"}\NormalTok{, }\StringTok{"src"}\NormalTok{, }\StringTok{"date"}\NormalTok{))}
+\NormalTok{SACTN4\_tidy }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{(SACTN4a\_tidy, SACTN4b\_tidy, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"site"}\NormalTok{, }\StringTok{"src"}\NormalTok{, }\StringTok{"date"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3034,18 +2964,18 @@ There are also other kinds of joins: see for example also \texttt{inner\_join}, 
 
 At this point one may be wondering what the point of all of this is. Sure it's all well and good to see how to tidy one's data in R, but couldn't this be done more quickly and easily in MS Excel? Perhaps, yes, with a small dataset. But remember, (for many) the main reason we are learning R is to ensure that we are performing reproducible research. This means that every step in our workflow must be documented. And we accomplish this by writing R scripts, and part of the purpose of these scripts is to ensure that we capture all the steps taken to get the raw data into a neat and tidy format that can unambiguously be read into R in the format that will quicky get us up and running with our analyses and visualisations.
 
-\hypertarget{session-info-9}{%
-\section{Session info}\label{session-info-9}}
+\hypertarget{session-info-8}{%
+\section{Session info}\label{session-info-8}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 R>   forcats   stringr     dplyr     purrr     readr     tidyr    tibble   ggplot2 
-R>   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0"   "2.1.3"   "3.2.1" 
+R>   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0"   "3.3.3" 
 R> tidyverse 
 R>   "1.3.0"
 \end{verbatim}
@@ -3088,17 +3018,17 @@ We will use the full South African Coastal Temperature Network dataset for these
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load libraries}
-\KeywordTok{library}\NormalTok{(tidyverse)}
-\KeywordTok{library}\NormalTok{(lubridate)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(lubridate)}
 
 \CommentTok{\# Load the data from a .RData file}
-\KeywordTok{load}\NormalTok{(}\StringTok{"data/SACTNmonthly\_v4.0.RData"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/SACTNmonthly\_v4.0.RData"}\NormalTok{)}
 
 \CommentTok{\# Copy the data as a dataframe with a shorter name}
-\NormalTok{SACTN <{-}}\StringTok{ }\NormalTok{SACTNmonthly\_v4}\FloatTok{.0}
+\NormalTok{SACTN }\OtherTok{\textless{}{-}}\NormalTok{ SACTNmonthly\_v4}\FloatTok{.0}
 
 \CommentTok{\# Remove the original}
-\KeywordTok{rm}\NormalTok{(SACTNmonthly\_v4}\FloatTok{.0}\NormalTok{)}
+\FunctionTok{rm}\NormalTok{(SACTNmonthly\_v4}\FloatTok{.0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3127,13 +3057,16 @@ It is important here to note that \texttt{==} is for comparisons and \texttt{=} 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(}\DataTypeTok{site =} \StringTok{"Amanzimtoti"}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\AttributeTok{site =} \StringTok{"Amanzimtoti"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-R> Error: `site` (`site = "Amanzimtoti"`) must not be named, do you need `==`?
+R> Error: Problem with `filter()` input `..1`.
+R> x Input `..1` is named.
+R> i This usually means that you've used `=` instead of `==`.
+R> i Did you mean `site == "Amanzimtoti"`?
 \end{verbatim}
 
 \hypertarget{logical-operators}{%
@@ -3155,8 +3088,8 @@ When writing a line of tidy code we tend to use these logical operator to combin
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Pollock Beach"}\NormalTok{, }\KeywordTok{month}\NormalTok{(date) }\OperatorTok{==}\StringTok{ }\DecValTok{12} \OperatorTok{|}\StringTok{ }\KeywordTok{month}\NormalTok{(date) }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Pollock Beach"}\NormalTok{, }\FunctionTok{month}\NormalTok{(date) }\SpecialCharTok{==} \DecValTok{12} \SpecialCharTok{|} \FunctionTok{month}\NormalTok{(date) }\SpecialCharTok{==} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3183,8 +3116,8 @@ First up in our greatest hits reunion tour is the function \texttt{arrange()}. T
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{arrange}\NormalTok{(depth, temp)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(depth, temp)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3206,8 +3139,8 @@ If we would rather arrange our data in descending order, as is perhaps more ofte
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(temp))}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(temp))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3234,8 +3167,8 @@ When simply arranging data is not enough, and we need to remove rows of data we 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Humewood"}\NormalTok{, }\KeywordTok{year}\NormalTok{(date) }\OperatorTok{==}\StringTok{ }\DecValTok{1990}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Humewood"}\NormalTok{, }\FunctionTok{year}\NormalTok{(date) }\SpecialCharTok{==} \DecValTok{1990}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3257,8 +3190,8 @@ Remember to use the assignment operator (\texttt{\textless{}-}, keyboard shortcu
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{humewood\_90s <{-}}\StringTok{ }\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Humewood"}\NormalTok{, }\KeywordTok{year}\NormalTok{(date) }\OperatorTok{\%in\%}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{1990}\NormalTok{, }\DecValTok{1999}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{humewood\_90s }\OtherTok{\textless{}{-}}\NormalTok{ SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Humewood"}\NormalTok{, }\FunctionTok{year}\NormalTok{(date) }\SpecialCharTok{\%in\%} \FunctionTok{seq}\NormalTok{(}\DecValTok{1990}\NormalTok{, }\DecValTok{1999}\NormalTok{, }\DecValTok{1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3266,11 +3199,11 @@ It must be mentioned that \texttt{filter()} also automatically removes any rows 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Port Nolloth"}\NormalTok{, }\CommentTok{\# First give the site to filter}
-\NormalTok{         src }\OperatorTok{==}\StringTok{ "DEA"}\NormalTok{, }\CommentTok{\# Then specify the source}
-\NormalTok{         temp }\OperatorTok{<=}\StringTok{ }\DecValTok{11} \OperatorTok{|}\StringTok{ }\CommentTok{\# Temperatures at or below 11°C OR}
-\StringTok{           }\KeywordTok{is.na}\NormalTok{(temp) }\CommentTok{\# Include missing values}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Port Nolloth"}\NormalTok{, }\CommentTok{\# First give the site to filter}
+\NormalTok{         src }\SpecialCharTok{==} \StringTok{"DEA"}\NormalTok{, }\CommentTok{\# Then specify the source}
+\NormalTok{         temp }\SpecialCharTok{\textless{}=} \DecValTok{11} \SpecialCharTok{|} \CommentTok{\# Temperatures at or below 11°C OR}
+           \FunctionTok{is.na}\NormalTok{(temp) }\CommentTok{\# Include missing values}
 \NormalTok{         )}
 \end{Highlighting}
 \end{Shaded}
@@ -3283,22 +3216,22 @@ When one loads a dataset that contains more columns than will be useful or requi
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Select columns individually by name}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(site, src, date, temp)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(site, src, date, temp)}
 
 \CommentTok{\# Select all columns between site and temp like a sequence}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(site}\OperatorTok{:}\NormalTok{temp)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(site}\SpecialCharTok{:}\NormalTok{temp)}
 
 \CommentTok{\# Select all columns except those stated individually}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{{-}}\NormalTok{date, }\OperatorTok{{-}}\NormalTok{depth)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{date, }\SpecialCharTok{{-}}\NormalTok{depth)}
 
 \CommentTok{\# Select all columns except those within a given sequence}
   \CommentTok{\# Note that the \textquotesingle{}{-}\textquotesingle{} goes outside of a new set of brackets}
   \CommentTok{\# that are wrapped around the sequence of columns to remove}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{{-}}\NormalTok{(date}\OperatorTok{:}\NormalTok{depth))}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{(date}\SpecialCharTok{:}\NormalTok{depth))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3307,19 +3240,19 @@ We may also use \texttt{select()} to reorder the columns in a dataframe. In this
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Change up order by specifying individual columns}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(temp, src, date, site)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(temp, src, date, site)}
 
 \CommentTok{\# Use the everything function to grab all columns }
 \CommentTok{\# not already specified}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(type, src, }\KeywordTok{everything}\NormalTok{())}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(type, src, }\FunctionTok{everything}\NormalTok{())}
 
 \CommentTok{\# Or go bananas and use all of the rules at once}
   \CommentTok{\# Remember, when dealing with tidy data,}
   \CommentTok{\# everything may be interchanged}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(temp}\OperatorTok{:}\NormalTok{type, }\KeywordTok{everything}\NormalTok{(), }\OperatorTok{{-}}\NormalTok{src)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(temp}\SpecialCharTok{:}\NormalTok{type, }\FunctionTok{everything}\NormalTok{(), }\SpecialCharTok{{-}}\NormalTok{src)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3330,8 +3263,8 @@ When one is performing data analysis/statistics in R this is likely because it i
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{kelvin =}\NormalTok{ temp }\OperatorTok{+}\StringTok{ }\FloatTok{273.15}\NormalTok{)}\ErrorTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{kelvin =}\NormalTok{ temp }\SpecialCharTok{+} \FloatTok{273.15}\NormalTok{)}\ErrorTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3358,8 +3291,8 @@ Finally this brings us to the last tool for this section. To create new columns 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3372,11 +3305,11 @@ Note how the above chunk created a new dataframe. This is done because it cannot
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-            \DataTypeTok{sd\_temp =} \KeywordTok{sd}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-            \DataTypeTok{min\_temp =} \KeywordTok{min}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-            \DataTypeTok{max\_temp =} \KeywordTok{max}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+            \AttributeTok{sd\_temp =} \FunctionTok{sd}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+            \AttributeTok{min\_temp =} \FunctionTok{min}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+            \AttributeTok{max\_temp =} \FunctionTok{max}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{            )}
 \end{Highlighting}
 \end{Shaded}
@@ -3388,20 +3321,20 @@ R> 1  19.26955 3.682122 9.136322 28.34648
 
 Creating summaries of the \emph{entire} SACTN dataset in this way is not appropriate as we should not be combining time series from such different parts of the coast. In order to calculate summaries within variables we will need to learn how to use \texttt{group\_by()}, which in turn will first require us to learn how to chain multiple functions together within a pipe (\texttt{\%\textgreater{}\%}). That is how we will begin the next session for today. Finishing with several tips on how to make our data the tidiest that it may be.
 
-\hypertarget{session-info-10}{%
-\section{Session info}\label{session-info-10}}
+\hypertarget{session-info-9}{%
+\section{Session info}\label{session-info-9}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 R> lubridate   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
-R>   "1.7.4"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0"   "2.1.3" 
+R>  "1.7.10"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
 R>   ggplot2 tidyverse 
-R>   "3.2.1"   "1.3.0"
+R>   "3.3.3"   "1.3.0"
 \end{verbatim}
 
 \hypertarget{tidiest}{%
@@ -3424,17 +3357,17 @@ In the previous session we covered the five main transformation functions one wo
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load libraries}
-\KeywordTok{library}\NormalTok{(tidyverse)}
-\KeywordTok{library}\NormalTok{(lubridate)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(lubridate)}
 
 \CommentTok{\# load the data from a .RData file}
-\KeywordTok{load}\NormalTok{(}\StringTok{"data/SACTNmonthly\_v4.0.RData"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/SACTNmonthly\_v4.0.RData"}\NormalTok{)}
 
 \CommentTok{\# Copy the data as a dataframe with a shorter name}
-\NormalTok{SACTN <{-}}\StringTok{ }\NormalTok{SACTNmonthly\_v4}\FloatTok{.0}
+\NormalTok{SACTN }\OtherTok{\textless{}{-}}\NormalTok{ SACTNmonthly\_v4}\FloatTok{.0}
 
 \CommentTok{\# Remove the original}
-\KeywordTok{rm}\NormalTok{(SACTNmonthly\_v4}\FloatTok{.0}\NormalTok{)}
+\FunctionTok{rm}\NormalTok{(SACTNmonthly\_v4}\FloatTok{.0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3446,13 +3379,13 @@ With the SACTN dataset loaded we will now look at the effect that \texttt{group\
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Group by depth}
-\NormalTok{SACTN\_depth <{-}}\StringTok{ }\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(depth)}
+\NormalTok{SACTN\_depth }\OtherTok{\textless{}{-}}\NormalTok{ SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(depth)}
 
 \CommentTok{\# Calculate mean temperature by depth}
-\NormalTok{SACTN\_depth\_mean <{-}}\StringTok{ }\NormalTok{SACTN\_depth }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-  \DataTypeTok{count =} \KeywordTok{n}\NormalTok{()}
+\NormalTok{SACTN\_depth\_mean }\OtherTok{\textless{}{-}}\NormalTok{ SACTN\_depth }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{count =} \FunctionTok{n}\NormalTok{()}
 \NormalTok{)}
 
 \CommentTok{\# Visualise the results}
@@ -3484,9 +3417,9 @@ Let's visualise our newly created summary dataframe and see what we get.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Why does the relationship between depth and temperature look so odd?}
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ SACTN\_depth\_mean, }\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ depth, }\DataTypeTok{y =}\NormalTok{ mean\_temp)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =}\NormalTok{ count), }\DataTypeTok{alpha =} \DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ SACTN\_depth\_mean, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ depth, }\AttributeTok{y =}\NormalTok{ mean\_temp)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{size =}\NormalTok{ count), }\AttributeTok{alpha =} \DecValTok{1}\SpecialCharTok{/}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3504,16 +3437,16 @@ As one may have guessed by now, grouping is not confined to a single column. One
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Create groupings based on temperatures and depth}
-\NormalTok{SACTN\_temp\_group <{-}}\StringTok{ }\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(}\KeywordTok{round}\NormalTok{(temp), depth)}
+\NormalTok{SACTN\_temp\_group }\OtherTok{\textless{}{-}}\NormalTok{ SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(}\FunctionTok{round}\NormalTok{(temp), depth)}
 
 \CommentTok{\# Create groupings based on source and date}
-\NormalTok{SACTN\_src\_group <{-}}\StringTok{ }\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(src, date)}
+\NormalTok{SACTN\_src\_group }\OtherTok{\textless{}{-}}\NormalTok{ SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(src, date)}
 
 \CommentTok{\# Create groupings based on date and depth}
-\NormalTok{SACTN\_date\_group <{-}}\StringTok{ }\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(date, depth)}
+\NormalTok{SACTN\_date\_group }\OtherTok{\textless{}{-}}\NormalTok{ SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(date, depth)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3526,8 +3459,8 @@ Once we level up our \textbf{\texttt{tidyverse}} skills we will routinely be gro
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN\_ungroup <{-}}\StringTok{ }\NormalTok{SACTN\_date\_group }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{ungroup}\NormalTok{()}
+\NormalTok{SACTN\_ungroup }\OtherTok{\textless{}{-}}\NormalTok{ SACTN\_date\_group }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ungroup}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3538,10 +3471,10 @@ This now brings us to the last major concept we need to become confident with fo
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN\_depth\_mean\_}\DecValTok{2}\NormalTok{ <{-}}\StringTok{ }\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Choose a base dataframe}
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(depth) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Group by thedepth column}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{\# Calculate means}
-  \DataTypeTok{count =} \KeywordTok{n}\NormalTok{() }\CommentTok{\# Count observations}
+\NormalTok{SACTN\_depth\_mean\_2 }\OtherTok{\textless{}{-}}\NormalTok{ SACTN }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Choose a base dataframe}
+  \FunctionTok{group\_by}\NormalTok{(depth) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Group by thedepth column}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\CommentTok{\# Calculate means}
+  \AttributeTok{count =} \FunctionTok{n}\NormalTok{() }\CommentTok{\# Count observations}
 \NormalTok{) }\CommentTok{\# Safety measure}
 \end{Highlighting}
 \end{Shaded}
@@ -3567,9 +3500,9 @@ We can do some rather imaginative things when we combine all of these tools toge
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN\_}\DecValTok{30}\NormalTok{\_years <{-}}\StringTok{ }\NormalTok{SACTN }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, src) }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(}\KeywordTok{n}\NormalTok{() }\OperatorTok{>}\StringTok{ }\DecValTok{360}\NormalTok{)}
+\NormalTok{SACTN\_30\_years }\OtherTok{\textless{}{-}}\NormalTok{ SACTN }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(site, src) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\FunctionTok{n}\NormalTok{() }\SpecialCharTok{\textgreater{}} \DecValTok{360}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3577,11 +3510,11 @@ Or what if we wanted to calculate anomaly data for each site?
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN\_anom <{-}}\StringTok{ }\NormalTok{SACTN }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, src) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{anom =}\NormalTok{ temp }\OperatorTok{{-}}\StringTok{ }\KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =}\NormalTok{ T)) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(site}\OperatorTok{:}\NormalTok{date, anom, depth, type) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{ungroup}\NormalTok{()}
+\NormalTok{SACTN\_anom }\OtherTok{\textless{}{-}}\NormalTok{ SACTN }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(site, src) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{anom =}\NormalTok{ temp }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =}\NormalTok{ T)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(site}\SpecialCharTok{:}\NormalTok{date, anom, depth, type) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ungroup}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3589,11 +3522,11 @@ Now, let's select only two sites and calculate their mean and standard deviation
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Paternoster"} \OperatorTok{|}\StringTok{ }\NormalTok{site }\OperatorTok{==}\StringTok{ "Oudekraal"}\NormalTok{) }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, src) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
-            \DataTypeTok{sd\_temp =} \KeywordTok{sd}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Paternoster"} \SpecialCharTok{|}\NormalTok{ site }\SpecialCharTok{==} \StringTok{"Oudekraal"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(site, src) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }
+            \AttributeTok{sd\_temp =} \FunctionTok{sd}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3614,16 +3547,18 @@ We learned in the previous session that one should avoid using comparison operat
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Paternoster"} \OperatorTok{|}\StringTok{ "Oudekraal"}\NormalTok{) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# This line has been changed/shortened}
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, src) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
-            \DataTypeTok{sd\_temp =} \KeywordTok{sd}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Paternoster"} \SpecialCharTok{|} \StringTok{"Oudekraal"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# This line has been changed/shortened}
+  \FunctionTok{group\_by}\NormalTok{(site, src) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }
+            \AttributeTok{sd\_temp =} \FunctionTok{sd}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-R> Error in site == "Paternoster" | "Oudekraal": operations are possible only for numeric, logical or complex types
+R> Error: Problem with `filter()` input `..1`.
+R> x operations are possible only for numeric, logical or complex types
+R> i Input `..1` is `site == "Paternoster" | "Oudekraal"`.
 \end{verbatim}
 
 Oh no, we broke it! This is a common error while learning to write code so do try to keep this rule in mind as it can cause a lot of headaches. An easy way to spot this problem is if ones line of code has more logical operators than comparison operators you're probably going to have a bad time. This is doubly unfortunate as we would need to write less code if this were not so. Happily, there is a shortcut for just this problem, \texttt{\%in\%}. Whenever we want to use operators to filter by more than two things, it is most convenient to create an object that contains the names or numbers that we want to filter by. We then replace our comparison and logical operators with that one simple symbol (\texttt{\%in\%}).
@@ -3631,14 +3566,14 @@ Oh no, we broke it! This is a common error while learning to write code so do tr
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# First create a character vector containing the desired sites}
-\NormalTok{selected\_sites <{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Paternoster"}\NormalTok{, }\StringTok{"Oudekraal"}\NormalTok{, }\StringTok{"Muizenberg"}\NormalTok{, }\StringTok{"Humewood"}\NormalTok{)}
+\NormalTok{selected\_sites }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Paternoster"}\NormalTok{, }\StringTok{"Oudekraal"}\NormalTok{, }\StringTok{"Muizenberg"}\NormalTok{, }\StringTok{"Humewood"}\NormalTok{)}
 
 \CommentTok{\# Then calculate the statistics}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{selected\_sites) }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, src) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
-            \DataTypeTok{sd\_temp =} \KeywordTok{sd}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{\%in\%}\NormalTok{ selected\_sites) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(site, src) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }
+            \AttributeTok{sd\_temp =} \FunctionTok{sd}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3658,11 +3593,11 @@ The \texttt{\%in\%} operator can be a very useful shortcut, but sometime we cann
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Port Nolloth"}\NormalTok{, temp }\OperatorTok{>}\StringTok{ }\DecValTok{10}\NormalTok{, temp }\OperatorTok{<}\StringTok{ }\DecValTok{15}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Port Nolloth"}\NormalTok{, temp }\SpecialCharTok{\textgreater{}} \DecValTok{10}\NormalTok{, temp }\SpecialCharTok{\textless{}} \DecValTok{15}\NormalTok{)}
 
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{==}\StringTok{ "Port Nolloth"}\NormalTok{, }\OperatorTok{!}\NormalTok{(temp }\OperatorTok{<=}\StringTok{ }\DecValTok{10} \OperatorTok{|}\StringTok{ }\NormalTok{temp  }\OperatorTok{>=}\StringTok{ }\DecValTok{15}\NormalTok{))}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{==} \StringTok{"Port Nolloth"}\NormalTok{, }\SpecialCharTok{!}\NormalTok{(temp }\SpecialCharTok{\textless{}=} \DecValTok{10} \SpecialCharTok{|}\NormalTok{ temp  }\SpecialCharTok{\textgreater{}=} \DecValTok{15}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3678,22 +3613,22 @@ to the plus sign (\texttt{+}). There are currently efforts to address this incon
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Choose starting dataframe}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(site }\OperatorTok{\%in\%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Bordjies"}\NormalTok{, }\StringTok{"Tsitsikamma"}\NormalTok{, }\StringTok{"Humewood"}\NormalTok{, }\StringTok{"Durban"}\NormalTok{)) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Select sites}
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{{-}}\NormalTok{depth, }\OperatorTok{{-}}\NormalTok{type) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Remove depth and type columns}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{month =} \KeywordTok{month}\NormalTok{(date), }\CommentTok{\# Create month column}
-         \DataTypeTok{index =} \KeywordTok{paste}\NormalTok{(site, src, }\DataTypeTok{sep =} \StringTok{"/ "}\NormalTok{)) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Create individual site column}
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(index, month) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Group by individual sites and months}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{\# Calculate mean temperature}
-            \DataTypeTok{sd\_temp =} \KeywordTok{sd}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Calculate standard deviation}
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ month, }\DataTypeTok{y =}\NormalTok{ mean\_temp)) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Begin with ggplot, switch from \textquotesingle{}\%>\%\textquotesingle{} to \textquotesingle{}+\textquotesingle{}}
-\StringTok{  }\KeywordTok{geom\_ribbon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin =}\NormalTok{ mean\_temp }\OperatorTok{{-}}\StringTok{ }\NormalTok{sd\_temp, }\DataTypeTok{ymax =}\NormalTok{ mean\_temp }\OperatorTok{+}\StringTok{ }\NormalTok{sd\_temp), }
-              \DataTypeTok{fill =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Create a ribbon}
-\StringTok{  }\KeywordTok{geom\_line}\NormalTok{(}\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.3}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Create lines within ribbon}
-\StringTok{  }\KeywordTok{facet\_wrap}\NormalTok{(}\OperatorTok{\textasciitilde{}}\NormalTok{index) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Facet by individual sites}
-\StringTok{  }\KeywordTok{scale\_x\_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{seq}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Control x axis ticks}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Month"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Temperature (°C)"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Change labels}
-\StringTok{  }\KeywordTok{theme\_dark}\NormalTok{() }\CommentTok{\# Set theme}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Choose starting dataframe}
+  \FunctionTok{filter}\NormalTok{(site }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Bordjies"}\NormalTok{, }\StringTok{"Tsitsikamma"}\NormalTok{, }\StringTok{"Humewood"}\NormalTok{, }\StringTok{"Durban"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Select sites}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{depth, }\SpecialCharTok{{-}}\NormalTok{type) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Remove depth and type columns}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{month =} \FunctionTok{month}\NormalTok{(date), }\CommentTok{\# Create month column}
+         \AttributeTok{index =} \FunctionTok{paste}\NormalTok{(site, src, }\AttributeTok{sep =} \StringTok{"/ "}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Create individual site column}
+  \FunctionTok{group\_by}\NormalTok{(index, month) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Group by individual sites and months}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\CommentTok{\# Calculate mean temperature}
+            \AttributeTok{sd\_temp =} \FunctionTok{sd}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Calculate standard deviation}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ month, }\AttributeTok{y =}\NormalTok{ mean\_temp)) }\SpecialCharTok{+} \CommentTok{\# Begin with ggplot, switch from \textquotesingle{}\%\textgreater{}\%\textquotesingle{} to \textquotesingle{}+\textquotesingle{}}
+  \FunctionTok{geom\_ribbon}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ mean\_temp }\SpecialCharTok{{-}}\NormalTok{ sd\_temp, }\AttributeTok{ymax =}\NormalTok{ mean\_temp }\SpecialCharTok{+}\NormalTok{ sd\_temp), }
+              \AttributeTok{fill =} \StringTok{"black"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Create a ribbon}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.3}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Create lines within ribbon}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{index) }\SpecialCharTok{+} \CommentTok{\# Facet by individual sites}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{)) }\SpecialCharTok{+} \CommentTok{\# Control x axis ticks}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Month"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Temperature (°C)"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Change labels}
+  \FunctionTok{theme\_dark}\NormalTok{() }\CommentTok{\# Set theme}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3715,8 +3650,8 @@ We have seen that we select columns in a dataframe with \texttt{select()}, but i
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{source =}\NormalTok{ src)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{source =}\NormalTok{ src)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3741,8 +3676,8 @@ If for whatever reason one wanted to create a new variable (column), as one woul
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{transmute}\NormalTok{(}\DataTypeTok{kelvin =}\NormalTok{ temp }\OperatorTok{+}\StringTok{ }\FloatTok{273.15}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{transmute}\NormalTok{(}\AttributeTok{kelvin =}\NormalTok{ temp }\SpecialCharTok{+} \FloatTok{273.15}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3755,9 +3690,9 @@ This makes a bit more sense when paired with \texttt{group\_by()} as it will pul
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, src) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{transmute}\NormalTok{(}\DataTypeTok{kelvin =}\NormalTok{ temp }\OperatorTok{+}\StringTok{ }\FloatTok{273.15}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(site, src) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{transmute}\NormalTok{(}\AttributeTok{kelvin =}\NormalTok{ temp }\SpecialCharTok{+} \FloatTok{273.15}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3785,19 +3720,19 @@ We have already seen this function sneak it's way into a few of the code chunks 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ SACTN\_n <{-}}\StringTok{ }\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, src) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{round}\NormalTok{(}\KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =}\NormalTok{ T))) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{arrange}\NormalTok{(mean\_temp) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(mean\_temp) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{unique}\NormalTok{()}
+\NormalTok{ SACTN\_n }\OtherTok{\textless{}{-}}\NormalTok{ SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(site, src) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =}\NormalTok{ T))) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(mean\_temp) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(mean\_temp) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{unique}\NormalTok{()}
 
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ SACTN\_n, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(SACTN\_n), }\DataTypeTok{y =}\NormalTok{ mean\_temp)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Temperature (°C)"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element\_blank}\NormalTok{(), }
-        \DataTypeTok{axis.ticks.x =} \KeywordTok{element\_blank}\NormalTok{())}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ SACTN\_n, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(SACTN\_n), }\AttributeTok{y =}\NormalTok{ mean\_temp)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"Temperature (°C)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_blank}\NormalTok{(), }
+        \AttributeTok{axis.ticks.x =} \FunctionTok{element\_blank}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3811,19 +3746,19 @@ This looks like a pretty linear distribution of temperatures within the SACTN da
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ SACTN\_n <{-}}\StringTok{ }\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, src) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{round}\NormalTok{(}\KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =}\NormalTok{ T))) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(mean\_temp) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(mean\_temp) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{count =} \KeywordTok{n}\NormalTok{())}
+\NormalTok{ SACTN\_n }\OtherTok{\textless{}{-}}\NormalTok{ SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(site, src) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =}\NormalTok{ T))) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(mean\_temp) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(mean\_temp) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{())}
 
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ SACTN\_n, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(SACTN\_n), }\DataTypeTok{y =}\NormalTok{ mean\_temp)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =}\NormalTok{ count)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Temperature (°C)"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element\_blank}\NormalTok{(), }
-        \DataTypeTok{axis.ticks.x =} \KeywordTok{element\_blank}\NormalTok{())}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ SACTN\_n, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(SACTN\_n), }\AttributeTok{y =}\NormalTok{ mean\_temp)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{size =}\NormalTok{ count)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"Temperature (°C)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_blank}\NormalTok{(), }
+        \AttributeTok{axis.ticks.x =} \FunctionTok{element\_blank}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3837,14 +3772,14 @@ We see now when we include the count (\texttt{n}) of the different mean temperat
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, src) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{round}\NormalTok{(}\KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =}\NormalTok{ T))}
-\NormalTok{            ) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ mean\_temp)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom\_density}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"seagreen"}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.6}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Temperature (°C)"}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(site, src) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =}\NormalTok{ T))}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ mean\_temp)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{fill =} \StringTok{"seagreen"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.6}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Temperature (°C)"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3862,20 +3797,20 @@ If one wants to select only specific rows of a dataframe, rather than using some
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Slice a seqeunce of rows}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{slice}\NormalTok{(}\DecValTok{10010}\OperatorTok{:}\DecValTok{10020}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{slice}\NormalTok{(}\DecValTok{10010}\SpecialCharTok{:}\DecValTok{10020}\NormalTok{)}
 
 \CommentTok{\# Slice specific rows}
-\NormalTok{SACTN }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{slice}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{24}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{400}\NormalTok{))}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{slice}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{24}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{400}\NormalTok{))}
 
 \CommentTok{\# Slice all rows except these}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{slice}\NormalTok{(}\OperatorTok{{-}}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{4}\NormalTok{)))}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{slice}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{4}\NormalTok{)))}
 
 \CommentTok{\# Slice all rows except a sequence}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{slice}\NormalTok{(}\OperatorTok{{-}}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{1000}\NormalTok{))}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{slice}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3884,12 +3819,12 @@ It is discouraged to use slice to remove or select specific rows of data as this
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# The top 5 variable sites as measured by SD}
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, src) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{sd\_temp =} \KeywordTok{sd}\NormalTok{(temp, }\DataTypeTok{na.rm =}\NormalTok{ T)) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(sd\_temp)) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{slice}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(site, src) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{sd\_temp =} \FunctionTok{sd}\NormalTok{(temp, }\AttributeTok{na.rm =}\NormalTok{ T)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(sd\_temp)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3911,13 +3846,13 @@ There is a near endless sea of possibilities when one starts to become comfortab
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{SACTN }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{na.omit}\NormalTok{() }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(src) }\OperatorTok{\%>\%}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{count =} \KeywordTok{n}\NormalTok{(), }
-            \DataTypeTok{count\_15 =} \KeywordTok{sum}\NormalTok{(temp }\OperatorTok{>}\StringTok{ }\DecValTok{15}\NormalTok{)) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{prop\_15 =}\NormalTok{ count\_}\DecValTok{15}\OperatorTok{/}\NormalTok{count) }\OperatorTok{\%>\%}\StringTok{ }
-\StringTok{  }\KeywordTok{arrange}\NormalTok{(prop\_}\DecValTok{15}\NormalTok{)}
+\NormalTok{SACTN }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{na.omit}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(src) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{(), }
+            \AttributeTok{count\_15 =} \FunctionTok{sum}\NormalTok{(temp }\SpecialCharTok{\textgreater{}} \DecValTok{15}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prop\_15 =}\NormalTok{ count\_15}\SpecialCharTok{/}\NormalTok{count) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(prop\_15)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3941,36 +3876,36 @@ Remember the spreadsheet example from the first day of the R workshop? Here it i
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{read\_csv}\NormalTok{(}\StringTok{"data/SACTN\_data.csv"}\NormalTok{) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Load the SACTN Day 1 data}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{month =} \KeywordTok{month}\NormalTok{(date)) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Then create a month abbreviation column}
-\StringTok{  }\KeywordTok{group\_by}\NormalTok{(site, month) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# Then group by sites and months}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean\_temp =} \KeywordTok{mean}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }\CommentTok{\# Lastly calculate the mean}
-            \DataTypeTok{sd\_temp =} \KeywordTok{sd}\NormalTok{(temp, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)) }\OperatorTok{\%>\%}\StringTok{ }\CommentTok{\# and the SD}
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ month, }\DataTypeTok{y =}\NormalTok{ mean\_temp)) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Begin ggplot}
-\StringTok{  }\KeywordTok{geom\_ribbon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin =}\NormalTok{ mean\_temp }\OperatorTok{{-}}\StringTok{ }\NormalTok{sd\_temp, }\DataTypeTok{ymax =}\NormalTok{ mean\_temp }\OperatorTok{+}\StringTok{ }\NormalTok{sd\_temp), }
-              \DataTypeTok{fill =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Create a ribbon}
-\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ site)) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Create dots}
-\StringTok{  }\KeywordTok{geom\_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ site, }\DataTypeTok{group =}\NormalTok{ site)) }\OperatorTok{+}\StringTok{ }\CommentTok{\# Create lines}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Temperature (°C)"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"Site"}\NormalTok{) }\CommentTok{\# Change labels}
+\FunctionTok{read\_csv}\NormalTok{(}\StringTok{"data/SACTN\_data.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Load the SACTN Day 1 data}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{month =} \FunctionTok{month}\NormalTok{(date)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Then create a month abbreviation column}
+  \FunctionTok{group\_by}\NormalTok{(site, month) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Then group by sites and months}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_temp =} \FunctionTok{mean}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\CommentTok{\# Lastly calculate the mean}
+            \AttributeTok{sd\_temp =} \FunctionTok{sd}\NormalTok{(temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# and the SD}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ month, }\AttributeTok{y =}\NormalTok{ mean\_temp)) }\SpecialCharTok{+} \CommentTok{\# Begin ggplot}
+  \FunctionTok{geom\_ribbon}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ mean\_temp }\SpecialCharTok{{-}}\NormalTok{ sd\_temp, }\AttributeTok{ymax =}\NormalTok{ mean\_temp }\SpecialCharTok{+}\NormalTok{ sd\_temp), }
+              \AttributeTok{fill =} \StringTok{"black"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Create a ribbon}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ site)) }\SpecialCharTok{+} \CommentTok{\# Create dots}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ site, }\AttributeTok{group =}\NormalTok{ site)) }\SpecialCharTok{+} \CommentTok{\# Create lines}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"Temperature (°C)"}\NormalTok{, }\AttributeTok{colour =} \StringTok{"Site"}\NormalTok{) }\CommentTok{\# Change labels}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{13-tidiest_files/figure-latex/tidiest-new-age-1.pdf}
 
-\hypertarget{session-info-11}{%
-\section{Session info}\label{session-info-11}}
+\hypertarget{session-info-10}{%
+\section{Session info}\label{session-info-10}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 R> lubridate   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
-R>   "1.7.4"   "0.4.0"   "1.4.0"   "0.8.3"   "0.3.3"   "1.3.1"   "1.0.0"   "2.1.3" 
+R>  "1.7.10"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
 R>   ggplot2 tidyverse 
-R>   "3.2.1"   "1.3.0"
+R>   "3.3.3"   "1.3.0"
 \end{verbatim}
 
 \hypertarget{recap}{%
@@ -4024,12 +3959,12 @@ For further information or inquiries about additional training please contact Ro
 
 For the rest of today we will now open the floor to questions and suggestions that we may work through as a group.
 
-\hypertarget{session-info-12}{%
-\section{Session info}\label{session-info-12}}
+\hypertarget{session-info-11}{%
+\section{Session info}\label{session-info-11}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{installed.packages}\NormalTok{()[}\KeywordTok{names}\NormalTok{(}\KeywordTok{sessionInfo}\NormalTok{()}\OperatorTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
+\FunctionTok{installed.packages}\NormalTok{()[}\FunctionTok{names}\NormalTok{(}\FunctionTok{sessionInfo}\NormalTok{()}\SpecialCharTok{$}\NormalTok{otherPkgs), }\StringTok{"Version"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 

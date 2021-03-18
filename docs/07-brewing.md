@@ -169,7 +169,7 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 
 ```
 R>      boot   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
-R>  "1.3-26"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
+R>  "1.3-27"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
 R>   ggplot2 tidyverse 
 R>   "3.3.3"   "1.3.0"
 ```

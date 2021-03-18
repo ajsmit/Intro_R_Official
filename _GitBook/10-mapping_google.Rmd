@@ -47,7 +47,7 @@ cape_point <- get_map(location = c(lon = 18.36519, lat = -34.2352581),
 # load("data/cape_point.RData")
 ```
 ```{r ggmap-cp-ghost, echo=FALSE}
-load("data/cape_point.RData")
+load("data/cape_point.Rdata")
 ```
 
 If we look in the environment panel in the top right corner, what do we see? What do we think the code above is doing?

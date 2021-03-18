@@ -1,8 +1,5 @@
-\usepackage{booktabs}
-
 \usepackage[a4paper,text={16.5cm,25.2cm},centering,margin=2.6cm]{geometry}
-% \usepackage[left=1.0in,top=1.0in,right=1.0in,bottom=1.0in]{geometry}
-\usepackage{hyperref,amsmath,amssymb,bm,url,enumitem,dcolumn,upquote,framed,alltt,textgreek,xfrac,fixltx2e}
+\usepackage{hyperref,amsmath,amssymb,bm,url,enumitem,dcolumn,upquote,framed,alltt,textgreek,xfrac}
 \usepackage[australian]{babel}
 \usepackage[compact,small]{titlesec}
 \usepackage{xcolor}
@@ -10,10 +7,11 @@
 \usepackage{ifxetex}
 \ifxetex
  \usepackage{fontspec}
- \defaultfontfeatures{Ligatures=TeX} % To support LaTeX quoting style
  \defaultfontfeatures{Ligatures=TeX}
- \setmainfont{Calibri}
- \setsansfont[Scale=MatchLowercase]{Calibri}
+ \defaultfontfeatures{Ligatures=TeX}
+ % \setmainfont{Gentium Basic}
+ \setmainfont{TeX Gyre Schola}
+ \setsansfont[Scale=MatchLowercase]{TeX Gyre Schola}
  \setmonofont[Scale=0.75,Color=blue]{Fira Code}
 \else
   \usepackage[T1]{fontenc}
@@ -24,6 +22,7 @@
 
 % place after fonts; even better typesetting for improved readability:
 % \graphicspath{ {figure/} }
+\usepackage{booktabs}
 \usepackage{tabularx} % for 'tabularx' environment and 'X' column type
 \usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
 \usepackage{siunitx}

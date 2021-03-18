@@ -32,10 +32,10 @@ library(tidyverse)
 library(ggpubr)
 
 # Load data
-load("data/south_africa_coast.RData")
+load("data/south_africa_coast.Rdata")
 load("data/sa_provinces.RData")
-load("data/rast_annual.RData")
-load("data/MUR.RData")
+load("data/rast_annual.Rdata")
+load("data/MUR.Rdata")
 load("data/MUR_low_res.RData")
 
 # Choose which SST product you would like to use
@@ -43,7 +43,7 @@ sst <- MUR_low_res
 # OR
 sst <- MUR
 
-# The colour pallette we will use for ocean temperature
+# The colour palette we will use for ocean temperature
 cols11 <- c("#004dcd", "#0068db", "#007ddb", "#008dcf", "#009bbc",
             "#00a7a9", "#1bb298", "#6cba8f", "#9ac290", "#bec99a")
 ```
@@ -156,7 +156,7 @@ ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
   coord_equal(xlim = c(15, 34), ylim = c(-36, -26), expand = 0)
 ```
 
-![(\#fig:map-raster)Map of SOuth Africa showing *in situ* temeperatures (°C) as pixels along the coast.](08-mapping_files/figure-latex/map-raster-1.pdf) 
+![(\#fig:map-raster)Map of South Africa showing *in situ* temeperatures (°C) as pixels along the coast.](08-mapping_files/figure-latex/map-raster-1.pdf) 
 
 ## Final touches
 
