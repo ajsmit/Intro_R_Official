@@ -120,8 +120,8 @@
  \defaultfontfeatures{Ligatures=TeX}
  \defaultfontfeatures{Ligatures=TeX}
  % \setmainfont{Gentium Basic}
- \setmainfont{TeX Gyre Schola}
- \setsansfont[Scale=MatchLowercase]{TeX Gyre Schola}
+ \setmainfont{SF Pro Text}
+ \setsansfont[Scale=MatchLowercase]{SF Pro Text}
  \setmonofont[Scale=0.75,Color=blue]{Fira Code}
 \else
   \usepackage[T1]{fontenc}
@@ -163,7 +163,7 @@
 \makeatother
 \subtitle{UWC BCB Honours 2021}
 \author{AJ Smit, Amieroh Abrahams \& Robert W Schlegel}
-\date{2021-03-14}
+\date{2021-03-18}
 
 \begin{document}
 \maketitle
@@ -507,8 +507,8 @@ Early on, develop the habit of unambiguous and consistent style and formatting w
 \end{Shaded}
 
 \begin{verbatim}
-R>  [1]   0.2532359 -15.3737447  -8.4908818  16.7060693   1.3620953  10.7214376
-R>  [7]  16.6178063  20.0209822  23.9696270   1.7923426
+R>  [1]  17.608335   8.632134  -3.435689 -14.807211  10.495741  19.990815
+R>  [7]  -7.958718  -8.055199 -22.779582   7.095284
 \end{verbatim}
 
 Consult these resources for more about R code style :
@@ -603,7 +603,7 @@ A very nifty way of managing workflow in RStudio is through the built-in functio
 \hypertarget{installing-packages}{%
 \section{Installing packages}\label{installing-packages}}
 
-The most common functions used in R are contained within the \textbf{\texttt{base}} package; this makes R useful `out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the \href{https://cran.r-project.org/web/packages/}{CRAN website}. There are currently (\texttt{2021-03-14}) \texttt{17305} packages available for R!
+The most common functions used in R are contained within the \textbf{\texttt{base}} package; this makes R useful `out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the \href{https://cran.r-project.org/web/packages/}{CRAN website}. There are currently (\texttt{2021-03-18}) \texttt{17340} packages available for R!
 
 If the thought of searching for and finding R packages is daunting, a good place to start is the \href{http://cran.r-project.org/web/views/}{R Task View} page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.
 
@@ -2632,7 +2632,7 @@ R>   "3.1.0"   "3.3.3"   "1.3.0"
 \end{verbatim}
 
 \hypertarget{mapping_google}{%
-\chapter{Mapping with Google}\label{mapping_google}}
+\chapter{Mapping with OpenStreetMap}\label{mapping_google}}
 
 \begin{quote}
 ``The only thing Google has failed to do, so far, is fail.''
@@ -2646,23 +2646,19 @@ R>   "3.1.0"   "3.3.3"   "1.3.0"
 --- Andy Warhol
 \end{quote}
 
-Now that we've seen how to produce complex maps with \textbf{\texttt{ggplot2}} we are going to learn how to bring Google maps into the mix. Some kind hearted person has made a package for R that allows us to do this relatively easily. But that means we will need to install another new package.
+Now that we've seen how to produce complex maps with \textbf{\texttt{ggplot2}} we are going to learn how to bring some freely-available maps---OpenStreetMaps---into the mix. Some kind hearted person has made a package for R that allows us to do this relatively easily. But that means we will need to install another new package.
 
-After we learn how to use Google maps we will take some time to learn additional mapping techniques that we may want for creating publication quality figures.
+After we learn how to use OpenStreetMap we will take some time to learn additional mapping techniques that we may want for creating publication quality figures.
 
-\hypertarget{ggmap}{%
-\section{\texorpdfstring{\textbf{\texttt{ggmap}}}{ggmap}}\label{ggmap}}
+\hypertarget{openstreetmap}{%
+\section{\texorpdfstring{\textbf{\texttt{OpenStreetMap}}}{OpenStreetMap}}\label{openstreetmap}}
 
-The package we will need for this tut is \textbf{\texttt{ggmap}}. It is a bit beefy so let's get started on installing it now. Once it's done we will activated the packages we need and load some site points for mapping.
+The package we will need for this tut is \textbf{\texttt{OpenStreetMap}}. It is a bit beefy so let's get started on installing it now. Once it's done we will activated the packages we need and load some site points for mapping.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load libraries}
 \FunctionTok{library}\NormalTok{(tidyverse)}
-\FunctionTok{library}\NormalTok{(ggmap)}
-
-\CommentTok{\# Load data}
-\FunctionTok{load}\NormalTok{(}\StringTok{"data/cape\_point\_sites.RData"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2671,66 +2667,78 @@ Take a moment to look at the data we loaded. What does it show?
 \hypertarget{mapping-cape-point}{%
 \section{Mapping Cape Point}\label{mapping-cape-point}}
 
-We will be creating our Google map in two steps. The first step is to use the \texttt{get\_map()} function to tell Google what area of the world we want a map of, as well as what sort of map we want. Remember how Google maps can be switched from satellite view to map view? We may do that in R as well. For now we are only going to use the satellite view so that we may insert out own labels. But if we look in the help file we may see a description of all the different map types available. There are a bunch!
+We will be creating our OpenStreetMap map in two steps. The first step is to use the \texttt{openmap()} function to define the area we want a map of, as well as what sort of map we want. In Google Maps and Google Earth we can switch from satellite view to map view, and we may do that in R and OpenStreetMap as well. For now we are only going to use the satellite view so that we may insert out own labels. But if we look in the help file we may see a description of all the different map types available. There are a bunch!
 
-The \texttt{get\_map()} function relies on a healthy Internet connection to run. The downloading of Google maps can be a tenuous process without a stable connection. For that reason, if your Internet connection is not great you may run the commented out line of code in favour of loading the Google map. This is a pre-saved file of the output of the code chunk below. Please rather run the \texttt{get\_map()} function first, and if it won't connect only then load the saved file as shown below.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{cape\_point }\OtherTok{\textless{}{-}} \FunctionTok{get\_map}\NormalTok{(}\AttributeTok{location =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lon =} \FloatTok{18.36519}\NormalTok{, }\AttributeTok{lat =} \SpecialCharTok{{-}}\FloatTok{34.2352581}\NormalTok{),}
-                        \AttributeTok{zoom =} \DecValTok{10}\NormalTok{, }\AttributeTok{maptype =} \StringTok{\textquotesingle{}satellite\textquotesingle{}}\NormalTok{)}
-\CommentTok{\# load("data/cape\_point.RData")}
-\end{Highlighting}
-\end{Shaded}
-
-If we look in the environment panel in the top right corner, what do we see? What do we think the code above is doing?
-
-The second step in the process is to treat the Google data we downloaded as though it is just any ordinary \textbf{\texttt{ggplot2}} object. The same as the ones we created yesterday and today. For this reason we may use \texttt{+} to add new lines of \textbf{\texttt{ggplot2}} code to the Google object we downloaded in order to show site locations etc. Let's first just see how the map looks when we add some points. Note that we do not use the function \texttt{ggplot()} at the beginning of our code, but rather \texttt{ggmap()}.
+The \texttt{openmap()} function relies on a healthy internet connection to run. The downloading of OpenStreetMap maps can be a tenuous process without a stable connection. In the same sequence of steps we also add some points to indicate the spatial location of the kelp sampling sites (for the \emph{Laminaria} and \emph{Ecklonia} data), and the same annotations for the Atlantic Ocean that we first saw in Chapter 9. Here is how:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cp\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ggmap}\NormalTok{(cape\_point) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{data =}\NormalTok{ cape\_point\_sites, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon}\FloatTok{+0.002}\NormalTok{, }\AttributeTok{y =}\NormalTok{ lat}\FloatTok{{-}0.007}\NormalTok{), }
+\CommentTok{\# load the location of the study sites}
+\FunctionTok{load}\NormalTok{(}\StringTok{"data/cape\_point\_sites.RData"}\NormalTok{)}
+
+\CommentTok{\# define the spatial extent to OpenStreetMap}
+\NormalTok{lat1 }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FloatTok{34.5}\NormalTok{; lat2 }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FloatTok{33.5}\NormalTok{; lon1 }\OtherTok{\textless{}{-}} \DecValTok{18}\NormalTok{; lon2 }\OtherTok{\textless{}{-}} \DecValTok{19}
+
+\FunctionTok{library}\NormalTok{(OpenStreetMap)}
+
+\CommentTok{\# other \textquotesingle{}type\textquotesingle{} options are "osm", "maptoolkit{-}topo", "bing", "stamen{-}toner",}
+\CommentTok{\# "stamen{-}watercolor", "esri", "esri{-}topo", "nps", "apple{-}iphoto", "skobbler";}
+\CommentTok{\# play around with \textquotesingle{}zoom\textquotesingle{} to see what happens; 10 seems just right to me}
+\NormalTok{sa\_map }\OtherTok{\textless{}{-}} \FunctionTok{openmap}\NormalTok{(}\FunctionTok{c}\NormalTok{(lat2, lon1), }\FunctionTok{c}\NormalTok{(lat1, lon2), }\AttributeTok{zoom =} \DecValTok{10}\NormalTok{,}
+                  \AttributeTok{type =} \StringTok{"esri{-}topo"}\NormalTok{, }\AttributeTok{mergeTiles =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# reproject onto WGS84}
+\NormalTok{sa\_map2 }\OtherTok{\textless{}{-}} \FunctionTok{openproj}\NormalTok{(sa\_map)}
+
+\CommentTok{\# use instead of \textquotesingle{}ggplot()\textquotesingle{}}
+\NormalTok{sa\_map2\_plt }\OtherTok{\textless{}{-}}\NormalTok{ OpenStreetMap}\SpecialCharTok{::}\FunctionTok{autoplot.OpenStreetMap}\NormalTok{(sa\_map2) }\SpecialCharTok{+} 
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{label =} \StringTok{"Atlantic}\SpecialCharTok{\textbackslash{}n}\StringTok{Ocean"}\NormalTok{, }
+           \AttributeTok{x =} \FloatTok{18.2}\NormalTok{, }\AttributeTok{y =} \SpecialCharTok{{-}}\FloatTok{33.8}\NormalTok{, }\AttributeTok{size =} \FloatTok{5.0}\NormalTok{, }\AttributeTok{angle =} \SpecialCharTok{{-}}\DecValTok{60}\NormalTok{, }\AttributeTok{colour =} \StringTok{"navy"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{data =}\NormalTok{ cape\_point\_sites,}
+             \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lon }\SpecialCharTok{+} \FloatTok{0.002}\NormalTok{, }\AttributeTok{y =}\NormalTok{ lat }\SpecialCharTok{{-}} \FloatTok{0.007}\NormalTok{), }\CommentTok{\# slightly shift the points}
              \AttributeTok{colour =} \StringTok{"red"}\NormalTok{, }\AttributeTok{size =}  \FloatTok{2.5}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{""}\NormalTok{)}
-\NormalTok{cp\_1}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Longitude (°E)"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Latitude (°S)"}\NormalTok{)}
+\NormalTok{sa\_map2\_plt}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}
 \centering
-\includegraphics{10-mapping_google_files/figure-latex/ggmap-1-1.pdf}
-\caption{\label{fig:ggmap-1}Google map of Cape Point with some site locations highlighted with red points.}
+\includegraphics{10-mapping_google_files/figure-latex/openstreetmap-cp-ghost-1.pdf}
+\caption{\label{fig:openstreetmap-cp-ghost}Google map of Cape Point}
 \end{figure}
 
-Pretty cool huh?! You may do this for anywhere in the world just as easy as this. The only thing you need to keep in mind is that the lon/lat coordinates for Google appear to be slightly different than the global standard. This is why the x and y \texttt{aes()} values in the code above have a little bit added or subtracted from them. That one small issue aside, this is a nice quick workflow for adding your site locations to a Google map background. Play around with the different map types you can download and try it for any place you can think of.
+The process seen in the code above is to treat the OpenStreetMap data we downloaded as though it is just any ordinary \textbf{\texttt{ggplot2}} object. The same as the ones we created yesterday and today. For this reason we may use \texttt{+} to add new lines of conventional \textbf{\texttt{ggplot2}} code to the map drawn by \texttt{OpenStreetMap::autoplot.OpenStreetMap()} in order to show site annotations, locations, etc.
+
+Pretty cool huh?! You may do this for anywhere in the world just as easy as this. The only thing you need to keep in mind is that the lon/lat coordinates for OpenStreetMap appear to be slightly different than the global standard. This is why the x and y \texttt{aes()} values in the code above have a little bit added or subtracted from them. That one small issue aside, this is a nice quick workflow for adding your site locations to a neat map background. Play around with the different map types you can download and try it for any place you can think of.
 
 \hypertarget{site-labels}{%
 \section{Site labels}\label{site-labels}}
 
-The previous figure shows our sites along Cape Point, which is great, but which site is which?! We need site labels. This is a relatively straightforward process, so we've given a complicated example of how to do so here.
+The previous figure shows our sites along Cape Point, which is great, but which site is which?! We need site labels. This is a relatively straightforward process, so we've given a complicated example of how to do so here. We already loaded the data in the file \texttt{data/cape\_point\_sites.RData}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cp\_2 }\OtherTok{\textless{}{-}}\NormalTok{ cp\_1 }\SpecialCharTok{+}
+\NormalTok{sa\_map3\_plt }\OtherTok{\textless{}{-}}\NormalTok{ sa\_map2\_plt }\SpecialCharTok{+}
   \FunctionTok{geom\_text}\NormalTok{(}\AttributeTok{data =}\NormalTok{ cape\_point\_sites, }\CommentTok{\# Choose dataframe}
             \FunctionTok{aes}\NormalTok{(lon}\FloatTok{+0.002}\NormalTok{, lat}\FloatTok{{-}0.007}\NormalTok{, }\AttributeTok{label =}\NormalTok{ site), }\CommentTok{\# Set aesthetics}
             \AttributeTok{hjust =} \FloatTok{1.15}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\CommentTok{\# Adjust vertical and horizontal}
-            \AttributeTok{size =} \DecValTok{3}\NormalTok{, }\AttributeTok{colour =} \StringTok{"white"}\NormalTok{) }\CommentTok{\# Adjust appearance}
-\NormalTok{cp\_2}
+            \AttributeTok{size =} \DecValTok{3}\NormalTok{, }\AttributeTok{colour =} \StringTok{"salmon"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Adjust appearance}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Cape Point kelp sampling sites"}\NormalTok{)}
+\NormalTok{sa\_map3\_plt}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}
 \centering
 \includegraphics{10-mapping_google_files/figure-latex/ggmap-2-1.pdf}
-\caption{\label{fig:ggmap-2}Google map of Cape Point with site point labeled}
+\caption{\label{fig:ggmap-2}Google map of Cape Point with site points labeled}
 \end{figure}
 
 \hypertarget{diy-maps}{%
 \section{DIY maps}\label{diy-maps}}
 
-Now that we have learned how to make conventional maps, as well as fancy Google maps, it is time for us to branch out once again at let our creative juices flow. Please group up as you see fit and create your own beautiful map of wherever you like. Bonus points for faceting in additional figures showing supplementary information. Feel free to use either conventional maps or the Google alternative. Same as yesterday, we will be walking the room to help with any issues that may arise.
+Now that we have learned how to make conventional maps, as well as fancy OpenStreetMap maps, it is time for us to branch out once again at let our creative juices flow. Please group up as you see fit and create your own beautiful map of wherever you like. Bonus points for faceting in additional figures showing supplementary information. Feel free to use either conventional maps or the OpenStreetMaps alternative. Same as yesterday, we will be walking the room to help with any issues that may arise.
 
 \hypertarget{session-info-7}{%
 \section{Session info}\label{session-info-7}}
@@ -2742,10 +2750,10 @@ Now that we have learned how to make conventional maps, as well as fancy Google 
 \end{Shaded}
 
 \begin{verbatim}
-R>     ggmap   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
-R>   "3.0.0"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
-R>   ggplot2 tidyverse 
-R>   "3.3.3"   "1.3.0"
+R> OpenStreetMap       forcats       stringr         dplyr         purrr 
+R>       "0.3.4"       "0.5.1"       "1.4.0"       "1.0.5"       "0.3.4" 
+R>         readr         tidyr        tibble       ggplot2     tidyverse 
+R>       "1.4.0"       "1.1.3"       "3.1.0"       "3.3.3"       "1.3.0"
 \end{verbatim}
 
 \hypertarget{tidy}{%

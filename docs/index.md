@@ -1,7 +1,7 @@
 ---
 title: 'Intro R Workshop: Data Manipulation, Analysis, and Visualisation'
 author: "AJ Smit, Amieroh Abrahams & Robert W Schlegel"
-date: "2021-03-14"
+date: "2021-03-18"
 bibliography: book.bib
 description: The basics for a safe voyage through the tidyverse.
 documentclass: book
