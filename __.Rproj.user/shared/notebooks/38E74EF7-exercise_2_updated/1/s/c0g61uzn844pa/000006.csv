@@ -1,0 +1,7 @@
+"0","ggplot(data = dat5, aes(x = dose, y = mn.len)) +"
+"0","  geom_col(aes(fill = supp), colour = ""black"", position = position_dodge(width = 0.47)) + "
+"0","  geom_errorbar(aes(ymin = mn.len - sd.len, ymax = mn.len + sd.len, group = supp), "
+"0","                position = position_dodge(width = 0.47), width = 0.2) +"
+"0","  labs(x = ""Dose (mg/d)"", y = ""Tooth length (mm)"") +"
+"0","  theme(panel.grid.major = element_line(size = 0.2, linetype = 2),"
+"0","        panel.grid.minor = element_line(colour = NA))"

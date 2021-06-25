@@ -1,0 +1,16 @@
+h1:faceting Faceting Figures
+h2:faceting-one-figure Faceting one figure
+fig:facet-1 Simple faceted figure showing a linear model applied to each diet.
+h2:new-figure-types New figure types
+h3:line-graph Line graph
+fig:facet-line Line graph for the progression of chicken weights (g) over time (days) based on four different diets.
+h3:linear-model Linear model
+fig:facet-lm Linear models for the progression of chicken weights (g) over time (days) based on four different diets.
+h3:histogram Histogram
+fig:facet-hist Histogram showing final chicken weights (g) by diet.
+h3:boxplot Boxplot
+fig:facet-box Violin plot showing the distribution of final chicken weights (g) by diet.
+h2:gridding-figures Gridding figures
+fig:facet-grid All four of our figures gridded together with an automagically created common legend.
+h2:session-info Session info
+

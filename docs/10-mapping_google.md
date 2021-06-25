@@ -98,7 +98,7 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 
 ```
 R> OpenStreetMap       forcats       stringr         dplyr         purrr 
-R>       "0.3.4"       "0.5.1"       "1.4.0"       "1.0.5"       "0.3.4" 
+R>       "0.3.4"       "0.5.1"       "1.4.0"       "1.0.7"       "0.3.4" 
 R>         readr         tidyr        tibble       ggplot2     tidyverse 
-R>       "1.4.0"       "1.1.3"       "3.1.0"       "3.3.3"       "1.3.0"
+R>       "1.4.0"       "1.1.3"       "3.1.2"       "3.3.4"       "1.3.1"
 ```

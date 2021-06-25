@@ -1,0 +1,24 @@
+{
+    "id": "DA9CB902",
+    "path": "~/Dropbox/R/workshops/Intro_R_Official/exercises/Day_4_challenge.R",
+    "project_path": "exercises/Day_4_challenge.R",
+    "type": "r_source",
+    "hash": "15761935",
+    "contents": "",
+    "dirty": false,
+    "created": 1580811668709.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "cursorPosition": "64,55",
+        "scrollLine": "32"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1580813042,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1581092383509,
+    "read_only": false,
+    "read_only_alternatives": []
+}

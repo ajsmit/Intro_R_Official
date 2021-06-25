@@ -1,0 +1,6 @@
+"0","sa_map3_plt <- sa_map2_plt +"
+"0","  geom_text(data = cape_point_sites, # Choose dataframe"
+"0","            aes(lon+0.002, lat-0.007, label = site), # Set aesthetics"
+"0","            hjust = 1.15, vjust = 0.5, # Adjust vertical and horizontal"
+"0","            size = 3, colour = ""salmon"") # Adjust appearance"
+"0","sa_map3_plt"

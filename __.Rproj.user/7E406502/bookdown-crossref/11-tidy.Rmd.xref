@@ -1,0 +1,15 @@
+h1:tidy Tidy data
+fig:tidyverse The Tidyverse by Hadley Wickham and co.
+fig:tidy Data tidying in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)
+fig:tidy-structure Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)
+h2:gathering-and-spreading Gathering and spreading
+h3:gathering Gathering
+h3:spreading Spreading
+h2:separating-and-uniting Separating and uniting
+h3:separate Separate
+h3:separating-dates-using-mutate Separating dates using 
+h3:unite Unite
+h2:joining Joining
+h2:but-why-though But why though?
+h2:session-info Session info
+

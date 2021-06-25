@@ -194,8 +194,8 @@ SACTN %>%
 
 ```
 R> Error: Problem with `filter()` input `..1`.
-R> x operations are possible only for numeric, logical or complex types
 R> i Input `..1` is `site == "Paternoster" | "Oudekraal"`.
+R> x operations are possible only for numeric, logical or complex types
 ```
 
 Oh no, we broke it! This is a common error while learning to write code so do try to keep this rule in mind as it can cause a lot of headaches. An easy way to spot this problem is if ones line of code has more logical operators than comparison operators you're probably going to have a bad time. This is doubly unfortunate as we would need to write less code if this were not so. Happily, there is a shortcut for just this problem, `%in%`. Whenever we want to use operators to filter by more than two things, it is most convenient to create an object that contains the names or numbers that we want to filter by. We then replace our comparison and logical operators with that one simple symbol (`%in%`). 
@@ -502,7 +502,7 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 
 ```
 R> lubridate   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
-R>  "1.7.10"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.0" 
+R>  "1.7.10"   "0.5.1"   "1.4.0"   "1.0.7"   "0.3.4"   "1.4.0"   "1.1.3"   "3.1.2" 
 R>   ggplot2 tidyverse 
-R>   "3.3.3"   "1.3.0"
+R>   "3.3.4"   "1.3.1"
 ```

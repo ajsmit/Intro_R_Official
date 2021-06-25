@@ -1,0 +1,22 @@
+"0","# Load libraries"
+"0","library(tidyverse)"
+"0","library(ggpubr)"
+"2","Registered S3 method overwritten by 'data.table':
+  method           from
+  print.data.table     
+"
+"0","# Load data"
+"0","load(""data/south_africa_coast.RData"")"
+"0","load(""data/sa_provinces.RData"")"
+"0","load(""data/rast_annual.RData"")"
+"0","load(""data/MUR.RData"")"
+"0","load(""data/MUR_low_res.RData"")"
+"0",""
+"0","# Choose which SST product you would like to use"
+"0","sst <- MUR_low_res"
+"0","# OR"
+"0","sst <- MUR"
+"0",""
+"0","# The colour pallette we will use for ocean temperature"
+"0","cols11 <- c(""#004dcd"", ""#0068db"", ""#007ddb"", ""#008dcf"", ""#009bbc"","
+"0","            ""#00a7a9"", ""#1bb298"", ""#6cba8f"", ""#9ac290"", ""#bec99a"")"

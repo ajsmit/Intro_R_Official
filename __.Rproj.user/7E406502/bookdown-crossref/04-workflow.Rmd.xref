@@ -1,0 +1,25 @@
+h1:workflow An R workflow
+h2:r-scripts R Scripts
+h2:reading-data-into-r Reading data into R
+h3:preparing-data-for-r Preparing data for R
+h3:converting-data Converting data
+h3:importing-data Importing data
+h3:loading-a-file Loading a file
+h2:working-with-data Working with data
+h3:examine-your-data Examine your data
+h3:tidyverse-sneak-peek Tidyverse sneak peek
+h3:subsetting Subsetting
+h3:basic-stats Basic stats
+h2:exercise Exercise
+h3:summary-of-all-variables-in-a-dataframe Summary of all variables in a dataframe
+h3:summary-statistics-by-variable Summary statistics by variable
+h3:more-complex-calculations More complex calculations
+h2:exercise-1 Exercise
+h2:saving-data Saving data
+h2:visualisations Visualisations
+h2:clearing-the-memory Clearing the memory
+h2:working-directories Working directories
+h2:help Help
+fig:help-output A portion of the help page produced by the above command.
+h2:session-info Session info
+

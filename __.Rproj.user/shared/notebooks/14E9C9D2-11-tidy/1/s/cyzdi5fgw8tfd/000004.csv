@@ -1,0 +1,5 @@
+"0","SACTN_tidy2 <- SACTN4a %>% "
+"0","  separate(col = index, into = c(""site"", ""src""), sep = ""/ "") %>% "
+"0","  mutate(day = lubridate::day(date),"
+"0","         month = lubridate::month(date),"
+"0","         year = lubridate::year(date))"

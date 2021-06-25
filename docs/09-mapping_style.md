@@ -32,7 +32,7 @@ In order to access the default maps included with the **`tidyverse`** we will us
 
 ```r
 ggplot() +
-  borders() + # The global shape file
+  borders(col = "black", fill = "cornsilk", size = 0.2) + # The global shape file
   coord_equal() # Equal sizing for lon/lat 
 ```
 
@@ -43,7 +43,7 @@ Jikes! It's as simple as that to load a map of the whole planet. Usually we are 
 
 ```r
 sa_1 <- ggplot() +
-  borders(fill = "grey70", colour = "black") +
+  borders(size = 0.2, fill = "cornsilk", colour = "black") +
   coord_equal(xlim = c(12, 36), ylim = c(-38, -22), expand = 0) # Force lon/lat extent
 sa_1
 ```
@@ -68,7 +68,7 @@ sa_2 <- sa_1 +
            x = 33.2, y = -34.2, 
            size = 5.0, 
            angle = 330, 
-           colour = "springgreen")
+           colour = "red4")
 sa_2
 ```
 
@@ -81,9 +81,9 @@ With our fancy labels added, let's insert a scale bar next. There is no default 
 
 ```r
 sa_3 <- sa_2 +
-  # scalebar(x.min = 22, x.max = 26, y.min = -36, y.max = -35, # Set location of bar
-  #          dist = 200, height = 1, st.dist = 0.8, st.size = 4, # Set particulars
-  #          transform = TRUE, model = "WGS84") + # Set appearance
+  scalebar(x.min = 22, x.max = 26, y.min = -36, y.max = -35, # Set location of bar
+           dist = 200, dist_unit = "km", height = 0.3, st.dist = 0.8, st.size = 4, # Set particulars
+           transform = TRUE, border.size = 0.2, model = "WGS84") + # Set appearance
   north(x.min = 22.5, x.max = 25.5, y.min = -33, y.max = -31, # Set location of symbol
         scale = 1.2, symbol = 16)
 sa_3
@@ -162,7 +162,7 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 
 ```
 R>      ggsn    scales   forcats   stringr     dplyr     purrr     readr     tidyr 
-R>   "0.5.0"   "1.1.1"   "0.5.1"   "1.4.0"   "1.0.5"   "0.3.4"   "1.4.0"   "1.1.3" 
+R>   "0.5.0"   "1.1.1"   "0.5.1"   "1.4.0"   "1.0.7"   "0.3.4"   "1.4.0"   "1.1.3" 
 R>    tibble   ggplot2 tidyverse 
-R>   "3.1.0"   "3.3.3"   "1.3.0"
+R>   "3.1.2"   "3.3.4"   "1.3.1"
 ```

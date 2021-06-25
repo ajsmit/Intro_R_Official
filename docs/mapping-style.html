@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Mapping with style | Intro R Workshop: Data Manipulation, Analysis, and Visualisation</title>
   <meta name="description" content="The basics for a safe voyage through the tidyverse." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Mapping with style | Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:image" content="figures/769_life_finds_a_way.png" />
+  <meta property="og:image" content="/figures/769_life_finds_a_way.png" />
   <meta property="og:description" content="The basics for a safe voyage through the tidyverse." />
   <meta name="github-repo" content="ajsmit/Intro_R_Workshop" />
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="Chapter 9 Mapping with style | Intro R Workshop: Data Manipulation, Analysis, and Visualisation" />
   
   <meta name="twitter:description" content="The basics for a safe voyage through the tidyverse." />
-  <meta name="twitter:image" content="figures/769_life_finds_a_way.png" />
+  <meta name="twitter:image" content="/figures/769_life_finds_a_way.png" />
 
 <meta name="author" content="AJ Smit, Amieroh Abrahams &amp; Robert W Schlegel" />
 
 
-<meta name="date" content="2021-03-18" />
+<meta name="date" content="2021-06-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,15 +33,15 @@
   
 <link rel="prev" href="mapping.html"/>
 <link rel="next" href="mapping-google.html"/>
-<script src="docs/header-attrs-2.7/header-attrs.js"></script>
-<script src="docs/jquery-2.2.3/jquery.min.js"></script>
-<link href="docs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="docs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="docs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="docs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="docs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="docs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="docs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -118,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -131,9 +134,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Intro R Workshop</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="prelim.html"><a href="prelim.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a>
 <ul>
@@ -338,9 +338,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.2" data-path="recap.html"><a href="recap.html#today"><i class="fa fa-check"></i><b>14.2</b> Today</a></li>
 <li class="chapter" data-level="14.3" data-path="recap.html"><a href="recap.html#session-info-11"><i class="fa fa-check"></i><b>14.3</b> Session info</a></li>
 </ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -381,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.1</span> Default maps</h2>
 <p>In order to access the default maps included with the <strong><code>tidyverse</code></strong> we will use the function <code>borders()</code>.</p>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="mapping-style.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb108-2"><a href="mapping-style.html#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">borders</span>() <span class="sc">+</span> <span class="co"># The global shape file</span></span>
+<span id="cb108-2"><a href="mapping-style.html#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">borders</span>(<span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;cornsilk&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> <span class="co"># The global shape file</span></span>
 <span id="cb108-3"><a href="mapping-style.html#cb108-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="co"># Equal sizing for lon/lat </span></span></code></pre></div>
 <div class="figure"><span id="fig:maps-world"></span>
 <img src="09-mapping_style_files/figure-html/maps-world-1.png" alt="The built in global shape file." width="672" />
@@ -391,7 +388,7 @@ Figure 9.1: The built in global shape file.
 </div>
 <p>Jikes! It’s as simple as that to load a map of the whole planet. Usually we are not going to want to make a map of the entire planet, so let’s see how to focus on just the area around South Africa.</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="mapping-style.html#cb109-1" aria-hidden="true" tabindex="-1"></a>sa_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb109-2"><a href="mapping-style.html#cb109-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">borders</span>(<span class="at">fill =</span> <span class="st">&quot;grey70&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb109-2"><a href="mapping-style.html#cb109-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">borders</span>(<span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">&quot;cornsilk&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
 <span id="cb109-3"><a href="mapping-style.html#cb109-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">36</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">38</span>, <span class="sc">-</span><span class="dv">22</span>), <span class="at">expand =</span> <span class="dv">0</span>) <span class="co"># Force lon/lat extent</span></span>
 <span id="cb109-4"><a href="mapping-style.html#cb109-4" aria-hidden="true" tabindex="-1"></a>sa_1</span></code></pre></div>
 <div class="figure"><span id="fig:maps-SA-1"></span>
@@ -415,7 +412,7 @@ Figure 9.2: A better way to get the map of South Africa.
 <span id="cb110-8"><a href="mapping-style.html#cb110-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="fl">33.2</span>, <span class="at">y =</span> <span class="sc">-</span><span class="fl">34.2</span>, </span>
 <span id="cb110-9"><a href="mapping-style.html#cb110-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="fl">5.0</span>, </span>
 <span id="cb110-10"><a href="mapping-style.html#cb110-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">angle =</span> <span class="dv">330</span>, </span>
-<span id="cb110-11"><a href="mapping-style.html#cb110-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">&quot;springgreen&quot;</span>)</span>
+<span id="cb110-11"><a href="mapping-style.html#cb110-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">&quot;red4&quot;</span>)</span>
 <span id="cb110-12"><a href="mapping-style.html#cb110-12" aria-hidden="true" tabindex="-1"></a>sa_2</span></code></pre></div>
 <div class="figure"><span id="fig:maps-labels"></span>
 <img src="09-mapping_style_files/figure-html/maps-labels-1.png" alt="Map of southern Africa with specific labels." width="672" />
@@ -428,9 +425,9 @@ Figure 9.3: Map of southern Africa with specific labels.
 <h2><span class="header-section-number">9.3</span> Scale bars</h2>
 <p>With our fancy labels added, let’s insert a scale bar next. There is no default scale bar function in the <strong><code>tidyverse</code></strong>, which is why we have loaded the <strong><code>ggsn</code></strong> package. This package is devoted to adding scale bars and North arrows to <strong><code>ggplot2</code></strong> figures. There are heaps of options so we’ll just focus on one of them for now. It is a bit finicky so to get it looking exactly how we want it requires some guessing and checking. Please feel free to play around with the coordinates below. We may see the list of available North arrow shapes by running <code>northSymbols()</code>.</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="mapping-style.html#cb111-1" aria-hidden="true" tabindex="-1"></a>sa_3 <span class="ot">&lt;-</span> sa_2 <span class="sc">+</span></span>
-<span id="cb111-2"><a href="mapping-style.html#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scalebar(x.min = 22, x.max = 26, y.min = -36, y.max = -35, # Set location of bar</span></span>
-<span id="cb111-3"><a href="mapping-style.html#cb111-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#          dist = 200, height = 1, st.dist = 0.8, st.size = 4, # Set particulars</span></span>
-<span id="cb111-4"><a href="mapping-style.html#cb111-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#          transform = TRUE, model = &quot;WGS84&quot;) + # Set appearance</span></span>
+<span id="cb111-2"><a href="mapping-style.html#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scalebar</span>(<span class="at">x.min =</span> <span class="dv">22</span>, <span class="at">x.max =</span> <span class="dv">26</span>, <span class="at">y.min =</span> <span class="sc">-</span><span class="dv">36</span>, <span class="at">y.max =</span> <span class="sc">-</span><span class="dv">35</span>, <span class="co"># Set location of bar</span></span>
+<span id="cb111-3"><a href="mapping-style.html#cb111-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">dist =</span> <span class="dv">200</span>, <span class="at">dist_unit =</span> <span class="st">&quot;km&quot;</span>, <span class="at">height =</span> <span class="fl">0.3</span>, <span class="at">st.dist =</span> <span class="fl">0.8</span>, <span class="at">st.size =</span> <span class="dv">4</span>, <span class="co"># Set particulars</span></span>
+<span id="cb111-4"><a href="mapping-style.html#cb111-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">transform =</span> <span class="cn">TRUE</span>, <span class="at">border.size =</span> <span class="fl">0.2</span>, <span class="at">model =</span> <span class="st">&quot;WGS84&quot;</span>) <span class="sc">+</span> <span class="co"># Set appearance</span></span>
 <span id="cb111-5"><a href="mapping-style.html#cb111-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">north</span>(<span class="at">x.min =</span> <span class="fl">22.5</span>, <span class="at">x.max =</span> <span class="fl">25.5</span>, <span class="at">y.min =</span> <span class="sc">-</span><span class="dv">33</span>, <span class="at">y.max =</span> <span class="sc">-</span><span class="dv">31</span>, <span class="co"># Set location of symbol</span></span>
 <span id="cb111-6"><a href="mapping-style.html#cb111-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">scale =</span> <span class="fl">1.2</span>, <span class="at">symbol =</span> <span class="dv">16</span>)</span>
 <span id="cb111-7"><a href="mapping-style.html#cb111-7" aria-hidden="true" tabindex="-1"></a>sa_3</span></code></pre></div>
@@ -476,9 +473,9 @@ Figure 9.4: Map of southern Africa with labels and a scale bar.
 <h2><span class="header-section-number">9.4</span> Session inf</h2>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="mapping-style.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installed.packages</span>()[<span class="fu">names</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>otherPkgs), <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
 <pre><code>R&gt;      ggsn    scales   forcats   stringr     dplyr     purrr     readr     tidyr 
-R&gt;   &quot;0.5.0&quot;   &quot;1.1.1&quot;   &quot;0.5.1&quot;   &quot;1.4.0&quot;   &quot;1.0.5&quot;   &quot;0.3.4&quot;   &quot;1.4.0&quot;   &quot;1.1.3&quot; 
+R&gt;   &quot;0.5.0&quot;   &quot;1.1.1&quot;   &quot;0.5.1&quot;   &quot;1.4.0&quot;   &quot;1.0.7&quot;   &quot;0.3.4&quot;   &quot;1.4.0&quot;   &quot;1.1.3&quot; 
 R&gt;    tibble   ggplot2 tidyverse 
-R&gt;   &quot;3.1.0&quot;   &quot;3.3.3&quot;   &quot;1.3.0&quot;</code></pre>
+R&gt;   &quot;3.1.2&quot;   &quot;3.3.4&quot;   &quot;1.3.1&quot;</code></pre>
 
 </div>
 </div>
@@ -491,15 +488,15 @@ R&gt;   &quot;3.1.0&quot;   &quot;3.3.3&quot;   &quot;1.3.0&quot;</code></pre>
 <a href="mapping-google.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="docs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="docs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="docs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="docs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="docs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="docs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="docs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="docs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="docs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -511,6 +508,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -535,8 +533,8 @@ gitbook.start({
 "collapse": "section",
 "scroll_highlight": true,
 "sharing": {
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "google": true,
 "download": "Intro_R_Workshop.pdf"
 }

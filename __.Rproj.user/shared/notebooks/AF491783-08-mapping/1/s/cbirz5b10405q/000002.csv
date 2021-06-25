@@ -1,0 +1,2 @@
+"0","ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +"
+"0","  geom_point()"

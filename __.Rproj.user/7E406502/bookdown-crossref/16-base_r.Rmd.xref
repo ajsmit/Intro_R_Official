@@ -1,0 +1,17 @@
+h1:base-r-primer Base R primer
+h2:dataframes Dataframes
+h2:basic-data-types Basic data types
+h3:numeric Numeric
+h3:integer Integer
+h3:logical Logical
+h3:character Character
+h3:factor Factor
+h3:dates Dates
+fig:dates-type Dates.
+h2:vectors Vectors
+h2:vector-indices Vector indices
+h2:vector-creation Vector creation
+h2:vector-arithmetic Vector arithmetic
+h2:dataframe-creation Dataframe creation
+h2:dataframe-indices Dataframe indices
+

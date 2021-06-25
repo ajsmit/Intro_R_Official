@@ -1,0 +1,17 @@
+h1:rstudio RStudio
+h2:setting-up-the-workspace Setting up the workspace
+h3:general-settings General settings
+fig:RStudio-prefs The RStudio Preferences menu.
+h3:customising-appearance Customising appearance
+h3:configuring-panes Configuring panes
+h2:the-rproject The Rproject
+h2:installing-packages Installing packages
+h2:the-panes-of-rstudio The panes of RStudio
+h3:source-editor Source Editor
+h3:console Console
+h2:exercise Exercise
+h3:environment-and-history-panes Environment and History panes
+h3:files-plots-packages-help-and-viewer-panes Files, Plots, Packages, Help, and Viewer panes
+fig:ggplot2-1 The same plot as above, but assembled with __ggplot2__.
+h2:session-info Session info
+

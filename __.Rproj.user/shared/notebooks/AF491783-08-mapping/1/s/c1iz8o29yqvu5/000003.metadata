@@ -1,0 +1,1 @@
+{"height":432.6328800988875,"width":700.0,"size_behavior":0,"conditions":[[1,"Raster pixels are placed at uneven horizontal intervals and will be shifted. Consider using geom_tile() instead."],[1,"Raster pixels are placed at uneven vertical intervals and will be shifted. Consider using geom_tile() instead."]]}

@@ -1,0 +1,3 @@
+"0","ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +"
+"0","  geom_polygon(colour = ""black"", fill = ""grey70"", aes(group = group)) +"
+"0","  geom_path(data = sa_provinces, aes(group = group)) # The province borders"

@@ -1,0 +1,10 @@
+h1:tidier Tidier data
+h2:comparison-operators Comparison operators
+h2:logical-operators Logical operators
+h2:arrange-observations-rows-with-arrange Arrange observations (rows) with 
+h2:filter-observations-rows-with-filter Filter observations (rows) with 
+h2:select-variables-columns-withselect Select variables (columns) with
+h2:create-new-variables-columns-with-mutate Create new variables (columns) with 
+h2:summarise-variables-columns-with-summarise Summarise variables (columns) with 
+h2:session-info Session info
+
