@@ -1,7 +1,0 @@
-{
-    "installOptions" : {
-        "installDependencies" : true,
-        "installFromRepository" : true,
-        "libraryPath" : "/Users/ajsmit/Library/R/3.6/library"
-    }
-}

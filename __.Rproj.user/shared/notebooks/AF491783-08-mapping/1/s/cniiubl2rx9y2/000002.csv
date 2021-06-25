@@ -1,2 +1,0 @@
-"0","ggplot(data = ChickWeight, aes(x = Time, y = weight)) +"
-"0","  geom_point()"

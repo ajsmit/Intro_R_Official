@@ -1,4 +1,0 @@
-"0","ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +"
-"0","  geom_polygon(colour = ""black"", fill = ""grey70"", aes(group = group)) +"
-"0","  geom_path(data = sa_provinces, aes(group = group)) + "
-"0","  coord_equal(xlim = c(15, 34), ylim = c(-36, -26), expand = 0) # Force lon/lat extent"
