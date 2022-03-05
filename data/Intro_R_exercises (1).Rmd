@@ -1,0 +1,157 @@
+---
+title: "Intro R exercises"
+subtitle: "Miscellaneous exercises for the mind"  
+author: 
+  - "AJ Smit"
+institute: "University of the Western Cape"
+date: '2021/04/21 (updated: `r Sys.Date()`)'
+output:
+  xaringan::moon_reader:
+    css:
+      - default
+      - "../private/default-fonts.css"
+      - ki
+      - "../private/uwc_logo.css"
+    yolo: false
+    self_contained: TRUE  
+    lib_dir: libs
+    nature:
+      highlightStyle: idea
+      highlightLines: true
+      highlightLanguage: r
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE, echo=FALSE} 
+library(tidyverse)
+library(lubridate)
+library(ggpubr)
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "R>",
+                      message = FALSE,
+                      warning = FALSE,
+                      include = TRUE,
+                      fig.retina = 3,
+                      fig.width = 6,
+                      fig.height = 3.6,
+                      fig.align = "center")
+```
+
+## Exercise A
+
+---
+**Task: the *Laminaria* data**
+
+With all of this information in hand, create a new plot displaying an interesting relationship in the *Laminaria* data.
+
+* Relate two measurement variables within the dataset to one-another
+* Use a grouping variable to form a sensible grouping structure
+* Make use of two of the geometries `geom_point()`, `geom_line()`, and `geom_smooth()`
+* Use one new **ggplot2** theme that you have not yet used
+
+Explain the relationship represented in your figure.
+
+---
+## Exercise B
+
+---
+- For this exercise, you'll be expected to accomplish Tasks 1, 2 and 3 before producing the final output in Task 4.
+- Assemble a properly documented R script in the way you have been taught.
+
+**Task 1: the `datasets::ChickWeight` data**
+
+- Consult the **ggplot2** book that was emailed to you, and construct an interesting graph that addresses some question you are asking about these data
+  - use any of the available 'geoms';
+  - creatively modify the graph's appearance (but remain sensible and be congnisant of which aesthetics are suitable for publications!);
+  - add custom colours, demonstrating some of the colour-handling possibilities that you were taught (or even ones that may not yet have been taught);
+  - add the *x*- and *y*-axis titles as appropriate.
+
+---
+**Task 2: the `SACTNmonthly_v4.0.Rdata` data**
+
+- Devise any faceted plot showing some aspect of the data you are interested in
+  - whatever you choose to graph, please ensure that it results in four facets;
+  - apply the same creative process w.r.t. colours, geoms as with Task 1;
+  - demonstrate your ability to implement a new aspect of plotting data as per the **ggplot2** book;
+
+---
+**Task 3: the `ecklonia.csv` data**
+
+- As above, create two additional single-panel graphs showing aspects not shown in Tasks 1 and 2.
+
+---
+**Task 4: the last steps**
+
+- Assemble all four graphs into a 2 x 2 layout using the **ggpubr** functions, as shown earlier.
+- Save the R script, and produce a .png file of the final figure.
+
+---
+## Exercise C
+
+---
+**Task 1: the `SACTNmonthly_v4.0.RData` data, again**
+
+Please *exactly* recreate the figure on the next slide (you may use your own colour for the line). Note: in order to calculate a yearly mean for each of the data points within a year, you will have to use one of the functions in the **lubridate** package. There is also the `mutate()` function (within the **dplyr** package, which comes installed with **tidyverse**) that I have mentioned before, but which we have not explicitely practiced --- it will have to be used to receive the result of the **lubridate** function that I alluded to above.
+
+---
+```{r ex-1, echo = FALSE, include = TRUE, fig.width = 5, fig.height = 6, fig.align = 'center'}
+load("../_GitBook/data/SACTNmonthly_v4.0.RData")
+dat1 <- as_tibble(SACTNmonthly_v4.0)
+rm(SACTNmonthly_v4.0)
+
+dat2 <- dat1 %>% 
+  mutate(date.yr = year(date)) %>% 
+  group_by(site, src, date.yr) %>% 
+  summarise(mn.temp = mean(temp, na.rm = TRUE),
+            sd.temp = sd(temp, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  filter(src == "KZNSB")
+
+ggplot(data = dat2, aes(x = date.yr, y = mn.temp)) +
+  geom_line(aes(group = site), colour = "salmon") +
+  facet_wrap(~site, ncol = 5) +
+  scale_x_continuous(breaks = c(1980, 2000)) +
+  scale_y_continuous(breaks = c(20, 22, 24)) +
+  labs(x = "Year", y = "Temperature (°C)", title = "KZNSB: series of annual means") +
+  theme(panel.grid.major = element_line(size = 0.2, linetype = 2),
+        panel.grid.minor = element_line(colour = NA))
+```
+
+---
+**Task 2: the `SACTNmonthly_v4.0.RData` data, continue**
+
+Please produce a series of graphs arranged in the same manner as in the above figure, "KZNSB: series of annual means,", but instead of plotting the time series along the x-axis, produce a monthly climatology (i.e. as per the MS Excel exercise we did on Monday).
+
+---
+**Task 3. the `datasets::ToothGrowth` data**
+
+These data reside in `datasets::ToothGrowth`. Please produce line graphs showing the relationship of tooth length as a function of dose, and ensure that the two types of supplements are adequately distinguished by colour.
+
+---
+**Task 4. the `datasets::ToothGrowth` data, continue**
+
+Produce box-and-whisker graphs showing the relationship of tooth length as a function of dose, and ensure that each of the two types of supplements are presented in separate panels (facets).
+
+---
+**Task 5. the `datasets::ToothGrowth` data, continue**
+
+Produce a graph like the one below. The adjustment of the error bars (here showing ±SD) is a bit tricky, so you will have to figure out how to consult the help files, or find alternative help somewhere using an internet search.
+
+```{r ex-3, echo = FALSE, include = TRUE, fig.width = 4, fig.height = 3, fig.align = 'center'}
+dat4 <- datasets::ToothGrowth
+
+dat5 <- dat4 %>% 
+  group_by(supp, dose) %>% 
+  summarise(mn.len = mean(len),
+            sd.len = sd(len))
+
+ggplot(data = dat5, aes(x = dose, y = mn.len)) +
+  geom_col(aes(fill = supp), colour = "black",
+           position = position_dodge(width = 0.45)) + 
+  geom_errorbar(aes(ymin = mn.len - sd.len, ymax = mn.len + sd.len, group = supp), 
+                position = position_dodge(width = 0.45), width = 0.2) +
+  labs(x = "Dose (mg/d)", y = "Tooth length (mm)") +
+  theme(panel.grid.major = element_line(size = 0.2, linetype = 2),
+        panel.grid.minor = element_line(colour = NA))
+```

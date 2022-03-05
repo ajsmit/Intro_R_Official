@@ -1,0 +1,82 @@
+---
+title: "R Notebook"
+output:
+  word_document: default
+  html_notebook: default
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*.
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+# MS Excel Challenge
+
+## Load the packages and data
+
+```{r, echo=TRUE}
+library(tidyverse)
+library(lubridate)
+temps <- read.csv("../data/SACTN_SAWS.csv")
+```
+
+## Inspect the data
+
+```{r, echo=TRUE}
+head(temps)
+```
+
+```{r, echo=TRUE}
+unique(temps$site)
+```
+
+## Do stuff
+
+```{r, echo=TRUE}
+temps_mo <- temps %>%
+  mutate(yr = year(date),
+         mo = month(date)) %>%
+  group_by(site, mo) %>%
+  summarise(mean_temp = mean(temp, na.rm = TRUE)) %>%
+  ungroup()
+
+temps_yr <- temps %>%
+  mutate(yr = year(date),
+         mo = month(date)) %>%
+  group_by(site, yr) %>%
+  summarise(mean_temp = mean(temp, na.rm = TRUE)) %>%
+  ungroup()
+temps_yr
+```
+
+## Make the graphs
+
+```{r fig.height=5, fig.width=9, echo=TRUE}
+ggplot(temps_mo, aes(x = mo, y = mean_temp)) +
+  geom_line(aes(group = site), colour = "red") +
+  scale_x_continuous(breaks = seq(2, 12, 2)) +
+  facet_wrap(~site, nrow = 6) +
+  labs(x = "Year", y = "Temperature (°C)",
+       title = "Monthly mean temperature")
+```
+
+```{r fig.height=5, fig.width=9, echo=TRUE}
+ggplot(temps_yr, aes(x = yr, y = mean_temp)) +
+  geom_line(aes(group = site), colour = "red") +
+  scale_x_continuous(breaks = seq(1980, 2010, 15)) +
+  facet_wrap(~site, nrow = 6) +
+  labs(x = "Year", y = "Temperature (°C)",
+       title = "Annual mean temperature")
+```

@@ -1,0 +1,78 @@
+---
+title: "R datasets"
+subtitle: "Built-in datasets"  
+author: 
+  - "AJ Smit"
+date: '2020/07/15 (updated: `r Sys.Date()`)'
+output:
+  xaringan::moon_reader:
+    css:
+      - default
+      - "/Users/ajsmit/Dropbox/R/workshops/Basic_stats/private/default-fonts.css"
+      - ki
+      - "/Users/ajsmit/Dropbox/R/workshops/Basic_stats/private/uwc_logo.css"
+    yolo: false
+    self_contained: TRUE  
+    lib_dir: libs
+    nature:
+      highlightStyle: idea
+      highlightLines: true
+      highlightLanguage: r
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE, echo=FALSE} 
+library(tidyverse)
+library(ggpubr)
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "R>",
+                      message = FALSE,
+                      warning = FALSE,
+                      include = TRUE,
+                      fig.retina = 3,
+                      fig.width = 6,
+                      fig.height = 3.6,
+                      fig.align = "center")
+```
+
+## Loading and discovering built-in datasets
+
+To find out which datasets are available to you on your system, execute the following command:
+
+```{r}
+data()
+```
+
+A new tab will open and the list of datasets will be displayed. For example, the following might be displayed:
+
+```
+Data sets in package ‘datasets’:
+
+AirPassengers                       Monthly Airline Passenger Numbers 1949-1960
+BJsales                             Sales Data with Leading Indicator
+BOD                                 Biochemical Oxygen Demand
+CO2                                 Carbon Dioxide Uptake in Grass Plants
+ChickWeight                         Weight versus age of chicks on different diets
+DNase                               Elisa assay of DNase
+EuStockMarkets                      Daily Closing Prices of Major European Stock Indices, 1991-1998
+Formaldehyde                        Determination of Formaldehyde
+HairEyeColor                        Hair and Eye Color of Statistics Students
+Harman23.cor                        Harman Example 2.3
+[...]
+```
+
+---
+The exact list might vary from user to user, as this depends on which packages have been installed on your system. For example, scrolling all the way to the bottom of the list produced above using the `data()` command, you'll see the following information and code that can be executed to show all the datasets in all the packages available on your system:
+
+```
+Use ‘data(package = .packages(all.available = TRUE))’
+```
+
+A particular dataset can be loaded as follow:
+
+```{r, eval=FALSE}
+data(acacia, package = "ade4") # the package name is listed also in the data() display
+```
+
+You are welcome to use any of these datasets to practice the R commands that you have been taught.

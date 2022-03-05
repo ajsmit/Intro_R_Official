@@ -1,9 +1,9 @@
 # An R workflow {#workflow}
 
 > "A dream doesn't become reality through magic; it takes sweat, determination and hard work."
-> 
+>
 > --- Colin Powell
-  
+
 > "Choose a job you love, and you will never have to work a day in your life."
 >
 > --- Confucius
@@ -34,17 +34,17 @@ Remember that anything appearing after the `#` is not executed by R as script an
 
 It is recommend that for each workshop session you start a new script (in the **Source Editor**), type in the code as we go along, and only execute the required lines. That way you will have a record of what you have done.
 
-Below we will learn how to import the file `laminaria.csv` into R, assign it to a dataframe named `laminaria`, and spend a while looking it over. These data reflect results of a sampling campaign on one of the species of kelps (*Laminaria pallida*) in the Western Cape designed to find the morphometric properties of populations at different sites. We visited 13 different locations along the Cape Peninsula (`site`), and at each site, collected *ca.* 13 specimens of the largest kelps we could find. We then brought the kelps back to the shore and measured/calculated nine morphometric properties of the plants (*e.g.* the mass of the fronds (`blade_weight`), the frond length (`blade_length`), *etc.*). 
+Below we will learn how to import the file `laminaria.csv` into R, assign it to a dataframe named `laminaria`, and spend a while looking it over. These data reflect results of a sampling campaign on one of the species of kelps (*Laminaria pallida*) in the Western Cape designed to find the morphometric properties of populations at different sites. We visited 13 different locations along the Cape Peninsula (`site`), and at each site, collected *ca.* 13 specimens of the largest kelps we could find. We then brought the kelps back to the shore and measured/calculated nine morphometric properties of the plants (*e.g.* the mass of the fronds (`blade_weight`), the frond length (`blade_length`), *etc.*).
 
 ## Reading data into R
 
 We will now see how easy it is to read data into R. R will read in many types of data, including spreadsheets, text files, binary files and files from other statistical packages and software.
 
-> **Full stops**  
-Unfortunately in South Africa we are taught from a young age to use commas (`,`) instead of full stops (`.`) for decimal places. This simply will not do when we are working with a computer. You must always use a full stop for a decimal place and never insert commas anywhere into any numbers.
+> **Full stops**\
+> Unfortunately in South Africa we are taught from a young age to use commas (`,`) instead of full stops (`.`) for decimal places. This simply will not do when we are working with a computer. You must always use a full stop for a decimal place and never insert commas anywhere into any numbers.
 
-> **Commas**  
-R generally thinks that commas mean the user is telling the computer to separate values. So if you think you are typing a big number like 2,300 you may actually end up with two numbers. Never use commas with numbers.
+> **Commas**\
+> R generally thinks that commas mean the user is telling the computer to separate values. So if you think you are typing a big number like 2,300 you may actually end up with two numbers. Never use commas with numbers.
 
 ### Preparing data for R
 
@@ -54,7 +54,7 @@ We will learn more about working with data in R --- specifically, we will teach 
 
 ### Converting data
 
-Before we can read in the *Laminaria* dataset provided for the following exercises, we need to convert the Excel file supplied into a `.csv` file. Open 'laminaria.xlsx' in Excel, then select 'Save As' from the File menu. In the 'Format' drop-down menu, select the option called 'Comma Separated Values', then hit 'Save'. You'll get a warning that formatting will be removed and that only one sheet will be exported; simply 'Continue'. Your working directory should now contain a file called `laminaria.csv`. 
+Before we can read in the *Laminaria* dataset provided for the following exercises, we need to convert the Excel file supplied into a `.csv` file. Open 'laminaria.xlsx' in Excel, then select 'Save As' from the File menu. In the 'Format' drop-down menu, select the option called 'Comma Separated Values', then hit 'Save'. You'll get a warning that formatting will be removed and that only one sheet will be exported; simply 'Continue'. Your working directory should now contain a file called `laminaria.csv`.
 
 ### Importing data
 
@@ -66,11 +66,11 @@ Once we have the working directory set, either by doing it manually with `setwd(
 
 All R Help items are in the same format. A short *Description* (of what it does), *Usage*, *Arguments* (the different inputs it requires), *Details* (of what it does), *Value* (what it returns) and *Examples*. Arguments (the parameters that are passed to the function) are the lifeblood of any function, as this is how you provide information to R. You do not need to specify all arguments, as most have appropriate default values for your requirements, and others might not be needed for your particular case.
 
-> **Data formats**  
-R has pedantic requirements for naming variables. It is safest to not use spaces, special characters (*e.g.*, commas, semicolons, any of the shift characters above the numbers), or function names (*e.g.*, mean). One can use 'camelCase', such as `myFirstVariable`, or simply separate the 'parts' of the variable name using an underscore such as in `my_first_variable`. Always make sure to use meaningful names; eventually you will learn to find a balance between meaningfulness and something short that's easy enough to retype repeatedly (although R's ability to use tab completion helps with not having to type long names to often).
+> **Data formats**\
+> R has pedantic requirements for naming variables. It is safest to not use spaces, special characters (*e.g.*, commas, semicolons, any of the shift characters above the numbers), or function names (*e.g.*, mean). One can use 'camelCase', such as `myFirstVariable`, or simply separate the 'parts' of the variable name using an underscore such as in `my_first_variable`. Always make sure to use meaningful names; eventually you will learn to find a balance between meaningfulness and something short that's easy enough to retype repeatedly (although R's ability to use tab completion helps with not having to type long names to often).
 
-> **Import**  
-`read_csv()` is simply a 'wrapper' (*i.e.*, a command that modifies) a more basic command called `read_delim()`, which itself allows you to read in many types of files besides `.csv`. To find out more, type `?read_delim()`.
+> **Import**\
+> `read_csv()` is simply a 'wrapper' (*i.e.*, a command that modifies) a more basic command called `read_delim()`, which itself allows you to read in many types of files besides `.csv`. To find out more, type `?read_delim()`.
 
 ### Loading a file
 
@@ -80,7 +80,7 @@ To load the `laminaria.csv` file we created, and assign it to an object name in 
 library(tidyverse)
 ```
 
-Depending on the version of Excel you are using, or perhaps the settings within  it, the 'laminaria.csv' file you created may be corrupted in different ways. Generally Excel likes to replace the `,` between columns in our .csv files with `;`. This may seem like a triviality but sadly it is not. Lucky for use, the **`tidyverse`** knows about this problem and they have made a plan. Please open your 'laminaria.csv' file and look at which character is being used to separate columns. If it is `,` then we will load the data with `read_csv()`. If the columns are separated with `;` we will use `read_csv2()`.
+Depending on the version of Excel you are using, or perhaps the settings within it, the 'laminaria.csv' file you created may be corrupted in different ways. Generally Excel likes to replace the `,` between columns in our .csv files with `;`. This may seem like a triviality but sadly it is not. Lucky for use, the **`tidyverse`** knows about this problem and they have made a plan. Please open your 'laminaria.csv' file and look at which character is being used to separate columns. If it is `,` then we will load the data with `read_csv()`. If the columns are separated with `;` we will use `read_csv2()`.
 
 ```{r workflow-load-lam, eval=FALSE}
 # Run this if 'laminaria.csv` has columns separated by ','
@@ -88,11 +88,12 @@ laminaria <- read_csv("data/laminaria.csv")
 # Run this if 'laminaria.csv` has columns separated by ';'
 laminaria <- read_csv2("data/laminaria.csv")
 ```
+
 ```{r workflow-load-lam-ghost, echo=FALSE}
 laminaria <- read_csv("data/laminaria.csv")
 ```
 
-If one clicks on the newly created `laminaria` object in the **Environment** pane it will open a new panel that shows the information as a spreadsheet. To go back to your script click the appropriate tab in the **Source Editor** pane. With these data loaded we may now perform analyses on them. 
+If one clicks on the newly created `laminaria` object in the **Environment** pane it will open a new panel that shows the information as a spreadsheet. To go back to your script click the appropriate tab in the **Source Editor** pane. With these data loaded we may now perform analyses on them.
 
 At any point when working in R, you can see exactly what objects are in memory in several ways. First, you can look at the **Environment** tab in RStudio, then **Workspace Browser**. Alternatively you can type either of the following:
 
@@ -116,8 +117,8 @@ laminaria <- read_csv("data/laminaria.csv")
 laminaria <- read_csv2("data/laminaria.csv")
 ```
 
-> **Managing variables**  
-It is good practice to remove variables from memory that you are not using, especially if they are large.
+> **Managing variables**\
+> It is good practice to remove variables from memory that you are not using, especially if they are large.
 
 ## Working with data
 
@@ -155,13 +156,13 @@ names(laminaria)
 Before we begin to manipulate our data further we need to briefly introduce ourselves to the **`tidyverse`**. And no introduction can be complete within learning about the *pipe* command, `%>%`. We may type this by pushing the following keys together: **ctrl-shift-m**. The pipe (`%>%`) allows us to perform calculations sequentially, which helps us to avoid making errors.
 
 The pipe works best in tandem with the following five common functions:
-  
-* Arrange observations (rows)  with `arrange()`  
-* Filter observations (rows) with `filter()`  
-* Select variables (columns) with `select()`  
-* Create new variables (columns) with `mutate()`  
-* Summarise variables (columns) with `summarise()`  
-  
+
+-   Arrange observations (rows) with `arrange()`\
+-   Filter observations (rows) with `filter()`\
+-   Select variables (columns) with `select()`\
+-   Create new variables (columns) with `mutate()`\
+-   Summarise variables (columns) with `summarise()`
+
 We will cover these functions in more detail on Day 4. For now we will ease ourselves into the code with some simple examples.
 
 ### Subsetting
@@ -196,8 +197,8 @@ lam_kom <- laminaria %>%
   filter(site == "Kommetjie")
 ```
 
-> **DIY: Subsetting**  
-In the script you have started, create a new named dataframe containing only kelps from two of the sites. Check that the new dataframe has the correct values in it. What purpose can the naming of a newly-created dataframe serve?
+> **DIY: Subsetting**\
+> In the script you have started, create a new named dataframe containing only kelps from two of the sites. Check that the new dataframe has the correct values in it. What purpose can the naming of a newly-created dataframe serve?
 
 ### Basic stats
 
@@ -224,8 +225,8 @@ Now exit RStudio. Pretend it is three days later and revisit your analysis. Calc
 
 Imagine doing this daily as our analysis grows in complexity. It will very soon become quite repetitive if each day you had to retype all these lines of code. And now, six weeks into the research and attendant statistical analysis, you discover that there were some mistakes and some of the raw data were incorrect. Now everything would have to be repeated by retyping it at the command prompt. Or worse still (and bad for repetitive strain injury) doing all of it in SPSS and remembering which buttons to click and then re-clicking them. A pain. Let's avoid that altogether and do it the right way by writing an R script to automate and annotate all of this.
 
-> **Dealing with missing data**  
-The `.csv` file format is usually the most robust for reading data into R. Where you have missing data (blanks), the `.csv` format separates these by commas. However, there can be problems with blanks if you read in a space-delimited format file. If you are having trouble reading in missing data as blanks, try replacing them in your spreadsheet with `NA`, the missing data code in R. In Excel, highlight the area of the spreadsheet that includes all the cells you need to fill with `NA`. Do an Edit/Replace… and leave the 'Find what:' textbox blank and in the 'Replace with:' textbox enter `NA`, the missing value code. Once imported into R, the `NA` values will be recognised as missing data.
+> **Dealing with missing data**\
+> The `.csv` file format is usually the most robust for reading data into R. Where you have missing data (blanks), the `.csv` format separates these by commas. However, there can be problems with blanks if you read in a space-delimited format file. If you are having trouble reading in missing data as blanks, try replacing them in your spreadsheet with `NA`, the missing data code in R. In Excel, highlight the area of the spreadsheet that includes all the cells you need to fill with `NA`. Do an Edit/Replace... and leave the 'Find what:' textbox blank and in the 'Replace with:' textbox enter `NA`, the missing value code. Once imported into R, the `NA` values will be recognised as missing data.
 
 So far we have calculated the mean and standard deviation of some data in the *Laminaria* data set. If you have not, please append those lines of code to the end of your script. You can run individual lines of code by highlighting them and pressing **ctrl-Enter** (**cmd-Enter** on a Mac). Do this.
 
@@ -276,13 +277,13 @@ laminaria %>% # Tell R which dataset to use
 
 Making sure all the latest edits in your R script have been saved, close your R session. Pretend this is now 2019 and you need to revisit the analysis. Open the file you created in 2017 in RStudio. All you need to do now is highlight the file's entire contents and hit **ctrl-Enter**.
 
-> **Stick with `.csv` files**  
-There are packages in R to read in Excel spreadsheets (*e.g.*, .xlsx), but remember there are likely to be problems reading in formulae, graphs, macros and multiple worksheets. We recommend exporting data deliberately to `.csv` files (which are also commonly used in other programs). This not only avoids complications, but also allows you to unambiguously identify the data you based your analysis on. This last statement should give you the hint that it is good practice to name your `.csv` slightly differently each time you export it from Excel, perhaps by appending a reference to the date it was exported.
+> **Stick with `.csv` files**\
+> There are packages in R to read in Excel spreadsheets (*e.g.*, .xlsx), but remember there are likely to be problems reading in formulae, graphs, macros and multiple worksheets. We recommend exporting data deliberately to `.csv` files (which are also commonly used in other programs). This not only avoids complications, but also allows you to unambiguously identify the data you based your analysis on. This last statement should give you the hint that it is good practice to name your `.csv` slightly differently each time you export it from Excel, perhaps by appending a reference to the date it was exported.
 
-> **Remember...**  
-Friends don't let friends use Excel.
+> **Remember...**\
+> Friends don't let friends use Excel.
 
-### Summary of all variables in a dataframe
+## Summary of all variables in a dataframe
 
 Import the data into a dataframe called `laminaria` once more (if it isn't already in your **Environment**), and check that it is in order. Once we're happy that the data have imported correctly, and that we know what the variables are called and what sorts of data they contain, we can dig a little deeper. Try typing:
 
@@ -362,10 +363,9 @@ laminaria %>%
   summarise(n = n())
 ```
 
-You will notice that the function `na.omit()` removes NAs from the variable that is specified as its argument. 
+You will notice that the function `na.omit()` removes NAs from the variable that is specified as its argument.
 
-> **DIY: Using `na.omit()`**
-Using this new information, *calculate* the mean stipe mass and the corresponding standard error.
+> **DIY: Using `na.omit()`** Using this new information, *calculate* the mean stipe mass and the corresponding standard error.
 
 ## Exercise
 
@@ -382,6 +382,7 @@ A major advantage of R over many other statistics packages is that you can gener
 ```{r, eval=FALSE}
 write_csv(site_by_region, path = "data/kelp_summary.csv")
 ```
+
 The first argument is simply the name of an object in R, in this case our table (a data object of class *table*) of counts by region and site (other sorts of data are available, so play around to see what can be done). The second argument is the name of the file you want to write to. This file will always be written to your working directory, unless otherwise specified by including a different path in the file name. Remember that file names need to be within quotation marks. The resultant file can sadly be opened in Excel.
 
 ## Visualisations
@@ -396,7 +397,7 @@ ggplot(data = laminaria, aes(x = stipe_mass, y = stipe_length)) +
 
 ## Clearing the memory
 
-You will be left with many objects after working through these examples. Note that in RStudio when you quit it can save the Environment if you choose, and so it can retain the objects in memory when you start RStudio again. The choice to save the objects resulting from an R Session until next time can be selected in the Global Options menu ('Tools' > 'Global Options' > 'General' > 'Save workspace to .RData on exit'). Personally, we never save objects as it is preferable to start on a clean slate when one opens RStudio. Either way, to avoid long load times and clogged memory, it is good practice to clear the objects in memory every now and then unless you can think of a compelling reason not to. This may be done by clicking on the broom icon at the top of the **Environment** pane.
+You will be left with many objects after working through these examples. Note that in RStudio when you quit it can save the Environment if you choose, and so it can retain the objects in memory when you start RStudio again. The choice to save the objects resulting from an R Session until next time can be selected in the Global Options menu ('Tools' \> 'Global Options' \> 'General' \> 'Save workspace to .RData on exit'). Personally, we never save objects as it is preferable to start on a clean slate when one opens RStudio. Either way, to avoid long load times and clogged memory, it is good practice to clear the objects in memory every now and then unless you can think of a compelling reason not to. This may be done by clicking on the broom icon at the top of the **Environment** pane.
 
 Of course, you could remove an individual object by placing only its name within the brackets of `rm()`. Do not use this line of code carelessly in the middle of your script; doing so will mean that you have to go back and regenerate the objects you accidentally removed -- this is more of a nuisance than a train smash, especially for long, complicated scripts, as you will have (I hope!) saved the R script from which the objects in memory can be regenerated at any time.
 
@@ -404,11 +405,11 @@ Of course, you could remove an individual object by placing only its name within
 
 At the beginning of this session we glossed over this topic by setting the working directory via RStudio's project functionality. This concept is however critically important to understand so we must now cover it in more detail. The current working directory, where R will read and write files, is displayed by RStudio within the title region of the Console. There are a number of ways to change the current working directory:
 
-  1. Select 'Session'/'Set Working Directory' and then choose from the four options for how to set your working directory depending on your preference
+1.  Select 'Session'/'Set Working Directory' and then choose from the four options for how to set your working directory depending on your preference
 
-  2. From within the **Files** pane, navigate to the directory you want to set as the working directory and then select 'More'/'Set As Working Directory' menu item (navigation within the Files pane alone will not change the working directory)
+2.  From within the **Files** pane, navigate to the directory you want to set as the working directory and then select 'More'/'Set As Working Directory' menu item (navigation within the Files pane alone will not change the working directory)
 
-  3. Use `setwd()`, providing the name of your desired working directory as a character string
+3.  Use `setwd()`, providing the name of your desired working directory as a character string
 
 In the **Files** tab, use the directory structure to navigate to the Intro R Workshop directory... this will differ from person to person. Then under 'More', select the small upside down (drill-down) triangle and select 'Set As Working Directory'. This means that whenever you read or write a file it will always be working in that directory. This gives us the code for setting the directory (below is the code that I would enter in the **Console** on my computer):
 
@@ -418,8 +419,8 @@ setwd("~/Intro_R_Workshop")
 
 It will be different for you, but copy it into your script and make a note for future reference.
 
-> **Working directories**  
-For Windows users, if you copy from a file path the slashes will be the wrong way around and must be changed!
+> **Working directories**\
+> For Windows users, if you copy from a file path the slashes will be the wrong way around and must be changed!
 
 You can check that R got this right by typing into the **Console**:
 
@@ -427,12 +428,12 @@ You can check that R got this right by typing into the **Console**:
 getwd()
 ```
 
-> **Organising R projects**  
-For every R project, set up a separate directory that includes the scripts, data files and outputs.
+> **Organising R projects**\
+> For every R project, set up a separate directory that includes the scripts, data files and outputs.
 
 ## Help
 
-The help files in R are not readily clear. It requires a bit of work to understand them well. There is method however to what appears to be madness. The figure below shows the beginning of a  help file for a function in R. Please type `?read.table()` in your console now to bring up this help file in your RStudio GUI.
+The help files in R are not readily clear. It requires a bit of work to understand them well. There is method however to what appears to be madness. The figure below shows the beginning of a help file for a function in R. Please type `?read.table()` in your console now to bring up this help file in your RStudio GUI.
 
 ```{r help-output, echo = FALSE, fig.cap = "A portion of the help page produced by the above command.", out.width = "100%", fig.align = "center"}
 knitr::include_graphics("figures/help_output.png")
@@ -441,6 +442,7 @@ knitr::include_graphics("figures/help_output.png")
 The first thing we see at the top of the help file in small font is the name of the function, and the package it comes from in curly braces. After this, in very large text, is a very short description of what the function is used for. After this is the 'Description' section, which gives a sentence or two more fully explaining the use(s) of the function. The 'Usage' then shows all of the arguments that may be given to the function, and what their default settings are. When we write a function in our script we do *not* need to include all of the possible arguments. The help file shows us all of them so that we know what our options are. In some cases a help file will show the usage of several different functions together. This is done, as is the case here, if these functions forma a sort of 'family' and share many common purposes. The 'Arguments' section gives a long explanation for what each individual argument may do. The Arguments section here is particularly verbose. Up next is the 'Details' section that gives a more in depth description of what the function does. The 'Value' section tells us what sort of output we may expect from the function. Some of the more well documented functions, such as this one, will have additional sections that are not a requirement for function documentation. In this case the 'Memory usage' and 'Note' sections are not things one should always expect to see in help files. Also not always present is a 'References' section. Should there be actual published documentation for the function, or the function has been used in a publication for some other purpose, these references tend to be listed here. There are many functions in the **`vegan`** package that have been used in dozens of publications. If there is additional reading relevant to the function in question, the authors may also have included a 'See also' section, but this is not standard. Lastly, any well documented function should end with an 'Examples' section. The code is this section is designed to be able to be copy-pasted directly from the help file into the users R script or console and run *as is*. It is perhaps a bad habit, but when I am looking up a help file for a function, I tend to look first at the Examples section. And only if I can't solve my problem with the examples do I actually read the documentation.
 
 ## Session info
+
 ```{r, echo=TRUE, include=TRUE}
 installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 ```

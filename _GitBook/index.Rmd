@@ -2,25 +2,25 @@
 title: 'Intro R Workshop: Data Manipulation, Analysis, and Visualisation'
 subtitle: 'UWC BCB Honours 2021'
 author: "AJ Smit, Amieroh Abrahams & Robert W Schlegel"
+thanks: Replication files are available on the author's GitHub account
+description: The basics for a safe voyage through the tidyverse.
 date: "`r Sys.Date()`"
 bibliography: book.bib
-citecolor: purple
-cover-image: figures/769_life_finds_a_way.png
 biblio-style: apalike
-description: The basics for a safe voyage through the tidyverse.
 fontsize: 10pt
 geometry: margin=4cm
-github-repo: ajsmit/Intro_R_Workshop
+papersize: A4
 language: Australian
-link-citations: yes
-linkcolor: cyan
+github-repo: ajsmit/Intro_R_Workshop
+cover-image: figures/769_life_finds_a_way.png
+tables: yes
 lof: no
 lot: no
-papersize: A4
 site: bookdown::bookdown_site
-tables: yes
-thanks: Replication files are available on the author's GitHub account
 always_allow_html: yes
+link-citations: yes
+citecolor: purple
+linkcolor: cyan
 urlcolor: blue
 ---
 
